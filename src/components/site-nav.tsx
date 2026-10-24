@@ -11,12 +11,23 @@ const linkBase =
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const sentinel = useRef<HTMLDivElement>(null);
+  const solid = scrolled || open;
   const button = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
 
   const close = useCallback(() => {
     setOpen(false);
     button.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    const el = sentinel.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setScrolled(!entry?.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   useEffect(() => {
@@ -51,11 +62,18 @@ export function SiteNav() {
 
   return (
     <>
+      {/* Sits at the very top of the page; once it scrolls out of view the header takes shape. */}
+      <div
+        ref={sentinel}
+        aria-hidden
+        className="pointer-events-none absolute left-0 top-0 h-6 w-px"
+      />
       <header
-        className="sticky top-0 z-40 border-b border-line backdrop-blur-md"
+        data-solid={solid}
+        className="sticky top-0 z-40 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[solid=true]:border-line data-[solid=true]:backdrop-blur-md"
         style={{
           height: "var(--nav-h)",
-          background: "color-mix(in oklab, var(--bg) 82%, transparent)",
+          background: solid ? "color-mix(in oklab, var(--bg) 82%, transparent)" : "transparent",
         }}
       >
         <div className="wrap flex h-full items-center justify-between gap-4">

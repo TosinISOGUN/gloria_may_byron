@@ -367,12 +367,14 @@
 @layer components {
   /* Hero scrim: fades the photograph into the page background on whichever side the copy sits. */
   .hero-scrim {
-    background: linear-gradient(
-      0deg,
-      var(--bg) 0%,
-      color-mix(in oklab, var(--bg) 88%, transparent) 34%,
-      transparent 70%
-    );
+    background:
+      linear-gradient(180deg, color-mix(in oklab, var(--bg) 78%, transparent) 0%, transparent 22%),
+      linear-gradient(
+        0deg,
+        var(--bg) 0%,
+        color-mix(in oklab, var(--bg) 88%, transparent) 34%,
+        transparent 70%
+      );
   }
   @media (min-width: 768px) {
     .hero-scrim {
@@ -383,7 +385,8 @@
           color-mix(in oklab, var(--bg) 82%, transparent) 34%,
           transparent 68%
         ),
-        linear-gradient(0deg, var(--bg) 0%, transparent 30%);
+        linear-gradient(0deg, var(--bg) 0%, transparent 30%),
+        linear-gradient(180deg, color-mix(in oklab, var(--bg) 70%, transparent) 0%, transparent 22%);
     }
   }
 }
