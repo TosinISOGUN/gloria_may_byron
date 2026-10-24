@@ -370,7 +370,7 @@ function Home() {
       <section className="section">
         <div className="wrap reveal">
           <SectionHead title="As seen on" sub="Official media recognition and industry features." />
-          <ul className="logo-tile mt-14 flex flex-wrap items-center justify-between gap-x-12 gap-y-8 rounded-[var(--radius-card)] px-8 py-9 md:px-12">
+          <ul className="logo-tile mt-14 flex flex-wrap items-center justify-between gap-x-10 gap-y-8 rounded-[var(--radius-card)] px-8 py-9">
             {press.map((p) => (
               <li key={p.name}>
                 <Img
