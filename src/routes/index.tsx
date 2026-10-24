@@ -239,13 +239,13 @@ function Home() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={`${p.name}: Gloria May Byron`}
-                  className="grid h-28 place-items-center px-6 transition-colors hover:bg-surface"
+                  className="logo-tile grid h-28 place-items-center px-6"
                 >
                   <Img
                     id={p.logo}
                     alt=""
                     sizes="160px"
-                    className="logo-mono h-7 w-auto max-w-[7.5rem] object-contain"
+                    className="h-7 w-auto max-w-[7.5rem] object-contain"
                   />
                 </a>
               </li>
@@ -370,14 +370,14 @@ function Home() {
       <section className="section">
         <div className="wrap reveal">
           <SectionHead title="As seen on" sub="Official media recognition and industry features." />
-          <ul className="mt-14 flex flex-wrap items-center gap-x-12 gap-y-10">
+          <ul className="logo-tile mt-14 flex flex-wrap items-center justify-between gap-x-12 gap-y-8 rounded-[var(--radius-card)] px-8 py-9 md:px-12">
             {press.map((p) => (
               <li key={p.name}>
                 <Img
                   id={p.logo}
                   alt={p.name}
                   sizes="200px"
-                  className="logo-mono h-7 w-auto max-w-[10rem] object-contain md:h-8"
+                  className="h-7 w-auto max-w-[10rem] object-contain md:h-8"
                 />
               </li>
             ))}

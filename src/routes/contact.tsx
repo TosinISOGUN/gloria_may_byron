@@ -130,15 +130,15 @@ function Contact() {
                       href={p.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="grid h-28 place-items-center content-center gap-2 px-3 transition-colors hover:bg-surface"
+                      className="grid h-28 place-items-center content-center gap-2 px-3 logo-tile"
                     >
                       <Img
                         id={p.logo}
                         alt=""
                         sizes="140px"
-                        className="logo-mono h-7 w-auto max-w-[7.5rem] object-contain"
+                        className="h-7 w-auto max-w-[7.5rem] object-contain"
                       />
-                      <span className="text-sm text-muted">{p.name}</span>
+                      <span className="text-sm text-[#4a636b]">{p.name}</span>
                     </a>
                   </li>
                 ))}

@@ -133,7 +133,7 @@ function SpotifyPlayer() {
         />
       ) : (
         <div className="grid h-[352px] place-content-center justify-items-center gap-5 bg-surface px-6 text-center">
-          <Img id="platformSpotify" alt="Spotify" sizes="160px" className="logo-mono h-9 w-auto" />
+          <Img id="platformSpotify" alt="Spotify" sizes="160px" className="h-9 w-auto" />
           <p className="font-display text-2xl font-extrabold tracking-[-0.02em]">
             This Is Gloria May Byron
           </p>
@@ -291,15 +291,15 @@ function Music() {
                   href={p.url}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="grid h-36 place-items-center content-center gap-3 px-4 transition-colors hover:bg-surface"
+                  className="grid h-36 place-items-center content-center gap-3 px-4 logo-tile"
                 >
                   <Img
                     id={p.logo}
                     alt=""
                     sizes="160px"
-                    className="logo-mono h-7 w-auto max-w-[7.5rem] object-contain"
+                    className="h-7 w-auto max-w-[7.5rem] object-contain"
                   />
-                  <span className="text-sm text-muted">{p.name}</span>
+                  <span className="text-sm text-[#4a636b]">{p.name}</span>
                 </a>
               </li>
             ))}
