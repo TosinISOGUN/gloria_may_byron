@@ -1,0 +1,389 @@
+@import "tailwindcss";
+
+/* Self-hosted type: Cabinet Grotesk (display) and Satoshi (body), from Fontshare. */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/cabinet-grotesk-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/cabinet-grotesk-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/cabinet-grotesk-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+  Tide palette. One accent (dusk coral) on a sea-ink base (dark) or sea-mist base (light).
+  The theme follows the visitor's system setting until they use the toggle, which sets
+  data-theme on <html>. Each mode is a single locked theme: no section flips to the other.
+*/
+:root {
+  color-scheme: light;
+  --bg: #eef4f2;
+  --bg-2: #e3edea;
+  --surface: #f8fbfa;
+  --line: rgb(13 34 41 / 0.14);
+  --text: #0d2229;
+  --muted: #4a636b;
+  --accent: #b84a31;
+  --on-accent: #ffffff;
+  --shadow: 0 18px 40px -18px rgb(13 60 70 / 0.35);
+  --logo-filter: brightness(0) opacity(0.62);
+  --nav-h: 72px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0a191e;
+    --bg-2: #0f2228;
+    --surface: #132a31;
+    --line: rgb(233 241 239 / 0.14);
+    --text: #e9f1ef;
+    --muted: #a3b9b8;
+    --accent: #f08d75;
+    --on-accent: #0a191e;
+    --shadow: 0 22px 44px -20px rgb(0 0 0 / 0.65);
+    --logo-filter: brightness(0) invert(1) opacity(0.72);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a191e;
+  --bg-2: #0f2228;
+  --surface: #132a31;
+  --line: rgb(233 241 239 / 0.14);
+  --text: #e9f1ef;
+  --muted: #a3b9b8;
+  --accent: #f08d75;
+  --on-accent: #0a191e;
+  --shadow: 0 22px 44px -20px rgb(0 0 0 / 0.65);
+  --logo-filter: brightness(0) invert(1) opacity(0.72);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --font-display: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 16px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a {
+    color: inherit;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+  button {
+    font: inherit;
+    cursor: pointer;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 48px);
+  }
+  .section {
+    padding-block: clamp(72px, 11vw, 150px);
+  }
+  .display-xl {
+    font-size: clamp(2.9rem, 9.2vw, 8.5rem);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+  }
+  .display-lg {
+    font-size: clamp(2.2rem, 5.4vw, 4.6rem);
+    letter-spacing: -0.035em;
+  }
+  .display-md {
+    font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+  }
+  .lead {
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    color: var(--muted);
+    max-width: 60ch;
+  }
+  .prose-flow > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-flow {
+    max-width: 62ch;
+    color: var(--muted);
+  }
+  .prose-flow strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+  .link-inline {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .link-inline:hover {
+    color: var(--accent);
+  }
+
+  /* Buttons: interactive elements are full pills; containers use --radius-card. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 48px;
+    padding: 0 1.5rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1;
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.2s,
+      border-color 0.2s,
+      color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active {
+    transform: translateY(1px) scale(0.98);
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+  .btn-primary:hover {
+    background: color-mix(in oklab, var(--accent) 88%, var(--text));
+  }
+  .btn-ghost {
+    border-color: var(--line);
+    color: var(--text);
+    background: transparent;
+  }
+  .btn-ghost:hover {
+    border-color: var(--text);
+  }
+  .btn-text {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .btn-text:hover {
+    color: var(--accent);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+  }
+  .media {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-2);
+  }
+  .logo-mono {
+    filter: var(--logo-filter);
+    transition: filter 0.25s;
+  }
+  a:hover > .logo-mono,
+  .logo-mono:hover {
+    filter: none;
+  }
+  :root[data-theme="dark"] a:hover > .logo-mono,
+  :root[data-theme="dark"] .logo-mono:hover {
+    filter: brightness(0) invert(1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) a:hover > .logo-mono,
+    :root:not([data-theme="light"]) .logo-mono:hover {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  /* Theme toggle icons: the inline script resolves data-theme before first paint. */
+  .theme-sun {
+    display: none;
+  }
+  :root[data-theme="dark"] .theme-sun {
+    display: block;
+  }
+  :root[data-theme="dark"] .theme-moon {
+    display: none;
+  }
+
+  /* Page entrance for the hero. Plain CSS so it also runs with no JavaScript. */
+  .rise {
+    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+  }
+  .ken {
+    animation: ken 26s ease-out both;
+  }
+  @keyframes ken {
+    from {
+      transform: scale(1.08);
+    }
+  }
+
+  /* Scroll reveals via scroll-driven animation. Browsers without it simply show the content. */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 4% entry 38%;
+    }
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(34px);
+      }
+    }
+  }
+
+  /* Native scroll-snap rail used for the featured videos. */
+  .rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(82%, 520px);
+    gap: 16px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 14px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  .rail > * {
+    scroll-snap-align: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    animation-timeline: none !important;
+  }
+}
+
+@layer components {
+  /* Hero scrim: fades the photograph into the page background on whichever side the copy sits. */
+  .hero-scrim {
+    background: linear-gradient(
+      0deg,
+      var(--bg) 0%,
+      color-mix(in oklab, var(--bg) 88%, transparent) 34%,
+      transparent 70%
+    );
+  }
+  @media (min-width: 768px) {
+    .hero-scrim {
+      background:
+        linear-gradient(
+          90deg,
+          var(--bg) 0%,
+          color-mix(in oklab, var(--bg) 82%, transparent) 34%,
+          transparent 68%
+        ),
+        linear-gradient(0deg, var(--bg) 0%, transparent 30%);
+    }
+  }
+}
