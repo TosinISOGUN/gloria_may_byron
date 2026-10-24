@@ -1,6 +1,7 @@
 import type { ImageId } from "./images.generated";
 
-export const SITE_URL = "https://gloriamaybyron.com";
+/** Injected at build time from the deployment domain (see scripts/site-origin.mjs). */
+export const SITE_URL: string = import.meta.env.VITE_SITE_URL;
 
 export const site = {
   name: "Gloria May Byron",

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "node scripts/build-seo.mjs && vite build",
     "images": "node scripts/build-images.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",

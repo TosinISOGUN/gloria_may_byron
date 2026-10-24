@@ -24,10 +24,13 @@ export function seo({ title, description, path, image = "home" }: SeoInput) {
       { property: "og:image", content: og },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:alt", content: title },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: og },
+      { name: "twitter:image:alt", content: title },
     ],
     links: [{ rel: "canonical", href: url }],
   };

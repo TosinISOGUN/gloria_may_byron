@@ -10,6 +10,9 @@ export default defineConfig({
     setupFiles: ["./src/test/setup.ts"],
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
   },
+  define: {
+    "import.meta.env.VITE_SITE_URL": JSON.stringify("https://gloriamaybyron.com"),
+  },
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
