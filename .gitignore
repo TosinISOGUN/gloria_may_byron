@@ -33,3 +33,6 @@ dist-ssr
 
 # Large originals stay local (see README, Images)
 assets-source/
+
+# Vercel
+.vercel

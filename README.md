@@ -7,7 +7,7 @@ Website for Gloria May Byron, an independent singer and songwriter (gloriamaybyr
 - TanStack Start (React 19, file-based routing, server-rendered), TypeScript strict
 - Tailwind CSS v4, Motion for interaction, Phosphor icons
 - Cabinet Grotesk and Satoshi, self-hosted from `public/fonts/` (Fontshare, free for commercial use)
-- Nitro with the `cloudflare-module` preset for the production build
+- Nitro for the production build (it picks the Vercel output on Vercel and a Node server elsewhere)
 
 ## Run it
 

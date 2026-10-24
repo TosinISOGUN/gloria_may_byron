@@ -5,12 +5,7 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig(({ command }) => ({
-  plugins: [
-    tailwindcss(),
-    tanstackStart(),
-    ...(command === "build" ? [nitro({ preset: "cloudflare-module" })] : []),
-    viteReact(),
-  ],
+  plugins: [tailwindcss(), tanstackStart(), ...(command === "build" ? [nitro()] : []), viteReact()],
   resolve: {
     tsconfigPaths: true,
     dedupe: ["react", "react-dom", "@tanstack/react-router"],
