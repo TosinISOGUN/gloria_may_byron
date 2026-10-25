@@ -1,13 +1,14 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { motion } from "motion/react";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 
+import { BadgeStrip } from "@/components/badge-strip";
 import { Img } from "@/components/img";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
+import { PageHero } from "@/components/page-hero";
 import { SectionHead } from "@/components/section-head";
 import { awards, certifications, notableHighlights } from "@/data/profile";
+import { preloadImage } from "@/lib/preload";
 import { seo } from "@/lib/seo";
-import { delay } from "@/lib/style";
 
 export const Route = createFileRoute("/awards")({
   head: () =>
@@ -18,43 +19,80 @@ export const Route = createFileRoute("/awards")({
       path: "/awards",
       image: "awards",
     }),
+  loader: () => {
+    preloadImage("heroBw", "100vw");
+  },
   component: Awards,
 });
 
-const pictures: LightboxItem[] = [
+type Hung = {
+  id: LightboxItem["id"];
+  alt: string;
+  title: string;
+  note: string;
+  /** Where it hangs on the wall (columns and drop, from lg up; two columns below). */
+  place: string;
+  /** The tilt it hangs in before it settles as it scrolls into view. */
+  tilt: string;
+};
+
+const wall: Hung[] = [
   {
     id: "awardGraBanner",
     alt: "Gloria May Byron with the Global Recognition Awards seal behind her",
+    title: "The Global Recognition Awards seal",
+    note: "Gloria May Byron, 2025",
+    place: "col-span-2 lg:col-span-7",
+    tilt: "-1.4deg",
   },
-  { id: "awardCrystal", alt: "The Global Recognition Awards 2025 winner crystal trophy" },
+  {
+    id: "awardCrystal",
+    alt: "The Global Recognition Awards 2025 winner crystal trophy",
+    title: "The crystal trophy",
+    note: "Global Recognition Awards, 2025 winner",
+    place: "lg:col-span-5 lg:mt-28",
+    tilt: "1.6deg",
+  },
   {
     id: "awardGraCert",
     alt: "Global Recognition Award 2025 certificate presented to Gloria May Byron",
+    title: "The certificate",
+    note: "Global Recognition Award, 2025",
+    place: "lg:col-span-4 lg:-mt-6",
+    tilt: "1.2deg",
   },
-  { id: "awardTrophy", alt: "The InterContinental Music Awards trophy" },
+  {
+    id: "awardTrophy",
+    alt: "The InterContinental Music Awards trophy",
+    title: "The trophy",
+    note: "InterContinental Music Awards",
+    place: "lg:col-span-4 lg:mt-16",
+    tilt: "-1.8deg",
+  },
   {
     id: "awardIcCert",
     alt: "InterContinental Music Awards certificate for the song Every Love Story, Best Song of North America in Pop, August 2025",
+    title: "Every Love Story",
+    note: "Best Song of North America in Pop, August 2025",
+    place: "lg:col-span-4",
+    tilt: "1.4deg",
   },
 ];
+
+const pictures: LightboxItem[] = wall.map(({ id, alt, title }) => ({ id, alt, caption: title }));
 
 function Awards() {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <>
-      <section className="pt-8 md:pt-14">
-        <div className="wrap">
-          <h1
-            className="display-xl rise max-w-[11ch]"
-            style={{ fontSize: "clamp(2.7rem, 8vw, 7.4rem)" }}
-          >
-            Awards and achievements
-          </h1>
-          <p className="lead rise mt-6" style={delay(1)}>
-            Recognition, milestones, and notable moments.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image="heroBw"
+        alt="Black and white photograph of Gloria May Byron singing with her eyes closed at a microphone"
+        focus="50% 30%"
+        title="Awards and achievements"
+        titleWidth={11}
+        text="Recognition, milestones, and notable moments."
+      />
 
       {/* Certifications */}
       <section className="section">
@@ -64,25 +102,7 @@ function Awards() {
             sub="Recognitions earned across platforms and borders."
             className="reveal"
           />
-          <ul className="reveal mt-14 flex flex-wrap items-center gap-x-10 gap-y-10">
-            {certifications.map((c) => (
-              <li key={c.name}>
-                <motion.div
-                  whileHover={{ y: -6, rotate: -2 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 18 }}
-                >
-                  <span className="block rounded-full bg-[#eef4f2] p-3">
-                    <Img
-                      id={c.badge}
-                      alt={c.name}
-                      sizes="170px"
-                      className="size-28 object-contain sm:size-36"
-                    />
-                  </span>
-                </motion.div>
-              </li>
-            ))}
-          </ul>
+          <BadgeStrip items={certifications} className="reveal mt-14" />
         </div>
       </section>
 
@@ -123,33 +143,65 @@ function Awards() {
         </div>
       </section>
 
-      {/* In pictures */}
-      <section className="section">
+      {/* In pictures: a gallery wall. Square frames on a spotlit wall, each with its own museum label. */}
+      <section className="section wall-bg overflow-hidden">
         <div className="wrap">
           <SectionHead
             title="The awards in pictures"
             sub="Trophies, certificates and award moments."
             className="reveal"
           />
-          <ul className="mt-12 grid grid-cols-6 items-end gap-3 md:gap-4">
-            {pictures.map((p, i) => (
+          <ul className="wall mt-16 grid grid-cols-2 items-start gap-x-5 gap-y-14 md:gap-x-8 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-16">
+            {wall.map((p, i) => (
               <li
                 key={p.id}
-                className={`reveal ${["col-span-6 md:col-span-3", "col-span-3 md:col-span-3", "col-span-3 md:col-span-2", "col-span-3 md:col-span-2", "col-span-6 md:col-span-2"][i]}`}
+                className={`hang ${p.place}`}
+                style={{ "--tilt": p.tilt } as CSSProperties}
               >
-                <button
-                  type="button"
-                  onClick={() => setOpen(i)}
-                  aria-label={`Open: ${p.alt}`}
-                  className="media group block w-full"
-                >
-                  <Img
-                    id={p.id}
-                    alt={p.alt}
-                    sizes="(min-width: 768px) 40vw, 92vw"
-                    className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                </button>
+                <figure>
+                  <div className="swing">
+                    {/* The nail and the wire: decoration only. */}
+                    <svg
+                      className="mx-auto block h-7 w-1/2 text-accent"
+                      viewBox="0 0 100 28"
+                      preserveAspectRatio="none"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      vectorEffect="non-scaling-stroke"
+                      aria-hidden
+                    >
+                      <path d="M4 28 L50 4 L96 28" vectorEffect="non-scaling-stroke" />
+                      <circle cx="50" cy="4" r="2.6" fill="currentColor" stroke="none" />
+                    </svg>
+                    <button
+                      type="button"
+                      onClick={() => setOpen(i)}
+                      aria-label={`Open: ${p.alt}`}
+                      className="frame-mat group block w-full"
+                    >
+                      <div className="overflow-hidden">
+                        <Img
+                          id={p.id}
+                          alt={p.alt}
+                          sizes="(min-width: 768px) 40vw, 92vw"
+                          className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.05]"
+                        />
+                      </div>
+                    </button>
+                  </div>
+                  <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-x-3 border-t border-line pt-3">
+                    <span className="font-display text-sm font-bold text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>
+                      <span className="block font-display text-lg font-extrabold leading-tight tracking-[-0.01em]">
+                        {p.title}
+                      </span>
+                      <span className="block text-sm text-muted">{p.note}</span>
+                    </span>
+                  </figcaption>
+                </figure>
               </li>
             ))}
           </ul>

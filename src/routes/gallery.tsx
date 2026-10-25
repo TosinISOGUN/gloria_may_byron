@@ -1,13 +1,15 @@
+import { MagnifyingGlassPlus } from "@phosphor-icons/react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { Img } from "@/components/img";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
+import { PageHero } from "@/components/page-hero";
 import { SectionHead } from "@/components/section-head";
 import { releases } from "@/data/music";
 import { galleryPhotos } from "@/data/profile";
+import { preloadImage } from "@/lib/preload";
 import { seo } from "@/lib/seo";
-import { delay } from "@/lib/style";
 
 export const Route = createFileRoute("/gallery")({
   head: () =>
@@ -18,6 +20,9 @@ export const Route = createFileRoute("/gallery")({
       path: "/gallery",
       image: "gallery",
     }),
+  loader: () => {
+    preloadImage("heroTrio", "100vw");
+  },
   component: Gallery,
 });
 
@@ -33,19 +38,14 @@ function Gallery() {
   const [release, setRelease] = useState<number | null>(null);
   return (
     <>
-      <section className="pt-8 md:pt-14">
-        <div className="wrap">
-          <h1
-            className="display-xl rise max-w-[9ch]"
-            style={{ fontSize: "clamp(2.7rem, 8vw, 7.4rem)" }}
-          >
-            Photo gallery
-          </h1>
-          <p className="lead rise mt-6" style={delay(1)}>
-            Moments from performances, studio sessions, and events.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image="heroTrio"
+        alt="Gloria May Byron singing with three other vocalists on a lawn under string lights"
+        focus="50% 55%"
+        title="Photo gallery"
+        titleWidth={9}
+        text="Moments from performances, studio sessions, and events."
+      />
 
       <section className="section">
         <div className="wrap">
@@ -54,21 +54,27 @@ function Gallery() {
             sub="A photo gallery featuring Gloria May Byron across live performances and award moments."
             className="reveal"
           />
-          <ul className="mt-12 columns-2 gap-3 md:columns-3 md:gap-4 lg:columns-4">
+          <ul className="mosaic mt-12 columns-2 gap-[3px] md:columns-3 lg:columns-4">
             {galleryPhotos.map((p, i) => (
-              <li key={p.id} className="reveal mb-3 break-inside-avoid md:mb-4">
+              <li key={p.id} className="tile mb-[3px] break-inside-avoid">
                 <button
                   type="button"
                   onClick={() => setPhoto(i)}
                   aria-label={`Open photo: ${p.alt}`}
-                  className="media group block w-full"
+                  className="group relative block w-full overflow-hidden bg-bg-2"
                 >
                   <Img
                     id={p.id}
                     alt={p.alt}
                     sizes="(min-width: 1024px) 24vw, (min-width: 768px) 32vw, 48vw"
-                    className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="tile-img h-auto w-full"
                   />
+                  <span
+                    className="pointer-events-none absolute bottom-3 right-3 grid size-10 translate-y-2 place-items-center rounded-full bg-bg/80 text-ink opacity-0 backdrop-blur-sm transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
+                    aria-hidden
+                  >
+                    <MagnifyingGlassPlus size={20} />
+                  </span>
                 </button>
               </li>
             ))}

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Img } from "@/components/img";
 import { platforms, site, socials } from "@/data/site";
+import { preloadImage } from "@/lib/preload";
 import { seo } from "@/lib/seo";
 import { delay } from "@/lib/style";
 
@@ -16,6 +17,9 @@ export const Route = createFileRoute("/contact")({
       path: "/contact",
       image: "contact",
     }),
+  loader: () => {
+    preloadImage("portraitMic", "50vw");
+  },
   component: Contact,
 });
 
@@ -55,20 +59,42 @@ function CopyEmail() {
 function Contact() {
   return (
     <>
-      <section className="pt-8 md:pt-14">
-        <div className="wrap">
-          <h1 className="display-xl rise" style={{ fontSize: "clamp(2.7rem, 8vw, 7.4rem)" }}>
-            Contact
-          </h1>
-          <p className="lead rise mt-6" style={delay(1)}>
-            For bookings, collaborations, and media inquiries.
-          </p>
+      <section className="pt-[calc(var(--nav-h)+1.5rem)] lg:pt-[calc(var(--nav-h)+2.5rem)]">
+        <div className="wrap grid items-center gap-12 pb-14 lg:grid-cols-[1fr_1fr] lg:gap-20 lg:pb-24">
+          <div className="hero-copy hero-out">
+            <h1 className="display-xl rise" style={{ fontSize: "clamp(2.7rem, 8vw, 7.4rem)" }}>
+              Contact
+            </h1>
+            <p className="lead rise mt-6" style={delay(1)}>
+              For bookings, collaborations, and media inquiries.
+            </p>
+          </div>
+          {/* A framed print: an offset outline behind, a pale mat, then the photograph. */}
+          <div className="hero-media frame isolate relative mx-auto w-full max-w-[30rem] lg:ml-auto lg:mr-0">
+            <div className="frame-offset" aria-hidden />
+            <div className="frame-mat">
+              <div className="relative aspect-[5/6] overflow-hidden">
+                <Img
+                  id="portraitMic"
+                  alt="Gloria May Byron smiling at a studio microphone"
+                  sizes="(min-width: 1024px) 30rem, 92vw"
+                  priority
+                  className="ken absolute inset-0 size-full object-cover"
+                  style={{ objectPosition: "42% 22%" }}
+                />
+                <div
+                  className="hero-veil absolute inset-0 bg-gradient-to-t from-[#0a191e]/65 via-transparent to-[#0a191e]/20"
+                  aria-hidden
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="section">
-        <div className="wrap grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-          <div className="reveal">
+        <div className="wrap">
+          <div className="reveal max-w-[60rem]">
             <h2 className="display-md">Get in touch</h2>
             <p className="lead mt-4">
               Whether you're reaching out for bookings, collaborations, or media inquiries, I'd love
@@ -84,15 +110,6 @@ function Contact() {
             <div className="mt-6">
               <CopyEmail />
             </div>
-          </div>
-          <div className="media reveal">
-            <Img
-              id="portraitMic"
-              alt="Gloria May Byron smiling at a studio microphone"
-              sizes="(min-width: 1024px) 40vw, 92vw"
-              priority
-              className="aspect-[4/3] w-full object-cover lg:aspect-square"
-            />
           </div>
         </div>
       </section>
@@ -130,7 +147,7 @@ function Contact() {
                       href={p.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="grid h-28 place-items-center content-center gap-2 px-3 logo-tile"
+                      className="logo-tile grid h-28 place-items-center content-center gap-2 px-3"
                     >
                       <Img
                         id={p.logo}

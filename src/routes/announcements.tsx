@@ -1,11 +1,12 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { Img } from "@/components/img";
+import { PageHero } from "@/components/page-hero";
 import { VideoPlayer } from "@/components/video-player";
 import { announcements } from "@/data/profile";
 import { video } from "@/data/music";
+import { preloadImage } from "@/lib/preload";
 import { seo } from "@/lib/seo";
-import { delay } from "@/lib/style";
 
 export const Route = createFileRoute("/announcements")({
   head: () =>
@@ -16,6 +17,9 @@ export const Route = createFileRoute("/announcements")({
       path: "/announcements",
       image: "announcements",
     }),
+  loader: () => {
+    preloadImage("heroSnow", "100vw");
+  },
   component: Announcements,
 });
 
@@ -23,19 +27,15 @@ function Announcements() {
   const { formulaIndie, message } = announcements;
   return (
     <>
-      <section className="pt-8 md:pt-14">
-        <div className="wrap">
-          <h1
-            className="display-xl rise max-w-[10ch]"
-            style={{ fontSize: "clamp(2.7rem, 8vw, 7.4rem)" }}
-          >
-            {announcements.heading}
-          </h1>
-          <p className="lead rise mt-6" style={delay(1)}>
-            {announcements.sub}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image="heroSnow"
+        alt="Gloria May Byron in a grey fur coat dancing with friends in falling snow"
+        focus="55% 55%"
+        veil={42}
+        title={announcements.heading}
+        titleWidth={10}
+        text={announcements.sub}
+      />
 
       <section className="section">
         <div className="wrap grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">

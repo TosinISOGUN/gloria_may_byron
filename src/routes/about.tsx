@@ -2,11 +2,12 @@ import { ArrowUpRight } from "@phosphor-icons/react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Img } from "@/components/img";
+import { PageHero } from "@/components/page-hero";
 import { LinkedText } from "@/components/linked-text";
 import { GRA_URL, aboutMe, biography, journey, style } from "@/data/profile";
 import { platforms, site } from "@/data/site";
+import { preloadImage } from "@/lib/preload";
 import { seo } from "@/lib/seo";
-import { delay } from "@/lib/style";
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -17,6 +18,9 @@ export const Route = createFileRoute("/about")({
       path: "/about",
       image: "about",
     }),
+  loader: () => {
+    preloadImage("heroRoom", "100vw");
+  },
   component: About,
 });
 
@@ -28,40 +32,18 @@ function About() {
   const [first, ...rest] = aboutMe.paragraphs;
   return (
     <>
-      <section className="relative isolate pt-8 md:pt-14">
-        <div className="wrap grid items-end gap-10 pb-16 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:pb-24">
-          <div>
-            <h1
-              className="display-xl rise max-w-[12ch]"
-              style={{ fontSize: "clamp(2.7rem, 7.4vw, 6.6rem)" }}
-            >
-              About {site.name}
-            </h1>
-            <p className="lead rise mt-6" style={delay(1)}>
-              Singer, songwriter, performer.
-            </p>
-            <a
-              className="btn btn-primary rise mt-8"
-              style={delay(2)}
-              href={tidal.url}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              Listen on Tidal <ArrowUpRight size={20} aria-hidden />
-            </a>
-          </div>
-          <div className="media rise" style={delay(2)}>
-            <Img
-              id="heroRoom"
-              alt="Gloria May Byron standing in a softly lit room, wearing black"
-              sizes="(min-width: 1024px) 54vw, 92vw"
-              priority
-              className="aspect-[16/10] w-full object-cover"
-              style={{ objectPosition: "50% 30%" }}
-            />
-          </div>
-        </div>
-      </section>
+      <PageHero
+        image="heroRoom"
+        alt="Gloria May Byron standing in a softly lit room, wearing black"
+        focus="70% 30%"
+        title={<>About {site.name}</>}
+        titleWidth={12}
+        text="Singer, songwriter, performer."
+      >
+        <a className="btn btn-primary" href={tidal.url} target="_blank" rel="noreferrer noopener">
+          Listen on Tidal <ArrowUpRight size={20} aria-hidden />
+        </a>
+      </PageHero>
 
       {/* About me */}
       <section className="section border-t border-line">
@@ -157,10 +139,11 @@ function About() {
         <div className="wrap grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <div className="media reveal">
             <Img
-              id="heroBw"
-              alt="Black and white photograph of Gloria May Byron singing with her eyes closed at a microphone"
+              id="portraitEyes"
+              alt="Close portrait of Gloria May Byron with her eyes closed"
               sizes="(min-width: 1024px) 46vw, 92vw"
               className="aspect-[16/11] w-full object-cover"
+              style={{ objectPosition: "50% 38%" }}
             />
           </div>
           <div className="reveal">

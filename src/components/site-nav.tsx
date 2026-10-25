@@ -69,6 +69,7 @@ export function SiteNav() {
         className="pointer-events-none absolute left-0 top-0 h-6 w-px"
       />
       <header
+        data-site-header
         data-solid={solid}
         className="sticky top-0 z-40 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[solid=true]:border-line data-[solid=true]:backdrop-blur-md"
         style={{

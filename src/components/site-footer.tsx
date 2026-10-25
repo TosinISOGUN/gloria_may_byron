@@ -8,8 +8,8 @@ const item = "inline-flex min-h-11 items-center text-muted transition-colors hov
 export function SiteFooter() {
   return (
     <footer className="border-t border-line bg-bg-2">
-      <div className="wrap grid gap-14 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div>
+      <div className="wrap grid gap-x-8 gap-y-12 py-16 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="md:col-span-3 lg:col-span-1">
           <p className="font-display text-[clamp(2rem,4vw,3.2rem)] font-extrabold leading-[0.98] tracking-[-0.035em]">
             {site.motto}
           </p>

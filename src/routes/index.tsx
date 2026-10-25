@@ -1,10 +1,14 @@
 import { ArrowRight, ArrowUpRight, SpotifyLogo } from "@phosphor-icons/react";
 import { Link, createFileRoute } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 
+import { BadgeStrip } from "@/components/badge-strip";
 import { Img } from "@/components/img";
+import { Marquee } from "@/components/marquee";
+import { MottoStage } from "@/components/motto-stage";
 import { SectionHead } from "@/components/section-head";
 import { VideoCard } from "@/components/video-player";
-import { homeAbout, awards, certifications } from "@/data/profile";
+import { homeAbout, certifications, galleryPhotos } from "@/data/profile";
 import { homeFeatured, homeVideos } from "@/data/music";
 import { SITE_URL, highlights, platforms, press, site, socials, spotifyUrl } from "@/data/site";
 import { seo } from "@/lib/seo";
@@ -38,59 +42,32 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const galleryPicks = [
-  {
-    id: "liveTrio",
-    span: "col-span-6 row-span-2 md:col-span-4",
-    alt: "Gloria May Byron singing with two other vocalists and a male singer",
-    pos: "50% 30%",
-  },
-  {
-    id: "liveDress",
-    span: "col-span-6 row-span-2 md:col-span-4",
-    alt: "Gloria May Byron in a pale dress holding a candle beside a piano",
-    pos: "50% 40%",
-  },
-  {
-    id: "headphones",
-    span: "col-span-6 md:col-span-4",
-    alt: "Gloria May Byron singing in headphones",
-    pos: "50% 40%",
-  },
-  {
-    id: "groupSelfie",
-    span: "col-span-6 md:col-span-4",
-    alt: "Gloria May Byron with her band in the studio",
-    pos: "30% 68%",
-  },
-  {
-    id: "liveBlack",
-    span: "col-span-6 row-span-2 md:col-span-5",
-    alt: "Gloria May Byron in a black dress",
-    pos: "50% 25%",
-  },
-  {
-    id: "portraitEyes",
-    span: "col-span-6 row-span-2 md:col-span-7",
-    alt: "Close portrait of Gloria May Byron with her eyes closed",
-    pos: "50% 35%",
-  },
-] as const;
+/** Taken from her biography: "substance over trends and connection over spectacle". */
+const mottoWords = ["Substance", "over", "trends.", "Connection", "over", "spectacle."];
+
+/** The first photographs of the gallery, shown in the same mosaic as the Gallery page. */
+const galleryPicks = galleryPhotos.slice(0, 8);
 
 function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate -mt-[var(--nav-h)] flex min-h-[100dvh] items-end overflow-hidden">
-        <Img
-          id="heroStudio"
-          alt="Gloria May Byron singing into a studio microphone in warm light"
-          sizes="100vw"
-          priority
-          className="ken absolute inset-0 -z-20 size-full object-cover object-[63%_18%] md:object-[74%_28%]"
-        />
+      <section
+        data-hero
+        data-tone="dark"
+        className="relative isolate -mt-[var(--nav-h)] flex min-h-[100dvh] items-end overflow-hidden"
+      >
+        <div className="hero-media hero-drift absolute inset-x-0 -top-[7%] -z-20 h-[107%]">
+          <Img
+            id="heroStudio"
+            alt="Gloria May Byron singing into a studio microphone in warm light"
+            sizes="100vw"
+            priority
+            className="ken size-full object-cover object-[63%_18%] md:object-[74%_28%] md:portrait:object-[58%_28%]"
+          />
+        </div>
         <div className="hero-scrim absolute inset-0 -z-10" aria-hidden />
-        <div className="wrap pb-14 pt-40 md:pb-24">
+        <div className="hero-copy hero-out wrap pb-14 pt-40 md:pb-24">
           <h1 className="display-xl rise max-w-[11ch]" style={delay(0)}>
             {site.name}
           </h1>
@@ -99,7 +76,7 @@ function Home() {
           </p>
           <div className="rise mt-9 flex flex-wrap items-center gap-x-6 gap-y-3" style={delay(2)}>
             <a
-              className="btn btn-primary"
+              className="btn btn-spotify"
               href={spotifyUrl}
               target="_blank"
               rel="noreferrer noopener"
@@ -114,32 +91,20 @@ function Home() {
         </div>
       </section>
 
-      {/* Tagline */}
-      <div className="border-y border-line">
-        <p className="wrap flex flex-wrap items-center gap-x-4 gap-y-1 py-6 font-display text-[clamp(1.05rem,2.1vw,1.55rem)] font-bold tracking-[-0.01em] text-muted">
-          {site.tagline.split(" ~ ").map((word, i, all) => (
-            <span key={word} className="inline-flex items-center gap-4">
-              <span className="text-ink">{word}</span>
-              {i < all.length - 1 && (
-                <span className="text-accent" aria-hidden>
-                  ~
-                </span>
-              )}
-            </span>
-          ))}
-        </p>
-      </div>
+      {/* Her values, as a looping ribbon */}
+      <Marquee words={site.tagline.split(" ~ ")} label="Her values" />
 
       {/* About */}
-      <section className="section">
+      <section className="section max-lg:pt-0">
         <div className="wrap grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="reveal lg:col-span-5">
-            <div className="media lg:sticky lg:top-28">
+          <div className="reveal -mx-[clamp(16px,4vw,48px)] lg:col-span-5 lg:mx-0">
+            <div className="media max-lg:!rounded-none lg:sticky lg:top-28">
               <Img
-                id="portraitWhite"
-                alt="Gloria May Byron in a white off-shoulder top with long honey-colored hair"
+                id="headphones"
+                alt="Gloria May Byron singing in headphones"
                 sizes="(min-width: 1024px) 38vw, 92vw"
                 className="aspect-[4/5] w-full object-cover"
+                style={{ objectPosition: "50% 40%" }}
               />
             </div>
           </div>
@@ -204,6 +169,29 @@ function Home() {
         </div>
       </section>
 
+      {/* A pinned statement: its words light up as the page scrolls, over a moving stage. */}
+      <section className="motto" aria-label="In her words">
+        <div className="motto-pin px-[clamp(16px,4vw,48px)]">
+          <MottoStage />
+          <p
+            className="mx-auto max-w-[26ch] text-center font-display font-extrabold leading-[1] tracking-[-0.04em]"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5.4rem)" }}
+          >
+            {mottoWords.map((w, i) => (
+              <span key={w + i}>
+                <span
+                  className={`motto-word inline-block pr-[0.22em] ${i % 3 === 0 ? "text-accent" : ""} ${i % 3 === 2 ? "motto-strike" : ""}`}
+                  style={{ "--w": i } as CSSProperties}
+                >
+                  {w}
+                </span>
+                {i === 2 && <br className="max-md:hidden" />}
+              </span>
+            ))}
+          </p>
+        </div>
+      </section>
+
       {/* Featured videos */}
       <section className="section">
         <div className="wrap">
@@ -227,9 +215,9 @@ function Home() {
         </div>
       </section>
 
-      {/* Platforms */}
-      <section className="section border-t border-line">
-        <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+      {/* Platforms: a tight strip, so the page's pace changes after the videos. */}
+      <section className="border-y border-line py-[clamp(48px,7vw,88px)]">
+        <div className="wrap grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <SectionHead title="Platforms I am available on" className="reveal" />
           <ul className="reveal grid grid-cols-2 border-l border-t border-line sm:grid-cols-4">
             {platforms.map((p) => (
@@ -239,7 +227,7 @@ function Home() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={`${p.name}: Gloria May Byron`}
-                  className="logo-tile grid h-28 place-items-center px-6"
+                  className="logo-tile grid h-24 place-items-center px-6"
                 >
                   <Img
                     id={p.logo}
@@ -294,27 +282,14 @@ function Home() {
             sub="Recognized internationally for artistic excellence, songwriting, and global listener impact."
             className="reveal"
           />
-          <div className="mt-14 grid items-end gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-            <ul className="reveal flex flex-wrap items-center gap-x-8 gap-y-8">
-              {certifications.map((c) => (
-                <li key={c.name}>
-                  <span className="block rounded-full bg-[#eef4f2] p-2.5">
-                    <Img
-                      id={c.badge}
-                      alt={c.name}
-                      sizes="150px"
-                      className="size-24 object-contain sm:size-32"
-                    />
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="reveal grid grid-cols-2 gap-4">
+          <BadgeStrip items={certifications} className="reveal mt-14" />
+          <div className="mt-14 grid items-end gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="reveal grid grid-cols-2 gap-4 lg:col-span-7">
               <div className="media translate-y-8">
                 <Img
                   id="awardTrophy"
                   alt="The InterContinental Music Awards trophy"
-                  sizes="(min-width: 1024px) 20vw, 44vw"
+                  sizes="(min-width: 1024px) 28vw, 44vw"
                   className="aspect-[3/4] w-full object-cover"
                 />
               </div>
@@ -322,18 +297,27 @@ function Home() {
                 <Img
                   id="awardCrystal"
                   alt="The Global Recognition Awards crystal trophy"
-                  sizes="(min-width: 1024px) 20vw, 44vw"
+                  sizes="(min-width: 1024px) 28vw, 44vw"
                   className="aspect-[3/4] w-full object-cover"
                 />
               </div>
             </div>
+            <div className="reveal lg:col-span-5 lg:pb-4">
+              <p
+                className="font-display font-extrabold leading-[0.85] tracking-[-0.06em] text-accent"
+                style={{ fontSize: "clamp(3.4rem, 7.4vw, 6.2rem)" }}
+                aria-hidden
+              >
+                Multiple
+              </p>
+              <p className="lead mt-3">
+                <span className="sr-only">Multiple </span>awards, from international organizations.
+              </p>
+              <Link to="/awards" className="btn btn-ghost mt-8">
+                View more awards
+              </Link>
+            </div>
           </div>
-          <p className="mt-16 text-muted">
-            {awards.length} awards, from three international organizations.
-          </p>
-          <Link to="/awards" className="btn btn-ghost mt-4">
-            View more awards
-          </Link>
         </div>
       </section>
 
@@ -350,16 +334,23 @@ function Home() {
               </Link>
             }
           />
-          <ul className="reveal mt-12 grid auto-rows-[120px] grid-cols-6 gap-3 sm:auto-rows-[170px] md:auto-rows-[200px] md:grid-cols-12 md:gap-4">
+          <ul className="mosaic mt-12 columns-2 gap-[3px] md:columns-3 lg:columns-4">
             {galleryPicks.map((p) => (
-              <li key={p.id} className={`media ${p.span}`}>
-                <Img
-                  id={p.id}
-                  alt={p.alt}
-                  sizes="(min-width: 768px) 40vw, 92vw"
-                  className="size-full object-cover"
-                  style={{ objectPosition: p.pos }}
-                />
+              <li key={p.id} className="tile mb-[3px] break-inside-avoid">
+                <Link to="/gallery" className="group relative block w-full overflow-hidden bg-bg-2">
+                  <Img
+                    id={p.id}
+                    alt={p.alt}
+                    sizes="(min-width: 1024px) 24vw, (min-width: 768px) 32vw, 48vw"
+                    className="tile-img h-auto w-full"
+                  />
+                  <span
+                    className="pointer-events-none absolute bottom-3 right-3 grid size-10 translate-y-2 place-items-center rounded-full bg-bg/80 text-ink opacity-0 backdrop-blur-sm transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
+                    aria-hidden
+                  >
+                    <ArrowUpRight size={20} />
+                  </span>
+                </Link>
               </li>
             ))}
           </ul>

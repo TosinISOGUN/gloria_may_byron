@@ -4,12 +4,13 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 import { Img } from "@/components/img";
+import { PageHero } from "@/components/page-hero";
 import { SectionHead } from "@/components/section-head";
 import { VideoCard, VideoPlayer } from "@/components/video-player";
 import { lyricalVideos, singles, spotifyEmbed, type Single } from "@/data/music";
 import { platforms } from "@/data/site";
+import { preloadImage } from "@/lib/preload";
 import { seo } from "@/lib/seo";
-import { delay } from "@/lib/style";
 
 export const Route = createFileRoute("/music")({
   head: () =>
@@ -20,6 +21,9 @@ export const Route = createFileRoute("/music")({
       path: "/music",
       image: "music",
     }),
+  loader: () => {
+    preloadImage("heroCandle", "100vw");
+  },
   component: Music,
 });
 
@@ -149,22 +153,17 @@ function SpotifyPlayer() {
 function Music() {
   return (
     <>
-      <section className="pb-4 pt-8 md:pt-14">
-        <div className="wrap">
-          <h1
-            className="display-xl rise max-w-[11ch]"
-            style={{ fontSize: "clamp(2.7rem, 8vw, 7.4rem)" }}
-          >
-            Music by Gloria May Byron
-          </h1>
-          <p className="lead rise mt-6" style={delay(1)}>
-            Listen to my latest releases and collaborations.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image="heroCandle"
+        alt="Gloria May Byron in a long pale dress singing by candlelight beside a pianist"
+        focus="62% 55%"
+        title="Music by Gloria May Byron"
+        titleWidth={11}
+        text="Listen to my latest releases and collaborations."
+      />
 
       {/* Featured singles */}
-      <section className="section pt-12 md:pt-16">
+      <section className="section">
         <div className="wrap">
           <SectionHead
             title="Featured singles"
@@ -291,7 +290,7 @@ function Music() {
                   href={p.url}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="grid h-36 place-items-center content-center gap-3 px-4 logo-tile"
+                  className="logo-tile grid h-36 place-items-center content-center gap-3 px-4"
                 >
                   <Img
                     id={p.logo}

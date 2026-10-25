@@ -44,6 +44,15 @@
   font-display: swap;
 }
 
+/* Boska Italic (display, used only for the looping ribbon of values): Fontshare, free for commercial use. */
+@font-face {
+  font-family: "Boska";
+  src: url("/fonts/boska-italic-var.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 /*
   Tide palette. One accent (dusk coral) on a sea-ink base (dark) or sea-mist base (light).
   The theme follows the visitor's system setting until they use the toggle, which sets
@@ -61,6 +70,15 @@
   --on-accent: #ffffff;
   --shadow: 0 18px 40px -18px rgb(13 60 70 / 0.35);
   --nav-h: 72px;
+  /* Hero scrim strengths: light mode needs a firmer fade so dark type clears the bright photograph. */
+  --scrim-side: 74%;
+  --scrim-side-mid: 46%;
+  --scrim-foot: 80%;
+  --scrim-top: 66%;
+  --scrim-m-foot: 92%;
+  --scrim-m-mid: 62%;
+  --scrim-m-top: 50%;
+  --vinyl: #0f1a20;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -74,6 +92,13 @@
     --accent: #f08d75;
     --on-accent: #0a191e;
     --shadow: 0 22px 44px -20px rgb(0 0 0 / 0.65);
+    --scrim-side: 56%;
+    --scrim-side-mid: 28%;
+    --scrim-foot: 60%;
+    --scrim-top: 50%;
+    --scrim-m-foot: 84%;
+    --scrim-m-mid: 44%;
+    --scrim-m-top: 42%;
   }
 }
 :root[data-theme="dark"] {
@@ -87,6 +112,13 @@
   --accent: #f08d75;
   --on-accent: #0a191e;
   --shadow: 0 22px 44px -20px rgb(0 0 0 / 0.65);
+  --scrim-side: 56%;
+  --scrim-side-mid: 28%;
+  --scrim-foot: 60%;
+  --scrim-top: 50%;
+  --scrim-m-foot: 84%;
+  --scrim-m-mid: 44%;
+  --scrim-m-top: 42%;
 }
 
 @theme inline {
@@ -232,6 +264,14 @@
   .btn-primary:hover {
     background: color-mix(in oklab, var(--accent) 88%, var(--text));
   }
+  /* Spotify's brand green with black type, as its brand guidelines pair them (about 9:1 contrast). */
+  .btn-spotify {
+    background: #1db954;
+    color: #000;
+  }
+  .btn-spotify:hover {
+    background: #1ed760;
+  }
   .btn-ghost {
     border-color: var(--line);
     color: var(--text);
@@ -263,7 +303,7 @@
     overflow: hidden;
     background: var(--bg-2);
   }
-  /* Logos keep their own colors, so they sit on a light tile in both themes. */
+  /* Platform logos keep their brand colours, so they sit on a light tile in both themes. */
   .logo-tile {
     background: #f4f8f7;
     transition: background-color 0.2s;
@@ -271,7 +311,6 @@
   a.logo-tile:hover {
     background: #ffffff;
   }
-
   /* Theme toggle icons: the inline script resolves data-theme before first paint. */
   .theme-sun {
     display: none;
@@ -355,12 +394,20 @@
   /* Hero scrim: fades the photograph into the page background on whichever side the copy sits. */
   .hero-scrim {
     background:
-      linear-gradient(180deg, color-mix(in oklab, var(--bg) 78%, transparent) 0%, transparent 22%),
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--bg) var(--scrim-m-top), transparent) 0%,
+        transparent 12%
+      ),
       linear-gradient(
         0deg,
-        var(--bg) 0%,
-        color-mix(in oklab, var(--bg) 88%, transparent) 34%,
-        transparent 70%
+        color-mix(in oklab, var(--bg) var(--scrim-m-foot), transparent) 0%,
+        color-mix(in oklab, var(--bg) var(--scrim-m-mid), transparent) 22%,
+        transparent 44%
+      ),
+      linear-gradient(
+        color-mix(in oklab, var(--bg) var(--veil, 0%), transparent),
+        color-mix(in oklab, var(--bg) var(--veil, 0%), transparent)
       );
   }
   @media (min-width: 768px) {
@@ -368,12 +415,733 @@
       background:
         linear-gradient(
           90deg,
-          var(--bg) 0%,
-          color-mix(in oklab, var(--bg) 82%, transparent) 34%,
-          transparent 68%
+          color-mix(in oklab, var(--bg) var(--scrim-side), transparent) 0%,
+          color-mix(in oklab, var(--bg) var(--scrim-side-mid), transparent) 28%,
+          transparent 46%
         ),
-        linear-gradient(0deg, var(--bg) 0%, transparent 30%),
-        linear-gradient(180deg, color-mix(in oklab, var(--bg) 70%, transparent) 0%, transparent 22%);
+        linear-gradient(
+          0deg,
+          color-mix(in oklab, var(--bg) var(--scrim-foot), transparent) 0%,
+          transparent 16%
+        ),
+        linear-gradient(
+          180deg,
+          color-mix(in oklab, var(--bg) var(--scrim-top), transparent) 0%,
+          transparent 13%
+        ),
+        linear-gradient(
+          color-mix(in oklab, var(--bg) var(--veil, 0%), transparent),
+          color-mix(in oklab, var(--bg) var(--veil, 0%), transparent)
+        );
+    }
+  }
+}
+
+/*
+  Every hero carries the dark theme's fade and light type in both themes, and the header above it
+  stays light until it turns solid. The values are the dark theme's own.
+*/
+[data-tone="dark"],
+body:has([data-hero][data-tone="dark"]) header[data-site-header][data-solid="false"] {
+  --bg: #0a191e;
+  --text: #e9f1ef;
+  --muted: #a3b9b8;
+  --line: rgb(233 241 239 / 0.14);
+  --scrim-side: 56%;
+  --scrim-side-mid: 28%;
+  --scrim-foot: 60%;
+  --scrim-top: 50%;
+  --scrim-m-foot: 84%;
+  --scrim-m-mid: 44%;
+  --scrim-m-top: 42%;
+  color: var(--text);
+}
+
+@layer components {
+  /*
+    Scroll-linked motion. Everything here is progressive: browsers without scroll-driven animation
+    show the finished state, and reduced motion switches it off (see below).
+  */
+  @supports (animation-timeline: scroll()) {
+    /* The hero photograph drifts down more slowly than the page, and the type fades as it leaves. */
+    .hero-drift {
+      animation: hero-drift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100svh;
+    }
+    @keyframes hero-drift {
+      to {
+        transform: translateY(7%);
+      }
+    }
+    .hero-out {
+      animation: hero-out linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 56svh;
+    }
+    @keyframes hero-out {
+      to {
+        opacity: 0;
+        transform: translateY(-34px);
+      }
+    }
+  }
+
+  /*
+    A statement whose words light up one by one as the page scrolls. It is only pinned (a tall
+    section with a sticky stage) where scroll-driven animation runs and motion is welcome;
+    everywhere else it is an ordinary block of text.
+  */
+  .motto {
+    view-timeline-name: --motto;
+    view-timeline-axis: block;
+    padding-block: clamp(96px, 14vw, 200px);
+  }
+  .motto-pin {
+    position: relative;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .motto {
+        height: 180svh;
+        padding-block: 0;
+      }
+      .motto-pin {
+        position: sticky;
+        top: 0;
+        height: 100svh;
+      }
+    }
+  }
+  @supports (animation-timeline: view()) {
+    .motto-word {
+      animation: motto-word linear both;
+      animation-timeline: --motto;
+      animation-range: cover calc(30% + var(--w, 0) * 2.6%) cover calc(36% + var(--w, 0) * 2.6%);
+    }
+    @keyframes motto-word {
+      from {
+        opacity: 0.16;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift,
+  .hero-out {
+    animation: none !important;
+  }
+}
+
+/*
+  Page transitions (View Transitions API). Deliberately quick: the new page is on screen within a
+  third of a second. The header is its own layer, so it never flickers; the hero photograph and the
+  hero type are their own layers too, so the photograph dissolves in place and the type swaps with a
+  short rise. On a navigation the entrance animation is switched off (html[data-nav]) so it does not
+  play a second time inside the transition.
+*/
+header[data-site-header] {
+  view-transition-name: site-header;
+}
+.hero-media {
+  view-transition-name: hero-media;
+}
+/* The fade over the photograph is its own layer, so it arrives with the photograph and not after it. */
+.hero-scrim,
+.hero-veil {
+  view-transition-name: hero-scrim;
+}
+.hero-copy {
+  view-transition-name: hero-copy;
+}
+html[data-nav] .hero-copy .rise {
+  animation: none;
+}
+html[data-nav] .rise {
+  animation-duration: 0.35s;
+  animation-delay: calc(var(--i, 0) * 30ms);
+}
+html[data-nav] .ken {
+  animation: none;
+}
+
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes vt-photo-in {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+}
+@keyframes vt-type-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+::view-transition-group(root),
+::view-transition-group(hero-media),
+::view-transition-group(hero-scrim),
+::view-transition-group(hero-copy) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+::view-transition-old(root) {
+  animation: vt-fade-out 0.18s ease-out both;
+}
+::view-transition-new(root) {
+  animation: vt-fade-in 0.28s ease-out both;
+}
+::view-transition-old(hero-media) {
+  animation: vt-fade-out 0.3s ease-out both;
+}
+::view-transition-old(hero-scrim) {
+  animation: vt-fade-out 0.3s ease-out both;
+}
+::view-transition-new(hero-scrim) {
+  animation: vt-fade-in 0.4s ease-out both;
+}
+::view-transition-new(hero-media) {
+  animation: vt-photo-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+::view-transition-old(hero-copy) {
+  animation: vt-fade-out 0.14s ease-out both;
+}
+::view-transition-new(hero-copy) {
+  animation: vt-type-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) 0.04s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/*
+  The scenery behind the pinned statement (see motto-stage.tsx). Kept light on purpose: only
+  transform and opacity are ever animated (so the work stays on the GPU), there are few moving
+  parts, and small screens get fewer still. Every piece has a calm resting state, so with reduced
+  motion, or no scroll-driven animation, it is a still composition.
+*/
+@layer components {
+  .motto-fx {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    contain: layout paint;
+  }
+  .motto-pin > p {
+    position: relative;
+    z-index: 2;
+  }
+
+  .motto-glow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(95vmin, 960px);
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    background: radial-gradient(
+      closest-side,
+      color-mix(in oklab, var(--accent) 22%, transparent),
+      transparent 72%
+    );
+  }
+
+  .motto-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(120vmin, 1200px);
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0.2;
+    transform: scale(calc(0.55 + var(--late, 0) * 0.3));
+  }
+
+  .motto-vinyl {
+    position: absolute;
+    right: -18vmin;
+    bottom: -22vmin;
+    width: 62vmin;
+    aspect-ratio: 1;
+  }
+  .motto-vinyl svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .motto-icons li {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    pointer-events: auto;
+  }
+  .motto-icon-pop {
+    display: block;
+  }
+  .motto-icon-bubble {
+    display: grid;
+    place-items: center;
+    width: calc(3.6rem * var(--s));
+    height: calc(3.6rem * var(--s));
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: color-mix(in oklab, var(--surface) 86%, transparent);
+    color: var(--accent);
+    transition:
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.2s;
+  }
+  .motto-icon-bubble:hover {
+    transform: scale(1.15) rotate(-8deg);
+    border-color: var(--accent);
+  }
+
+  .motto-wave {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 27%;
+    width: 100%;
+    height: clamp(60px, 11vh, 120px);
+    overflow: visible;
+  }
+  .motto-wave path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.5;
+  }
+
+  .motto-eq {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: min(17vh, 9.5rem);
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(8px, 2vw, 28px);
+    padding-inline: clamp(16px, 4vw, 48px);
+    opacity: 0.5;
+  }
+  .motto-eq span {
+    flex: 1;
+    height: 100%;
+    border-radius: 999px 999px 0 0;
+    background: linear-gradient(
+      to top,
+      var(--accent),
+      color-mix(in oklab, var(--accent) 0%, transparent)
+    );
+    transform-origin: bottom;
+    transform: scaleY(var(--h));
+  }
+
+  .motto-cue {
+    display: none;
+  }
+
+  /* The loops: three things move on their own (rings, record, bars), and only where motion is welcome. */
+  @media (prefers-reduced-motion: no-preference) {
+    .motto-ring {
+      will-change: transform, opacity;
+      animation: motto-ring 10s ease-out infinite;
+      animation-delay: calc(var(--late, 0) * -5s);
+    }
+    @keyframes motto-ring {
+      from {
+        transform: scale(0.2);
+        opacity: 0.45;
+      }
+      to {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+    .motto-vinyl svg {
+      will-change: transform;
+      animation: motto-spin 40s linear infinite;
+    }
+    @keyframes motto-spin {
+      to {
+        rotate: 360deg;
+      }
+    }
+    .motto-eq span {
+      will-change: transform;
+      animation: motto-eq var(--t) ease-in-out infinite alternate;
+      animation-delay: calc(var(--i) * -0.23s);
+    }
+    @keyframes motto-eq {
+      from {
+        transform: scaleY(0.12);
+      }
+    }
+  }
+
+  /* Scroll-linked: pieces arrive and drift as the statement is read (transform and opacity only). */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .motto-glow {
+        animation: motto-fade linear both;
+        animation-timeline: --motto;
+        animation-range: cover 22% cover 50%;
+      }
+      .motto-wave {
+        animation: motto-fade linear both;
+        animation-timeline: --motto;
+        animation-range: cover 28% cover 50%;
+      }
+      @keyframes motto-fade {
+        from {
+          opacity: 0;
+        }
+      }
+      .motto-vinyl {
+        animation: motto-vinyl linear both;
+        animation-timeline: --motto;
+        animation-range: cover 20% cover 48%;
+      }
+      @keyframes motto-vinyl {
+        from {
+          translate: 34% 26%;
+          opacity: 0;
+        }
+      }
+      .motto-icons li {
+        animation: motto-drift linear both;
+        animation-timeline: --motto;
+        animation-range: cover 0% cover 100%;
+      }
+      @keyframes motto-drift {
+        from {
+          translate: 0 calc(var(--d) * 70px);
+        }
+        to {
+          translate: 0 calc(var(--d) * -70px);
+        }
+      }
+      .motto-icon-pop {
+        animation: motto-pop linear both;
+        animation-timeline: --motto;
+        animation-range: cover calc(22% + var(--k) * 3%) cover calc(30% + var(--k) * 3%);
+      }
+      @keyframes motto-pop {
+        from {
+          opacity: 0;
+          scale: 0.4;
+        }
+      }
+      .motto-eq {
+        animation: motto-fade linear both;
+        animation-timeline: --motto;
+        animation-range: cover 20% cover 44%;
+      }
+      /* "Keep scrolling" shows while the statement is still unread, in the pinned layout only. */
+      .motto-cue {
+        position: absolute;
+        left: 50%;
+        bottom: calc(min(17vh, 9.5rem) + 0.75rem);
+        translate: -50% 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+        animation: motto-cue linear both;
+        animation-timeline: --motto;
+        animation-range: cover 30% cover 40%;
+      }
+      @keyframes motto-cue {
+        to {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  /* Small screens: the rings and the record go, and half the bars (see the component). */
+  @media (max-width: 767px) {
+    .motto-ring,
+    .motto-vinyl {
+      display: none;
+    }
+  }
+
+  /* Striking through the thing she puts second, as the words arrive. */
+  .motto-strike {
+    position: relative;
+  }
+  .motto-strike::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0.22em;
+    top: 56%;
+    height: 0.075em;
+    background: var(--accent);
+    transform-origin: left;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .motto-strike::after {
+        animation: motto-strike linear both;
+        animation-timeline: --motto;
+        animation-range: cover calc(40% + var(--w, 0) * 1.4%) cover calc(48% + var(--w, 0) * 1.4%);
+      }
+      @keyframes motto-strike {
+        from {
+          transform: scaleX(0);
+        }
+      }
+    }
+  }
+}
+
+/* Contact's framed portrait: an offset outline, then a mat and a hairline round the photograph. */
+.frame-offset {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  translate: 18px 18px;
+  border: 2px solid var(--accent);
+}
+.frame-mat {
+  padding: clamp(10px, 2.4vw, 18px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 30px 60px -30px rgb(0 0 0 / 0.55),
+    inset 0 0 0 1px color-mix(in oklab, var(--text) 8%, transparent);
+}
+.frame-mat > div {
+  outline: 1px solid color-mix(in oklab, var(--text) 18%, transparent);
+  outline-offset: 0;
+}
+
+/*
+  The gallery mosaic: frames sit almost edge to edge with square corners. Each frame opens up as it
+  scrolls into view, its photograph pans a little while it crosses the screen, and while one is
+  hovered the others step back.
+*/
+@layer components {
+  .tile-img {
+    transition:
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.4s;
+  }
+  .tile button:hover .tile-img {
+    transform: scale(1.07);
+  }
+  .tile {
+    transition:
+      opacity 0.35s,
+      filter 0.35s;
+  }
+  .mosaic:has(.tile button:hover) .tile:not(:hover),
+  .mosaic:has(.tile button:focus-visible) .tile:not(:has(:focus-visible)) {
+    opacity: 0.35;
+    filter: saturate(0.3);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .tile {
+        animation: tile-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 62%;
+      }
+      @keyframes tile-in {
+        from {
+          clip-path: inset(20% 12% 20% 12%);
+          opacity: 0;
+          translate: 0 36px;
+        }
+      }
+      .tile-img {
+        scale: 1.16;
+        animation: tile-pan linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
+      @keyframes tile-pan {
+        from {
+          translate: 0 -4%;
+        }
+        to {
+          translate: 0 4%;
+        }
+      }
+    }
+  }
+}
+
+/*
+  The awards gallery wall: a spotlit wall, square frames that each hang from a nail and settle as
+  they scroll in, a little sway when one is hovered, and the rest stepping back while it is.
+*/
+.wall-bg {
+  background:
+    radial-gradient(
+      70% 45% at 50% 0%,
+      color-mix(in oklab, var(--accent) 13%, transparent),
+      transparent 72%
+    ),
+    var(--bg);
+}
+@layer components {
+  .hang {
+    transition:
+      opacity 0.35s,
+      filter 0.35s;
+  }
+  .swing {
+    transform-origin: 50% 0;
+  }
+  .wall:has(.hang:hover) .hang:not(:hover),
+  .wall:has(.hang button:focus-visible) .hang:not(:has(:focus-visible)) {
+    opacity: 0.4;
+    filter: saturate(0.35);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hang:hover .swing {
+      animation: sway 1.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    @keyframes sway {
+      from {
+        rotate: 2.4deg;
+      }
+      35% {
+        rotate: -1.2deg;
+      }
+      65% {
+        rotate: 0.5deg;
+      }
+      to {
+        rotate: 0deg;
+      }
+    }
+    @supports (animation-timeline: view()) {
+      .hang {
+        animation: hang-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 65%;
+      }
+      @keyframes hang-in {
+        from {
+          opacity: 0;
+          translate: 0 48px;
+          rotate: var(--tilt, 0deg);
+        }
+      }
+    }
+  }
+}
+
+/*
+  The ribbon of values: capitals in Boska Italic, alternately solid, outlined and in the accent,
+  sliding left in a loop. See marquee.tsx for how the loop stays seamless.
+*/
+@layer components {
+  .marquee {
+    overflow: hidden;
+    border-block: 1px solid var(--line);
+    padding-block: clamp(1.1rem, 2.6vw, 2rem);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: marquee-slide 30s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee-copy {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+  }
+  .marquee-copy li {
+    display: flex;
+    align-items: center;
+  }
+  .marquee-word {
+    font-family: "Boska", var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(2.3rem, 6.2vw, 5rem);
+    line-height: 1.15;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text);
+    padding-inline: clamp(0.8rem, 2vw, 1.8rem);
+    padding-bottom: 0.08em;
+  }
+  .marquee-word[data-look="1"] {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--text);
+  }
+  .marquee-word[data-look="2"] {
+    color: var(--accent);
+  }
+  .marquee-mark {
+    flex-shrink: 0;
+    width: clamp(1.1rem, 2.4vw, 2rem);
+    height: clamp(1.1rem, 2.4vw, 2rem);
+    color: var(--accent);
+  }
+  /* Phones have a narrower ribbon, so a shorter loop keeps the speed about the same (roughly 150px a second). */
+  @media (max-width: 639px) {
+    .marquee-track {
+      animation-duration: 14s;
+    }
+  }
+  @keyframes marquee-slide {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  /* Reduced motion: no sliding. One centred, wrapping copy instead. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      mask-image: none;
+    }
+    .marquee-track {
+      animation: none;
+      width: auto;
+      justify-content: center;
+    }
+    .marquee-copy:nth-child(n + 2) {
+      display: none;
+    }
+    .marquee-copy {
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
 }
