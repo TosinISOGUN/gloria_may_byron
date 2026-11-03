@@ -12,7 +12,7 @@ const OUT = path.join(root, "public/images");
 
 const photoWidths = [480, 768, 1080, 1600, 2048];
 const releaseWidths = [480, 960];
-const thumbWidths = [480, 960];
+const thumbWidths = [320, 480, 640, 960];
 
 /** id -> original file, for photographs. */
 const photos = {
