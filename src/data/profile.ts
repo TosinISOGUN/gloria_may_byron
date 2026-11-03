@@ -170,6 +170,9 @@ export const announcements = {
       "It has been a hard year for many, so she closes with a note of warmth: be kind to one another, look after yourselves, and hold on to hope and to who you are.",
       "More is on the way. Surprise dates are being lined up, and Instagram is where each announcement will land first.",
     ],
+    /** The one-line version shown on the landing page. */
+    teaser:
+      "New songs are reaching listeners worldwide, and surprise dates are on the way. Watch Gloria's message and follow along on Instagram.",
     videoLabel: "A message to my fans from Gloria May Byron, about 30 seconds",
   },
   footer: "Stay tuned for more announcements and upcoming releases.",
