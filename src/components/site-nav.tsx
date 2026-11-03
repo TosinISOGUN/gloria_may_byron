@@ -7,7 +7,7 @@ import { nav, site, socials } from "@/data/site";
 import { ThemeToggle } from "./theme-toggle";
 
 const linkBase =
-  "inline-flex min-h-12 items-center rounded-full px-3 text-[0.95rem] font-medium text-muted transition-colors hover:text-ink";
+  "inline-flex min-h-12 items-center rounded-full px-3 text-[0.95rem] font-medium text-ink/80 transition-colors hover:text-ink";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -71,50 +71,50 @@ export function SiteNav() {
       <header
         data-site-header
         data-solid={solid}
-        className="sticky top-0 z-40 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[solid=true]:border-line data-[solid=true]:backdrop-blur-md"
-        style={{
-          height: "var(--nav-h)",
-          background: solid ? "color-mix(in oklab, var(--bg) 82%, transparent)" : "transparent",
-        }}
+        className="pointer-events-none sticky top-0 z-40"
+        style={{ height: "var(--nav-h)" }}
       >
-        <div className="wrap flex h-full items-center justify-between gap-4">
-          <Link
-            to="/"
-            className="inline-flex min-h-12 items-center font-display text-[1.2rem] font-extrabold tracking-[-0.02em] text-ink sm:text-[1.35rem]"
-            aria-label={`${site.name}, home`}
-          >
-            {site.name}
-          </Link>
-          <nav aria-label="Main" className="hidden items-center lg:flex">
-            {nav.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={linkBase}
-                activeOptions={{ exact: true }}
-                activeProps={{
-                  className:
-                    "!text-ink underline decoration-accent decoration-2 underline-offset-[10px]",
-                  "aria-current": "page",
-                }}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <button
-              ref={button}
-              type="button"
-              className="inline-grid size-12 place-items-center rounded-full border border-line text-ink lg:hidden"
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => (open ? close() : setOpen(true))}
+        {/* The header is a transparent strip; the pill floats in it, with frosted glass behind. */}
+        <div className="wrap h-full pt-2">
+          <div className="glass-pill pointer-events-auto flex h-14 items-center justify-between gap-4 rounded-full pl-5 pr-1.5 sm:pl-7 sm:pr-2">
+            <Link
+              to="/"
+              className="inline-flex min-h-12 items-center font-display text-[1.2rem] font-extrabold tracking-[-0.02em] text-ink sm:text-[1.35rem]"
+              aria-label={`${site.name}, home`}
             >
-              {open ? <X size={22} aria-hidden /> : <List size={22} aria-hidden />}
-            </button>
+              {site.name}
+            </Link>
+            <nav aria-label="Main" className="hidden items-center lg:flex">
+              {nav.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={linkBase}
+                  activeOptions={{ exact: true }}
+                  activeProps={{
+                    className:
+                      "!text-ink underline decoration-accent decoration-2 underline-offset-[10px]",
+                    "aria-current": "page",
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <button
+                ref={button}
+                type="button"
+                className="inline-grid size-12 place-items-center rounded-full border border-line text-ink lg:hidden"
+                aria-expanded={open}
+                aria-controls="mobile-menu"
+                aria-label={open ? "Close menu" : "Open menu"}
+                onClick={() => (open ? close() : setOpen(true))}
+              >
+                {open ? <X size={22} aria-hidden /> : <List size={22} aria-hidden />}
+              </button>
+            </div>
           </div>
         </div>
       </header>
