@@ -439,10 +439,9 @@
 
 /*
   Every hero carries the dark theme's fade and light type in both themes, and the header above it
-  stays light too. The values are the dark theme's own.
+  follows the page theme. The values are the dark theme's own.
 */
-[data-tone="dark"],
-header[data-site-header] {
+[data-tone="dark"] {
   --bg: #0a191e;
   --text: #e9f1ef;
   --muted: #a3b9b8;
@@ -507,12 +506,12 @@ header[data-site-header] {
   publishes no web version): a clear tint, a strong blur that also lifts saturation, a bright
   specular edge on the top and a softer one on the bottom, a gloss that fades down the upper half,
   and a thin light-catching rim that is brightest at two opposite corners. Highlights are always
-  white; the tint is the dark theme's, so the pill looks the same at the top and when scrolled, in both themes.
+  white; the tint is the page theme's (light glass in the light theme, dark in the dark one), and it is the same at the top and when scrolled.
 */
 .glass-pill {
   position: relative;
   isolation: isolate;
-  background: color-mix(in oklab, var(--bg) 66%, transparent);
+  background: color-mix(in oklab, var(--bg) 56%, transparent);
   -webkit-backdrop-filter: blur(22px) saturate(180%);
   backdrop-filter: blur(22px) saturate(180%);
   box-shadow:
