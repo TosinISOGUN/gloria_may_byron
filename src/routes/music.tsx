@@ -277,7 +277,7 @@ function Music() {
 
       {/* Available on */}
       <section className="section bg-bg-2">
-        <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="wrap grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <SectionHead
             title="Available on"
             sub="Listen across all major streaming platforms."
