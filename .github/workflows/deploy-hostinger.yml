@@ -1,0 +1,82 @@
+# Builds the static site and uploads it to Hostinger whenever main changes.
+#
+# One-time setup (repository Settings, Secrets and variables, Actions):
+#   Secrets:    FTP_SERVER, FTP_USERNAME, FTP_PASSWORD   (from hPanel, Files, FTP Accounts)
+#   Variable:   FTP_SERVER_DIR   the folder to deploy into, ending in a slash.
+#               Use the test folder first, then switch it to the live folder. See README, "Deploying to Hostinger".
+#
+# Only the files that changed are uploaded. The password lives in GitHub secrets, never in the code.
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# A newer push replaces a deploy that has not finished, so uploads never overlap.
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # Without a target folder the upload would land in the FTP account's root, which is the live site.
+      - name: Require a target folder and the FTP login
+        env:
+          FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR }}
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          [ -n "$FTP_SERVER_DIR" ] || { echo "::error::Set the repository variable FTP_SERVER_DIR (for example /new/ for the test folder)."; exit 1; }
+          [ -n "$FTP_SERVER" ] && [ -n "$FTP_USERNAME" ] && [ -n "$FTP_PASSWORD" ] || { echo "::error::Add the FTP_SERVER, FTP_USERNAME and FTP_PASSWORD secrets."; exit 1; }
+          echo "Deploying to: $FTP_SERVER_DIR"
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Test
+        run: npx vitest run
+
+      - name: Build the static site
+        run: node scripts/build-static.mjs
+        env:
+          SITE_URL: https://gloriamaybyron.com
+
+      - name: Check the build before uploading
+        run: |
+          test -f dist/client/index.html
+          test -f dist/client/404.html
+          test -f dist/client/.htaccess
+          for page in about music announcements gallery awards contact; do
+            test -f "dist/client/$page/index.html" || { echo "Missing page: $page"; exit 1; }
+          done
+
+      - name: Upload to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: dist/client/
+          server-dir: ${{ vars.FTP_SERVER_DIR }}
+          # Never delete files this deploy did not put there (for example WordPress leftovers or the test folder).
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**

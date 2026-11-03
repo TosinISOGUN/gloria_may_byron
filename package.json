@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "node scripts/build-seo.mjs && vite build",
+    "build:static": "node scripts/build-static.mjs",
     "images": "node scripts/build-images.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",

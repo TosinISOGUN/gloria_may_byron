@@ -19,6 +19,19 @@ bun run lint
 bun run test
 ```
 
+## Deploying to Hostinger
+
+The live site is plain static files on Hostinger shared hosting (no Node there). `bun run build:static` writes them to `dist/client/` (every page as its own folder, plus `404.html` and `.htaccess`). The Vercel build is separate and unchanged.
+
+**Automatic.** `.github/workflows/deploy-hostinger.yml` runs on every push to `main`: tests, static build, a check that every page exists, then an FTPS upload of only the changed files. One-time setup, in the repository's Settings, Secrets and variables, Actions:
+
+- Secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`: from hPanel, Files, FTP Accounts. Make a dedicated account whose folder is `public_html` (or the test folder), not the main login.
+- Variable `FTP_SERVER_DIR`: the folder to deploy into, ending in `/`. The FTP account's folder is its root, so with a `public_html` account it is `/`. Use the test subdomain's folder first, check the site, then switch it to the live folder.
+
+The run's Actions page shows what was uploaded. A failed test or a missing page stops the deploy before anything is uploaded. To roll back, revert the commit and push.
+
+**By hand.** `bun run build:static`, zip the contents of `dist/client/` (forward-slash paths; `tar -a -c -f site.zip -C dist/client .` works on Windows), upload and extract in File Manager.
+
 ## Images
 
 Original files from her website live in `assets-source/` and are never served. Run `bun run images` to rebuild the responsive AVIF and WebP copies in `public/images/` and the typed manifest `src/data/images.generated.ts`. `scripts/build-og.mjs` rebuilds the social share images in `public/og/`, and `scripts/build-favicons.mjs` rebuilds the favicon set from her own favicon.
