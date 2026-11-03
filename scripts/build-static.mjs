@@ -36,6 +36,12 @@ fs.writeFileSync(
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 
+# Hostinger names some file types wrongly (scripts as x-javascript, AVIF as plain text), so say what they are.
+AddType image/avif .avif
+AddType image/webp .webp
+AddType font/woff2 .woff2
+AddType text/javascript .js .mjs
+
 # One address for the site: www.gloriamaybyron.com goes to gloriamaybyron.com, same page.
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -44,7 +50,7 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/plain application/xml
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml text/plain application/xml
 </IfModule>
 
 # Built scripts and styles have a fingerprint in their name, so they never change under one name.
@@ -57,6 +63,8 @@ ErrorDocument 404 /404.html
   ExpiresByType text/plain "access plus 1 day"
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/webp "access plus 1 month"
   ExpiresByType image/avif "access plus 1 month"
