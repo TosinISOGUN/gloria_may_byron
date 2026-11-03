@@ -269,7 +269,7 @@ function Music() {
               target="_blank"
               rel="noreferrer noopener"
             >
-              More available on VEVO & YouTube
+              More on VEVO & YouTube
             </a>
           </div>
         </div>
