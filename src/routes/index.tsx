@@ -50,7 +50,7 @@ function Home() {
       <section
         data-hero
         data-tone="dark"
-        className="relative isolate -mt-[var(--nav-h)] flex min-h-[100dvh] items-end overflow-hidden"
+        className="relative isolate -mt-[var(--nav-h)] flex min-h-[100svh] items-end overflow-hidden"
       >
         <div className="hero-media hero-drift absolute inset-x-0 -top-[7%] -z-20 h-[107%]">
           <Img
