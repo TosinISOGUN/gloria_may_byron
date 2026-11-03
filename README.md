@@ -23,12 +23,14 @@ bun run test
 
 The live site is plain static files on Hostinger shared hosting (no Node there). `bun run build:static` writes them to `dist/client/` (every page as its own folder, plus `404.html` and `.htaccess`). The Vercel build is separate and unchanged.
 
-**Automatic.** `.github/workflows/deploy-hostinger.yml` runs on every push to `main`: tests, static build, a check that every page exists, then an FTPS upload of only the changed files. One-time setup, in the repository's Settings, Secrets and variables, Actions:
+**Automatic.** `.github/workflows/deploy-hostinger.yml` runs on every push to `main`: tests, static build, a check that every page exists, then an rsync over SSH that sends only files whose content changed. (Hostinger's FTPS resets the data connection, so FTP is not used.) One-time setup, in the repository's Settings, Secrets and variables, Actions:
 
-- Secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`: from hPanel, Files, FTP Accounts. Make a dedicated account whose folder is `public_html` (or the test folder), not the main login.
-- Variable `FTP_SERVER_DIR`: the folder to deploy into, ending in `/`. The FTP account's folder is its root, so with a `public_html` account it is `/`. Use the test subdomain's folder first, check the site, then switch it to the live folder.
+- Secret `SSH_PRIVATE_KEY`: a dedicated deploy key. Create it with `ssh-keygen -t ed25519 -N "" -f gloria_deploy`, add the public half in hPanel, Advanced, SSH Access, and paste the private half here.
+- Variables `SSH_HOST`, `SSH_PORT`, `SSH_USER`: from hPanel, SSH Access (port 65002).
+- Variable `SSH_KNOWN_HOSTS`: the server's host key line from `ssh-keyscan -p 65002 <host>`, so uploads only go to the real server.
+- Variable `DEPLOY_PATH`: relative to the home folder, ending in `/`. Use `domains/gloriamaybyron.com/public_html/new/` for the test subdomain first, then `domains/gloriamaybyron.com/public_html/` for the live site. The workflow refuses any path outside that folder.
 
-The run's Actions page shows what was uploaded. A failed test or a missing page stops the deploy before anything is uploaded. To roll back, revert the commit and push.
+The run's Actions page shows what was uploaded. A failed test or a missing page stops the deploy before anything is uploaded. Files are only added or replaced, except inside `assets/`, `images/`, `fonts/` and `og/`, which are kept in step with the build. To roll back, revert the commit and push.
 
 **By hand.** `bun run build:static`, zip the contents of `dist/client/` (forward-slash paths; `tar -a -c -f site.zip -C dist/client .` works on Windows), upload and extract in File Manager.
 

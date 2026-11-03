@@ -1,11 +1,18 @@
 # Builds the static site and uploads it to Hostinger whenever main changes.
 #
-# One-time setup (repository Settings, Secrets and variables, Actions):
-#   Secrets:    FTP_SERVER, FTP_USERNAME, FTP_PASSWORD   (from hPanel, Files, FTP Accounts)
-#   Variable:   FTP_SERVER_DIR   the folder to deploy into, ending in a slash.
-#               Use the test folder first, then switch it to the live folder. See README, "Deploying to Hostinger".
+# The upload is rsync over SSH with a dedicated deploy key (Hostinger's secure FTP resets the data
+# connection, so FTP is not used). Only files whose content changed are sent.
 #
-# Only the files that changed are uploaded. The password lives in GitHub secrets, never in the code.
+# One-time setup (repository Settings, Secrets and variables, Actions):
+#   Secret:     SSH_PRIVATE_KEY   the private half of the deploy key (the public half is added in hPanel, SSH Access)
+#   Variables:  SSH_HOST          hPanel, SSH Access, IP
+#               SSH_PORT          hPanel, SSH Access, Port (65002)
+#               SSH_USER          hPanel, SSH Access, Username
+#               SSH_KNOWN_HOSTS   the server's host key line, so the upload only ever talks to the real server
+#               DEPLOY_PATH       where to put the site, relative to the home folder, ending in a slash.
+#                                 Test folder: domains/gloriamaybyron.com/public_html/new/
+#                                 Live site:   domains/gloriamaybyron.com/public_html/
+# See README, "Deploying to Hostinger".
 name: Deploy to Hostinger
 
 on:
@@ -26,17 +33,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      # Without a target folder the upload would land in the FTP account's root, which is the live site.
-      - name: Require a target folder and the FTP login
+      # Refuse to run with a missing setting or a path outside this website's folder.
+      - name: Check the deploy settings
         env:
-          FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR }}
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_PORT: ${{ vars.SSH_PORT }}
+          SSH_USER: ${{ vars.SSH_USER }}
+          SSH_KNOWN_HOSTS: ${{ vars.SSH_KNOWN_HOSTS }}
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
         run: |
-          [ -n "$FTP_SERVER_DIR" ] || { echo "::error::Set the repository variable FTP_SERVER_DIR (for example /new/ for the test folder)."; exit 1; }
-          [ -n "$FTP_SERVER" ] && [ -n "$FTP_USERNAME" ] && [ -n "$FTP_PASSWORD" ] || { echo "::error::Add the FTP_SERVER, FTP_USERNAME and FTP_PASSWORD secrets."; exit 1; }
-          echo "Deploying to: $FTP_SERVER_DIR"
+          for name in SSH_PRIVATE_KEY SSH_HOST SSH_PORT SSH_USER SSH_KNOWN_HOSTS DEPLOY_PATH; do
+            [ -n "${!name}" ] || { echo "::error::Missing setting: $name (see the comment at the top of this workflow)."; exit 1; }
+          done
+          case "$DEPLOY_PATH" in
+            domains/gloriamaybyron.com/public_html/|domains/gloriamaybyron.com/public_html/*/) ;;
+            *) echo "::error::DEPLOY_PATH must be domains/gloriamaybyron.com/public_html/ or a folder inside it, ending in a slash."; exit 1 ;;
+          esac
+          echo "Deploying to: $DEPLOY_PATH"
 
       - uses: actions/checkout@v4
 
@@ -66,17 +80,30 @@ jobs:
             test -f "dist/client/$page/index.html" || { echo "Missing page: $page"; exit 1; }
           done
 
-      - name: Upload to Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: dist/client/
-          server-dir: ${{ vars.FTP_SERVER_DIR }}
-          # Never delete files this deploy did not put there (for example WordPress leftovers or the test folder).
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
+      - name: Upload to Hostinger over SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_PORT: ${{ vars.SSH_PORT }}
+          SSH_USER: ${{ vars.SSH_USER }}
+          SSH_KNOWN_HOSTS: ${{ vars.SSH_KNOWN_HOSTS }}
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          SSH="ssh -i $HOME/.ssh/deploy_key -p $SSH_PORT -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
+          TARGET="$SSH_USER@$SSH_HOST:$DEPLOY_PATH"
+
+          # Everything: compare by content, so unchanged files are not sent again. Nothing is deleted here.
+          rsync -rlcz --omit-dir-times --chmod=D755,F644 --stats -e "$SSH" dist/client/ "$TARGET"
+
+          # The folders this site fully owns also drop files that no longer exist (old fingerprinted bundles).
+          for dir in assets images fonts og; do
+            if [ -d "dist/client/$dir" ]; then
+              rsync -rlcz --omit-dir-times --chmod=D755,F644 --delete -e "$SSH" "dist/client/$dir/" "$TARGET$dir/"
+            fi
+          done
+          echo "Deployed to $DEPLOY_PATH"

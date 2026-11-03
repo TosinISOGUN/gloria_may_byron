@@ -55,11 +55,6 @@ ErrorDocument 404 /404.html
   ExpiresByType image/avif "access plus 1 month"
 </IfModule>
 
-# The automatic deploy keeps a record of what it uploaded. It is not for visitors.
-<Files ".ftp-deploy-sync-state.json">
-  Require all denied
-</Files>
-
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
