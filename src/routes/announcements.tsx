@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 
+import { ClipPlayer } from "@/components/clip-player";
 import { Img } from "@/components/img";
 import { PageHero } from "@/components/page-hero";
 import { VideoPlayer } from "@/components/video-player";
@@ -42,19 +43,12 @@ function Announcements() {
       {/* The newest message: Gloria's own clip, filmed upright on a phone, so it sits in a portrait frame. */}
       <section className="section bg-bg-2">
         <div className="wrap grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <div className="media reveal mx-auto aspect-[480/850] w-full max-w-[340px] bg-black lg:mx-0">
-            <video
-              controls
-              playsInline
-              preload="none"
-              poster="/video/message-to-fans-2026-11-poster.webp"
-              aria-label={fanMessage.videoLabel}
-              className="size-full object-cover"
-            >
-              <source src="/video/message-to-fans-2026-11.mp4" type="video/mp4" />
-              Your browser cannot play this video.
-            </video>
-          </div>
+          <ClipPlayer
+            src="/video/message-to-fans-2026-11.mp4"
+            poster="/video/message-to-fans-2026-11-poster.webp"
+            label={fanMessage.videoLabel}
+            className="reveal mx-auto aspect-[480/850] w-full max-w-[340px] lg:mx-0"
+          />
           <div className="reveal">
             <h2 className="display-lg max-w-[16ch]">{fanMessage.title}</h2>
             <div className="prose-flow mt-6">
