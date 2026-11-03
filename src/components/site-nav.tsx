@@ -131,14 +131,14 @@ export function SiteNav() {
         ref={panel}
         inert={!open}
         aria-hidden={!open}
-        className={`fixed inset-x-0 bottom-0 z-30 overflow-y-auto bg-bg transition-[opacity,transform] duration-300 lg:hidden ${
+        className={`fixed inset-0 z-30 overflow-y-auto bg-bg transition-[opacity,transform] duration-300 lg:hidden ${
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
         }`}
-        style={{ top: "var(--nav-h)" }}
       >
+        {/* The panel covers the whole screen; the padding keeps the links clear of the nav pill above it. */}
         <nav
           aria-label="Mobile"
-          className="wrap flex min-h-full flex-col justify-between gap-10 py-8"
+          className="wrap flex min-h-full flex-col justify-between gap-10 pb-8 pt-[calc(var(--nav-h)+1.5rem)]"
         >
           <ul className="flex flex-col">
             {nav.map((item) => (
