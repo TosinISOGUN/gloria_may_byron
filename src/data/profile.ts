@@ -20,7 +20,7 @@ export const aboutMe = {
     "Gloria May Byron is an award-recognized independent artist known for emotionally driven, story-focused music that prioritizes authenticity over image. Her work moves beyond genre, centering on meaning, lived experience, and artistic integrity.",
     "She identifies as Ojibwe Indigenous from Garden River First Nation and resides on the Atlantic side of Canada. Her cultural roots strongly influence her creative voice and the themes explored in her music.",
     "Music runs in her family. Gloria's grandmother was a professional opera singer in Europe, and her mother was a singer, though she never pursued music publicly. These influences shaped Gloria's early connection to artistic expression.",
-    "She lives with her dogs and her son, Joshua, 22, who is also an artist. Joshua has collaborated with Gloria on multiple works, including the co-written song “Where Silence Sings.”",
+    "She lives with her dogs and her son, Joshua, who is also an artist. Joshua has collaborated with Gloria on multiple works, including the co-written song “Where Silence Sings.”",
     "Gloria has received global recognition for her work and holds certification badges and award crests from organizations such as Global Recognition, Global Music, and InterContinental. These honors acknowledge her achievements and distinguish her within the industry.",
     "Her focus remains on evolving, current releases that reflect her present artistic direction. Gloria May Byron creates as an artist first, guided by substance, emotion, and intention.",
   ],
