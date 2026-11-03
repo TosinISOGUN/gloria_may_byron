@@ -251,16 +251,6 @@ function Music() {
             title="Lyrical videos"
             sub="Where words and melody come together."
             className="reveal"
-            action={
-              <a
-                className="btn btn-ghost"
-                href={vevo.url}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Visit my VEVO / YouTube for more videos
-              </a>
-            }
           />
           <div className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {lyricalVideos.map((v) => (
@@ -272,12 +262,22 @@ function Music() {
               />
             ))}
           </div>
+          <div className="reveal mt-14">
+            <a
+              className="btn btn-ghost"
+              href={vevo.url}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              More available on VEVO & YouTube
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Available on */}
       <section className="section bg-bg-2">
-        <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="wrap grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <SectionHead
             title="Available on"
             sub="Listen across all major streaming platforms."

@@ -706,8 +706,8 @@ html[data-nav] .ken {
 
 /*
   The gallery mosaic: frames sit almost edge to edge with square corners. Each frame opens up as it
-  scrolls into view, its photograph pans a little while it crosses the screen, and while one is
-  hovered the others step back.
+  scrolls into view, its photograph pans a little while it crosses the screen, and the one under the
+  pointer zooms slightly. The others stay as they are.
 */
 @layer components {
   .tile-img {
@@ -717,16 +717,6 @@ html[data-nav] .ken {
   }
   .tile button:hover .tile-img {
     transform: scale(1.07);
-  }
-  .tile {
-    transition:
-      opacity 0.35s,
-      filter 0.35s;
-  }
-  .mosaic:has(.tile button:hover) .tile:not(:hover),
-  .mosaic:has(.tile button:focus-visible) .tile:not(:has(:focus-visible)) {
-    opacity: 0.35;
-    filter: saturate(0.3);
   }
   @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
@@ -761,7 +751,7 @@ html[data-nav] .ken {
 
 /*
   The awards gallery wall: a spotlit wall, square frames that each hang from a nail and settle as
-  they scroll in, a little sway when one is hovered, and the rest stepping back while it is.
+  they scroll in, and a little sway when one is hovered. The others stay as they are.
 */
 .wall-bg {
   background:
@@ -773,18 +763,8 @@ html[data-nav] .ken {
     var(--bg);
 }
 @layer components {
-  .hang {
-    transition:
-      opacity 0.35s,
-      filter 0.35s;
-  }
   .swing {
     transform-origin: 50% 0;
-  }
-  .wall:has(.hang:hover) .hang:not(:hover),
-  .wall:has(.hang button:focus-visible) .hang:not(:has(:focus-visible)) {
-    opacity: 0.4;
-    filter: saturate(0.35);
   }
   @media (prefers-reduced-motion: no-preference) {
     .hang:hover .swing {
