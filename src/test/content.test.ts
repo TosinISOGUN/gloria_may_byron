@@ -31,7 +31,7 @@ describe("content data", () => {
   it("keeps every item her site lists", () => {
     expect(releases).toHaveLength(23);
     expect(lyricalVideos).toHaveLength(12);
-    expect(awards).toHaveLength(6);
+    expect(awards).toHaveLength(7);
     expect(press).toHaveLength(7);
     expect(platforms).toHaveLength(8);
     expect(nav.map((n) => n.label)).toEqual([

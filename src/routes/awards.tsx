@@ -15,7 +15,7 @@ export const Route = createFileRoute("/awards")({
     seo({
       title: "Awards | Gloria May Byron",
       description:
-        "Awards and achievements: Global Recognition Award, four Global Music Awards and an InterContinental Music Award for Gloria May Byron.",
+        "Awards and achievements: Global Recognition Award, four Global Music Awards, two InterContinental Music Awards and a Who's Who in the World listing for Gloria May Byron.",
       path: "/awards",
       image: "awards",
     }),
@@ -76,6 +76,22 @@ const wall: Hung[] = [
     note: "Best Song of North America in Pop, August 2025",
     place: "lg:col-span-4",
     tilt: "1.4deg",
+  },
+  {
+    id: "awardWhosWho",
+    alt: "Marquis Who's Who Publications Board certificate approving Gloria May Byron as a subject of biographical record in Who's Who in the World, 2026 to 2027",
+    title: "Who's Who in the World",
+    note: "Marquis Who's Who, 2026 to 2027",
+    place: "col-span-2 lg:col-span-7",
+    tilt: "-1.2deg",
+  },
+  {
+    id: "awardIcMosaic",
+    alt: "InterContinental Music Awards certificate for the song Beautiful Mosaic, Best Song of North America in Dance and Electronic, August 2026",
+    title: "Beautiful Mosaic",
+    note: "Best Song of North America in Dance/Electronic, August 2026",
+    place: "col-span-2 mx-auto w-4/5 sm:w-3/5 lg:col-span-5 lg:mt-24 lg:w-full",
+    tilt: "1.5deg",
   },
 ];
 
