@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 
 import { nav, platforms, site, socials } from "@/data/site";
 
@@ -10,6 +11,12 @@ export function SiteFooter() {
     <footer className="border-t border-line bg-bg-2">
       <div className="wrap grid gap-x-8 gap-y-12 py-16 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="md:col-span-3 lg:col-span-1">
+          <span
+            role="img"
+            aria-label="Gloria May Byron, singer and songwriter"
+            className="ink mb-8 block h-[7.5rem] w-[10.6rem] text-muted"
+            style={{ "--mask": "url(/brand/logo-badge.png)" } as CSSProperties}
+          />
           <p className="font-display text-[clamp(2rem,4vw,3.2rem)] font-extrabold leading-[0.98] tracking-[-0.035em]">
             {site.motto}
           </p>

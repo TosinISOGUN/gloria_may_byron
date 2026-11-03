@@ -1,6 +1,7 @@
 import { List, X } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 
 import { nav, site, socials } from "@/data/site";
 
@@ -82,6 +83,11 @@ export function SiteNav() {
               className="inline-flex min-h-12 items-center font-display text-[1.2rem] font-extrabold tracking-[-0.02em] text-ink sm:text-[1.35rem]"
               aria-label={`${site.name}, home`}
             >
+              <span
+                aria-hidden
+                className="ink mr-2.5 h-[1.15rem] w-[2.15rem] shrink-0 sm:h-5 sm:w-[2.35rem]"
+                style={{ "--mask": "url(/brand/logo-mark.png)" } as CSSProperties}
+              />
               {site.name}
             </Link>
             <nav aria-label="Main" className="hidden items-center lg:flex">
