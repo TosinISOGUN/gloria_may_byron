@@ -751,7 +751,7 @@ html[data-nav] .ken {
 
 /*
   The awards gallery wall: a spotlit wall, square frames that each hang from a nail and settle as
-  they scroll in, a little sway when one is hovered, and the rest stepping back while it is.
+  they scroll in, and a little sway when one is hovered. The others stay as they are.
 */
 .wall-bg {
   background:
@@ -763,18 +763,8 @@ html[data-nav] .ken {
     var(--bg);
 }
 @layer components {
-  .hang {
-    transition:
-      opacity 0.35s,
-      filter 0.35s;
-  }
   .swing {
     transform-origin: 50% 0;
-  }
-  .wall:has(.hang:hover) .hang:not(:hover),
-  .wall:has(.hang button:focus-visible) .hang:not(:has(:focus-visible)) {
-    opacity: 0.4;
-    filter: saturate(0.35);
   }
   @media (prefers-reduced-motion: no-preference) {
     .hang:hover .swing {
