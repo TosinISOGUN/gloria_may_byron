@@ -164,7 +164,7 @@ export const announcements = {
     text: "In this personal message, Gloria shares her vision for 2026 and what fans can expect in the coming year.",
   },
   fanMessage: {
-    title: "A message to my fans: New releases and surprise dates",
+    title: "A message to our listeners: New releases and surprise dates",
     text: [
       "Her latest songs are now reaching listeners worldwide, in several languages, and Gloria wants to thank everyone who has tuned in.",
       "It has been a hard year for many, so she closes with a note of warmth: be kind to one another, look after yourselves, and hold on to hope and to who you are.",
