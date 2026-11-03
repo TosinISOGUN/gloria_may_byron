@@ -8,7 +8,7 @@ import { nav, site, socials } from "@/data/site";
 import { ThemeToggle } from "./theme-toggle";
 
 const linkBase =
-  "inline-flex min-h-12 items-center rounded-full px-3 text-[0.95rem] font-medium text-ink/80 transition-colors hover:text-ink";
+  "inline-flex min-h-12 items-center rounded-full px-3 text-[0.95rem] font-medium text-ink/90 transition-colors hover:text-ink";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);

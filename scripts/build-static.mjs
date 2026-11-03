@@ -10,7 +10,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
-const env = { ...process.env, STATIC_EXPORT: "1", SITE_URL: process.env.SITE_URL || "https://gloriamaybyron.com" };
+const env = { ...process.env, STATIC_EXPORT: "1", VITE_TRAILING_SLASH: "1", SITE_URL: process.env.SITE_URL || "https://gloriamaybyron.com" };
 const run = (cmd, args) => {
   const r = spawnSync(cmd, args, { stdio: "inherit", env, shell: process.platform === "win32" });
   if (r.status !== 0) process.exit(r.status ?? 1);
