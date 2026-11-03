@@ -882,3 +882,16 @@ html[data-nav] .ken {
   -webkit-mask: var(--mask) center / contain no-repeat;
   mask: var(--mask) center / contain no-repeat;
 }
+
+/* The footer badge is an ordinary lazy image (black ink on transparent), turned light in the dark theme. */
+.ink-img {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ink-img {
+    filter: invert(1);
+  }
+}
+:root[data-theme="dark"] .ink-img {
+  filter: invert(1);
+}
