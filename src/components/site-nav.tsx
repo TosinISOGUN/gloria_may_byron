@@ -80,12 +80,12 @@ export function SiteNav() {
           <div className="glass-pill pointer-events-auto flex h-14 items-center justify-between gap-4 rounded-full pl-5 pr-1.5 sm:pl-7 sm:pr-2">
             <Link
               to="/"
-              className="inline-flex min-h-12 items-center font-display text-[1.2rem] font-extrabold tracking-[-0.02em] text-ink sm:text-[1.35rem]"
+              className="inline-flex min-h-12 shrink-0 items-center whitespace-nowrap font-display text-[1.05rem] font-extrabold tracking-[-0.02em] text-ink min-[400px]:text-[1.2rem] sm:text-[1.35rem]"
               aria-label={`${site.name}, home`}
             >
               <span
                 aria-hidden
-                className="ink mr-2.5 h-[1.15rem] w-[2.15rem] shrink-0 sm:h-5 sm:w-[2.35rem]"
+                className="ink mr-2 h-[1.05rem] w-[1.95rem] shrink-0 max-[339px]:hidden min-[400px]:mr-2.5 min-[400px]:h-[1.15rem] min-[400px]:w-[2.15rem] sm:h-5 sm:w-[2.35rem]"
                 style={{ "--mask": "url(/brand/logo-mark.png)" } as CSSProperties}
               />
               {site.name}
