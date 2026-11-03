@@ -5,6 +5,7 @@ import { BadgeStrip } from "@/components/badge-strip";
 import { ClipPlayer } from "@/components/clip-player";
 import { Img } from "@/components/img";
 import { Marquee } from "@/components/marquee";
+import { ScrollRail } from "@/components/scroll-rail";
 import { SectionHead } from "@/components/section-head";
 import { VideoCard } from "@/components/video-player";
 import { announcements, homeAbout, certifications, galleryPhotos } from "@/data/profile";
@@ -213,11 +214,11 @@ function Home() {
           />
         </div>
         <div className="wrap reveal mt-12">
-          <div className="rail" tabIndex={0} role="group" aria-label="Featured videos">
+          <ScrollRail label="Featured videos">
             {homeVideos.map((v) => (
               <VideoCard key={v.id} video={v} sizes="(min-width: 640px) 520px, 82vw" />
             ))}
-          </div>
+          </ScrollRail>
         </div>
       </section>
 
