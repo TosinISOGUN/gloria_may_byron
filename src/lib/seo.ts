@@ -10,7 +10,10 @@ type SeoInput = {
 
 /** Head tags shared by every page: title, description, canonical, Open Graph and Twitter card. */
 export function seo({ title, description, path, image = "home" }: SeoInput) {
-  const url = `${SITE_URL}${path}`;
+  // The static build on Hostinger serves every page as a folder, so its address ends in a slash. Use that
+  // one in the canonical, so the canonical is the address that answers and not one that redirects.
+  const slash = import.meta.env.VITE_TRAILING_SLASH === "1" && path !== "/" ? "/" : "";
+  const url = `${SITE_URL}${path}${slash}`;
   const og = `${SITE_URL}/og/${image}.jpg`;
   return {
     meta: [

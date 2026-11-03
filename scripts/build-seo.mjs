@@ -4,6 +4,8 @@ import fs from "node:fs";
 import { siteOrigin } from "./site-origin.mjs";
 
 const origin = siteOrigin("https://gloriamaybyron.com");
+// The static build (Hostinger) serves each page as a folder, so its address ends in a slash.
+const slash = process.env.STATIC_EXPORT === "1" ? "/" : "";
 const paths = ["/", "/about", "/music", "/announcements", "/gallery", "/awards", "/contact"];
 
 fs.writeFileSync(
@@ -13,7 +15,7 @@ fs.writeFileSync(
 fs.writeFileSync(
   "public/sitemap.xml",
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths
-    .map((p) => `  <url><loc>${origin}${p}</loc></url>`)
+    .map((p) => `  <url><loc>${origin}${p === "/" ? p : p + slash}</loc></url>`)
     .join("\n")}\n</urlset>\n`,
 );
 console.log(`robots.txt and sitemap.xml written for ${origin}`);

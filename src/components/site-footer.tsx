@@ -20,9 +20,8 @@ export function SiteFooter() {
           <p className="font-display text-[clamp(2rem,4vw,3.2rem)] font-extrabold leading-[0.98] tracking-[-0.035em]">
             {site.motto}
           </p>
-          <p className="mt-5 text-muted">{site.tagline}</p>
           <a
-            className="link-inline mt-4 inline-flex min-h-11 items-center"
+            className="link-inline mt-5 inline-flex min-h-11 items-center"
             href={`mailto:${site.email}`}
           >
             {site.email}
