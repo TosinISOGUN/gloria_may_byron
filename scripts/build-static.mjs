@@ -36,6 +36,13 @@ fs.writeFileSync(
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 
+# One address for the site: www.gloriamaybyron.com goes to gloriamaybyron.com, same page.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\\.gloriamaybyron\\.com$ [NC]
+  RewriteRule ^(.*)$ https://gloriamaybyron.com/$1 [R=301,L]
+</IfModule>
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/plain application/xml
 </IfModule>
