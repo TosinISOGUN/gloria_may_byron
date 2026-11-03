@@ -120,32 +120,33 @@ function Home() {
 
       {/* The newest announcement: the same clip as the Announcements page */}
       <section className="section border-t border-line max-lg:pt-12">
-        <div className="wrap grid items-center gap-10 lg:grid-cols-[0.55fr_1.45fr] lg:gap-20">
-          <ClipPlayer
-            src="/video/message-to-fans-2026-11.mp4"
-            poster="/video/message-to-fans-2026-11-poster.webp"
-            label={announcements.fanMessage.videoLabel}
-            className="reveal mx-auto aspect-[480/850] w-full max-w-[300px] lg:mx-0"
-          />
-          <div className="reveal">
+        {/* Phone: message, clip, buttons. Desktop: clip on the left, message and buttons on the right. */}
+        <div className="wrap grid gap-8 lg:grid-cols-[0.55fr_1.45fr] lg:grid-rows-[1fr_auto_auto_1fr] lg:gap-x-20 lg:gap-y-0">
+          <div className="reveal lg:col-start-2 lg:row-start-2">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
               Latest news
             </p>
             <h2 className="display-lg mt-3 max-w-[16ch]">{announcements.fanMessage.title}</h2>
             <p className="lead mt-6 max-w-[48ch]">{announcements.fanMessage.teaser}</p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link to="/announcements" className="btn btn-primary">
-                All announcements <ArrowRight size={20} aria-hidden />
-              </Link>
-              <a
-                className="btn btn-ghost"
-                href={socials.find((s) => s.name === "Instagram")!.url}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Follow on Instagram
-              </a>
-            </div>
+          </div>
+          <ClipPlayer
+            src="/video/message-to-fans-2026-11.mp4"
+            poster="/video/message-to-fans-2026-11-poster.webp"
+            label={announcements.fanMessage.videoLabel}
+            className="reveal mx-auto aspect-[480/850] w-full max-w-[300px] lg:col-start-1 lg:row-span-4 lg:row-start-1 lg:mx-0"
+          />
+          <div className="reveal flex flex-wrap items-center gap-3 lg:col-start-2 lg:row-start-3 lg:mt-8">
+            <Link to="/announcements" className="btn btn-primary">
+              All announcements <ArrowRight size={20} aria-hidden />
+            </Link>
+            <a
+              className="btn btn-ghost"
+              href={socials.find((s) => s.name === "Instagram")!.url}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Follow on Instagram
+            </a>
           </div>
         </div>
       </section>

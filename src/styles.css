@@ -512,7 +512,8 @@ header[data-site-header] {
   and a thin light-catching rim that is brightest at two opposite corners. Highlights are always
   white; the tint is the dark theme's in both themes (smoked glass, light text), the same at the top and when scrolled.
 */
-.glass-pill {
+.glass-pill,
+.btn-ghost {
   position: relative;
   isolation: isolate;
   background: color-mix(in oklab, var(--bg) 54%, transparent);
@@ -526,7 +527,8 @@ header[data-site-header] {
     0 2px 6px rgb(0 0 0 / 0.2);
   transition: background-color 0.3s;
 }
-.glass-pill::before {
+.glass-pill::before,
+.btn-ghost::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -537,7 +539,8 @@ header[data-site-header] {
     linear-gradient(180deg, rgb(255 255 255 / 0.13), rgb(255 255 255 / 0) 55%),
     radial-gradient(120% 140% at 8% -40%, rgb(255 255 255 / 0.22), transparent 55%);
 }
-.glass-pill::after {
+.glass-pill::after,
+.btn-ghost::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -562,8 +565,35 @@ header[data-site-header] {
 }
 /* People who ask for less transparency still get the blur, with a mostly solid tint. */
 @media (prefers-reduced-transparency: reduce) {
-  .glass-pill {
+  .glass-pill,
+  .btn-ghost {
     background: color-mix(in oklab, var(--bg) 88%, transparent);
+  }
+}
+/*
+  Outlined buttons wear the same smoked glass as the nav pill (dark tokens in both themes), with a
+  denser tint than the pill: a button's label has to stay at 4.5:1 over a light page.
+*/
+.btn-ghost {
+  --bg: #0a191e;
+  --text: #e9f1ef;
+  color: var(--text);
+  border-color: transparent;
+  background: color-mix(in oklab, var(--bg) 76%, transparent);
+  box-shadow:
+    inset 0 1.5px 1px rgb(255 255 255 / 0.42),
+    inset 0 -1.5px 1px rgb(255 255 255 / 0.14),
+    inset 0 0 18px rgb(255 255 255 / 0.06),
+    0 10px 24px -12px rgb(0 0 0 / 0.5),
+    0 2px 5px rgb(0 0 0 / 0.16);
+}
+.btn-ghost:hover {
+  border-color: transparent;
+  background: color-mix(in oklab, var(--bg) 62%, transparent);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .btn-ghost {
+    background: color-mix(in oklab, var(--bg) 94%, transparent);
   }
 }
 header[data-site-header] {

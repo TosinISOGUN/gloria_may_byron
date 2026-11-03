@@ -147,7 +147,11 @@ export function SiteNav() {
                   to={item.to}
                   onClick={() => setOpen(false)}
                   activeOptions={{ exact: true }}
-                  activeProps={{ className: "text-accent", "aria-current": "page" }}
+                  activeProps={{
+                    className:
+                      "!text-accent underline decoration-accent decoration-[3px] underline-offset-[10px]",
+                    "aria-current": "page",
+                  }}
                   className="flex min-h-16 items-center font-display text-[2rem] font-extrabold tracking-[-0.03em] text-ink"
                 >
                   {item.label}
