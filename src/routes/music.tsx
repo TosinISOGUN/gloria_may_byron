@@ -263,12 +263,7 @@ function Music() {
             ))}
           </div>
           <div className="reveal mt-14">
-            <a
-              className="btn btn-ghost"
-              href={vevo.url}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
+            <a className="btn btn-ghost" href={vevo.url} target="_blank" rel="noreferrer noopener">
               More on VEVO & YouTube
             </a>
           </div>
