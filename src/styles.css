@@ -706,8 +706,8 @@ html[data-nav] .ken {
 
 /*
   The gallery mosaic: frames sit almost edge to edge with square corners. Each frame opens up as it
-  scrolls into view, its photograph pans a little while it crosses the screen, and while one is
-  hovered the others step back.
+  scrolls into view, its photograph pans a little while it crosses the screen, and the one under the
+  pointer zooms slightly. The others stay as they are.
 */
 @layer components {
   .tile-img {
@@ -717,16 +717,6 @@ html[data-nav] .ken {
   }
   .tile button:hover .tile-img {
     transform: scale(1.07);
-  }
-  .tile {
-    transition:
-      opacity 0.35s,
-      filter 0.35s;
-  }
-  .mosaic:has(.tile button:hover) .tile:not(:hover),
-  .mosaic:has(.tile button:focus-visible) .tile:not(:has(:focus-visible)) {
-    opacity: 0.35;
-    filter: saturate(0.3);
   }
   @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
