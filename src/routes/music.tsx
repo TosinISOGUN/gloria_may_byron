@@ -258,7 +258,7 @@ function Music() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                Visit my VEVO / YouTube for more lyrical videos
+                Visit my VEVO / YouTube for more videos
               </a>
             }
           />
