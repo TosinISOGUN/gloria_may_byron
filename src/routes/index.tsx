@@ -1,11 +1,9 @@
 import { ArrowRight, ArrowUpRight, SpotifyLogo } from "@phosphor-icons/react";
 import { Link, createFileRoute } from "@tanstack/react-router";
-import type { CSSProperties } from "react";
 
 import { BadgeStrip } from "@/components/badge-strip";
 import { Img } from "@/components/img";
 import { Marquee } from "@/components/marquee";
-import { MottoStage } from "@/components/motto-stage";
 import { SectionHead } from "@/components/section-head";
 import { VideoCard } from "@/components/video-player";
 import { homeAbout, certifications, galleryPhotos } from "@/data/profile";
@@ -41,9 +39,6 @@ export const Route = createFileRoute("/")({
   },
   component: Home,
 });
-
-/** Taken from her biography: "substance over trends and connection over spectacle". */
-const mottoWords = ["Substance", "over", "trends.", "Connection", "over", "spectacle."];
 
 /** The first photographs of the gallery, shown in the same mosaic as the Gallery page. */
 const galleryPicks = galleryPhotos.slice(0, 8);
@@ -166,29 +161,6 @@ function Home() {
               );
             })}
           </ol>
-        </div>
-      </section>
-
-      {/* A pinned statement: its words light up as the page scrolls, over a moving stage. */}
-      <section className="motto" aria-label="In her words">
-        <div className="motto-pin px-[clamp(16px,4vw,48px)]">
-          <MottoStage />
-          <p
-            className="mx-auto max-w-[26ch] text-center font-display font-extrabold leading-[1] tracking-[-0.04em]"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5.4rem)" }}
-          >
-            {mottoWords.map((w, i) => (
-              <span key={w + i}>
-                <span
-                  className={`motto-word inline-block pr-[0.22em] ${i % 3 === 0 ? "text-accent" : ""} ${i % 3 === 2 ? "motto-strike" : ""}`}
-                  style={{ "--w": i } as CSSProperties}
-                >
-                  {w}
-                </span>
-                {i === 2 && <br className="max-md:hidden" />}
-              </span>
-            ))}
-          </p>
         </div>
       </section>
 
