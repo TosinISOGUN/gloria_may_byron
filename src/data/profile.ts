@@ -164,11 +164,11 @@ export const announcements = {
     text: "In this personal message, Gloria shares her vision for 2026 and what fans can expect in the coming year.",
   },
   fanMessage: {
-    title: "A message to my fans: new releases and surprise dates",
+    title: "A message to my fans: New releases and surprise dates",
     text: [
-      "Gloria hopes every listener is enjoying her new releases around the world, in multiple languages.",
-      "She knows many people have had a rough year, and she encourages everyone to keep showing love to one another, stay safe, keep their hope and stay true.",
-      "There are surprise dates coming up, so watch her Instagram for those important times. She and her team look forward to sharing these new updates.",
+      "Her latest songs are now reaching listeners worldwide, in several languages, and Gloria wants to thank everyone who has tuned in.",
+      "It has been a hard year for many, so she closes with a note of warmth: be kind to one another, look after yourselves, and hold on to hope and to who you are.",
+      "More is on the way. Surprise dates are being lined up, and Instagram is where each announcement will land first.",
     ],
     videoLabel: "A message to my fans from Gloria May Byron, about 30 seconds",
   },
