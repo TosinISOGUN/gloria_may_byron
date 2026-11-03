@@ -643,7 +643,6 @@ html[data-nav] .ken {
       }
       @keyframes tile-in {
         from {
-          clip-path: inset(20% 12% 20% 12%);
           opacity: 0;
           translate: 0 36px;
         }
