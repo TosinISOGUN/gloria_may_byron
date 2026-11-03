@@ -124,12 +124,19 @@ export const awards: Award[] = [
     text: "Recognized for outstanding pop excellence & international listener impact.",
     badge: "badgeIntercontinental",
   },
+  {
+    label: "Best Dance Song",
+    title: "InterContinental Best Dance/Electronic: North America",
+    text: "Recognized for originality and performance on the recording “Beautiful Mosaic”.",
+    badge: "badgeIntercontinental",
+  },
 ];
 
 export const notableHighlights = [
   "Music streamed and discovered in 200+ countries globally",
   "Award-winning singer, songwriter, and lyricist",
   "Recognized for both artistic excellence and listener impact",
+  "Approved for a biographical record in Who’s Who in the World, 2026 to 2027",
   "Strong global fanbase built on personal connection and authenticity",
   "Active presence across major music platforms including Spotify, Apple Music, YouTube, Deezer, Tidal, and more",
   "Dedicated to continued growth, new releases, and global collaboration heading into 2026",
@@ -155,6 +162,15 @@ export const announcements = {
   message: {
     title: "Gloria's Intro for 2026: “A Message to my Fans”",
     text: "In this personal message, Gloria shares her vision for 2026 and what fans can expect in the coming year.",
+  },
+  fanMessage: {
+    title: "A message to my fans: new releases and surprise dates",
+    text: [
+      "Gloria hopes every listener is enjoying her new releases around the world, in multiple languages.",
+      "She knows many people have had a rough year, and she encourages everyone to keep showing love to one another, stay safe, keep their hope and stay true.",
+      "There are surprise dates coming up, so watch her Instagram for those important times. She and her team look forward to sharing these new updates.",
+    ],
+    videoLabel: "A message to my fans from Gloria May Byron, about 30 seconds",
   },
   footer: "Stay tuned for more announcements and upcoming releases.",
 } as const;

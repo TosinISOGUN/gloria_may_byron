@@ -47,6 +47,8 @@ const photos = {
   awardGraCert: "18.jpg",
   awardIcCert: "19-CRP.jpg",
   awardGraBanner: "GRA-Gloria-May-Byron-1024x576-1.jpg",
+  awardWhosWho: "award-whos-who-in-the-world-2026-2027.jpg",
+  awardIcMosaic: "award-intercontinental-beautiful-mosaic-2026.jpg",
 };
 
 /** id -> original PNG with transparency (logos and badges): single WebP, no responsive set. */

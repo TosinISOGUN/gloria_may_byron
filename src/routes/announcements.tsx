@@ -5,6 +5,7 @@ import { PageHero } from "@/components/page-hero";
 import { VideoPlayer } from "@/components/video-player";
 import { announcements } from "@/data/profile";
 import { video } from "@/data/music";
+import { socials } from "@/data/site";
 import { preloadImage } from "@/lib/preload";
 import { seo } from "@/lib/seo";
 
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/announcements")({
     seo({
       title: "Announcements | Gloria May Byron",
       description:
-        "News from Gloria May Byron: her Formula Indie New Entry debut on 19 February 2026 and a personal message to fans about 2026.",
+        "News from Gloria May Byron: a new video message to fans about her new releases and surprise dates, her Formula Indie New Entry debut and a message about 2026.",
       path: "/announcements",
       image: "announcements",
     }),
@@ -24,7 +25,8 @@ export const Route = createFileRoute("/announcements")({
 });
 
 function Announcements() {
-  const { formulaIndie, message } = announcements;
+  const { formulaIndie, message, fanMessage } = announcements;
+  const instagram = socials.find((s) => s.name === "Instagram")!;
   return (
     <>
       <PageHero
@@ -36,6 +38,41 @@ function Announcements() {
         titleWidth={10}
         text={announcements.sub}
       />
+
+      {/* The newest message: Gloria's own clip, filmed upright on a phone, so it sits in a portrait frame. */}
+      <section className="section bg-bg-2">
+        <div className="wrap grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div className="media reveal mx-auto aspect-[480/850] w-full max-w-[340px] bg-black lg:mx-0">
+            <video
+              controls
+              playsInline
+              preload="none"
+              poster="/video/message-to-fans-2026-11-poster.webp"
+              aria-label={fanMessage.videoLabel}
+              className="size-full object-cover"
+            >
+              <source src="/video/message-to-fans-2026-11.mp4" type="video/mp4" />
+              Your browser cannot play this video.
+            </video>
+          </div>
+          <div className="reveal">
+            <h2 className="display-lg max-w-[16ch]">{fanMessage.title}</h2>
+            <div className="prose-flow mt-6">
+              {fanMessage.text.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+            <a
+              className="btn btn-ghost mt-8"
+              href={instagram.url}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Follow on Instagram
+            </a>
+          </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="wrap grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
