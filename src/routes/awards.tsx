@@ -226,7 +226,7 @@ function Awards() {
 
       {/* Highlights */}
       <section className="section bg-bg-2">
-        <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="wrap grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <SectionHead
             title="Notable highlights"
             sub="Key moments that shaped the journey."
