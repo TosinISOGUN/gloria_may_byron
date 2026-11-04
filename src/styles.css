@@ -44,6 +44,65 @@
   font-display: swap;
 }
 
+/*
+  Stand-ins for the fonts above while they load: Arial, scaled to the same text width and line height
+  (measured from the font files), so when the real font arrives the page does not jump.
+*/
+@font-face {
+  font-family: "Cabinet Grotesk Fallback";
+  src: local("Arial"), local("ArialMT");
+  font-weight: 500;
+  size-adjust: 95.98%;
+  ascent-override: 90.64%;
+  descent-override: 29.17%;
+  line-gap-override: 9.38%;
+}
+@font-face {
+  font-family: "Cabinet Grotesk Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 700;
+  size-adjust: 90.30%;
+  ascent-override: 96.34%;
+  descent-override: 31.01%;
+  line-gap-override: 9.97%;
+}
+@font-face {
+  font-family: "Cabinet Grotesk Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 800;
+  size-adjust: 91.72%;
+  ascent-override: 94.86%;
+  descent-override: 30.53%;
+  line-gap-override: 9.81%;
+}
+@font-face {
+  font-family: "Satoshi Fallback";
+  src: local("Arial"), local("ArialMT");
+  font-weight: 400;
+  size-adjust: 98.57%;
+  ascent-override: 102.47%;
+  descent-override: 24.35%;
+  line-gap-override: 10.15%;
+}
+@font-face {
+  font-family: "Satoshi Fallback";
+  src: local("Arial"), local("ArialMT");
+  font-weight: 500;
+  size-adjust: 101.42%;
+  ascent-override: 99.59%;
+  descent-override: 23.66%;
+  line-gap-override: 9.86%;
+}
+@font-face {
+  font-family: "Satoshi Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 700;
+  size-adjust: 97.03%;
+  ascent-override: 104.09%;
+  descent-override: 24.73%;
+  line-gap-override: 10.31%;
+}
+
 /* Boska Italic (display, used only for the looping ribbon of values): Fontshare, free for commercial use. */
 @font-face {
   font-family: "Boska";
@@ -130,8 +189,8 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-on-accent: var(--on-accent);
-  --font-display: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cabinet Grotesk", "Cabinet Grotesk Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Satoshi", "Satoshi Fallback", ui-sans-serif, system-ui, sans-serif;
   --radius-card: 16px;
 }
 

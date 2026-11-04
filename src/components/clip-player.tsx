@@ -3,7 +3,10 @@ import { useRef, useState } from "react";
 
 type Props = {
   src: string;
+  /** The full-size thumbnail (480 px wide). */
   poster: string;
+  /** The same picture at 320 px wide, for screens that show it at 300 px or less. */
+  posterSmall: string;
   /** What the clip is, for people using a screen reader. */
   label: string;
   className?: string;
@@ -13,9 +16,11 @@ type Props = {
  * A short clip of our own (not a YouTube embed) with no browser controls. A play button sits on the
  * thumbnail; tapping the picture while it plays pauses it, and the button comes back.
  */
-export function ClipPlayer({ src, poster, label, className }: Props) {
+export function ClipPlayer({ src, poster, posterSmall, label, className }: Props) {
   const video = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  // The thumbnail is a picture laid over the video until the first play, then it is gone for good.
+  const [started, setStarted] = useState(false);
 
   const toggle = () => {
     const el = video.current;
@@ -30,14 +35,29 @@ export function ClipPlayer({ src, poster, label, className }: Props) {
         ref={video}
         playsInline
         preload="none"
-        poster={poster}
         className="size-full object-cover"
-        onPlay={() => setPlaying(true)}
+        onPlay={() => {
+          setStarted(true);
+          setPlaying(true);
+        }}
         onPause={() => setPlaying(false)}
         onEnded={() => setPlaying(false)}
       >
         <source src={src} type="video/mp4" />
       </video>
+      {!started && (
+        <img
+          src={poster}
+          srcSet={`${posterSmall} 320w, ${poster} 480w`}
+          sizes="300px"
+          width={480}
+          height={850}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="pointer-events-none absolute inset-0 size-full object-cover"
+        />
+      )}
       <button
         type="button"
         onClick={toggle}

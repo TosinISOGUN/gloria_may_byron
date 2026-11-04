@@ -65,10 +65,11 @@ function Home() {
         </div>
         <div className="hero-scrim absolute inset-0 -z-10" aria-hidden />
         <div className="hero-copy hero-out wrap pb-14 pt-40 md:pb-24">
-          <h1 className="display-xl rise max-w-[11ch]" style={delay(0)}>
+          {/* Widths in em, not ch: ch follows whichever font is showing, so it would change when the web font arrives. */}
+          <h1 className="display-xl rise max-w-[7.425em]" style={delay(0)}>
             {site.name}
           </h1>
-          <p className="lead rise mt-6 max-w-[34ch] !text-ink/90" style={delay(1)}>
+          <p className="lead rise mt-6 max-w-[23.22em] !text-ink/90" style={delay(1)}>
             {site.motto} Award-winning singer and songwriter, heard in over 200 countries.
           </p>
           <div className="rise mt-9 flex flex-wrap items-center gap-x-6 gap-y-3" style={delay(2)}>
@@ -133,6 +134,7 @@ function Home() {
           <ClipPlayer
             src="/video/message-to-fans-2026-11.mp4"
             poster="/video/message-to-fans-2026-11-poster.webp"
+            posterSmall="/video/message-to-fans-2026-11-poster-320.webp"
             label={announcements.fanMessage.videoLabel}
             className="reveal mx-auto aspect-[480/850] w-full max-w-[300px] lg:col-start-1 lg:row-span-4 lg:row-start-1 lg:mx-0"
           />
