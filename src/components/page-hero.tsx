@@ -61,7 +61,7 @@ export function PageHero({
           className="display-xl rise"
           style={{
             fontSize: "clamp(2.7rem, 8vw, 7.4rem)",
-            maxWidth: `${titleWidth}ch`,
+            maxWidth: `${(titleWidth * 0.675).toFixed(3)}em`, // em, not ch: ch changes when the web font replaces the fallback
           }}
         >
           {title}

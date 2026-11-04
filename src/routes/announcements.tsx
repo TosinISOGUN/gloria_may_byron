@@ -46,6 +46,7 @@ function Announcements() {
           <ClipPlayer
             src="/video/message-to-fans-2026-11.mp4"
             poster="/video/message-to-fans-2026-11-poster.webp"
+            posterSmall="/video/message-to-fans-2026-11-poster-320.webp"
             label={fanMessage.videoLabel}
             className="reveal mx-auto aspect-[480/850] w-full max-w-[340px] lg:mx-0"
           />

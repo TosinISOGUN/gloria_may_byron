@@ -100,6 +100,13 @@ export const Route = createRootRoute({
         rel: "preload",
         as: "font",
         type: "font/woff2",
+        href: "/fonts/satoshi-500.woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
         href: "/fonts/satoshi-700.woff2",
         crossOrigin: "anonymous",
       },
