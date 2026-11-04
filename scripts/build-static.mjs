@@ -21,6 +21,23 @@ run("npx", ["vite", "build"]);
 
 const out = "dist/client";
 
+// The stylesheet is small (about 11 KB compressed), so put it inside each page: the first paint no
+// longer waits for a separate request. Fonts and images in it use absolute paths, so they still resolve.
+const htmlFiles = (dir) =>
+  fs
+    .readdirSync(dir, { withFileTypes: true })
+    .flatMap((e) =>
+      e.isDirectory() ? htmlFiles(path.join(dir, e.name)) : e.name.endsWith(".html") ? [path.join(dir, e.name)] : [],
+    );
+const sheetLink = /<link rel="stylesheet" href="(\/assets\/styles-[^"]+\.css)"[^>]*>/;
+for (const file of htmlFiles(out)) {
+  const html = fs.readFileSync(file, "utf8");
+  const m = html.match(sheetLink);
+  if (!m) continue;
+  const css = fs.readFileSync(path.join(out, m[1]), "utf8");
+  fs.writeFileSync(file, html.replace(sheetLink, () => "<style>" + css + "</style>"));
+}
+
 // A missing address shows the site's own not-found page. The browser gets a real 404 status.
 const notFound = fs
   .readFileSync(path.join(out, "index.html"), "utf8")
@@ -68,6 +85,11 @@ AddType text/javascript .js .mjs
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/webp "access plus 1 month"
   ExpiresByType image/avif "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
 </IfModule>
 
 <IfModule mod_headers.c>

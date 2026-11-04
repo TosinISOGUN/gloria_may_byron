@@ -807,6 +807,11 @@ html[data-nav] .ken {
 */
 @layer components {
   .marquee {
+    /* Not rendered until it nears the screen, so Boska (used only here) is not on the critical path.
+       The size is the ribbon's own, so the page below does not jump when it starts to render. */
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto
+      calc(clamp(2.3rem, 6.2vw, 5rem) * 1.15 + 2 * clamp(1.1rem, 2.6vw, 2rem) + 2px);
     overflow: hidden;
     border-block: 1px solid var(--line);
     padding-block: clamp(1.1rem, 2.6vw, 2rem);
