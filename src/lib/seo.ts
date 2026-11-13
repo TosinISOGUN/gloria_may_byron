@@ -28,6 +28,7 @@ export function seo({ title, description, path, locale, image = "home" }: SeoInp
   return {
     meta: [
       { title },
+      ...(import.meta.env.VITE_PREVIEW ? [{ name: "robots", content: "noindex, nofollow" }] : []),
       { name: "description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: site.name },

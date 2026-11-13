@@ -1,7 +1,7 @@
 // Writes public/robots.txt and public/sitemap.xml for the origin the site is being built for.
 import fs from "node:fs";
 
-import { siteOrigin } from "./site-origin.mjs";
+import { isPreview, siteOrigin } from "./site-origin.mjs";
 
 const origin = siteOrigin("https://gloriamaybyron.com");
 // The static build (Hostinger) serves each page as a folder, so its address ends in a slash.
@@ -38,6 +38,13 @@ const entry = (folder, p) => {
   return `  <url>\n    <loc>${loc(folder, p)}</loc>\n${alternates.join("\n")}\n  </url>`;
 };
 
+if (isPreview()) {
+  // A private preview: keep every crawler out and publish no sitemap.
+  fs.writeFileSync("public/robots.txt", "User-agent: *\nDisallow: /\n");
+  fs.rmSync("public/sitemap.xml", { force: true });
+  console.log(`preview build: robots.txt blocks all crawlers, no sitemap (${origin})`);
+  process.exit(0);
+}
 fs.writeFileSync("public/robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 fs.writeFileSync(
   "public/sitemap.xml",

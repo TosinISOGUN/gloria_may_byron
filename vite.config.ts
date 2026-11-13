@@ -5,7 +5,7 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
 import { locales } from "./src/i18n/locales";
-import { siteOrigin } from "./scripts/site-origin.mjs";
+import { isPreview, siteOrigin } from "./scripts/site-origin.mjs";
 
 // STATIC_EXPORT=1 builds plain HTML files for shared hosting (Hostinger, any web server) instead of
 // the server output Vercel uses (Nitro is left out). Every page is prerendered into its own folder, so /about is
@@ -33,6 +33,7 @@ export default defineConfig(({ command }) => ({
   ],
   define: {
     "import.meta.env.VITE_SITE_URL": JSON.stringify(siteOrigin("https://gloriamaybyron.com")),
+    "import.meta.env.VITE_PREVIEW": JSON.stringify(isPreview() ? "1" : ""),
   },
   resolve: {
     tsconfigPaths: true,
