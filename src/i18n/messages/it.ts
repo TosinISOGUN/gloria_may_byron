@@ -35,6 +35,8 @@ const it: PartialMessages = {
       follow: "Segui",
       copyright: "Copyright © {year} - {name}",
       logoAlt: "{name}, cantante e cantautrice",
+      builtBy: "Sito web a cura di {name}",
+      builtByHelp: "Per maggiori informazioni o servizi di realizzazione di siti web, contatta {email}",
     },
     language: {
       label: "Lingua",

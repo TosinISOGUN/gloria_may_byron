@@ -1,11 +1,20 @@
 import { Link } from "@/components/link";
-import { nav, platforms, site, socials } from "@/data/site";
+import { builder, nav, platforms, site, socials } from "@/data/site";
+import type { ReactNode } from "react";
 import { fmt } from "@/i18n";
 import { useT } from "@/i18n/messages-context";
 import type { Messages } from "@/i18n/messages/en";
 
 const col = "flex flex-col";
 const item = "inline-flex min-h-11 items-center text-muted transition-colors hover:text-ink";
+
+/** Fills the {name} and {email} slots of a translated sentence with links, keeping the sentence's own word order. */
+function withSlots(template: string, slots: Record<string, ReactNode>) {
+  return template.split(/(\{\w+\})/).map((part, i) => {
+    const key = part.slice(1, -1);
+    return part.startsWith("{") && key in slots ? <span key={i}>{slots[key]}</span> : part;
+  });
+}
 
 /** Read once when the page loads, so the copyright year is always the current one. */
 const YEAR = new Date().getFullYear();
@@ -68,9 +77,29 @@ export function SiteFooter({ chrome }: { chrome: Messages["chrome"] }) {
         </div>
       </div>
       <div className="border-t border-line">
-        <p className="wrap py-6 text-sm text-muted" suppressHydrationWarning>
-          {fmt(chrome.footer.copyright, { year: YEAR, name: site.name })}
-        </p>
+        <div className="wrap flex flex-col gap-4 py-6 text-sm text-muted md:flex-row md:items-start md:justify-between md:gap-10">
+          <p suppressHydrationWarning>{fmt(chrome.footer.copyright, { year: YEAR, name: site.name })}</p>
+          <div className="grid gap-1 md:max-w-[34rem] md:text-end">
+            <p>
+              {withSlots(chrome.footer.builtBy, {
+                name: (
+                  <a className="link-inline font-semibold text-ink" href={builder.url} target="_blank" rel="noopener">
+                    {builder.name}
+                  </a>
+                ),
+              })}
+            </p>
+            <p>
+              {withSlots(chrome.footer.builtByHelp, {
+                email: (
+                  <a className="link-inline" dir="ltr" href={`mailto:${builder.email}?subject=Website%20enquiry%20from%20gloriamaybyron.com`}>
+                    {builder.email}
+                  </a>
+                ),
+              })}
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );

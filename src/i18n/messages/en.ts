@@ -40,6 +40,8 @@ export const en = {
       follow: "Follow",
       copyright: "Copyright © {year} - {name}",
       logoAlt: "{name}, singer and songwriter",
+      builtBy: "Website by {name}",
+      builtByHelp: "For more information or website building services, contact {email}",
     },
     language: {
       label: "Language",

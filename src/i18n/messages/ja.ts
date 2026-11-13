@@ -35,6 +35,8 @@ const ja: PartialMessages = {
       follow: "フォロー",
       copyright: "Copyright © {year} - {name}",
       logoAlt: "{name}、シンガーソングライター",
+      builtBy: "ウェブサイト制作：{name}",
+      builtByHelp: "詳細やウェブサイト制作のご相談は {email} までご連絡ください",
     },
     language: {
       label: "言語",

@@ -35,6 +35,8 @@ const no: PartialMessages = {
       follow: "Følg",
       copyright: "Copyright © {year} - {name}",
       logoAlt: "{name}, sanger og låtskriver",
+      builtBy: "Nettsted av {name}",
+      builtByHelp: "For mer informasjon eller tjenester for å bygge nettsteder, kontakt {email}",
     },
     language: {
       label: "Språk",

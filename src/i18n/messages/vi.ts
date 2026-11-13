@@ -35,6 +35,8 @@ const vi: PartialMessages = {
       follow: "Theo dõi",
       copyright: "Bản quyền © {year} - {name}",
       logoAlt: "{name}, ca sĩ và nhạc sĩ",
+      builtBy: "Website do {name} thực hiện",
+      builtByHelp: "Để biết thêm thông tin hoặc dịch vụ xây dựng website, vui lòng liên hệ {email}",
     },
     language: {
       label: "Ngôn ngữ",

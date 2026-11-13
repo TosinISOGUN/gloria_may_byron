@@ -35,6 +35,8 @@ const zhTw: PartialMessages = {
       follow: "追蹤",
       copyright: "版權所有 © {year} - {name}",
       logoAlt: "{name}，歌手與詞曲創作人",
+      builtBy: "網站設計：{name}",
+      builtByHelp: "如需更多資訊或網站建置服務，請聯絡 {email}",
     },
     language: {
       label: "語言",

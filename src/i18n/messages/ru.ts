@@ -35,6 +35,8 @@ const ru: PartialMessages = {
       follow: "Подписаться",
       copyright: "Copyright © {year} - {name}",
       logoAlt: "{name}, певица и автор песен",
+      builtBy: "Сайт создан: {name}",
+      builtByHelp: "Для получения дополнительной информации или услуг по созданию сайтов свяжитесь с {email}",
     },
     language: {
       label: "Язык",

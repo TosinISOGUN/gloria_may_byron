@@ -35,6 +35,8 @@ const bn: PartialMessages = {
       follow: "অনুসরণ করুন",
       copyright: "কপিরাইট © {year} - {name}",
       logoAlt: "{name}, গায়িকা ও গীতিকার",
+      builtBy: "ওয়েবসাইট তৈরি করেছে {name}",
+      builtByHelp: "আরও তথ্য বা ওয়েবসাইট তৈরির সেবার জন্য যোগাযোগ করুন {email}",
     },
     language: {
       label: "ভাষা",

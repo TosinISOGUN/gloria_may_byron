@@ -35,6 +35,8 @@ const ar: PartialMessages = {
       follow: "تابع",
       copyright: "حقوق النشر © {year} - {name}",
       logoAlt: "{name}، مغنية وكاتبة أغانٍ",
+      builtBy: "تصميم الموقع بواسطة {name}",
+      builtByHelp: "لمزيد من المعلومات أو لخدمات بناء المواقع، تواصل معنا على {email}",
     },
     language: {
       label: "اللغة",
