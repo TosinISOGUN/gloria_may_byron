@@ -118,6 +118,20 @@ export const en = {
       p1: "That kind of software is not perfect. The engineers told Gloria that it can make mistakes, and that it has even marked older songs written long before AI existed, including well-known hit songs. Because the check is automatic and not done by a person, a mistake can put a marker on a song that people made. This may be another reason why some platforms that once passed Gloria's songs as original have started to mark them.",
       p2: "A screening result does not describe how a song was made. The recordings, the registration certificate and the written confirmations on this page do.",
     },
+    moreCertificates: {
+
+      lead: "Two more certificates from the same service, for songs registered on different dates. Each names Gloria May Byron as its creator and carries its own certificate ID and digital fingerprint.",
+
+      littleAlt: "SongSecure Certificate of Registration for Little Birds, original version, created by Gloria May Byron, creation date September 29th, 2026",
+
+      littleCaption: "\"Little Birds\", original version, registered on September 29th, 2026.",
+
+      arabicAlt: "SongSecure Certificate of Registration for Arabic Dreams Of Tomorrow, Arabic special edition, created by Gloria May Byron, creation date October 4th, 2026",
+
+      arabicCaption: "\"Arabic Dreams Of Tomorrow\", Arabic special edition, registered on October 4th, 2026.",
+
+    },
+
     credits: {
 
       heading: "Visual producers and web design",

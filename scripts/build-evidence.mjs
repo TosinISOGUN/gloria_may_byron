@@ -15,6 +15,7 @@ const OUT = "public/evidence";
 fs.mkdirSync(OUT, { recursive: true });
 
 const shot = (name) => path.join(SRC, name);
+const CERTS = "assets-source/certificates";
 // [left, top, width, height] in the original screenshot, measured from the files.
 const jobs = [
   {
@@ -39,14 +40,29 @@ const jobs = [
     id: "emailMixea",
     parts: [{ file: "photo_9_2026-11-12_16-42-06.jpg", box: [16, 270, 706, 1058] }],
   },
+  {
+    // Two more SongSecure certificates. Gloria sent them as PDFs; each was rendered to an image in Chrome
+    // (1500px wide page at 1.5x) and the dark viewer margin trimmed off. Nothing is retouched.
+    id: "certificateLittle",
+    parts: [{ path: path.join(CERTS, "Little Birds certificate.png") }],
+  },
+  {
+    id: "certificateArabic",
+    parts: [{ path: path.join(CERTS, "Arabic Dreams Of Tomorrow certificate.png") }],
+  },
 ];
 
 const manifest = {};
 for (const job of jobs) {
   const pieces = [];
   for (const part of job.parts) {
+    const input = part.path ?? shot(part.file);
+    if (!part.box) {
+      pieces.push(await sharp(input).toBuffer());
+      continue;
+    }
     const [left, top, width, height] = part.box;
-    pieces.push(await sharp(shot(part.file)).extract({ left, top, width, height }).toBuffer());
+    pieces.push(await sharp(input).extract({ left, top, width, height }).toBuffer());
   }
   const meta = await Promise.all(pieces.map((b) => sharp(b).metadata()));
   const width = Math.max(...meta.map((m) => m.width));

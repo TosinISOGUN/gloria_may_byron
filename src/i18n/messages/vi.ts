@@ -569,6 +569,20 @@ const vi: PartialMessages = {
       p1: "Loại phần mềm này không hoàn hảo. Các kỹ sư cho Gloria biết nó có thể mắc lỗi, thậm chí từng gắn dấu cho những bài hát cũ được viết từ rất lâu trước khi có AI, kể cả những bài hát nổi tiếng. Vì việc kiểm tra là tự động chứ không do con người thực hiện, một sai sót có thể gắn dấu lên bài hát do con người làm ra. Đây có thể là một lý do khác khiến một số nền tảng trước đây công nhận các bài hát của Gloria là nguyên bản nay bắt đầu gắn dấu.",
       p2: "Kết quả kiểm tra không cho biết bài hát được làm ra như thế nào. Các bản ghi, giấy chứng nhận đăng ký và các xác nhận bằng văn bản trên trang này thì có.",
     },
+    moreCertificates: {
+
+      lead: "Thêm hai chứng nhận từ cùng dịch vụ, cho các bài hát được đăng ký vào những ngày khác nhau. Cả hai đều ghi Gloria May Byron là tác giả và có mã chứng nhận cùng dấu vân tay số riêng.",
+
+      littleAlt: "Chứng nhận đăng ký SongSecure cho Little Birds, phiên bản gốc, tác giả Gloria May Byron, ngày tạo ngày 29 tháng 9 năm 2026",
+
+      littleCaption: "\"Little Birds\", phiên bản gốc, đăng ký ngày 29 tháng 9 năm 2026.",
+
+      arabicAlt: "Chứng nhận đăng ký SongSecure cho Arabic Dreams Of Tomorrow, bản đặc biệt tiếng Ả Rập, tác giả Gloria May Byron, ngày tạo ngày 4 tháng 10 năm 2026",
+
+      arabicCaption: "\"Arabic Dreams Of Tomorrow\", bản đặc biệt tiếng Ả Rập, đăng ký ngày 4 tháng 10 năm 2026.",
+
+    },
+
     credits: {
 
       heading: "Nhà sản xuất hình ảnh và thiết kế web",

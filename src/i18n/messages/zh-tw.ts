@@ -569,6 +569,20 @@ const zhTw: PartialMessages = {
       p1: "這類軟體並不完美。工程師告訴 Gloria，它可能出錯，甚至曾標記在 AI 出現很久以前創作的老歌，包括知名的暢銷金曲。由於檢測是自動進行、並非由人執行，錯誤可能讓一首由人創作的歌曲被加上標記。這也許是另一個原因，讓一些過去認定 Gloria 的歌曲為原創的平台，現在開始加上標記。",
       p2: "檢測結果並不能說明一首歌是如何製作的。本頁的錄音、登記證書和書面確認才能說明。",
     },
+    moreCertificates: {
+
+      lead: "同一服務的另外兩份證書，登記的歌曲日期不同。兩份都註明 Gloria May Byron 為創作者，並各有自己的證書編號和數位指紋。",
+
+      littleAlt: "SongSecure 登記證書，歌曲「Little Birds」，原始版本，創作者 Gloria May Byron，創作日期 2026年9月29日",
+
+      littleCaption: "「Little Birds」，原始版本，登記於 2026年9月29日。",
+
+      arabicAlt: "SongSecure 登記證書，歌曲「Arabic Dreams Of Tomorrow」，阿拉伯語特別版，創作者 Gloria May Byron，創作日期 2026年10月4日",
+
+      arabicCaption: "「Arabic Dreams Of Tomorrow」，阿拉伯語特別版，登記於 2026年10月4日。",
+
+    },
+
     credits: {
 
       heading: "視覺製作人與網站設計",

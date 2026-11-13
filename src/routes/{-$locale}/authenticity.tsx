@@ -176,6 +176,17 @@ function Authenticity() {
         </div>
       </section>
 
+      {/* Two more certificates */}
+      <section id="more-certificates" className="section pt-0 scroll-mt-24">
+        <div className="wrap">
+          <p className="lead reveal max-w-[62ch]">{t.moreCertificates.lead}</p>
+          <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-12">
+            <Shot id="certificateLittle" alt={t.moreCertificates.littleAlt} caption={t.moreCertificates.littleCaption} />
+            <Shot id="certificateArabic" alt={t.moreCertificates.arabicAlt} caption={t.moreCertificates.arabicCaption} />
+          </div>
+        </div>
+      </section>
+
       {/* Studio recordings */}
       <section id="studio" className="section bg-bg-2 scroll-mt-24">
         <div className="wrap">

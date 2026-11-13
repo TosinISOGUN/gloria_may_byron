@@ -569,6 +569,20 @@ const sv: PartialMessages = {
       p1: "Sådan programvara är inte felfri. Teknikerna sa till Gloria att den kan göra misstag, och att den till och med har märkt äldre låtar som skrevs långt innan AI fanns, bland annat välkända hitlåtar. Eftersom granskningen är automatisk och inte görs av en människa kan ett misstag sätta en markering på en låt som människor har gjort. Det kan vara ytterligare en anledning till att vissa plattformar som tidigare godkände Glorias låtar som originella har börjat märka dem.",
       p2: "Ett granskningsresultat säger ingenting om hur en låt har gjorts. Det gör inspelningarna, registreringscertifikatet och de skriftliga bekräftelserna på den här sidan.",
     },
+    moreCertificates: {
+
+      lead: "Två certifikat till från samma tjänst, för låtar som registrerades vid olika datum. Båda anger Gloria May Byron som upphovsperson och har sitt eget certifikat-ID och sitt eget digitala fingeravtryck.",
+
+      littleAlt: "SongSecure Certificate of Registration för Little Birds, originalversion, skapad av Gloria May Byron, skapandedatum 29 september 2026",
+
+      littleCaption: "\"Little Birds\", originalversion, registrerad 29 september 2026.",
+
+      arabicAlt: "SongSecure Certificate of Registration för Arabic Dreams Of Tomorrow, arabisk specialutgåva, skapad av Gloria May Byron, skapandedatum 4 oktober 2026",
+
+      arabicCaption: "\"Arabic Dreams Of Tomorrow\", arabisk specialutgåva, registrerad 4 oktober 2026.",
+
+    },
+
     credits: {
 
       heading: "Visuella producenter och webbdesign",

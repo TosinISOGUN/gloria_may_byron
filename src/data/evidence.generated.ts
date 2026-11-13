@@ -24,6 +24,16 @@ export const evidenceImages = {
     "src": "/evidence/emailMixea.webp",
     "width": 706,
     "height": 1058
+  },
+  "certificateLittle": {
+    "src": "/evidence/certificateLittle.webp",
+    "width": 2230,
+    "height": 1577
+  },
+  "certificateArabic": {
+    "src": "/evidence/certificateArabic.webp",
+    "width": 2230,
+    "height": 1577
   }
 } as const;
 

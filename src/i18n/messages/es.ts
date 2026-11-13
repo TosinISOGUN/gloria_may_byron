@@ -569,6 +569,20 @@ const es: PartialMessages = {
       p1: "Ese tipo de programa no es perfecto. Los ingenieros le dijeron a Gloria que puede cometer errores y que incluso ha marcado canciones antiguas, escritas mucho antes de que existiera la IA, entre ellas conocidos éxitos. Como la revisión es automática y no la hace una persona, un error puede poner una marca en una canción hecha por personas. Puede ser otra razón por la que algunas plataformas que antes daban por originales las canciones de Gloria han empezado a marcarlas.",
       p2: "El resultado de una revisión no describe cómo se hizo una canción. Lo describen las grabaciones, el certificado de registro y las confirmaciones escritas de esta página.",
     },
+    moreCertificates: {
+
+      lead: "Dos certificados más del mismo servicio, de canciones registradas en fechas distintas. Ambos nombran a Gloria May Byron como creadora y tienen su propio ID de certificado y su propia huella digital.",
+
+      littleAlt: "Certificado de registro de SongSecure de Little Birds, versión original, creado por Gloria May Byron, fecha de creación 29 de septiembre de 2026",
+
+      littleCaption: "«Little Birds», versión original, registrada el 29 de septiembre de 2026.",
+
+      arabicAlt: "Certificado de registro de SongSecure de Arabic Dreams Of Tomorrow, edición especial en árabe, creado por Gloria May Byron, fecha de creación 4 de octubre de 2026",
+
+      arabicCaption: "«Arabic Dreams Of Tomorrow», edición especial en árabe, registrada el 4 de octubre de 2026.",
+
+    },
+
     credits: {
 
       heading: "Productores visuales y diseño web",
