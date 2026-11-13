@@ -347,9 +347,7 @@ function Authenticity() {
             <li className="grid gap-3 border-b border-line py-8 sm:grid-cols-[14rem_1fr] sm:gap-8">
               <div>
                 <p className="text-xl font-semibold rtl:text-right" lang="en" dir="ltr">
-                  <a className="link-inline" href={builder.url} target="_blank" rel="noopener">
-                    {builder.name}
-                  </a>
+                  {builder.name}
                 </p>
                 <p className="mt-1 text-sm text-muted">{t.credits.webRole}</p>
               </div>
