@@ -218,7 +218,6 @@ const vi: PartialMessages = {
       ],
     },
     inspiration: {
-      heading: "Nguồn cảm hứng của các bài hát",
       paragraphs: [
         "Gloria là một Nhân Chứng Giê-hô-va, và đức tin là nơi nhiều sáng tác của cô bắt đầu. Cô dành thời gian tự mình nghiên cứu Kinh Thánh, điều cô tin là lời được Đức Chúa Trời soi dẫn, và đã đưa những lẽ thật tìm được ở đó thẳng vào các bài hát của mình.",
         "Cô dành nhiều thời gian chia sẻ những lẽ thật này với bạn bè và hàng xóm. Qua âm nhạc, cô hy vọng mang cùng một thông điệp hy vọng đến với mọi người ở gần và xa.",

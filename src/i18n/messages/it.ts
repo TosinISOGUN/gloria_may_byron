@@ -218,7 +218,6 @@ const it: PartialMessages = {
       ],
     },
     inspiration: {
-      heading: "Da dove nascono le canzoni",
       paragraphs: [
         "Gloria è una testimone di Geova, e la sua fede è il punto di partenza di buona parte delle sue canzoni. Dedica tempo alla ricerca personale nella Bibbia, che considera la parola ispirata di Dio, e ha portato direttamente nelle sue canzoni le verità che vi ha trovato.",
         "Passa molto tempo a condividere queste verità con amici e vicini. Con la sua musica spera di portare lo stesso messaggio di speranza a persone vicine e lontane.",

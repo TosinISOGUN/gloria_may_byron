@@ -333,7 +333,6 @@ export const en = {
       ],
     },
     inspiration: {
-      heading: "Where the songs come from",
       paragraphs: [
         "Gloria is one of Jehovah's Witnesses, and her faith is where much of her songwriting begins. She makes time for personal research of the Bible, which she holds to be God's inspired word, and she has brought truths she found there directly into her songs.",
         "She spends much of her time sharing these truths with friends and neighbors. Through her music she hopes to carry the same message of hope to people far and wide.",

@@ -218,7 +218,6 @@ const es: PartialMessages = {
       ],
     },
     inspiration: {
-      heading: "De dónde nacen las canciones",
       paragraphs: [
         "Gloria es una de los testigos de Jehová, y su fe es el punto de partida de gran parte de sus canciones. Dedica tiempo a investigar la Biblia por su cuenta, que considera la palabra inspirada de Dios, y ha llevado directamente a sus canciones las verdades que encontró en ella.",
         "Dedica buena parte de su tiempo a compartir esas verdades con amigos y vecinos. A través de su música espera llevar el mismo mensaje de esperanza a personas de cerca y de lejos.",

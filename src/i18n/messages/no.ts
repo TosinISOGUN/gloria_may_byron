@@ -218,7 +218,6 @@ const no: PartialMessages = {
       ],
     },
     inspiration: {
-      heading: "Hvor sangene kommer fra",
       paragraphs: [
         "Gloria er et av Jehovas vitner, og troen er der mye av låtskrivingen hennes begynner. Hun tar seg tid til å studere Bibelen på egen hånd, som hun regner som Guds inspirerte ord, og hun har tatt sannheter hun fant der rett inn i sangene sine.",
         "Hun bruker mye av tiden sin på å dele disse sannhetene med venner og naboer. Gjennom musikken håper hun å bringe det samme budskapet om håp til folk nær og fjern.",

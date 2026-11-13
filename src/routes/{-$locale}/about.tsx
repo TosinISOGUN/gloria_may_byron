@@ -156,24 +156,10 @@ function About() {
             <h2 className="display-lg max-w-[12ch]">{a.style.heading}</h2>
             <p className="lead mt-4">{a.style.sub}</p>
             <div className="prose-flow mt-8">
-              {a.style.paragraphs.map((p) => (
+              {[...a.style.paragraphs.slice(0, 2), ...a.inspiration.paragraphs, ...a.style.paragraphs.slice(2)].map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Where the songs come from */}
-      <section className="section border-t border-line bg-bg-2">
-        <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <h2 className="display-md reveal max-w-[14ch] lg:sticky lg:top-28 lg:self-start">
-            {a.inspiration.heading}
-          </h2>
-          <div className="reveal prose-flow min-w-0">
-            {a.inspiration.paragraphs.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
           </div>
         </div>
       </section>
