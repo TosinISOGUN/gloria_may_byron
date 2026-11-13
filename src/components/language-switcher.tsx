@@ -106,9 +106,9 @@ export function LanguageSwitcher({ locale, chrome }: Props) {
                   >
                     <span className="grid min-w-0 flex-1 leading-tight">
                       <span className="truncate text-[0.95rem] font-semibold sm:text-base">{l.native}</span>
-                      {l.native !== l.english && (
+                      {(l.native !== l.english || l.code === "en") && (
                         <span className="truncate text-xs text-muted" lang="en">
-                          {l.english}
+                          {l.code === "en" ? "English (US)" : l.english}
                         </span>
                       )}
                     </span>
