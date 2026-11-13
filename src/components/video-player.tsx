@@ -2,6 +2,8 @@ import { Play } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import type { Video } from "@/data/music";
+import { fmt } from "@/i18n";
+import { useT } from "@/i18n/messages-context";
 
 import { Img } from "./img";
 
@@ -20,6 +22,7 @@ export function VideoPlayer({
   sizes = "(min-width: 1024px) 40vw, 92vw",
   className,
 }: Props) {
+  const t = useT().common;
   const [loaded, setLoaded] = useState(autoLoad);
   return (
     <div className={`media relative aspect-video ${className ?? ""}`}>
@@ -36,7 +39,7 @@ export function VideoPlayer({
         <button
           type="button"
           onClick={() => setLoaded(true)}
-          aria-label={`Play ${video.title}`}
+          aria-label={fmt(t.playVideo, { title: video.title })}
           className="group absolute inset-0 size-full"
         >
           <Img
@@ -49,7 +52,7 @@ export function VideoPlayer({
             className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"
             aria-hidden
           />
-          <span className="absolute bottom-3 right-3 grid size-14 place-items-center rounded-full bg-accent text-on-accent shadow-[0_10px_30px_-8px_rgb(0_0_0/0.6)] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
+          <span className="absolute bottom-3 end-3 grid size-14 place-items-center rounded-full bg-accent text-on-accent shadow-[0_10px_30px_-8px_rgb(0_0_0/0.6)] transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
             <Play size={24} weight="fill" aria-hidden />
           </span>
         </button>
@@ -67,6 +70,13 @@ export function VideoCard({
   sizes?: string;
   className?: string;
 }) {
+  const t = useT().common;
+  const credit =
+    video.credit === "Lyric video"
+      ? t.lyricVideo
+      : video.credit === "Arabic lyric video"
+        ? t.arabicLyricVideo
+        : video.credit;
   return (
     <figure className={className}>
       <VideoPlayer video={video} {...(sizes ? { sizes } : {})} />
@@ -74,7 +84,7 @@ export function VideoCard({
         <p className="font-display text-lg font-bold leading-tight tracking-[-0.01em]">
           {video.title}
         </p>
-        {video.credit && <p className="text-sm text-muted">{video.credit}</p>}
+        {credit && <p className="text-sm text-muted">{credit}</p>}
       </figcaption>
     </figure>
   );

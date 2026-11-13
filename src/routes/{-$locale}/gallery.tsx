@@ -1,5 +1,6 @@
 import { MagnifyingGlassPlus } from "@phosphor-icons/react";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/components/link";
 import { useState } from "react";
 
 import { Img } from "@/components/img";
@@ -7,70 +8,74 @@ import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { PageHero } from "@/components/page-hero";
 import { SectionHead } from "@/components/section-head";
 import { releases } from "@/data/music";
-import { galleryPhotos } from "@/data/profile";
+import { galleryPhotoIds } from "@/data/profile";
 import { preloadImage } from "@/lib/preload";
+import { fmt, messagesForParam } from "@/i18n";
+import { useT } from "@/i18n/messages-context";
 import { seo } from "@/lib/seo";
 
-export const Route = createFileRoute("/gallery")({
-  head: () =>
+export const Route = createFileRoute("/{-$locale}/gallery")({
+  loader: async ({ params }) => {
+    preloadImage("heroTrio", "100vw");
+    return { meta: (await messagesForParam(params.locale)).gallery.meta };
+  },
+  head: ({ params, loaderData }) =>
     seo({
-      title: "Gallery | Gloria May Byron",
-      description:
-        "Moments from performances, studio sessions and events: photographs of Gloria May Byron and the artwork for every release.",
+      locale: params.locale,
+      title: loaderData?.meta.title ?? "",
+      description: loaderData?.meta.description ?? "",
       path: "/gallery",
       image: "gallery",
     }),
-  loader: () => {
-    preloadImage("heroTrio", "100vw");
-  },
   component: Gallery,
 });
 
-const photoItems: LightboxItem[] = galleryPhotos.map((p) => ({ id: p.id, alt: p.alt }));
-const releaseItems: LightboxItem[] = releases.map((r) => ({
-  id: r.art,
-  alt: `Release artwork for ${r.title}`,
-  caption: r.title,
-}));
-
 function Gallery() {
+  const t = useT();
+  const g = t.gallery;
+  const photoItems: LightboxItem[] = galleryPhotoIds.map((id, i) => ({ id, alt: g.photos.alts[i] ?? "" }));
+  const releaseItems: LightboxItem[] = releases.map((r) => ({
+    id: r.art,
+    alt: fmt(g.releases.artworkAlt, { title: r.title }),
+    caption: r.title,
+  }));
   const [photo, setPhoto] = useState<number | null>(null);
   const [release, setRelease] = useState<number | null>(null);
   return (
     <>
       <PageHero
         image="heroTrio"
-        alt="Gloria May Byron singing with three other vocalists on a lawn under string lights"
+        alt={g.hero.alt}
         focus="50% 55%"
-        title="Photo gallery"
+        title={g.hero.title}
         titleWidth={9}
-        text="Moments from performances, studio sessions, and events."
+        text={g.hero.text}
       />
 
       <section className="section">
         <div className="wrap">
           <SectionHead
-            title="Photos"
-            sub="A photo gallery featuring Gloria May Byron across live performances and award moments."
+            title={g.photos.title}
+            sub={g.photos.sub}
             className="reveal"
           />
           <ul className="mosaic mt-12 columns-2 gap-[3px] md:columns-3 lg:columns-4">
-            {galleryPhotos.map((p, i) => (
-              <li key={p.id} className="tile mb-[3px] break-inside-avoid">
+            {galleryPhotoIds.map((id, i) => (
+              <li key={id} className="tile mb-[3px] break-inside-avoid">
                 <button
                   type="button"
                   onClick={() => setPhoto(i)}
-                  aria-label={`Open photo: ${p.alt}`}
+                  aria-label={fmt(g.photos.openPhoto, { alt: g.photos.alts[i] ?? "" })}
                   className="group relative block w-full overflow-hidden bg-bg-2"
                 >
                   <Img
-                    id={p.id}
-                    alt={p.alt}
+                    id={id}
+                    alt={g.photos.alts[i] ?? ""}
                     sizes="(min-width: 1024px) 24vw, (min-width: 768px) 32vw, 48vw"
                     className="tile-img h-auto w-full"
                   />
                   <span
-                    className="pointer-events-none absolute bottom-3 right-3 grid size-10 translate-y-2 place-items-center rounded-full bg-bg/80 text-ink opacity-0 backdrop-blur-sm transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
+                    className="pointer-events-none absolute bottom-3 end-3 grid size-10 translate-y-2 place-items-center rounded-full bg-bg/80 text-ink opacity-0 backdrop-blur-sm transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
                     aria-hidden
                   >
                     <MagnifyingGlassPlus size={20} />
@@ -84,15 +89,15 @@ function Gallery() {
 
       <section className="section bg-bg-2">
         <div className="wrap">
-          <SectionHead title="Releases" sub="Latest music releases" className="reveal" />
+          <SectionHead title={g.releases.title} sub={g.releases.sub} className="reveal" />
           <ul className="mt-12 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
             {releases.map((r, i) => (
               <li key={r.art} className="reveal">
                 <button
                   type="button"
                   onClick={() => setRelease(i)}
-                  aria-label={`Open release artwork: ${r.title}`}
-                  className="group block w-full text-left"
+                  aria-label={fmt(g.releases.openRelease, { title: r.title })}
+                  className="group block w-full text-start"
                 >
                   <span className="media block bg-surface">
                     <Img
@@ -114,17 +119,16 @@ function Gallery() {
 
       <section className="section">
         <div className="wrap reveal">
-          <h2 className="display-lg max-w-[14ch]">Interested in working together?</h2>
+          <h2 className="display-lg max-w-[14ch]">{g.cta.title}</h2>
           <p className="lead mt-5">
-            I'd love to hear about your vision and explore how we can bring it to life through
-            music.
+            {g.cta.text}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/contact" className="btn btn-primary">
-              Get in touch
+              {t.common.getInTouch}
             </Link>
             <Link to="/music" className="btn btn-ghost">
-              Music
+              {t.chrome.nav.music}
             </Link>
           </div>
         </div>

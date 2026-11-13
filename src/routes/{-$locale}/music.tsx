@@ -1,5 +1,6 @@
 import { ArrowUpRight, Play } from "@phosphor-icons/react";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/components/link";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
@@ -10,20 +11,23 @@ import { VideoCard, VideoPlayer } from "@/components/video-player";
 import { lyricalVideos, singles, spotifyEmbed, type Single } from "@/data/music";
 import { platforms } from "@/data/site";
 import { preloadImage } from "@/lib/preload";
+import { fmt, messagesForParam } from "@/i18n";
+import { useT } from "@/i18n/messages-context";
 import { seo } from "@/lib/seo";
 
-export const Route = createFileRoute("/music")({
-  head: () =>
+export const Route = createFileRoute("/{-$locale}/music")({
+  loader: async ({ params }) => {
+    preloadImage("heroCandle", "100vw");
+    return { meta: (await messagesForParam(params.locale)).music.meta };
+  },
+  head: ({ params, loaderData }) =>
     seo({
-      title: "Music | Gloria May Byron",
-      description:
-        "Listen to the latest releases and collaborations from Gloria May Byron: featured singles, lyrical videos and every major streaming platform.",
+      locale: params.locale,
+      title: loaderData?.meta.title ?? "",
+      description: loaderData?.meta.description ?? "",
       path: "/music",
       image: "music",
     }),
-  loader: () => {
-    preloadImage("heroCandle", "100vw");
-  },
   component: Music,
 });
 
@@ -36,11 +40,12 @@ const soundclick = platforms.find((p) => p.name === "SoundClick")!;
 const vevo = platforms.find((p) => p.name === "VEVO")!;
 
 function TrackLinks({ single }: { single: Single }) {
+  const c = useT().common;
   return (
     <div className="mt-4 flex flex-wrap gap-x-6">
       {single.tidal && (
         <a className="btn-text" href={single.tidal} target="_blank" rel="noreferrer noopener">
-          Listen on Tidal <ArrowUpRight size={18} aria-hidden />
+          {c.listenTidal} <ArrowUpRight size={18} aria-hidden />
         </a>
       )}
       <a
@@ -49,7 +54,7 @@ function TrackLinks({ single }: { single: Single }) {
         target="_blank"
         rel="noreferrer noopener"
       >
-        Watch on YouTube <ArrowUpRight size={18} aria-hidden />
+        {c.watchYoutube} <ArrowUpRight size={18} aria-hidden />
       </a>
     </div>
   );
@@ -95,7 +100,7 @@ function Singles() {
                   setActive(i);
                   setEngaged(true);
                 }}
-                className={`grid min-h-[72px] w-full grid-cols-[2.5rem_1fr_auto] items-center gap-3 px-2 py-4 text-left transition-colors hover:bg-surface ${on ? "bg-surface" : ""}`}
+                className={`grid min-h-[72px] w-full grid-cols-[2.5rem_1fr_auto] items-center gap-3 px-2 py-4 text-start transition-colors hover:bg-surface ${on ? "bg-surface" : ""}`}
               >
                 <span className="font-display text-sm font-bold text-muted">
                   {String(i + 1).padStart(2, "0")}
@@ -124,12 +129,13 @@ function Singles() {
 }
 
 function SpotifyPlayer() {
+  const m = useT().music.streaming;
   const [on, setOn] = useState(false);
   return (
     <div className="media min-h-[352px]">
       {on ? (
         <iframe
-          title="Spotify: This Is Gloria May Byron"
+          title={m.spotifyTitle}
           src={spotifyEmbed}
           className="h-[352px] w-full border-0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -139,10 +145,10 @@ function SpotifyPlayer() {
         <div className="grid h-[352px] place-content-center justify-items-center gap-5 bg-surface px-6 text-center">
           <Img id="platformSpotify" alt="Spotify" sizes="160px" className="h-9 w-auto" />
           <p className="font-display text-2xl font-extrabold tracking-[-0.02em]">
-            This Is Gloria May Byron
+            {m.spotifyHeading}
           </p>
           <button type="button" className="btn btn-primary" onClick={() => setOn(true)}>
-            Load the Spotify player
+            {m.loadSpotify}
           </button>
         </div>
       )}
@@ -151,23 +157,26 @@ function SpotifyPlayer() {
 }
 
 function Music() {
+  const t = useT();
+  const m = t.music;
+  const c = t.common;
   return (
     <>
       <PageHero
         image="heroCandle"
-        alt="Gloria May Byron in a long pale dress singing by candlelight beside a pianist"
+        alt={m.hero.alt}
         focus="62% 55%"
-        title="Music by Gloria May Byron"
+        title={m.hero.title}
         titleWidth={11}
-        text="Listen to my latest releases and collaborations."
+        text={m.hero.text}
       />
 
       {/* Featured singles */}
       <section className="section">
         <div className="wrap">
           <SectionHead
-            title="Featured singles"
-            sub="Selected tracks that define the sound."
+            title={m.featured.title}
+            sub={m.featured.sub}
             className="reveal"
           />
           <div className="mt-12 grid gap-x-12 gap-y-14 lg:grid-cols-[1.35fr_1fr] lg:items-end">
@@ -194,8 +203,8 @@ function Music() {
       <section className="section bg-bg-2">
         <div className="wrap">
           <SectionHead
-            title="Singles"
-            sub="Original releases, one story at a time."
+            title={m.singles.title}
+            sub={m.singles.sub}
             className="reveal"
           />
           <Singles />
@@ -207,10 +216,10 @@ function Music() {
         <div className="wrap grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div className="reveal">
             <SectionHead
-              title="Featured music"
-              sub="Explore music by Gloria May Byron across major streaming platforms."
+              title={m.streaming.title}
+              sub={m.streaming.sub}
             />
-            <p className="mt-10 font-display text-xl font-bold">Want to hear more music?</p>
+            <p className="mt-10 font-display text-xl font-bold">{m.streaming.more}</p>
             <div className="mt-4 flex flex-wrap gap-3">
               <a
                 className="btn btn-primary"
@@ -218,7 +227,7 @@ function Music() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                Listen on Deezer
+                {c.listenDeezer}
               </a>
               <a
                 className="btn btn-ghost"
@@ -226,7 +235,7 @@ function Music() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                Listen on Tidal
+                {c.listenTidal}
               </a>
               <a
                 className="btn btn-ghost"
@@ -234,7 +243,7 @@ function Music() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                Listen on SoundClick
+                {c.listenSoundclick}
               </a>
             </div>
           </div>
@@ -248,8 +257,8 @@ function Music() {
       <section className="section border-t border-line">
         <div className="wrap">
           <SectionHead
-            title="Lyrical videos"
-            sub="Where words and melody come together."
+            title={m.lyrical.title}
+            sub={m.lyrical.sub}
             className="reveal"
           />
           <div className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
@@ -264,7 +273,7 @@ function Music() {
           </div>
           <div className="reveal mt-14">
             <a className="btn btn-ghost" href={vevo.url} target="_blank" rel="noreferrer noopener">
-              More on VEVO & YouTube
+              {m.lyrical.more}
             </a>
           </div>
         </div>
@@ -274,13 +283,13 @@ function Music() {
       <section className="section bg-bg-2">
         <div className="wrap grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <SectionHead
-            title="Available on"
-            sub="Listen across all major streaming platforms."
+            title={m.available.title}
+            sub={m.available.sub}
             className="reveal"
           />
-          <ul className="reveal grid grid-cols-2 border-l border-t border-line sm:grid-cols-4">
+          <ul className="reveal grid grid-cols-2 border-s border-t border-line sm:grid-cols-4">
             {platforms.map((p) => (
-              <li key={p.name} className="border-b border-r border-line">
+              <li key={p.name} className="border-b border-e border-line">
                 <a
                   href={p.url}
                   target="_blank"
@@ -304,14 +313,14 @@ function Music() {
       {/* More */}
       <section className="section">
         <div className="wrap reveal">
-          <h2 className="display-lg max-w-[14ch]">Want more?</h2>
-          <p className="lead mt-4">Discover more music & visuals.</p>
+          <h2 className="display-lg max-w-[14ch]">{m.more.title}</h2>
+          <p className="lead mt-4">{m.more.text}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/gallery" className="btn btn-primary">
-              Gallery
+              {t.chrome.nav.gallery}
             </Link>
             <Link to="/contact" className="btn btn-ghost">
-              Get in touch
+              {c.getInTouch}
             </Link>
           </div>
         </div>

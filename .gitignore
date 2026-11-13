@@ -37,3 +37,6 @@ assets-source/
 # Vercel
 .vercel
 gloria-may-byron-site.zip
+
+# Generated social-media cards (about 50 MB): rebuild with `bun run share-cards`
+social-cards/

@@ -15,12 +15,12 @@ type Props = {
 export function BadgeStrip({ items, className }: Props) {
   return (
     <ul
-      className={`grid grid-cols-2 border-l border-t border-line sm:grid-cols-5 ${className ?? ""}`}
+      className={`grid grid-cols-2 border-s border-t border-line sm:grid-cols-5 ${className ?? ""}`}
     >
       {items.map((c) => (
         <li
           key={c.name}
-          className="grid content-start justify-items-center gap-4 border-b border-r border-line px-4 py-9 last:col-span-2 sm:last:col-span-1"
+          className="grid content-start justify-items-center gap-4 border-b border-e border-line px-4 py-9 last:col-span-2 sm:last:col-span-1"
         >
           <span className="block rounded-full bg-[#eef4f2] p-3 ring-4 ring-accent/25">
             <Img

@@ -4,23 +4,26 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Img } from "@/components/img";
 import { PageHero } from "@/components/page-hero";
 import { LinkedText } from "@/components/linked-text";
-import { GRA_URL, aboutMe, biography, journey, style } from "@/data/profile";
+import { GRA_URL } from "@/data/profile";
 import { platforms, site } from "@/data/site";
 import { preloadImage } from "@/lib/preload";
+import { fmt, messagesForParam } from "@/i18n";
+import { useT } from "@/i18n/messages-context";
 import { seo } from "@/lib/seo";
 
-export const Route = createFileRoute("/about")({
-  head: () =>
+export const Route = createFileRoute("/{-$locale}/about")({
+  loader: async ({ params }) => {
+    preloadImage("heroRoom", "100vw");
+    return { meta: (await messagesForParam(params.locale)).about.meta };
+  },
+  head: ({ params, loaderData }) =>
     seo({
-      title: "About | Gloria May Byron",
-      description:
-        "The voice, the vision, and the story behind the music. Gloria May Byron is an award-recognized independent artist, Ojibwe Indigenous of Garden River First Nation, based on the Atlantic side of Canada.",
+      locale: params.locale,
+      title: loaderData?.meta.title ?? "",
+      description: loaderData?.meta.description ?? "",
       path: "/about",
       image: "about",
     }),
-  loader: () => {
-    preloadImage("heroRoom", "100vw");
-  },
   component: About,
 });
 
@@ -29,19 +32,22 @@ const soundclick = platforms.find((p) => p.name === "SoundClick")!;
 const amazon = platforms.find((p) => p.name === "Amazon Music")!;
 
 function About() {
-  const [first, ...rest] = aboutMe.paragraphs;
+  const t = useT();
+  const a = t.about;
+  const c = t.common;
+  const [first, ...rest] = a.me.paragraphs;
   return (
     <>
       <PageHero
         image="heroRoom"
-        alt="Gloria May Byron standing in a softly lit room, wearing black"
+        alt={a.hero.alt}
         focus="70% 30%"
-        title={<>About {site.name}</>}
+        title={fmt(a.hero.title, { name: site.name })}
         titleWidth={12}
-        text="Singer, songwriter, performer."
+        text={a.hero.text}
       >
         <a className="btn btn-primary" href={tidal.url} target="_blank" rel="noreferrer noopener">
-          Listen on Tidal <ArrowUpRight size={20} aria-hidden />
+          {c.listenTidal} <ArrowUpRight size={20} aria-hidden />
         </a>
       </PageHero>
 
@@ -49,7 +55,7 @@ function About() {
       <section className="section border-t border-line">
         <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <h2 className="display-md reveal max-w-[15ch] lg:sticky lg:top-28 lg:self-start">
-            {aboutMe.heading}
+            {a.me.heading}
           </h2>
           <div className="reveal">
             <p className="font-display text-[clamp(1.35rem,2.4vw,2rem)] font-bold leading-[1.25] tracking-[-0.02em]">
@@ -65,12 +71,12 @@ function About() {
       </section>
 
       {/* Two portraits */}
-      <section aria-label="Portraits">
+      <section aria-label={a.portraitsLabel}>
         <div className="wrap grid grid-cols-5 items-start gap-3 md:gap-5">
           <div className="media reveal col-span-3">
             <Img
               id="portraitDune"
-              alt="Gloria May Byron in a cream sweater on a sandy dune at golden hour"
+              alt={a.portraitDuneAlt}
               sizes="(min-width: 768px) 56vw, 60vw"
               className="aspect-[4/5] w-full object-cover"
             />
@@ -78,7 +84,7 @@ function About() {
           <div className="media reveal col-span-2 mt-12 md:mt-24">
             <Img
               id="portraitTruck"
-              alt="Gloria May Byron leaning out of a teal vintage truck"
+              alt={a.portraitTruckAlt}
               sizes="(min-width: 768px) 36vw, 40vw"
               className="aspect-[3/4] w-full object-cover"
             />
@@ -89,12 +95,12 @@ function About() {
       {/* Biography */}
       <section className="section">
         <div className="wrap">
-          <h2 className="display-lg reveal max-w-[20ch]">{biography.heading}</h2>
-          <p className="lead reveal mt-4">{biography.sub}</p>
+          <h2 className="display-lg reveal max-w-[20ch]">{a.biography.heading}</h2>
+          <p className="lead reveal mt-4">{a.biography.sub}</p>
           <div className="reveal mt-10 grid gap-x-16 gap-y-6 text-muted md:grid-cols-2 [&>p]:max-w-[60ch]">
-            {biography.paragraphs.map((p) => (
+            {a.biography.paragraphs.map((p) => (
               <p key={p}>
-                <LinkedText text={p} phrase="Global Recognition Awards" href={GRA_URL} />
+                <LinkedText text={p} phrase={a.biography.awardsPhrase} href={GRA_URL} />
               </p>
             ))}
           </div>
@@ -104,10 +110,10 @@ function About() {
       {/* Journey */}
       <section className="section bg-bg-2">
         <div className="wrap">
-          <h2 className="display-lg reveal">{journey.heading}</h2>
-          <p className="lead reveal mt-4">{journey.sub}</p>
+          <h2 className="display-lg reveal">{a.journey.heading}</h2>
+          <p className="lead reveal mt-4">{a.journey.sub}</p>
           <ol className="reveal mt-14 border-t border-line">
-            {journey.steps.map((s, i) => (
+            {a.journey.steps.map((s, i) => (
               <li
                 key={s.stage}
                 className="grid gap-3 border-b border-line py-8 md:grid-cols-[0.5fr_1fr_1.2fr] md:gap-10"
@@ -122,8 +128,8 @@ function About() {
                   <p className="mt-1 text-muted">{s.stage}</p>
                 </div>
                 <p className="text-muted">
-                  {"link" in s ? (
-                    <LinkedText text={s.text} phrase={s.link.label} href={s.link.href} />
+                  {"linkPhrase" in s ? (
+                    <LinkedText text={s.text} phrase={s.linkPhrase} href={GRA_URL} />
                   ) : (
                     s.text
                   )}
@@ -140,17 +146,17 @@ function About() {
           <div className="media reveal">
             <Img
               id="portraitEyes"
-              alt="Close portrait of Gloria May Byron with her eyes closed"
+              alt={a.style.alt}
               sizes="(min-width: 1024px) 46vw, 92vw"
               className="aspect-[16/11] w-full object-cover"
               style={{ objectPosition: "50% 38%" }}
             />
           </div>
           <div className="reveal">
-            <h2 className="display-lg max-w-[12ch]">{style.heading}</h2>
-            <p className="lead mt-4">{style.sub}</p>
+            <h2 className="display-lg max-w-[12ch]">{a.style.heading}</h2>
+            <p className="lead mt-4">{a.style.sub}</p>
             <div className="prose-flow mt-8">
-              {style.paragraphs.map((p) => (
+              {a.style.paragraphs.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
@@ -161,10 +167,10 @@ function About() {
       {/* Motto and links */}
       <section className="border-t border-line py-[clamp(72px,12vw,160px)]">
         <div className="wrap">
-          <p className="display-xl reveal max-w-[12ch]">{site.motto}</p>
-          <h2 className="display-md reveal mt-16">Explore my work</h2>
+          <p className="display-xl reveal max-w-[12ch]">{t.brand.motto}</p>
+          <h2 className="display-md reveal mt-16">{a.explore.title}</h2>
           <p className="lead reveal mt-3">
-            A collection of songs shaped by emotion, honesty, and connection.
+            {a.explore.text}
           </p>
           <div className="reveal mt-8 flex flex-wrap gap-3">
             <a
@@ -173,7 +179,7 @@ function About() {
               target="_blank"
               rel="noreferrer noopener"
             >
-              Listen on SoundClick
+              {c.listenSoundclick}
             </a>
             <a
               className="btn btn-ghost"
@@ -181,7 +187,7 @@ function About() {
               target="_blank"
               rel="noreferrer noopener"
             >
-              Listen on Amazon Music
+              {c.listenAmazon}
             </a>
           </div>
         </div>

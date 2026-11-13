@@ -11,6 +11,7 @@ fs.mkdirSync(out, { recursive: true });
 const pages = {
   home: ["Hero_IMG_2.jpg", { position: "right" }],
   about: ["Hero_IMG_5.jpg", { position: "centre" }],
+  authenticity: ["WhatsApp-Image-2026-01-10-at-8.57.11-PM.jpeg", { position: "centre" }],
   music: ["Hero-Image-1.jpg", { position: "centre" }],
   announcements: ["423ab54a-c03d-4b1b-9feb-41a468e2905d.jpeg", { position: "north" }],
   gallery: ["Hero_IMG_4.jpg", { position: "centre" }],

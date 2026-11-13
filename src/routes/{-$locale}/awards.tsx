@@ -1,4 +1,5 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/components/link";
 import { useState, type CSSProperties } from "react";
 
 import { BadgeStrip } from "@/components/badge-strip";
@@ -6,119 +7,57 @@ import { Img } from "@/components/img";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { PageHero } from "@/components/page-hero";
 import { SectionHead } from "@/components/section-head";
-import { awards, certifications, notableHighlights } from "@/data/profile";
+import { awardBadges, awardWall, certificationBadges } from "@/data/profile";
 import { preloadImage } from "@/lib/preload";
+import { fmt, messagesForParam } from "@/i18n";
+import { useT } from "@/i18n/messages-context";
 import { seo } from "@/lib/seo";
 
-export const Route = createFileRoute("/awards")({
-  head: () =>
+export const Route = createFileRoute("/{-$locale}/awards")({
+  loader: async ({ params }) => {
+    preloadImage("heroBw", "100vw");
+    return { meta: (await messagesForParam(params.locale)).awards.meta };
+  },
+  head: ({ params, loaderData }) =>
     seo({
-      title: "Awards | Gloria May Byron",
-      description:
-        "Awards and achievements: Global Recognition Award, four Global Music Awards, two InterContinental Music Awards and a Who's Who in the World listing for Gloria May Byron.",
+      locale: params.locale,
+      title: loaderData?.meta.title ?? "",
+      description: loaderData?.meta.description ?? "",
       path: "/awards",
       image: "awards",
     }),
-  loader: () => {
-    preloadImage("heroBw", "100vw");
-  },
   component: Awards,
 });
 
-type Hung = {
-  id: LightboxItem["id"];
-  alt: string;
-  title: string;
-  note: string;
-  /** Where it hangs on the wall (columns and drop, from lg up; two columns below). */
-  place: string;
-  /** The tilt it hangs in before it settles as it scrolls into view. */
-  tilt: string;
-};
-
-const wall: Hung[] = [
-  {
-    id: "awardGraBanner",
-    alt: "Gloria May Byron with the Global Recognition Awards seal behind her",
-    title: "The Global Recognition Awards seal",
-    note: "Gloria May Byron, 2025",
-    place: "col-span-2 lg:col-span-7",
-    tilt: "-1.4deg",
-  },
-  {
-    id: "awardCrystal",
-    alt: "The Global Recognition Awards 2025 winner crystal trophy",
-    title: "The crystal trophy",
-    note: "Global Recognition Awards, 2025 winner",
-    place: "lg:col-span-5 lg:mt-28",
-    tilt: "1.6deg",
-  },
-  {
-    id: "awardGraCert",
-    alt: "Global Recognition Award 2025 certificate presented to Gloria May Byron",
-    title: "The certificate",
-    note: "Global Recognition Award, 2025",
-    place: "lg:col-span-4 lg:-mt-6",
-    tilt: "1.2deg",
-  },
-  {
-    id: "awardTrophy",
-    alt: "The InterContinental Music Awards trophy",
-    title: "The trophy",
-    note: "InterContinental Music Awards",
-    place: "lg:col-span-4 lg:mt-16",
-    tilt: "-1.8deg",
-  },
-  {
-    id: "awardIcCert",
-    alt: "InterContinental Music Awards certificate for the song Every Love Story, Best Song of North America in Pop, August 2025",
-    title: "Every Love Story",
-    note: "Best Song of North America in Pop, August 2025",
-    place: "lg:col-span-4",
-    tilt: "1.4deg",
-  },
-  {
-    id: "awardWhosWho",
-    alt: "Marquis Who's Who Publications Board certificate approving Gloria May Byron as a subject of biographical record in Who's Who in the World, 2026 to 2027",
-    title: "Who's Who in the World",
-    note: "Marquis Who's Who, 2026 to 2027",
-    place: "col-span-2 lg:col-span-7",
-    tilt: "-1.2deg",
-  },
-  {
-    id: "awardIcMosaic",
-    alt: "InterContinental Music Awards certificate for the song Beautiful Mosaic, Best Song of North America in Dance and Electronic, August 2026",
-    title: "Beautiful Mosaic",
-    note: "Best Song of North America in Dance/Electronic, August 2026",
-    place: "col-span-2 mx-auto w-4/5 sm:w-3/5 lg:col-span-5 lg:mt-24 lg:w-full",
-    tilt: "1.5deg",
-  },
-];
-
-const pictures: LightboxItem[] = wall.map(({ id, alt, title }) => ({ id, alt, caption: title }));
-
 function Awards() {
+  const t = useT();
+  const w = t.awards;
   const [open, setOpen] = useState<number | null>(null);
+  const wall = awardWall.map((p, i) => ({ ...p, ...w.wall.items[i]! }));
+  const pictures: LightboxItem[] = wall.map(({ id, alt, title }) => ({ id, alt, caption: title }));
   return (
     <>
       <PageHero
         image="heroBw"
-        alt="Black and white photograph of Gloria May Byron singing with her eyes closed at a microphone"
+        alt={w.hero.alt}
         focus="50% 30%"
-        title="Awards and achievements"
+        title={w.hero.title}
         titleWidth={11}
-        text="Recognition, milestones, and notable moments."
+        text={w.hero.text}
       />
 
       {/* Certifications */}
       <section className="section">
         <div className="wrap">
           <SectionHead
-            title="Certifications and global recognitions"
-            sub="Recognitions earned across platforms and borders."
+            title={w.certs.title}
+            sub={w.certs.sub}
             className="reveal"
           />
-          <BadgeStrip items={certifications} className="reveal mt-14" />
+          <BadgeStrip
+            items={w.certs.names.map((name, i) => ({ name, badge: certificationBadges[i]! }))}
+            className="reveal mt-14"
+          />
         </div>
       </section>
 
@@ -126,19 +65,19 @@ function Awards() {
       <section className="section bg-bg-2">
         <div className="wrap">
           <SectionHead
-            title="Awards"
-            sub="Gloria May Byron's work has received international recognition, reflecting both artistic excellence and listener impact on a global scale."
+            title={w.list.title}
+            sub={w.list.sub}
             className="reveal"
           />
           <ol className="mt-14 border-t border-line">
-            {awards.map((a, i) => (
+            {w.list.items.map((a, i) => (
               <li
                 key={a.title}
                 className="reveal grid items-center gap-6 border-b border-line py-8 sm:grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1.1fr] md:gap-10"
               >
                 <span className="block w-fit rounded-full bg-[#eef4f2] p-2">
                   <Img
-                    id={a.badge}
+                    id={awardBadges[i]!}
                     alt=""
                     sizes="96px"
                     className="size-16 object-contain md:size-20"
@@ -163,8 +102,8 @@ function Awards() {
       <section className="section wall-bg overflow-hidden">
         <div className="wrap">
           <SectionHead
-            title="The awards in pictures"
-            sub="Trophies, certificates and award moments."
+            title={w.wall.title}
+            sub={w.wall.sub}
             className="reveal"
           />
           <ul className="wall mt-16 grid grid-cols-2 items-start gap-x-5 gap-y-14 md:gap-x-8 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-16">
@@ -193,7 +132,7 @@ function Awards() {
                     <button
                       type="button"
                       onClick={() => setOpen(i)}
-                      aria-label={`Open: ${p.alt}`}
+                      aria-label={fmt(w.wall.open, { alt: p.alt })}
                       className="frame-mat group block w-full"
                     >
                       <div className="overflow-hidden">
@@ -228,12 +167,12 @@ function Awards() {
       <section className="section bg-bg-2">
         <div className="wrap grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <SectionHead
-            title="Notable highlights"
-            sub="Key moments that shaped the journey."
+            title={w.highlights.title}
+            sub={w.highlights.sub}
             className="reveal"
           />
           <ul className="reveal border-t border-line">
-            {notableHighlights.map((h, i) => (
+            {w.highlights.items.map((h, i) => (
               <li key={h} className="grid grid-cols-[3rem_1fr] gap-3 border-b border-line py-6">
                 <span className="font-display text-sm font-bold text-accent">
                   {String(i + 1).padStart(2, "0")}
@@ -249,14 +188,14 @@ function Awards() {
 
       <section className="section">
         <div className="wrap reveal">
-          <h2 className="display-lg max-w-[12ch]">Let's collaborate</h2>
-          <p className="lead mt-4">Bookings, performances, and media.</p>
+          <h2 className="display-lg max-w-[12ch]">{w.cta.title}</h2>
+          <p className="lead mt-4">{w.cta.text}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/contact" className="btn btn-primary">
-              Get in touch
+              {t.common.getInTouch}
             </Link>
             <Link to="/announcements" className="btn btn-ghost">
-              Announcements
+              {t.chrome.nav.announcements}
             </Link>
           </div>
         </div>
