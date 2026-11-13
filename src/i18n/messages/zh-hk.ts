@@ -217,6 +217,13 @@ const zhHk: PartialMessages = {
         "無論係簡約嘅原音作品，定係製作完整嘅流行歌，Gloria 嘅重心始終冇變：真誠、情感衝擊同有意義嘅連繫。",
       ],
     },
+    inspiration: {
+      heading: "歌曲的靈感來源",
+      paragraphs: [
+        "Gloria 係耶和華見證人，佢嘅信仰正係好多創作嘅起點。佢抽時間自己研讀聖經，視之為上帝所默示嘅話語，並將喺其中搵到嘅真理直接寫入自己嘅歌曲。",
+        "佢花好多時間同朋友同鄰居分享呢啲真理。佢希望透過音樂，將同一個充滿盼望嘅信息帶畀遠近各地嘅人。",
+      ],
+    },
     explore: {
       title: "探索我嘅作品",
       text: "一系列由情感、誠實同連繫塑造出嚟嘅歌曲。",
@@ -512,6 +519,7 @@ const zhHk: PartialMessages = {
         certificate: "證書",
         platforms: "書面確認",
         coverArt: "關於封面圖像",
+        screening: "歌曲點樣被檢測",
         tour: "關於現場巡演",
       },
     },
@@ -553,6 +561,12 @@ const zhHk: PartialMessages = {
       signoffAlt:
         "同一封電郵嘅結尾幾行：Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "同一則訊息嘅結尾幾行。",
+    },
+    screening: {
+      heading: "歌曲係點樣被檢測嘅",
+      lead: "音響工程師話畀 Gloria 知，串流平台唔會安排人逐首聽每一首歌。好多平台用第三方軟件（例如 ACRCloud）自動檢測發行嘅作品。",
+      p1: "呢類軟件並唔完美。工程師話畀 Gloria 知，佢有可能出錯，甚至標記過喺 AI 出現好耐之前創作嘅舊歌，包括知名嘅金曲。因為檢測係自動進行、唔係由人做，錯誤可能令一首由人創作嘅歌曲被加上標記。呢個可能係另一個原因，令一啲之前認定 Gloria 歌曲係原創嘅平台，而家開始加上標記。",
+      p2: "檢測結果並唔能夠說明一首歌係點樣製作。呢頁嘅錄音、登記證書同書面確認先可以。",
     },
     mixea: {
       heading: "關於母帶處理",

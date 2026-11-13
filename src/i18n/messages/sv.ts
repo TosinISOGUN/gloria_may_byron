@@ -217,6 +217,13 @@ const sv: PartialMessages = {
         "Vare sig det är ett avskalat akustiskt stycke eller ett fullt producerat poplåt är Glorias fokus detsamma: äkthet, känslomässig påverkan och meningsfull kontakt.",
       ],
     },
+    inspiration: {
+      heading: "Varifrån sångerna kommer",
+      paragraphs: [
+        "Gloria är ett av Jehovas vittnen, och hennes tro är en stor del av var hennes låtskrivande börjar. Hon tar sig tid att studera Bibeln på egen hand, som hon anser vara Guds inspirerade ord, och hon har tagit sanningar hon hittat där direkt in i sina sånger.",
+        "Hon lägger mycket tid på att dela dessa sanningar med vänner och grannar. Genom sin musik hoppas hon kunna föra ut samma hoppfulla budskap till människor nära och fjärran.",
+      ],
+    },
     explore: {
       title: "Utforska mitt arbete",
       text: "En samling sånger formade av känsla, ärlighet och samhörighet.",
@@ -512,6 +519,7 @@ const sv: PartialMessages = {
         certificate: "Certifikatet",
         platforms: "Skriftliga bekräftelser",
         coverArt: "Om omslagsbilderna",
+        screening: "Så granskas låtar",
         tour: "Om liveturnéer",
       },
     },
@@ -553,6 +561,12 @@ const sv: PartialMessages = {
       signoffAlt:
         "Avslutande rader i samma mejl: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "De avslutande raderna i samma meddelande.",
+    },
+    screening: {
+      heading: "Så granskas låtar på plattformarna",
+      lead: "Ljudtekniker har berättat för Gloria att streamingplattformar inte låter en människa lyssna på varje låt. Många använder programvara från tredje part, till exempel ACRCloud, för att granska utgivningar automatiskt.",
+      p1: "Sådan programvara är inte felfri. Teknikerna sa till Gloria att den kan göra misstag, och att den till och med har märkt äldre låtar som skrevs långt innan AI fanns, bland annat välkända hitlåtar. Eftersom granskningen är automatisk och inte görs av en människa kan ett misstag sätta en markering på en låt som människor har gjort. Det kan vara ytterligare en anledning till att vissa plattformar som tidigare godkände Glorias låtar som originella har börjat märka dem.",
+      p2: "Ett granskningsresultat säger ingenting om hur en låt har gjorts. Det gör inspelningarna, registreringscertifikatet och de skriftliga bekräftelserna på den här sidan.",
     },
     mixea: {
       heading: "Om mastring",

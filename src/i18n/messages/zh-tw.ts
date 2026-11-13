@@ -217,6 +217,13 @@ const zhTw: PartialMessages = {
         "不論是簡約的原音作品，還是製作完整的流行歌曲，葛洛莉亞的重心始終不變：真誠、情感衝擊與有意義的連結。",
       ],
     },
+    inspiration: {
+      heading: "歌曲的靈感來源",
+      paragraphs: [
+        "Gloria 是耶和華見證人，她的信仰正是許多創作的起點。她花時間親自研讀聖經，視之為上帝所默示的話語，並把在其中找到的真理直接寫進自己的歌曲裡。",
+        "她花許多時間與朋友和鄰居分享這些真理。她希望透過音樂，把同樣充滿盼望的信息傳給遠近各地的人。",
+      ],
+    },
     explore: {
       title: "探索我的作品",
       text: "一系列由情感、誠實與連結所塑造的歌曲。",
@@ -512,6 +519,7 @@ const zhTw: PartialMessages = {
         certificate: "證書",
         platforms: "書面證明",
         coverArt: "關於封面圖像",
+        screening: "歌曲如何被檢測",
         tour: "關於現場巡演",
       },
     },
@@ -553,6 +561,12 @@ const zhTw: PartialMessages = {
       signoffAlt:
         "同一封電子郵件的結尾幾行：Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "同一則訊息的結尾幾行。",
+    },
+    screening: {
+      heading: "歌曲是如何被檢測的",
+      lead: "音響工程師告訴 Gloria，串流平台並不會派人逐首聆聽每一首歌。許多平台使用第三方軟體（例如 ACRCloud）自動檢測發行的作品。",
+      p1: "這類軟體並不完美。工程師告訴 Gloria，它可能出錯，甚至曾標記在 AI 出現很久以前創作的老歌，包括知名的暢銷金曲。由於檢測是自動進行、並非由人執行，錯誤可能讓一首由人創作的歌曲被加上標記。這也許是另一個原因，讓一些過去認定 Gloria 的歌曲為原創的平台，現在開始加上標記。",
+      p2: "檢測結果並不能說明一首歌是如何製作的。本頁的錄音、登記證書和書面確認才能說明。",
     },
     mixea: {
       heading: "關於母帶處理",

@@ -109,6 +109,7 @@ function Authenticity() {
     ["#certificate", t.answer.jumps.certificate],
     ["#studio", t.answer.jumps.studio],
     ["#platforms", t.answer.jumps.platforms],
+    ["#screening", t.answer.jumps.screening],
     ["#cover-art", t.answer.jumps.coverArt],
     ["#tour", t.answer.jumps.tour],
   ];
@@ -230,6 +231,22 @@ function Authenticity() {
                   {signoffSender}
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How platforms screen songs */}
+      <section id="screening" className="section border-t border-line scroll-mt-24">
+        <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <h2 className="display-md reveal max-w-[14ch] lg:sticky lg:top-28 lg:self-start">
+            {t.screening.heading}
+          </h2>
+          <div className="reveal min-w-0">
+            <p className="lead">{t.screening.lead}</p>
+            <div className="prose-flow mt-8">
+              <p>{t.screening.p1}</p>
+              <p>{t.screening.p2}</p>
             </div>
           </div>
         </div>

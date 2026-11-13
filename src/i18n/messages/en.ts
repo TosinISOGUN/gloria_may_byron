@@ -68,6 +68,7 @@ export const en = {
         certificate: "The certificate",
         platforms: "Written confirmations",
         coverArt: "About cover art",
+        screening: "How songs are screened",
         tour: "About live tours",
       },
     },
@@ -108,6 +109,12 @@ export const en = {
       signoffAlt:
         "Closing lines of the same email: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "The closing lines of the same message.",
+    },
+    screening: {
+      heading: "How songs get screened",
+      lead: "Gloria has been told by sound engineers that streaming platforms do not have a person listen to every song. Many use third-party software, such as ACRCloud, to screen releases automatically.",
+      p1: "That kind of software is not perfect. The engineers told Gloria that it can make mistakes, and that it has even marked older songs written long before AI existed, including well-known hit songs. Because the check is automatic and not done by a person, a mistake can put a marker on a song that people made. This may be another reason why some platforms that once passed Gloria's songs as original have started to mark them.",
+      p2: "A screening result does not describe how a song was made. The recordings, the registration certificate and the written confirmations on this page do.",
     },
     mixea: {
       heading: "About mastering",
@@ -323,6 +330,13 @@ export const en = {
         "Gloria May Byron's sound is best described as emotional pop with depth and purpose. Her music blends elements of pop, soft pop, and Christian pop, carried by expressive vocals, layered harmonies, and lyrics that speak directly to the listener.",
         "Influenced by a lifelong immersion in music and storytelling, Gloria's songs focus on themes of hope, resilience, faith, love, and personal growth. Her ability to write from lived experience gives her music an intimate quality, one that feels both personal and universally relatable.",
         "Whether performing a stripped-down acoustic piece or a fully produced pop track, Gloria's focus remains the same: authenticity, emotional impact, and meaningful connection.",
+      ],
+    },
+    inspiration: {
+      heading: "Where the songs come from",
+      paragraphs: [
+        "Gloria is one of Jehovah's Witnesses, and her faith is where much of her songwriting begins. She makes time for personal research of the Bible, which she holds to be God's inspired word, and she has brought truths she found there directly into her songs.",
+        "She spends much of her time sharing these truths with friends and neighbors. Through her music she hopes to carry the same message of hope to people far and wide.",
       ],
     },
     explore: {

@@ -217,6 +217,13 @@ const vi: PartialMessages = {
         "Dù là bản acoustic giản dị hay ca khúc pop được sản xuất đầy đủ, trọng tâm của Gloria vẫn như nhau: sự chân thật, tác động cảm xúc và kết nối có ý nghĩa.",
       ],
     },
+    inspiration: {
+      heading: "Nguồn cảm hứng của các bài hát",
+      paragraphs: [
+        "Gloria là một Nhân Chứng Giê-hô-va, và đức tin là nơi nhiều sáng tác của cô bắt đầu. Cô dành thời gian tự mình nghiên cứu Kinh Thánh, điều cô tin là lời được Đức Chúa Trời soi dẫn, và đã đưa những lẽ thật tìm được ở đó thẳng vào các bài hát của mình.",
+        "Cô dành nhiều thời gian chia sẻ những lẽ thật này với bạn bè và hàng xóm. Qua âm nhạc, cô hy vọng mang cùng một thông điệp hy vọng đến với mọi người ở gần và xa.",
+      ],
+    },
     explore: {
       title: "Khám phá tác phẩm của tôi",
       text: "Một tuyển tập những bài hát được hình thành từ cảm xúc, sự chân thành và kết nối.",
@@ -512,6 +519,7 @@ const vi: PartialMessages = {
         certificate: "Chứng nhận",
         platforms: "Xác nhận bằng văn bản",
         coverArt: "Về ảnh bìa",
+        screening: "Cách bài hát được kiểm tra",
         tour: "Về lưu diễn trực tiếp",
       },
     },
@@ -553,6 +561,12 @@ const vi: PartialMessages = {
       signoffAlt:
         "Những dòng kết của cùng email: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "Những dòng kết của cùng bức thư.",
+    },
+    screening: {
+      heading: "Các nền tảng kiểm tra bài hát như thế nào",
+      lead: "Các kỹ sư âm thanh đã nói với Gloria rằng các nền tảng phát nhạc trực tuyến không có người nghe từng bài hát. Nhiều nền tảng dùng phần mềm của bên thứ ba, chẳng hạn ACRCloud, để tự động kiểm tra các bản phát hành.",
+      p1: "Loại phần mềm này không hoàn hảo. Các kỹ sư cho Gloria biết nó có thể mắc lỗi, thậm chí từng gắn dấu cho những bài hát cũ được viết từ rất lâu trước khi có AI, kể cả những bài hát nổi tiếng. Vì việc kiểm tra là tự động chứ không do con người thực hiện, một sai sót có thể gắn dấu lên bài hát do con người làm ra. Đây có thể là một lý do khác khiến một số nền tảng trước đây công nhận các bài hát của Gloria là nguyên bản nay bắt đầu gắn dấu.",
+      p2: "Kết quả kiểm tra không cho biết bài hát được làm ra như thế nào. Các bản ghi, giấy chứng nhận đăng ký và các xác nhận bằng văn bản trên trang này thì có.",
     },
     mixea: {
       heading: "Về mastering",

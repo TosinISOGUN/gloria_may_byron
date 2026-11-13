@@ -217,6 +217,13 @@ const it: PartialMessages = {
         "Che si tratti di un brano acustico essenziale o di un pezzo pop completamente prodotto, l'obiettivo di Gloria resta lo stesso: autenticità, impatto emotivo e legame significativo.",
       ],
     },
+    inspiration: {
+      heading: "Da dove nascono le canzoni",
+      paragraphs: [
+        "Gloria è una testimone di Geova, e la sua fede è il punto di partenza di buona parte delle sue canzoni. Dedica tempo alla ricerca personale nella Bibbia, che considera la parola ispirata di Dio, e ha portato direttamente nelle sue canzoni le verità che vi ha trovato.",
+        "Passa molto tempo a condividere queste verità con amici e vicini. Con la sua musica spera di portare lo stesso messaggio di speranza a persone vicine e lontane.",
+      ],
+    },
     explore: {
       title: "Esplora il mio lavoro",
       text: "Una raccolta di canzoni plasmate da emozione, sincerità e legame.",
@@ -512,6 +519,7 @@ const it: PartialMessages = {
         certificate: "Il certificato",
         platforms: "Conferme scritte",
         coverArt: "Sulle copertine",
+        screening: "Come vengono controllate le canzoni",
         tour: "Sui tour dal vivo",
       },
     },
@@ -553,6 +561,12 @@ const it: PartialMessages = {
       signoffAlt:
         "Righe finali della stessa e-mail: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "Le righe finali dello stesso messaggio.",
+    },
+    screening: {
+      heading: "Come le piattaforme controllano le canzoni",
+      lead: "Alcuni tecnici del suono hanno detto a Gloria che le piattaforme di streaming non fanno ascoltare ogni canzone a una persona. Molte usano software di terze parti, come ACRCloud, per controllare le uscite in modo automatico.",
+      p1: "Questo tipo di software non è perfetto. I tecnici hanno detto a Gloria che può sbagliare e che ha perfino segnalato canzoni più vecchie, scritte molto prima che esistesse l'IA, compresi noti successi. Poiché il controllo è automatico e non lo fa una persona, un errore può mettere un'etichetta su una canzone fatta da persone. Potrebbe essere un altro motivo per cui alcune piattaforme che in passato davano le canzoni di Gloria per originali hanno iniziato a segnalarle.",
+      p2: "L'esito di un controllo non descrive come è stata fatta una canzone. Lo descrivono le registrazioni, il certificato di registrazione e le conferme scritte in questa pagina.",
     },
     mixea: {
       heading: "Sul mastering",

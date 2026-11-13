@@ -217,6 +217,13 @@ const no: PartialMessages = {
         "Enten det er et nedstrippet akustisk stykke eller en fullt produsert poplåt, er Glorias fokus det samme: ekthet, følelsesmessig påvirkning og meningsfull kontakt.",
       ],
     },
+    inspiration: {
+      heading: "Hvor sangene kommer fra",
+      paragraphs: [
+        "Gloria er et av Jehovas vitner, og troen er der mye av låtskrivingen hennes begynner. Hun tar seg tid til å studere Bibelen på egen hånd, som hun regner som Guds inspirerte ord, og hun har tatt sannheter hun fant der rett inn i sangene sine.",
+        "Hun bruker mye av tiden sin på å dele disse sannhetene med venner og naboer. Gjennom musikken håper hun å bringe det samme budskapet om håp til folk nær og fjern.",
+      ],
+    },
     explore: {
       title: "Utforsk arbeidet mitt",
       text: "En samling sanger formet av følelse, ærlighet og tilknytning.",
@@ -512,6 +519,7 @@ const no: PartialMessages = {
         certificate: "Sertifikatet",
         platforms: "Skriftlige bekreftelser",
         coverArt: "Om omslagsbildene",
+        screening: "Slik kontrolleres sanger",
         tour: "Om live-turneer",
       },
     },
@@ -553,6 +561,12 @@ const no: PartialMessages = {
       signoffAlt:
         "Avslutningslinjene i samme e-post: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "Avslutningslinjene i samme melding.",
+    },
+    screening: {
+      heading: "Slik kontrolleres sanger på plattformene",
+      lead: "Lydteknikere har fortalt Gloria at strømmetjenester ikke lar et menneske lytte til hver eneste sang. Mange bruker programvare fra tredjeparter, for eksempel ACRCloud, til å kontrollere utgivelser automatisk.",
+      p1: "Slik programvare er ikke feilfri. Teknikerne sa til Gloria at den kan gjøre feil, og at den til og med har merket eldre sanger som ble skrevet lenge før KI fantes, blant annet kjente hitlåter. Fordi kontrollen er automatisk og ikke gjøres av et menneske, kan en feil sette en merkelapp på en sang som mennesker har laget. Det kan være en ny grunn til at noen plattformer som tidligere godkjente Glorias sanger som originale, har begynt å merke dem.",
+      p2: "Et kontrollresultat sier ikke noe om hvordan en sang er laget. Det gjør opptakene, registreringsbeviset og de skriftlige bekreftelsene på denne siden.",
     },
     mixea: {
       heading: "Om mastring",

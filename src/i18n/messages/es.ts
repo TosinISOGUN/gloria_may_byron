@@ -217,6 +217,13 @@ const es: PartialMessages = {
         "Ya sea una pieza acústica sencilla o una canción pop con producción completa, el enfoque de Gloria es el mismo: autenticidad, impacto emocional y conexión significativa.",
       ],
     },
+    inspiration: {
+      heading: "De dónde nacen las canciones",
+      paragraphs: [
+        "Gloria es una de los testigos de Jehová, y su fe es el punto de partida de gran parte de sus canciones. Dedica tiempo a investigar la Biblia por su cuenta, que considera la palabra inspirada de Dios, y ha llevado directamente a sus canciones las verdades que encontró en ella.",
+        "Dedica buena parte de su tiempo a compartir esas verdades con amigos y vecinos. A través de su música espera llevar el mismo mensaje de esperanza a personas de cerca y de lejos.",
+      ],
+    },
     explore: {
       title: "Explora mi trabajo",
       text: "Una colección de canciones moldeadas por la emoción, la honestidad y la conexión.",
@@ -512,6 +519,7 @@ const es: PartialMessages = {
         certificate: "El certificado",
         platforms: "Confirmaciones por escrito",
         coverArt: "Sobre las portadas",
+        screening: "Cómo se revisan las canciones",
         tour: "Sobre las giras en vivo",
       },
     },
@@ -553,6 +561,12 @@ const es: PartialMessages = {
       signoffAlt:
         "Líneas finales del mismo correo: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "Las líneas finales del mismo mensaje.",
+    },
+    screening: {
+      heading: "Cómo se revisan las canciones en las plataformas",
+      lead: "Unos ingenieros de sonido le han dicho a Gloria que las plataformas de streaming no ponen a una persona a escuchar cada canción. Muchas usan programas de terceros, como ACRCloud, para revisar los lanzamientos de forma automática.",
+      p1: "Ese tipo de programa no es perfecto. Los ingenieros le dijeron a Gloria que puede cometer errores y que incluso ha marcado canciones antiguas, escritas mucho antes de que existiera la IA, entre ellas conocidos éxitos. Como la revisión es automática y no la hace una persona, un error puede poner una marca en una canción hecha por personas. Puede ser otra razón por la que algunas plataformas que antes daban por originales las canciones de Gloria han empezado a marcarlas.",
+      p2: "El resultado de una revisión no describe cómo se hizo una canción. Lo describen las grabaciones, el certificado de registro y las confirmaciones escritas de esta página.",
     },
     mixea: {
       heading: "Sobre la masterización",
