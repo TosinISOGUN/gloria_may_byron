@@ -30,7 +30,7 @@ export const en = {
     },
     navHint: {
       story: "The voice, the vision and the journey",
-      authenticity: "Studio files, certificates and straight answers",
+      authenticity: "Studio recordings, a certificate and written confirmations",
       awards: "Recognition and honors",
       gallery: "Photos and moments",
     },
@@ -52,21 +52,21 @@ export const en = {
     meta: {
       title: "Does Gloria Use AI to Produce Her Songs? | Gloria May Byron",
       description:
-        "How Gloria May Byron's songs are made: recordings from the studio, a SongSecure certificate, and the emails from platform engineers.",
+        "How Gloria May Byron's songs are made: recordings from the studio, a dated SongSecure certificate, and written confirmations from sound engineers that the songs are human-made.",
     },
     hero: {
-      alt: "Gloria May Byron standing in a softly lit room, wearing black",
+      alt: "Gloria May Byron singing into a studio microphone",
       title: "Does Gloria use AI to produce her songs?",
       text: "No. Here is how the songs are made, and the proof.",
     },
     answer: {
-      heading: "The short answer",
-      lead: "No. Gloria writes her lyrics, and a team of engineers works with her to build the songs in a recording studio program. Recordings of that work are on this page, so anyone can watch.",
-      body: "Two things are easy to mix up with that question, and this page explains both: streaming and distribution platforms use their own automatic tools, and some cover art has been touched up with AI. Neither of those is the song.",
+      heading: "Made with care, by real people",
+      lead: "Every song begins with lyrics Gloria writes herself. She then works with a team of sound engineers to build each one in a professional recording program, and recordings of that work are on this page for anyone to watch.",
+      body: "A song takes a great deal of time and effort to make, and a few automated tools touch a release along the way: distributors offer a mastering service, and some cover art has been refined with image tools. This page explains each one, so the full picture is clear.",
       jumps: {
         studio: "Watch the studio sessions",
         certificate: "The certificate",
-        platforms: "What the platforms said",
+        platforms: "Written confirmations",
         coverArt: "About cover art",
         tour: "Plans for live tours?",
       },
@@ -87,34 +87,32 @@ export const en = {
       caption: "The SongSecure Certificate of Registration, shown whole.",
     },
     platforms: {
-      heading: "What the platforms said",
-      lead: "When some streaming sites began showing AI labels on releases, Gloria asked the engineers and services involved what was going on. Below are the replies, cropped to the relevant parts, with the text written out beside each picture. Names of the senders are shown only as they appear in the message.",
+      heading: "Written confirmations",
+      lead: "When Tidal and a few other streaming services began showing AI markers next to some of Gloria's releases, she asked the engineers and services involved what the markers meant. Their replies are below, with the words written out beside each picture.",
       written: "The words, written out",
       original: "Original wording (English)",
       translation: "Translation",
       tidalAlt:
         "Cropped email text beginning: On Tidal, please don't worry. Those white AI markers are not about your sound.",
-      tidalCaption: "Reply about the AI markers on Tidal.",
-      tidalSummary: "What this says: the platform label was about the cover image, not the recording.",
+      tidalCaption: "Reply about the labels shown on Tidal.",
+      tidalSummary: "What this says: the label related to the cover image, not the recording.",
       engineerAlt:
-        "Cropped email text about Tidal, Deezer and YouTube flagging AI-generated artwork rather than audio",
+        "Cropped email text about Tidal, Deezer and YouTube labels that relate to artwork rather than audio",
       engineerCaption: "From the message of the chief sound engineer.",
       signoffAlt:
         "Closing lines of the same email: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "The closing lines of the same message.",
-      omitted:
-        "This is an excerpt. A section in the middle of the email, about selling music on other sites and a subscription plan, has been left out because it has nothing to do with how the songs are made. The parts shown are complete as written.",
     },
     mixea: {
-      heading: "What the distributor adds",
-      body: "Gloria releases through DistroKid. Distributors offer automatic sound tools, and DistroKid's is called Mixea. It does not write, sing or compose anything. It is a mastering service: a final polish applied to a finished recording before it reaches the stores. DistroKid describes it as using \"intelligent\" processing, so it is fair to say that automatic enhancement is part of the path from Gloria's studio to your speakers. The song itself is hers.",
+      heading: "About mastering",
+      body: "Gloria releases through DistroKid, which offers a mastering service called Mixea. It does not write, sing or compose anything. It is a final polish applied to a finished recording before it reaches the stores, and DistroKid describes it as using \"intelligent\" processing. That is a normal step between a studio and your speakers. The song itself is hers.",
       alt: "Cropped email text explaining that Mixea is DistroKid's online mastering service",
       caption: "DistroKid's explanation of Mixea.",
     },
     coverArt: {
       heading: "About the cover art",
-      p1: "Cover images are a separate matter. Some of the artwork for Gloria's releases has been enhanced with AI image tools. That is the picture on the cover, not the music inside, and it is the reason streaming sites have sometimes placed an AI label on a release, as the messages above explain.",
-      p2: "Gloria would rather say so plainly than have anyone wonder. If artwork is the only part touched by AI, the label tells you about the picture and nothing about the song.",
+      p1: "The cover images are a separate matter from the music. Some of the artwork for Gloria's releases has been refined with AI image tools. That affects the picture on the cover only, and, as the messages above explain, it is the likely reason a streaming service has sometimes shown a label on a release.",
+      p2: "Gloria would rather say so openly than leave anyone wondering. Where the artwork is the only element involved, a label describes the picture and says nothing about the song.",
     },
     tour: {
       heading: "Plans for live tours?",

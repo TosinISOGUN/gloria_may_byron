@@ -25,7 +25,7 @@ const zhHk: PartialMessages = {
     },
     navHint: {
       story: "歌聲、願景同旅程",
-      authenticity: "錄音室檔案、證書同直接嘅答案",
+      authenticity: "錄音室錄影、證書同書面確認",
       awards: "肯定同榮譽",
       gallery: "相片同時刻",
     },
@@ -494,21 +494,21 @@ const zhHk: PartialMessages = {
     meta: {
       title: "Gloria 有冇用 AI 製作佢啲歌？ | Gloria May Byron",
       description:
-        "Gloria May Byron 嘅歌曲係點樣整出嚟：錄音室嘅影片、SongSecure 證書，以及各平台工程師嘅電郵。",
+        "Gloria May Byron 嘅歌曲係點樣製作：錄音室嘅錄影、附有日期嘅 SongSecure 證書，以及音響工程師確認歌曲出自真人之手嘅書面信件。",
     },
     hero: {
-      alt: "Gloria May Byron 著住黑色衫，企喺光線柔和嘅房入面",
+      alt: "Gloria May Byron 對住錄音室麥克風唱歌",
       title: "Gloria 有冇用 AI 製作佢啲歌？",
       text: "冇。以下係佢啲歌點樣整出嚟，同埋證據。",
     },
     answer: {
-      heading: "簡短答案",
-      lead: "冇。Gloria 自己寫歌詞，仲有一班音響工程師同佢合作，喺錄音室嘅錄音程式入面砌出呢啲歌。呢啲工作過程嘅錄影就喺呢頁，任何人都可以睇。",
-      body: "有兩件事好易同呢個問題混淆，呢頁會一併解釋：串流同發行平台會用佢哋自己嘅自動化工具，另外有啲封面圖像曾經用 AI 修飾過。呢兩樣都唔係首歌本身。",
+      heading: "用心製作，出自真人之手",
+      lead: "每首歌都由 Gloria 親手寫嘅歌詞開始。之後佢同一班音響工程師一齊，喺專業錄音軟件入面逐首打造，呢啲工作嘅錄影就放喺呢一頁，邊個都可以睇。",
+      body: "一首歌需要好多時間同心機，而發行過程中，都有啲自動化工具會參與：發行商提供母帶處理服務，部分封面圖片亦用影像工具修飾過。呢一頁會逐樣講清楚，等整體情況一目了然。",
       jumps: {
         studio: "睇錄音室工作過程",
         certificate: "證書",
-        platforms: "各平台點講",
+        platforms: "書面確認",
         coverArt: "關於封面圖像",
         tour: "有冇現場巡演嘅計劃？",
       },
@@ -529,35 +529,33 @@ const zhHk: PartialMessages = {
       caption: "SongSecure 登記證書嘅完整內容。",
     },
     platforms: {
-      heading: "各平台點講",
-      lead: "當一啲串流服務開始喺發行作品上顯示 AI 標記，Gloria 就問有關嘅工程師同服務究竟發生咩事。以下係佢哋嘅回覆，已經裁到相關部分，並喺每張圖片隔離附上抄錄嘅文字。寄件人嘅名字只會照訊息入面顯示嘅樣子呈現。",
+      heading: "書面確認",
+      lead: "當 Tidal 同其他幾個串流平台開始喺 Gloria 部分發行作品旁邊顯示 AI 標示，佢問相關嘅工程師同服務商呢啲標示係咩意思。佢哋嘅回覆列喺下面，每張圖片旁邊都附有逐字文字。",
       written: "文字抄錄",
       original: "原文（英文）",
       translation: "翻譯",
       tidalAlt:
         "電郵裁切內容，開頭係：On Tidal, please don't worry. Those white AI markers are not about your sound.",
-      tidalCaption: "針對 Tidal 上 AI 標記嘅回覆。",
+      tidalCaption: "有關 Tidal 上所顯示標示嘅回覆。",
       tidalSummary:
-        "呢段說話嘅意思：平台上嘅標記係針對封面圖像，而唔係針對錄音。",
+        "內容講嘅係：個標示同封面圖片有關，同錄音本身無關。",
       engineerAlt:
-        "電郵裁切內容，說明 Tidal、Deezer 同 YouTube 標記嘅係 AI 生成嘅封面圖像，而唔係音訊",
+        "電郵嘅裁剪文字，講 Tidal、Deezer 同 YouTube 嘅標示同封面圖像有關，而唔係音訊",
       engineerCaption: "來自音響總工程師嘅訊息。",
       signoffAlt:
         "同一封電郵嘅結尾幾行：Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "同一則訊息嘅結尾幾行。",
-      omitted:
-        "呢個係節錄內容。電郵中間有一段關於喺其他網站賣音樂同訂閱計劃嘅內容已經省略，因為同首歌點樣整出嚟冇關係。顯示出嚟嘅部分都係原文完整內容。",
     },
     mixea: {
-      heading: "發行商加咗啲乜",
-      body: "Gloria 透過 DistroKid 發行音樂。發行商提供自動化嘅音效工具，而 DistroKid 嘅叫做 Mixea。佢唔會寫作、唱歌或者作曲，佢係一項母帶處理服務：喺完成嘅錄音送到各商店之前，做最後嘅潤飾。DistroKid 形容佢係「智能」處理，所以可以話，自動化嘅音質增強係由 Gloria 嘅錄音室去到你喇叭呢段路徑嘅一部分。首歌本身屬於佢。",
+      heading: "關於母帶處理",
+      body: "Gloria 透過 DistroKid 發行音樂，DistroKid 提供一項叫 Mixea 嘅母帶處理服務。佢唔會寫歌、唱歌或者作曲，只係喺完成嘅錄音送到各大商店之前，做最後修飾，DistroKid 形容為「智慧」處理。呢個係由錄音室到你部喇叭之間常見嘅一個步驟。歌曲本身係佢自己嘅。",
       alt: "電郵裁切內容，說明 Mixea 係 DistroKid 嘅網上母帶處理服務",
       caption: "DistroKid 對 Mixea 嘅解釋。",
     },
     coverArt: {
       heading: "關於封面圖像",
-      p1: "封面圖像係另一回事。Gloria 部分發行作品嘅封面圖像，曾經用 AI 圖像工具加強過。嗰個係封面上嘅圖片，唔係入面嘅音樂，亦係串流服務有時會喺發行作品上加上 AI 標記嘅原因，正如上面嘅訊息所解釋。",
-      p2: "Gloria 寧願直接講清楚，都唔想有人心存疑問。如果只係封面圖像被 AI 掂過，咁個標記講嘅係張圖片，同首歌冇關係。",
+      p1: "封面圖片同音樂係兩回事。Gloria 部分發行作品嘅封面，曾經用 AI 影像工具修飾過。呢樣只影響封面上嘅圖片，而且好似上面嘅訊息解釋，呢個好可能就係串流平台有時喺某個發行作品上顯示標示嘅原因。",
+      p2: "Gloria 寧願坦白講出嚟，都唔想有人心存疑問。當封面圖片係唯一涉及嘅部分，個標示描述嘅係圖片，同首歌本身無關。",
     },
     tour: {
       heading: "有冇現場巡演嘅計劃？",

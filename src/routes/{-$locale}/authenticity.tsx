@@ -22,12 +22,12 @@ export const Route = createFileRoute("/{-$locale}/authenticity")({
   component: Authenticity,
 });
 
-/** A cropped screenshot in a frame, with its caption. */
+/** A cropped screenshot lying on the page like a printed sheet: square corners and a layered shadow. */
 function Shot({ id, alt, caption }: { id: EvidenceId; alt: string; caption: string }) {
   const img = evidenceImages[id];
   return (
     <figure className="reveal">
-      <div className="rounded-3xl border border-line bg-bg-2 p-2.5 sm:p-3">
+      <div className="rounded-[3px] bg-white ring-1 ring-black/10 shadow-[0_1px_2px_rgba(8,20,24,0.28),0_10px_18px_-6px_rgba(8,20,24,0.32),0_28px_52px_-18px_rgba(8,20,24,0.5)]">
         <img
           src={img.src}
           width={img.width}
@@ -35,10 +35,10 @@ function Shot({ id, alt, caption }: { id: EvidenceId; alt: string; caption: stri
           alt={alt}
           loading="lazy"
           decoding="async"
-          className="h-auto w-full rounded-2xl"
+          className="block h-auto w-full rounded-[3px]"
         />
       </div>
-      <figcaption className="mt-3 text-sm text-muted">{caption}</figcaption>
+      <figcaption className="mt-4 text-sm text-muted">{caption}</figcaption>
     </figure>
   );
 }
@@ -106,9 +106,9 @@ function Authenticity() {
   return (
     <>
       <PageHero
-        image="heroRoom"
+        image="studioWide"
         alt={t.hero.alt}
-        focus="70% 30%"
+        focus="50% 40%"
         title={t.hero.title}
         titleWidth={14}
         text={t.hero.text}
@@ -169,10 +169,13 @@ function Authenticity() {
 
       {/* Certificate */}
       <section id="certificate" className="section scroll-mt-24">
-        <div className="wrap grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
-          <div className="reveal min-w-0">
-            <h2 className="display-lg max-w-[14ch]">{t.certificate.heading}</h2>
-            <p className="lead mt-4">{t.certificate.lead}</p>
+        <div className="wrap grid items-start gap-x-20 gap-y-8 lg:grid-cols-[1fr_1fr] lg:grid-rows-[auto_1fr] lg:gap-y-4">
+          <h2 className="display-lg reveal max-w-[14ch] lg:col-start-1 lg:row-start-1">{t.certificate.heading}</h2>
+          <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+            <Shot id="certificate" alt={t.certificate.alt} caption={t.certificate.caption} />
+          </div>
+          <div className="reveal min-w-0 lg:col-start-1 lg:row-start-2">
+            <p className="lead">{t.certificate.lead}</p>
             <div className="prose-flow mt-8">
               <p>{t.certificate.intro}</p>
             </div>
@@ -185,7 +188,6 @@ function Authenticity() {
               />
             </div>
           </div>
-          <Shot id="certificate" alt={t.certificate.alt} caption={t.certificate.caption} />
         </div>
       </section>
 
@@ -228,7 +230,6 @@ function Authenticity() {
                   {signoffSender}
                 </p>
               </div>
-              <p className="mt-5 text-sm text-muted">{t.platforms.omitted}</p>
             </div>
           </div>
         </div>

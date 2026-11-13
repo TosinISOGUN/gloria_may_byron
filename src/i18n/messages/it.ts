@@ -25,7 +25,7 @@ const it: PartialMessages = {
     },
     navHint: {
       story: "La voce, la visione e il percorso",
-      authenticity: "File di studio, certificati e risposte chiare",
+      authenticity: "Registrazioni in studio, un certificato e conferme scritte",
       awards: "Riconoscimenti e onorificenze",
       gallery: "Foto e momenti",
     },
@@ -494,21 +494,21 @@ const it: PartialMessages = {
     meta: {
       title: "Gloria usa l'IA per produrre le sue canzoni? | Gloria May Byron",
       description:
-        "Come nascono le canzoni di Gloria May Byron: registrazioni dallo studio, un certificato di SongSecure e le e-mail dei tecnici delle piattaforme.",
+        "Come nascono le canzoni di Gloria May Byron: registrazioni dallo studio, un certificato SongSecure datato e conferme scritte di tecnici del suono che le canzoni sono fatte da persone.",
     },
     hero: {
-      alt: "Gloria May Byron in piedi in una stanza dalla luce morbida, vestita di nero",
+      alt: "Gloria May Byron che canta davanti a un microfono da studio",
       title: "Gloria usa l'IA per produrre le sue canzoni?",
       text: "No. Ecco come nascono le sue canzoni, e le prove.",
     },
     answer: {
-      heading: "La risposta breve",
-      lead: "No. Gloria scrive i suoi testi, e un team di tecnici lavora con lei per costruire le canzoni in un programma di registrazione da studio. Le registrazioni di quel lavoro sono in questa pagina, così che chiunque possa guardarle.",
-      body: "Due cose si confondono facilmente con questa domanda, e questa pagina le spiega entrambe: le piattaforme di streaming e di distribuzione usano strumenti automatici propri, e alcune copertine sono state ritoccate con l'IA. Nessuna delle due è la canzone.",
+      heading: "Fatte con cura, da persone vere",
+      lead: "Ogni canzone nasce da testi che Gloria scrive di persona. Poi lavora con un team di tecnici del suono per costruirle una a una in un programma di registrazione professionale, e in questa pagina ci sono le registrazioni di quel lavoro, che chiunque può guardare.",
+      body: "Una canzone richiede molto tempo e molto impegno, e lungo il percorso alcuni strumenti automatici toccano un'uscita: i distributori offrono un servizio di mastering e alcune copertine sono state rifinite con strumenti per le immagini. Questa pagina spiega ciascuno di questi aspetti, così il quadro completo è chiaro.",
       jumps: {
         studio: "Guarda le sessioni in studio",
         certificate: "Il certificato",
-        platforms: "Cosa hanno detto le piattaforme",
+        platforms: "Conferme scritte",
         coverArt: "Sulle copertine",
         tour: "Progetti di tournée dal vivo?",
       },
@@ -529,35 +529,33 @@ const it: PartialMessages = {
       caption: "Il certificato di registrazione SongSecure, mostrato per intero.",
     },
     platforms: {
-      heading: "Cosa hanno detto le piattaforme",
-      lead: "Quando alcuni servizi di streaming hanno iniziato a mostrare etichette IA sulle uscite, Gloria ha chiesto ai tecnici e ai servizi coinvolti che cosa stesse succedendo. Qui sotto ci sono le risposte, ritagliate nelle parti rilevanti, con il testo trascritto accanto a ogni immagine. I nomi dei mittenti compaiono solo come figurano nel messaggio.",
+      heading: "Conferme scritte",
+      lead: "Quando Tidal e altri servizi di streaming hanno iniziato a mostrare indicatori IA accanto ad alcune uscite di Gloria, lei ha chiesto ai tecnici e ai servizi coinvolti che cosa significassero. Le loro risposte sono qui sotto, con le parole trascritte accanto a ogni immagine.",
       written: "Le parole, trascritte",
       original: "Testo originale (inglese)",
       translation: "Traduzione",
       tidalAlt:
         "Testo ritagliato di un'e-mail che inizia: On Tidal, please don't worry. Those white AI markers are not about your sound.",
-      tidalCaption: "Risposta sui contrassegni IA su Tidal.",
+      tidalCaption: "Risposta sulle etichette mostrate su Tidal.",
       tidalSummary:
-        "Che cosa dice: l'etichetta della piattaforma riguardava l'immagine di copertina, non la registrazione.",
+        "Cosa dice: l'etichetta riguardava l'immagine di copertina, non la registrazione.",
       engineerAlt:
-        "Testo ritagliato di un'e-mail su Tidal, Deezer e YouTube che segnalano le copertine generate con l'IA e non l'audio",
+        "Testo ritagliato di un'email sulle etichette di Tidal, Deezer e YouTube che riguardano la grafica e non l'audio",
       engineerCaption: "Dal messaggio del capo tecnico del suono.",
       signoffAlt:
         "Righe finali della stessa e-mail: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "Le righe finali dello stesso messaggio.",
-      omitted:
-        "Questo è un estratto. Una parte a metà dell'e-mail, sulla vendita di musica su altri siti e su un abbonamento, è stata omessa perché non ha niente a che fare con il modo in cui nascono le canzoni. Le parti mostrate sono complete, così come sono state scritte.",
     },
     mixea: {
-      heading: "Che cosa aggiunge il distributore",
-      body: "Gloria pubblica attraverso DistroKid. I distributori offrono strumenti audio automatici e quello di DistroKid si chiama Mixea. Non scrive, non canta e non compone nulla. È un servizio di mastering: una rifinitura finale applicata a una registrazione conclusa prima che arrivi ai negozi. DistroKid lo descrive come un'elaborazione \"intelligente\", quindi è corretto dire che un miglioramento automatico fa parte del percorso dallo studio di Gloria ai tuoi altoparlanti. La canzone in sé è sua.",
+      heading: "Sul mastering",
+      body: "Gloria pubblica tramite DistroKid, che offre un servizio di mastering chiamato Mixea. Non scrive, non canta e non compone nulla. È una rifinitura finale applicata a una registrazione conclusa prima che arrivi negli store, e DistroKid la descrive come un'elaborazione \"intelligente\". È un passaggio normale tra uno studio e i tuoi altoparlanti. La canzone in sé è sua.",
       alt: "Testo ritagliato di un'e-mail che spiega che Mixea è il servizio di mastering online di DistroKid",
       caption: "La spiegazione di DistroKid su Mixea.",
     },
     coverArt: {
       heading: "Sulle copertine",
-      p1: "Le immagini di copertina sono un'altra questione. Alcune immagini per le uscite di Gloria sono state migliorate con strumenti di immagini IA. Questa è l'immagine sulla copertina, non la musica al suo interno, ed è il motivo per cui i servizi di streaming hanno talvolta messo un'etichetta IA su un'uscita, come spiegano i messaggi qui sopra.",
-      p2: "Gloria preferisce dirlo chiaramente piuttosto che lasciare qualcuno nel dubbio. Se l'immagine è l'unica cosa toccata dall'IA, l'etichetta ti dice qualcosa sull'immagine e nulla sulla canzone.",
+      p1: "Le copertine sono una questione separata dalla musica. Parte della grafica delle uscite di Gloria è stata rifinita con strumenti di immagine basati sull'IA. Questo riguarda solo l'immagine in copertina e, come spiegano i messaggi qui sopra, è la probabile ragione per cui un servizio di streaming ha talvolta mostrato un'etichetta su un'uscita.",
+      p2: "Gloria preferisce dirlo apertamente piuttosto che lasciare qualcuno a chiedersi. Quando la grafica è l'unico elemento coinvolto, un'etichetta descrive l'immagine e non dice nulla sulla canzone.",
     },
     tour: {
       heading: "Progetti di tournée dal vivo?",

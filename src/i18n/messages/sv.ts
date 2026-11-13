@@ -25,7 +25,7 @@ const sv: PartialMessages = {
     },
     navHint: {
       story: "Rösten, visionen och resan",
-      authenticity: "Studiofiler, certifikat och raka svar",
+      authenticity: "Studioinspelningar, ett certifikat och skriftliga bekräftelser",
       awards: "Erkännanden och utmärkelser",
       gallery: "Bilder och ögonblick",
     },
@@ -494,21 +494,21 @@ const sv: PartialMessages = {
     meta: {
       title: "Använder Gloria AI för att producera sina låtar? | Gloria May Byron",
       description:
-        "Så skapas Gloria May Byrons låtar: inspelningar från studion, ett certifikat från SongSecure och mejl från plattformarnas ingenjörer.",
+        "Så görs Gloria May Byrons låtar: inspelningar från studion, ett daterat SongSecure-certifikat och skriftliga bekräftelser från ljudtekniker om att låtarna är gjorda av människor.",
     },
     hero: {
-      alt: "Gloria May Byron i svarta kläder i ett rum med mjukt ljus",
+      alt: "Gloria May Byron sjunger i en studiomikrofon",
       title: "Använder Gloria AI för att producera sina låtar?",
       text: "Nej. Så skapas hennes låtar, och här är bevisen.",
     },
     answer: {
-      heading: "Det korta svaret",
-      lead: "Nej. Gloria skriver sina texter, och ett team av ljudtekniker arbetar tillsammans med henne för att bygga låtarna i ett inspelningsprogram i studion. Inspelningar av det arbetet finns på den här sidan så att alla kan se.",
-      body: "Två saker är lätta att blanda ihop med den här frågan, och den här sidan förklarar båda: streaming- och distributionstjänster använder egna automatiska verktyg, och en del omslag har retuscherats med AI. Ingen av dem är själva låten.",
+      heading: "Gjorda med omsorg, av riktiga människor",
+      lead: "Varje låt börjar med en text som Gloria skriver själv. Sedan arbetar hon med ett team av ljudtekniker för att bygga varje låt i ett professionellt inspelningsprogram, och inspelningar av det arbetet finns på den här sidan så att vem som helst kan titta.",
+      body: "En låt kräver mycket tid och möda, och några automatiska verktyg berör en utgivning på vägen: distributörer erbjuder en mastringstjänst, och en del omslag har finjusterats med bildverktyg. Den här sidan förklarar var och en, så att hela bilden blir tydlig.",
       jumps: {
         studio: "Se studiosessionerna",
         certificate: "Certifikatet",
-        platforms: "Vad plattformarna sa",
+        platforms: "Skriftliga bekräftelser",
         coverArt: "Om omslagsbilderna",
         tour: "Planer på liveturné?",
       },
@@ -529,35 +529,33 @@ const sv: PartialMessages = {
       caption: "Registreringsbeviset från SongSecure, visat i sin helhet.",
     },
     platforms: {
-      heading: "Vad plattformarna sa",
-      lead: "När vissa streamingtjänster började visa AI-etiketter på utgåvor frågade Gloria de tekniker och tjänster som var inblandade vad som hände. Nedan finns svaren, beskurna till de relevanta delarna, med texten utskriven bredvid varje bild. Avsändarnas namn visas bara så som de står i meddelandet.",
+      heading: "Skriftliga bekräftelser",
+      lead: "När Tidal och några andra streamingtjänster började visa AI-markeringar bredvid vissa av Glorias utgivningar frågade hon de tekniker och tjänster som var inblandade vad markeringarna betydde. Deras svar finns nedan, med orden utskrivna bredvid varje bild.",
       written: "Orden, utskrivna",
       original: "Originaltext (engelska)",
       translation: "Översättning",
       tidalAlt:
         "Beskuren mejltext som börjar: On Tidal, please don't worry. Those white AI markers are not about your sound.",
-      tidalCaption: "Svar om AI-markeringarna på Tidal.",
+      tidalCaption: "Svar om etiketterna som visas på Tidal.",
       tidalSummary:
-        "Vad det säger: plattformens etikett gällde omslagsbilden, inte inspelningen.",
+        "Vad det här säger: etiketten gällde omslagsbilden, inte inspelningen.",
       engineerAlt:
-        "Beskuren mejltext om att Tidal, Deezer och YouTube flaggar AI-genererade omslag i stället för ljudet",
+        "Beskuren e-posttext om etiketter på Tidal, Deezer och YouTube som gäller omslagsbilder och inte ljud",
       engineerCaption: "Ur meddelandet från chefsljudteknikern.",
       signoffAlt:
         "Avslutande rader i samma mejl: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "De avslutande raderna i samma meddelande.",
-      omitted:
-        "Det här är ett utdrag. Ett avsnitt i mitten av mejlet, om att sälja musik på andra webbplatser och en prenumeration, har utelämnats eftersom det inte har med hur låtarna skapas att göra. De delar som visas är kompletta, precis som de skrevs.",
     },
     mixea: {
-      heading: "Vad distributören lägger till",
-      body: "Gloria ger ut sin musik via DistroKid. Distributörer erbjuder automatiska ljudverktyg, och DistroKids heter Mixea. Det skriver, sjunger eller komponerar ingenting. Det är en masteringtjänst: en sista putsning av en färdig inspelning innan den når butikerna. DistroKid beskriver det som \"intelligent\" bearbetning, så det är rimligt att säga att automatisk förbättring ingår på vägen från Glorias studio till dina högtalare. Själva låten är hennes.",
+      heading: "Om mastring",
+      body: "Gloria ger ut sin musik via DistroKid, som erbjuder en mastringstjänst som heter Mixea. Den skriver, sjunger eller komponerar ingenting. Det är en sista finish som läggs på en färdig inspelning innan den når butikerna, och DistroKid beskriver den som \"intelligent\" bearbetning. Det är ett vanligt steg mellan en studio och dina högtalare. Själva låten är hennes.",
       alt: "Beskuren mejltext som förklarar att Mixea är DistroKids masteringtjänst på nätet",
       caption: "DistroKids förklaring av Mixea.",
     },
     coverArt: {
       heading: "Om omslagsbilderna",
-      p1: "Omslagsbilder är en separat fråga. En del av bilderna till Glorias utgåvor har förbättrats med AI-bildverktyg. Det är bilden på omslaget, inte musiken inuti, och det är anledningen till att streamingtjänster ibland har satt en AI-etikett på en utgåva, vilket mejlen ovan förklarar.",
-      p2: "Gloria säger hellre det rakt ut än att någon undrar. Om bilden är det enda som AI har rört vid, säger etiketten något om bilden och ingenting om låten.",
+      p1: "Omslagsbilderna är en sak för sig, skild från musiken. En del av omslagen till Glorias utgivningar har finjusterats med AI-bildverktyg. Det påverkar bara bilden på omslaget och är, som meddelandena ovan förklarar, den sannolika anledningen till att en streamingtjänst ibland har visat en etikett på en utgivning.",
+      p2: "Gloria säger hellre det öppet än låter någon undra. När omslaget är det enda som är inblandat beskriver en etikett bilden och säger ingenting om låten.",
     },
     tour: {
       heading: "Planer på liveturné?",

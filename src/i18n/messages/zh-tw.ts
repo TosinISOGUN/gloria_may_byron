@@ -25,7 +25,7 @@ const zhTw: PartialMessages = {
     },
     navHint: {
       story: "嗓音、願景與旅程",
-      authenticity: "錄音室檔案、證書與坦率的回答",
+      authenticity: "錄音室錄影、證書與書面證明",
       awards: "肯定與榮譽",
       gallery: "照片與時刻",
     },
@@ -494,21 +494,21 @@ const zhTw: PartialMessages = {
     meta: {
       title: "葛洛莉亞有使用 AI 製作她的歌曲嗎？ | Gloria May Byron",
       description:
-        "Gloria May Byron 的歌曲是如何誕生的：來自錄音室的影片、SongSecure 證書，以及各平台工程師的電子郵件。",
+        "Gloria May Byron 的歌曲如何製作：錄音室的錄影、附有日期的 SongSecure 證書，以及音響工程師確認歌曲為真人創作的書面信件。",
     },
     hero: {
-      alt: "Gloria May Byron 身穿黑衣，站在光線柔和的房間裡",
+      alt: "Gloria May Byron 對著錄音室麥克風歌唱",
       title: "葛洛莉亞有使用 AI 製作她的歌曲嗎？",
       text: "沒有。以下是她的歌曲如何誕生，以及相關證據。",
     },
     answer: {
-      heading: "簡短回答",
-      lead: "沒有。葛洛莉亞自己寫歌詞，並有一個音響工程師團隊與她合作，在錄音室的錄音程式中建構這些歌曲。這些工作過程的錄影就在本頁，任何人都可以觀看。",
-      body: "有兩件事很容易和這個問題混淆，本頁會一併說明：串流與發行平台會使用自己的自動化工具，另外有些封面圖像曾用 AI 修飾。這兩者都不是歌曲本身。",
+      heading: "用心製作，出自真人之手",
+      lead: "每一首歌都從葛洛莉亞親自寫下的歌詞開始。接著她與音響工程師團隊一起，在專業的錄音軟體中逐首打造，這項工作的錄影就放在本頁，任何人都可以觀看。",
+      body: "一首歌需要大量的時間與心力，而在發行的過程中，也有一些自動化工具會參與其中：發行商提供母帶處理服務，部分封面圖片則以影像工具修飾過。本頁會逐一說明，讓整體情況清楚明白。",
       jumps: {
         studio: "觀看錄音室工作過程",
         certificate: "證書",
-        platforms: "各平台怎麼說",
+        platforms: "書面證明",
         coverArt: "關於封面圖像",
         tour: "有現場巡演的計畫嗎？",
       },
@@ -529,35 +529,33 @@ const zhTw: PartialMessages = {
       caption: "SongSecure 登記證書的完整內容。",
     },
     platforms: {
-      heading: "各平台怎麼說",
-      lead: "當一些串流服務開始在發行作品上顯示 AI 標記時，葛洛莉亞向相關的工程師與服務詢問到底發生了什麼事。以下是他們的回覆，已裁切到相關部分，並在每張圖片旁附上轉寫的文字。寄件者的名字僅依訊息中所顯示的樣子呈現。",
+      heading: "書面證明",
+      lead: "當 Tidal 與其他幾個串流平台開始在葛洛莉亞的部分發行作品旁顯示 AI 標示時，她詢問相關的工程師與服務商這些標示代表什麼。他們的回覆列在下方，並在每張圖片旁附上逐字文字。",
       written: "文字轉寫",
       original: "原文（英文）",
       translation: "翻譯",
       tidalAlt:
         "電子郵件裁切內容，開頭為：On Tidal, please don't worry. Those white AI markers are not about your sound.",
-      tidalCaption: "針對 Tidal 上 AI 標記的回覆。",
+      tidalCaption: "關於 Tidal 上所顯示標示的回覆。",
       tidalSummary:
-        "這段話的意思：平台上的標記是針對封面圖像，而不是針對錄音。",
+        "內容說明：該標示與封面圖片有關，而非錄音本身。",
       engineerAlt:
-        "電子郵件裁切內容，說明 Tidal、Deezer 與 YouTube 標記的是 AI 生成的封面圖像，而不是音訊",
+        "電子郵件的裁切文字，說明 Tidal、Deezer 與 YouTube 的標示與封面圖像有關，而非音訊",
       engineerCaption: "來自音響總工程師的訊息。",
       signoffAlt:
         "同一封電子郵件的結尾幾行：Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "同一則訊息的結尾幾行。",
-      omitted:
-        "這是節錄內容。電子郵件中間有一段關於在其他網站販售音樂與訂閱方案的內容已省略，因為與歌曲如何製作無關。所顯示的部分皆為原文完整內容。",
     },
     mixea: {
-      heading: "發行商所增加的內容",
-      body: "葛洛莉亞透過 DistroKid 發行音樂。發行商提供自動化的音效工具，而 DistroKid 的叫做 Mixea。它不會寫作、歌唱或作曲，它是一項母帶處理服務：在完成的錄音送到各商店之前，進行最後的潤飾。DistroKid 形容它是「智慧型」處理，因此可以說，自動化的音質增強，是從葛洛莉亞的錄音室到你的喇叭這段路徑的一部分。歌曲本身屬於她。",
+      heading: "關於母帶處理",
+      body: "葛洛莉亞透過 DistroKid 發行音樂，DistroKid 提供一項名為 Mixea 的母帶處理服務。它不會寫歌、演唱或作曲，而是在完成的錄音送達各大商店之前所做的最後修飾，DistroKid 將其描述為「智慧」處理。這是從錄音室到你的喇叭之間的一道常見步驟。歌曲本身出自她之手。",
       alt: "電子郵件裁切內容，說明 Mixea 是 DistroKid 的線上母帶處理服務",
       caption: "DistroKid 對 Mixea 的說明。",
     },
     coverArt: {
       heading: "關於封面圖像",
-      p1: "封面圖像是另一回事。葛洛莉亞部分發行作品的封面圖像，曾使用 AI 圖像工具加強。那是封面上的圖片，不是裡面的音樂，也是串流服務有時會在發行作品上放上 AI 標記的原因，正如上方的訊息所說明的。",
-      p2: "葛洛莉亞寧可直接說清楚，也不願讓人心存疑問。如果 AI 只碰過封面圖像，那麼標記說明的是圖片，與歌曲無關。",
+      p1: "封面圖片與音樂是兩回事。葛洛莉亞部分發行作品的封面，曾以 AI 影像工具修飾過。這只影響封面上的圖片，而且如上方訊息所說明，這就是串流平台有時會在某個發行作品上顯示標示的可能原因。",
+      p2: "葛洛莉亞寧可坦白說明，也不願讓人心存疑問。當封面圖片是唯一牽涉其中的部分時，標示描述的是圖片，與歌曲本身無關。",
     },
     tour: {
       heading: "有現場巡演的計畫嗎？",

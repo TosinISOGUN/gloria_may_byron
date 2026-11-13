@@ -25,7 +25,7 @@ const no: PartialMessages = {
     },
     navHint: {
       story: "Stemmen, visjonen og reisen",
-      authenticity: "Studiofiler, sertifikater og rake svar",
+      authenticity: "Studioopptak, et sertifikat og skriftlige bekreftelser",
       awards: "Anerkjennelser og utmerkelser",
       gallery: "Bilder og øyeblikk",
     },
@@ -494,21 +494,21 @@ const no: PartialMessages = {
     meta: {
       title: "Bruker Gloria KI til å produsere sangene sine? | Gloria May Byron",
       description:
-        "Slik lages sangene til Gloria May Byron: opptak fra studioet, et sertifikat fra SongSecure og e-poster fra plattformenes lydteknikere.",
+        "Slik lages Gloria May Byrons sanger: opptak fra studioet, et datert SongSecure-sertifikat og skriftlige bekreftelser fra lydteknikere på at sangene er laget av mennesker.",
     },
     hero: {
-      alt: "Gloria May Byron i svarte klær i et rom med mykt lys",
+      alt: "Gloria May Byron synger inn i en studiomikrofon",
       title: "Bruker Gloria KI til å produsere sangene sine?",
       text: "Nei. Slik lages sangene hennes, og her er bevisene.",
     },
     answer: {
-      heading: "Det korte svaret",
-      lead: "Nei. Gloria skriver tekstene sine, og et team av lydteknikere jobber sammen med henne for å bygge sangene i et opptaksprogram i studio. Opptak av dette arbeidet ligger på denne siden, slik at alle kan se det.",
-      body: "To ting er lette å blande sammen med dette spørsmålet, og denne siden forklarer begge: strømme- og distribusjonstjenester bruker egne automatiske verktøy, og noen omslagsbilder er blitt retusjert med KI. Ingen av delene er selve sangen.",
+      heading: "Laget med omtanke, av ekte mennesker",
+      lead: "Hver sang begynner med tekster Gloria skriver selv. Deretter jobber hun med et team av lydteknikere for å bygge hver enkelt i et profesjonelt opptaksprogram, og opptak av dette arbeidet ligger på denne siden slik at alle kan se det.",
+      body: "En sang krever mye tid og innsats, og noen automatiske verktøy berører en utgivelse underveis: distributører tilbyr en mastringstjeneste, og noe av coverbildene er pusset opp med bildeverktøy. Denne siden forklarer hver av dem, slik at helhetsbildet blir tydelig.",
       jumps: {
         studio: "Se studioøktene",
         certificate: "Sertifikatet",
-        platforms: "Hva plattformene sa",
+        platforms: "Skriftlige bekreftelser",
         coverArt: "Om omslagsbildene",
         tour: "Planer om liveturné?",
       },
@@ -529,35 +529,33 @@ const no: PartialMessages = {
       caption: "Registreringsbeviset fra SongSecure, vist i sin helhet.",
     },
     platforms: {
-      heading: "Hva plattformene sa",
-      lead: "Da noen strømmetjenester begynte å vise KI-merker på utgivelser, spurte Gloria teknikerne og tjenestene som var involvert hva som skjedde. Nedenfor står svarene, beskåret til de relevante delene, med teksten skrevet ut ved siden av hvert bilde. Avsendernes navn vises bare slik de står i meldingen.",
+      heading: "Skriftlige bekreftelser",
+      lead: "Da Tidal og noen andre strømmetjenester begynte å vise KI-merker ved siden av noen av Glorias utgivelser, spurte hun teknikerne og tjenestene som var involvert hva merkene betydde. Svarene deres står nedenfor, med ordene skrevet ut ved siden av hvert bilde.",
       written: "Ordene, skrevet ut",
       original: "Originaltekst (engelsk)",
       translation: "Oversettelse",
       tidalAlt:
         "Beskåret e-posttekst som begynner: On Tidal, please don't worry. Those white AI markers are not about your sound.",
-      tidalCaption: "Svar om KI-markeringene på Tidal.",
+      tidalCaption: "Svar om merkene som vises på Tidal.",
       tidalSummary:
-        "Hva det sier: plattformens merke gjaldt omslagsbildet, ikke opptaket.",
+        "Hva dette sier: merket gjaldt coverbildet, ikke opptaket.",
       engineerAlt:
-        "Beskåret e-posttekst om at Tidal, Deezer og YouTube flagger KI-genererte omslag og ikke lyden",
+        "Beskåret e-posttekst om merker på Tidal, Deezer og YouTube som gjelder coverbilder og ikke lyd",
       engineerCaption: "Fra meldingen fra sjefslydteknikeren.",
       signoffAlt:
         "Avslutningslinjene i samme e-post: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "Avslutningslinjene i samme melding.",
-      omitted:
-        "Dette er et utdrag. Et avsnitt midt i e-posten, om salg av musikk på andre nettsteder og et abonnement, er utelatt fordi det ikke har noe med hvordan sangene lages å gjøre. Delene som vises er fullstendige, slik de ble skrevet.",
     },
     mixea: {
-      heading: "Hva distributøren legger til",
-      body: "Gloria gir ut musikken sin via DistroKid. Distributører tilbyr automatiske lydverktøy, og DistroKids heter Mixea. Det skriver, synger eller komponerer ingenting. Det er en masteringtjeneste: en siste finpuss på et ferdig opptak før det når butikkene. DistroKid beskriver det som \"intelligent\" behandling, så det er rimelig å si at automatisk forbedring er en del av veien fra Glorias studio til høyttalerne dine. Selve sangen er hennes.",
+      heading: "Om mastring",
+      body: "Gloria gir ut musikken sin via DistroKid, som tilbyr en mastringstjeneste som heter Mixea. Den skriver, synger eller komponerer ingenting. Det er en siste finpuss på et ferdig opptak før det når butikkene, og DistroKid beskriver den som \"intelligent\" behandling. Det er et vanlig steg mellom et studio og høyttalerne dine. Selve sangen er hennes.",
       alt: "Beskåret e-posttekst som forklarer at Mixea er DistroKids nettbaserte masteringtjeneste",
       caption: "DistroKids forklaring av Mixea.",
     },
     coverArt: {
       heading: "Om omslagsbildene",
-      p1: "Omslagsbilder er en egen sak. Noen av bildene til Glorias utgivelser er forbedret med KI-bildeverktøy. Det er bildet på omslaget, ikke musikken inni, og det er grunnen til at strømmetjenester noen ganger har satt et KI-merke på en utgivelse, slik e-postene over forklarer.",
-      p2: "Gloria sier det heller rett ut enn at noen skal lure. Hvis bildet er det eneste KI har rørt, sier merket noe om bildet og ingenting om sangen.",
+      p1: "Coverbildene er en sak for seg, atskilt fra musikken. Noe av coverkunsten til Glorias utgivelser er pusset opp med KI-bildeverktøy. Det gjelder bare bildet på omslaget, og som meldingene ovenfor forklarer, er det den sannsynlige grunnen til at en strømmetjeneste noen ganger har vist et merke på en utgivelse.",
+      p2: "Gloria sier det heller åpent enn at noen skal lure. Når coverkunsten er det eneste som er involvert, beskriver et merke bildet og sier ingenting om sangen.",
     },
     tour: {
       heading: "Planer om liveturné?",

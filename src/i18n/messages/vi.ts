@@ -25,7 +25,7 @@ const vi: PartialMessages = {
     },
     navHint: {
       story: "Giọng hát, tầm nhìn và hành trình",
-      authenticity: "Tệp phòng thu, chứng nhận và những câu trả lời thẳng thắn",
+      authenticity: "Bản thu trong phòng thu, một chứng nhận và các xác nhận bằng văn bản",
       awards: "Sự ghi nhận và vinh danh",
       gallery: "Hình ảnh và khoảnh khắc",
     },
@@ -494,21 +494,21 @@ const vi: PartialMessages = {
     meta: {
       title: "Gloria có dùng AI để sản xuất các bài hát của mình không? | Gloria May Byron",
       description:
-        "Các bài hát của Gloria May Byron được làm thế nào: những bản ghi từ phòng thu, chứng nhận SongSecure và các email từ kỹ sư của các nền tảng.",
+        "Các bài hát của Gloria May Byron được tạo ra như thế nào: bản thu từ phòng thu, chứng nhận SongSecure có ghi ngày tháng, và xác nhận bằng văn bản từ các kỹ sư âm thanh rằng bài hát do con người làm ra.",
     },
     hero: {
-      alt: "Gloria May Byron mặc đồ đen đứng trong căn phòng ánh sáng dịu",
+      alt: "Gloria May Byron hát bên micro phòng thu",
       title: "Gloria có dùng AI để sản xuất các bài hát của mình không?",
       text: "Không. Đây là cách các bài hát được làm ra, cùng những bằng chứng.",
     },
     answer: {
-      heading: "Câu trả lời ngắn",
-      lead: "Không. Gloria tự viết ca từ, và một đội ngũ kỹ sư âm thanh làm việc cùng cô để xây dựng các bài hát trong một phần mềm thu âm phòng thu. Các bản ghi của quá trình đó có ở trang này để ai cũng có thể xem.",
-      body: "Có hai điều dễ bị nhầm với câu hỏi này, và trang này giải thích cả hai: các nền tảng phát nhạc và phân phối dùng công cụ tự động của riêng họ, và một số ảnh bìa đã được chỉnh sửa bằng AI. Cả hai điều đó đều không phải là bài hát.",
+      heading: "Làm bằng sự tận tâm, bởi những con người thật",
+      lead: "Mỗi bài hát bắt đầu từ ca từ do chính Gloria viết. Sau đó cô làm việc với một đội ngũ kỹ sư âm thanh để dựng từng bài trong một phần mềm thu âm chuyên nghiệp, và các bản ghi lại công việc đó có ngay trên trang này để ai cũng có thể xem.",
+      body: "Một bài hát đòi hỏi rất nhiều thời gian và công sức, và vài công cụ tự động có tham gia vào một bản phát hành trên đường đi: các nhà phân phối cung cấp dịch vụ mastering, và một số ảnh bìa đã được chỉnh sửa bằng công cụ xử lý hình ảnh. Trang này giải thích từng điều, để bức tranh toàn cảnh được rõ ràng.",
       jumps: {
         studio: "Xem các buổi làm việc trong phòng thu",
         certificate: "Chứng nhận",
-        platforms: "Các nền tảng đã nói gì",
+        platforms: "Xác nhận bằng văn bản",
         coverArt: "Về ảnh bìa",
         tour: "Kế hoạch lưu diễn trực tiếp?",
       },
@@ -529,35 +529,33 @@ const vi: PartialMessages = {
       caption: "Chứng nhận đăng ký SongSecure, được hiển thị đầy đủ.",
     },
     platforms: {
-      heading: "Các nền tảng đã nói gì",
-      lead: "Khi một số dịch vụ phát nhạc bắt đầu gắn nhãn AI lên các bản phát hành, Gloria đã hỏi các kỹ sư và dịch vụ liên quan chuyện gì đang xảy ra. Dưới đây là các câu trả lời, được cắt gọn ở những phần liên quan, kèm nội dung được chép lại bên cạnh mỗi hình ảnh. Tên người gửi chỉ được hiển thị đúng như trong thư.",
+      heading: "Xác nhận bằng văn bản",
+      lead: "Khi Tidal và một vài dịch vụ phát nhạc trực tuyến khác bắt đầu hiển thị dấu hiệu AI bên cạnh một số bản phát hành của Gloria, cô đã hỏi các kỹ sư và dịch vụ liên quan những dấu hiệu đó có nghĩa là gì. Các phản hồi nằm bên dưới, kèm nội dung được chép ra bên cạnh mỗi hình.",
       written: "Nội dung, được chép lại",
       original: "Nguyên văn (tiếng Anh)",
       translation: "Bản dịch",
       tidalAlt:
         "Đoạn email được cắt gọn bắt đầu bằng: On Tidal, please don't worry. Those white AI markers are not about your sound.",
-      tidalCaption: "Câu trả lời về các dấu AI trên Tidal.",
+      tidalCaption: "Phản hồi về các nhãn hiển thị trên Tidal.",
       tidalSummary:
-        "Điều này nói lên: nhãn của nền tảng nói về ảnh bìa, không phải về bản thu.",
+        "Nội dung này cho biết: nhãn liên quan đến ảnh bìa, không phải bản thu.",
       engineerAlt:
-        "Đoạn email được cắt gọn về việc Tidal, Deezer và YouTube gắn cờ ảnh bìa do AI tạo ra chứ không phải âm thanh",
+        "Đoạn thư được cắt, nói về các nhãn trên Tidal, Deezer và YouTube liên quan đến hình ảnh bìa chứ không phải âm thanh",
       engineerCaption: "Từ thư của kỹ sư trưởng âm thanh.",
       signoffAlt:
         "Những dòng kết của cùng email: Your work is excellent. Keep going. James, Chief Sound Engineer",
       signoffCaption: "Những dòng kết của cùng bức thư.",
-      omitted:
-        "Đây là đoạn trích. Một phần ở giữa email, về việc bán nhạc trên các trang khác và một gói đăng ký, đã được lược bỏ vì không liên quan đến cách các bài hát được làm ra. Các phần được hiển thị đều đầy đủ như khi được viết.",
     },
     mixea: {
-      heading: "Những gì nhà phân phối thêm vào",
-      body: "Gloria phát hành qua DistroKid. Các nhà phân phối cung cấp công cụ âm thanh tự động, và công cụ của DistroKid có tên là Mixea. Nó không viết, hát hay sáng tác gì cả. Đó là một dịch vụ mastering: bước hoàn thiện cuối cùng áp dụng cho bản thu đã xong trước khi nó đến các cửa hàng. DistroKid mô tả nó là xử lý \"thông minh\", nên có thể nói rằng việc cải thiện tự động là một phần của đường đi từ phòng thu của Gloria đến loa của bạn. Bản thân bài hát là của cô.",
+      heading: "Về mastering",
+      body: "Gloria phát hành qua DistroKid, nơi cung cấp một dịch vụ mastering tên là Mixea. Nó không viết, hát hay sáng tác gì cả. Đó là bước hoàn thiện cuối cùng áp dụng cho một bản thu đã xong trước khi đến các cửa hàng nhạc, và DistroKid mô tả nó là xử lý \"thông minh\". Đây là một bước bình thường giữa phòng thu và loa của bạn. Bản thân bài hát là của cô.",
       alt: "Đoạn email được cắt gọn giải thích Mixea là dịch vụ mastering trực tuyến của DistroKid",
       caption: "Lời giải thích của DistroKid về Mixea.",
     },
     coverArt: {
       heading: "Về ảnh bìa",
-      p1: "Ảnh bìa là một vấn đề riêng. Một số hình ảnh cho các bản phát hành của Gloria đã được cải thiện bằng công cụ hình ảnh AI. Đó là hình trên bìa, không phải âm nhạc bên trong, và đó là lý do các dịch vụ phát nhạc đôi khi gắn nhãn AI lên một bản phát hành, như các thư ở trên giải thích.",
-      p2: "Gloria thà nói thẳng còn hơn để ai đó thắc mắc. Nếu hình ảnh là phần duy nhất bị AI chạm vào, thì nhãn chỉ nói về hình ảnh và không nói gì về bài hát.",
+      p1: "Ảnh bìa là một vấn đề riêng, tách biệt với âm nhạc. Một số ảnh bìa các bản phát hành của Gloria đã được chỉnh sửa bằng công cụ hình ảnh AI. Điều đó chỉ ảnh hưởng đến bức ảnh trên bìa và, như các tin nhắn ở trên giải thích, là lý do có khả năng nhất khiến một dịch vụ phát nhạc đôi khi hiển thị nhãn trên một bản phát hành.",
+      p2: "Gloria muốn nói điều này công khai hơn là để ai đó phải thắc mắc. Khi ảnh bìa là yếu tố duy nhất liên quan, một nhãn chỉ mô tả bức ảnh và không nói gì về bài hát.",
     },
     tour: {
       heading: "Kế hoạch lưu diễn trực tiếp?",
