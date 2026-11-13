@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import type { LocaleCode } from "@/i18n/locales";
 import type { Messages } from "@/i18n/messages/en";
 
-import { PreviewNotice } from "./preview-notice";
 import { SiteFooter } from "./site-footer";
 import { SiteNav } from "./site-nav";
 
@@ -28,7 +27,6 @@ export function SiteChrome({
       <SiteNav locale={locale} chrome={chrome} />
       <main id="main">{children}</main>
       <SiteFooter chrome={chrome} />
-      {import.meta.env.VITE_PREVIEW ? <PreviewNotice /> : null}
     </>
   );
 }
