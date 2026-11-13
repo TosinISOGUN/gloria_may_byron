@@ -569,6 +569,24 @@ const sv: PartialMessages = {
       p1: "Sådan programvara är inte felfri. Teknikerna sa till Gloria att den kan göra misstag, och att den till och med har märkt äldre låtar som skrevs långt innan AI fanns, bland annat välkända hitlåtar. Eftersom granskningen är automatisk och inte görs av en människa kan ett misstag sätta en markering på en låt som människor har gjort. Det kan vara ytterligare en anledning till att vissa plattformar som tidigare godkände Glorias låtar som originella har börjat märka dem.",
       p2: "Ett granskningsresultat säger ingenting om hur en låt har gjorts. Det gör inspelningarna, registreringscertifikatet och de skriftliga bekräftelserna på den här sidan.",
     },
+    credits: {
+
+      heading: "Visuella producenter och webbdesign",
+
+      lead: "Människorna som arbetar med Gloria på studion, det visuella och den här webbplatsen.",
+
+      webRole: "Webbdesign och webbutveckling",
+
+      studioRole: "Studioproducent",
+
+      visualRole: "Visuell producent",
+
+      webText: "Isogun Labs utformar och bygger webbplatser och webbappar för startups, företag och varumärken. Isogun Labs har utformat och byggt den här webbplatsen.",
+
+      contactLead: "För en egen webbplats:",
+
+    },
+
     mixea: {
       heading: "Om mastring",
       body: "Gloria ger ut sin musik via DistroKid, som erbjuder en mastringstjänst som heter Mixea. Den skriver, sjunger eller komponerar ingenting. Det är en sista finish som läggs på en färdig inspelning innan den når butikerna, och DistroKid beskriver den som \"intelligent\" bearbetning. Det är ett vanligt steg mellan en studio och dina högtalare. Själva låten är hennes.",

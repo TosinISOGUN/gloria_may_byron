@@ -569,6 +569,24 @@ const it: PartialMessages = {
       p1: "Questo tipo di software non è perfetto. I tecnici hanno detto a Gloria che può sbagliare e che ha perfino segnalato canzoni più vecchie, scritte molto prima che esistesse l'IA, compresi noti successi. Poiché il controllo è automatico e non lo fa una persona, un errore può mettere un'etichetta su una canzone fatta da persone. Potrebbe essere un altro motivo per cui alcune piattaforme che in passato davano le canzoni di Gloria per originali hanno iniziato a segnalarle.",
       p2: "L'esito di un controllo non descrive come è stata fatta una canzone. Lo descrivono le registrazioni, il certificato di registrazione e le conferme scritte in questa pagina.",
     },
+    credits: {
+
+      heading: "Produttori visivi e web design",
+
+      lead: "Le persone che lavorano con Gloria per lo studio, la parte visiva e questo sito web.",
+
+      webRole: "Progettazione e realizzazione del sito web",
+
+      studioRole: "Produzione in studio",
+
+      visualRole: "Produzione visiva",
+
+      webText: "Isogun Labs progetta e realizza siti web e applicazioni web per startup, aziende e marchi. Isogun Labs ha progettato e realizzato questo sito web.",
+
+      contactLead: "Per un sito web tutto tuo:",
+
+    },
+
     mixea: {
       heading: "Sul mastering",
       body: "Gloria pubblica tramite DistroKid, che offre un servizio di mastering chiamato Mixea. Non scrive, non canta e non compone nulla. È una rifinitura finale applicata a una registrazione conclusa prima che arrivi negli store, e DistroKid la descrive come un'elaborazione \"intelligente\". È un passaggio normale tra uno studio e i tuoi altoparlanti. La canzone in sé è sua.",

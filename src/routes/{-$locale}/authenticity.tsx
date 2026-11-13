@@ -7,7 +7,7 @@ import { PageHero } from "@/components/page-hero";
 import { StudioGrid } from "@/components/studio-grid";
 import { coverArtworks, signoffSender, studioVideos } from "@/data/authenticity";
 import { evidenceImages, type EvidenceId } from "@/data/evidence.generated";
-import { site } from "@/data/site";
+import { builder, site } from "@/data/site";
 import { en as enMessages, fmt, messagesForParam } from "@/i18n";
 import { useLocale } from "@/i18n/use-locale";
 import { seo } from "@/lib/seo";
@@ -322,6 +322,51 @@ function Authenticity() {
               <p key={p}>{p}</p>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Visual producers and web design */}
+      <section id="credits" className="section border-t border-line scroll-mt-24">
+        <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div className="reveal lg:sticky lg:top-28 lg:self-start">
+            <h2 className="display-md max-w-[16ch]">{t.credits.heading}</h2>
+            <p className="lead mt-4 max-w-[34ch]">{t.credits.lead}</p>
+          </div>
+          <ul className="reveal grid min-w-0 gap-0 border-t border-line">
+            <li className="grid gap-3 border-b border-line py-8 sm:grid-cols-[14rem_1fr] sm:gap-8">
+              <div>
+                <p className="text-xl font-semibold rtl:text-right" lang="en" dir="ltr">
+                  {builder.person}
+                </p>
+                <p className="mt-1 text-sm text-muted">{t.credits.webRole}</p>
+              </div>
+              <div className="prose-flow min-w-0">
+                <p>{t.credits.webText}</p>
+                <p>
+                  {t.credits.contactLead}{" "}
+                  <a className="link-inline font-semibold" dir="ltr" href={`mailto:${builder.email}?subject=Website%20enquiry%20from%20gloriamaybyron.com`}>
+                    {builder.email}
+                  </a>
+                  {" | "}
+                  <a className="link-inline font-semibold" dir="ltr" href={builder.url} target="_blank" rel="noopener">
+                    isogunlabs.com
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li className="grid gap-1 border-b border-line py-6 sm:grid-cols-[14rem_1fr] sm:gap-8">
+              <p className="text-xl font-semibold rtl:text-right" lang="en" dir="ltr">
+                Ena <span className="font-normal text-muted">(Ena Studios)</span>
+              </p>
+              <p className="text-sm text-muted sm:pt-1.5">{t.credits.studioRole}</p>
+            </li>
+            <li className="grid gap-1 border-b border-line py-6 sm:grid-cols-[14rem_1fr] sm:gap-8">
+              <p className="text-xl font-semibold rtl:text-right" lang="en" dir="ltr">
+                Hunain Khan
+              </p>
+              <p className="text-sm text-muted sm:pt-1.5">{t.credits.visualRole}</p>
+            </li>
+          </ul>
         </div>
       </section>
 

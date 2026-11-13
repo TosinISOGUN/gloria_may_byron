@@ -118,6 +118,24 @@ export const en = {
       p1: "That kind of software is not perfect. The engineers told Gloria that it can make mistakes, and that it has even marked older songs written long before AI existed, including well-known hit songs. Because the check is automatic and not done by a person, a mistake can put a marker on a song that people made. This may be another reason why some platforms that once passed Gloria's songs as original have started to mark them.",
       p2: "A screening result does not describe how a song was made. The recordings, the registration certificate and the written confirmations on this page do.",
     },
+    credits: {
+
+      heading: "Visual producers and web design",
+
+      lead: "The people who work with Gloria on the studio, the visuals and this website.",
+
+      webRole: "Web design and creation",
+
+      studioRole: "Studio producer",
+
+      visualRole: "Visual producer",
+
+      webText: "Isogun Labs designs and builds websites and web apps for startups, businesses and brands. Isogun Labs designed and built this website.",
+
+      contactLead: "For a website of your own:",
+
+    },
+
     mixea: {
       heading: "About mastering",
       body: "Gloria releases through DistroKid, which offers a mastering service called Mixea. It does not write, sing or compose anything. It is a final polish applied to a finished recording before it reaches the stores, and DistroKid describes it as using \"intelligent\" processing. That is a normal step between a studio and your speakers. The song itself is hers.",

@@ -569,6 +569,24 @@ const es: PartialMessages = {
       p1: "Ese tipo de programa no es perfecto. Los ingenieros le dijeron a Gloria que puede cometer errores y que incluso ha marcado canciones antiguas, escritas mucho antes de que existiera la IA, entre ellas conocidos éxitos. Como la revisión es automática y no la hace una persona, un error puede poner una marca en una canción hecha por personas. Puede ser otra razón por la que algunas plataformas que antes daban por originales las canciones de Gloria han empezado a marcarlas.",
       p2: "El resultado de una revisión no describe cómo se hizo una canción. Lo describen las grabaciones, el certificado de registro y las confirmaciones escritas de esta página.",
     },
+    credits: {
+
+      heading: "Productores visuales y diseño web",
+
+      lead: "Las personas que trabajan con Gloria en el estudio, en lo visual y en este sitio web.",
+
+      webRole: "Diseño y creación web",
+
+      studioRole: "Producción de estudio",
+
+      visualRole: "Producción visual",
+
+      webText: "Isogun Labs diseña y crea sitios web y aplicaciones web para startups, empresas y marcas. Isogun Labs diseñó y creó este sitio web.",
+
+      contactLead: "Para un sitio web propio:",
+
+    },
+
     mixea: {
       heading: "Sobre la masterización",
       body: "Gloria publica a través de DistroKid, que ofrece un servicio de masterización llamado Mixea. No escribe, no canta ni compone nada. Es un último pulido que se aplica a una grabación terminada antes de que llegue a las tiendas, y DistroKid lo describe como un proceso \"inteligente\". Es un paso normal entre un estudio y tus altavoces. La canción en sí es suya.",

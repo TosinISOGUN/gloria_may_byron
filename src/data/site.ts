@@ -124,4 +124,4 @@ export const highlights = [
 ] as const;
 
 /** Credit for the studio that built the site, shown in the footer of every page. */
-export const builder = { name: "Isogun Labs", url: "https://isogunlabs.com/", email: "tomisin@isogunlabs.com" } as const;
+export const builder = { name: "Isogun Labs", person: "Oluwatomisin Isogun", url: "https://isogunlabs.com/", email: "tomisin@isogunlabs.com" } as const;
