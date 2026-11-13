@@ -1,6 +1,5 @@
 import {
   HeadContent,
-  Link,
   Outlet,
   Scripts,
   createRootRoute,
@@ -9,9 +8,12 @@ import {
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteNav } from "@/components/site-nav";
+import { Link } from "@/components/link";
+import { SiteChrome } from "@/components/site-chrome";
 import { themeInitScript } from "@/components/theme-toggle";
+import { en } from "@/i18n";
+import { getLocale } from "@/i18n/locales";
+import { useLocale } from "@/i18n/use-locale";
 
 import appCss from "../styles.css?url";
 
@@ -26,43 +28,43 @@ function Message({ title, text, children }: { title: string; text: string; child
 }
 
 function NotFound() {
+  const t = en.errors.notFound;
   return (
-    <Message
-      title="That page isn't here."
-      text="It may have moved. The music is still where you left it."
-    >
-      <Link to="/" className="btn btn-primary">
-        Back home
-      </Link>
-      <Link to="/music" className="btn btn-ghost">
-        Browse the music
-      </Link>
-    </Message>
+    <SiteChrome locale="en" chrome={en.chrome}>
+      <Message title={t.title} text={t.text}>
+        <Link to="/" className="btn btn-primary">
+          {t.home}
+        </Link>
+        <Link to="/music" className="btn btn-ghost">
+          {t.music}
+        </Link>
+      </Message>
+    </SiteChrome>
   );
 }
 
 function RouteError({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
+  const t = en.errors.routeError;
   return (
-    <Message
-      title="This page didn't load."
-      text="Something went wrong on our end. Try again, or head back home."
-    >
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => {
-          void router.invalidate();
-          reset();
-        }}
-      >
-        Try again
-      </button>
-      <a href="/" className="btn btn-ghost">
-        Back home
-      </a>
-    </Message>
+    <SiteChrome locale="en" chrome={en.chrome}>
+      <Message title={t.title} text={t.text}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => {
+            void router.invalidate();
+            reset();
+          }}
+        >
+          {t.retry}
+        </button>
+        <a href="/" className="btn btn-ghost">
+          {t.home}
+        </a>
+      </Message>
+    </SiteChrome>
   );
 }
 
@@ -123,8 +125,9 @@ export const Route = createRootRoute({
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const locale = getLocale(useLocale());
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale.htmlLang} dir={locale.dir} data-script={locale.script} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
@@ -136,20 +139,7 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+/** The header and footer belong to the language layout (routes/{-}/route.tsx); the not-found and error pages bring their own. */
 function RootLayout() {
-  return (
-    <>
-      <a
-        href="#main"
-        className="fixed left-4 top-4 z-[60] -translate-y-24 rounded-full bg-accent px-5 py-3 font-bold text-on-accent focus:translate-y-0"
-      >
-        Skip to content
-      </a>
-      <SiteNav />
-      <main id="main">
-        <Outlet />
-      </main>
-      <SiteFooter />
-    </>
-  );
+  return <Outlet />;
 }

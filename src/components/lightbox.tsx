@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef } from "react";
 
 import type { ImageId } from "@/data/images.generated";
+import { useT } from "@/i18n/messages-context";
 
 import { Img } from "./img";
 
@@ -18,6 +19,7 @@ const control =
   "absolute grid size-12 place-items-center rounded-full bg-white/12 text-white backdrop-blur transition-colors hover:bg-white/25";
 
 export function Lightbox({ items, index, onChange }: Props) {
+  const t = useT().common.viewer;
   const closeButton = useRef<HTMLButtonElement>(null);
   const open = index !== null;
   const item = index === null ? undefined : items[index];
@@ -40,8 +42,8 @@ export function Lightbox({ items, index, onChange }: Props) {
     const step = (d: number) => onChange((index + d + items.length) % items.length);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onChange(null);
-      else if (e.key === "ArrowRight") step(1);
-      else if (e.key === "ArrowLeft") step(-1);
+      else if (e.key === "ArrowRight") step(document.documentElement.dir === "rtl" ? -1 : 1);
+      else if (e.key === "ArrowLeft") step(document.documentElement.dir === "rtl" ? 1 : -1);
       else if (e.key === "Tab") {
         const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-lightbox] button"));
         const first = nodes[0];
@@ -67,7 +69,7 @@ export function Lightbox({ items, index, onChange }: Props) {
           data-lightbox
           role="dialog"
           aria-modal="true"
-          aria-label="Image viewer"
+          aria-label={t.label}
           className="fixed inset-0 z-50 grid place-items-center bg-[#050c0f]/95 p-4 sm:p-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -92,7 +94,7 @@ export function Lightbox({ items, index, onChange }: Props) {
             />
             <figcaption className="text-center text-sm text-white/80">
               {item.caption ?? item.alt}
-              <span className="ml-3 text-white/50">
+              <span dir="ltr" className="mt-1 block text-white/50">
                 {index + 1} / {items.length}
               </span>
             </figcaption>
@@ -100,8 +102,8 @@ export function Lightbox({ items, index, onChange }: Props) {
           <button
             ref={closeButton}
             type="button"
-            aria-label="Close image viewer"
-            className={`${control} right-4 top-4`}
+            aria-label={t.close}
+            className={`${control} end-4 top-4`}
             onClick={(e) => {
               e.stopPropagation();
               onChange(null);
@@ -111,25 +113,25 @@ export function Lightbox({ items, index, onChange }: Props) {
           </button>
           <button
             type="button"
-            aria-label="Previous image"
-            className={`${control} left-3 top-1/2 -translate-y-1/2`}
+            aria-label={t.previous}
+            className={`${control} start-3 top-1/2 -translate-y-1/2`}
             onClick={(e) => {
               e.stopPropagation();
               onChange((index - 1 + items.length) % items.length);
             }}
           >
-            <CaretLeft size={22} aria-hidden />
+            <CaretLeft size={22} aria-hidden className="rtl:rotate-180" />
           </button>
           <button
             type="button"
-            aria-label="Next image"
-            className={`${control} right-3 top-1/2 -translate-y-1/2`}
+            aria-label={t.next}
+            className={`${control} end-3 top-1/2 -translate-y-1/2`}
             onClick={(e) => {
               e.stopPropagation();
               onChange((index + 1) % items.length);
             }}
           >
-            <CaretRight size={22} aria-hidden />
+            <CaretRight size={22} aria-hidden className="rtl:rotate-180" />
           </button>
         </motion.div>
       )}

@@ -2,8 +2,9 @@ import { describe, expect, it } from "vitest";
 
 import { images } from "@/data/images.generated";
 import { lyricalVideos, releases, singles, video } from "@/data/music";
-import { announcements, awards, certifications, galleryPhotos, journey } from "@/data/profile";
+import { awardBadges, certificationBadges, galleryPhotoIds } from "@/data/profile";
 import { nav, platforms, press, socials } from "@/data/site";
+import { en } from "@/i18n";
 
 const strings = (value: unknown): string[] =>
   typeof value === "string"
@@ -19,9 +20,9 @@ describe("content data", () => {
     const ids = [
       ...Object.values(video).map((v) => v.thumb),
       ...releases.map((r) => r.art),
-      ...galleryPhotos.map((p) => p.id),
-      ...awards.map((a) => a.badge),
-      ...certifications.map((c) => c.badge),
+      ...galleryPhotoIds,
+      ...awardBadges,
+      ...certificationBadges,
       ...platforms.map((p) => p.logo),
       ...press.map((p) => p.logo),
     ];
@@ -31,12 +32,15 @@ describe("content data", () => {
   it("keeps every item her site lists", () => {
     expect(releases).toHaveLength(23);
     expect(lyricalVideos).toHaveLength(12);
-    expect(awards).toHaveLength(7);
+    expect(en.awards.list.items).toHaveLength(awardBadges.length);
+    expect(en.awards.certs.names).toHaveLength(certificationBadges.length);
+    expect(en.gallery.photos.alts).toHaveLength(galleryPhotoIds.length);
     expect(press).toHaveLength(7);
     expect(platforms).toHaveLength(8);
-    expect(nav.map((n) => n.label)).toEqual([
+    expect(nav.map((n) => en.chrome.nav[n.key])).toEqual([
       "Home",
       "About",
+      "How the songs are made",
       "Music",
       "Announcements",
       "Gallery",
@@ -44,8 +48,8 @@ describe("content data", () => {
       "Contact",
     ]);
     expect(socials.map((s) => s.name)).toEqual(["Instagram", "X (Twitter)", "TikTok"]);
-    expect(journey.steps).toHaveLength(5);
-    expect(announcements.formulaIndie.title).toContain("19 February 2026");
+    expect(en.about.journey.steps).toHaveLength(5);
+    expect(en.announcements.formulaIndie.title).toContain("19 February 2026");
   });
 
   it("only links to Tidal tracks that resolved when checked", () => {
@@ -65,10 +69,13 @@ describe("content data", () => {
       singles,
       lyricalVideos,
       releases,
-      awards,
-      announcements,
-      journey,
-      certifications,
+      en.awards,
+      en.announcements,
+      en.about,
+      en.home,
+      en.contact,
+      en.gallery,
+      en.music,
     ].flatMap(strings);
     expect(all.filter((s) => /[\u2013\u2014]/.test(s))).toEqual([]);
   });

@@ -5,7 +5,7 @@ const STORAGE_KEY = "gmb-theme";
 /** Runs in <head> before first paint: stored choice, else the system setting. */
 export const themeInitScript = `(function(){try{var t=localStorage.getItem("${STORAGE_KEY}");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}})()`;
 
-export function ThemeToggle() {
+export function ThemeToggle({ label }: { label: string }) {
   const flip = () => {
     const root = document.documentElement;
     const next = root.dataset["theme"] === "dark" ? "light" : "dark";
@@ -20,8 +20,8 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={flip}
-      aria-label="Switch between light and dark theme"
-      className="inline-grid size-12 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink"
+      aria-label={label}
+      className="inline-grid size-11 place-items-center sm:size-12 rounded-full border border-line text-ink transition-colors hover:border-ink"
     >
       <MoonStars size={22} weight="regular" className="theme-moon" aria-hidden />
       <SunDim size={22} weight="regular" className="theme-sun" aria-hidden />

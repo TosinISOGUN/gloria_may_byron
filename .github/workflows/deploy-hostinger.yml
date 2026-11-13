@@ -76,8 +76,14 @@ jobs:
           test -f dist/client/index.html
           test -f dist/client/404.html
           test -f dist/client/.htaccess
-          for page in about music announcements gallery awards contact; do
+          # Every page, in English and in each language folder.
+          for page in about authenticity music announcements gallery awards contact; do
             test -f "dist/client/$page/index.html" || { echo "Missing page: $page"; exit 1; }
+          done
+          for lang in sv zh-tw ja ru vi es it no zh-hk bn ar; do
+            for page in "" about authenticity music announcements gallery awards contact; do
+              test -f "dist/client/$lang/$page/index.html" || { echo "Missing page: $lang/$page"; exit 1; }
+            done
           done
 
       - name: Upload to Hostinger over SSH

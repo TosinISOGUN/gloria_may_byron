@@ -11,3 +11,12 @@ export function siteOrigin(fallback) {
   const raw = env.SITE_URL || (host ? `https://${host}` : fallback);
   return raw.replace(/\/+$/, "");
 }
+
+/**
+ * A private preview is any build made by Vercel (the live site is built by the GitHub Action for Hostinger,
+ * which sets none of these) or one asked for with PREVIEW=1. A preview is hidden from search engines
+ * and shows a small notice, so it cannot be mistaken for, or compete with, the live site.
+ */
+export function isPreview() {
+  return process.env.PREVIEW === "1" || Boolean(process.env.VERCEL);
+}

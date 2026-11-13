@@ -1,3 +1,5 @@
+import type { Messages } from "@/i18n/messages/en";
+
 import type { ImageId } from "./images.generated";
 
 /** Injected at build time from the deployment domain (see scripts/site-origin.mjs). */
@@ -12,19 +14,51 @@ export const site = {
     "Gloria May Byron is an award-winning singer and songwriter whose emotionally driven, story-focused music has reached listeners in over 200 countries.",
 } as const;
 
-export type NavItem = {
-  label: string;
-  to: "/" | "/about" | "/music" | "/announcements" | "/gallery" | "/awards" | "/contact";
-};
+export type PagePath =
+  | "/"
+  | "/about"
+  | "/authenticity"
+  | "/music"
+  | "/announcements"
+  | "/gallery"
+  | "/awards"
+  | "/contact";
 
-export const nav: NavItem[] = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Music", to: "/music" },
-  { label: "Announcements", to: "/announcements" },
-  { label: "Gallery", to: "/gallery" },
-  { label: "Awards", to: "/awards" },
-  { label: "Contact", to: "/contact" },
+/** Keys of chrome.nav in the message files; the label of each link comes from there, in the visitor's language. */
+export type NavKey = keyof Messages["chrome"]["nav"];
+export type NavHintKey = keyof Messages["chrome"]["navHint"];
+
+export type NavItem = { key: NavKey; to: PagePath; hint?: NavHintKey };
+export type NavNode = NavItem & { children?: NavItem[] };
+
+/** The header: related pages sit together under one parent link (About) and open as a dropdown. */
+export const navTree: NavNode[] = [
+  { key: "home", to: "/" },
+  {
+    key: "about",
+    to: "/about",
+    children: [
+      { key: "story", to: "/about", hint: "story" },
+      { key: "authenticity", to: "/authenticity", hint: "authenticity" },
+      { key: "awards", to: "/awards", hint: "awards" },
+      { key: "gallery", to: "/gallery", hint: "gallery" },
+    ],
+  },
+  { key: "music", to: "/music" },
+  { key: "announcements", to: "/announcements" },
+  { key: "contact", to: "/contact" },
+];
+
+/** Every page, flat: the footer, the sitemap and the share-image checks use this. */
+export const nav: { key: NavKey; to: PagePath }[] = [
+  { key: "home", to: "/" },
+  { key: "about", to: "/about" },
+  { key: "authenticity", to: "/authenticity" },
+  { key: "music", to: "/music" },
+  { key: "announcements", to: "/announcements" },
+  { key: "gallery", to: "/gallery" },
+  { key: "awards", to: "/awards" },
+  { key: "contact", to: "/contact" },
 ];
 
 export type Platform = { name: string; url: string; logo: ImageId };
@@ -88,3 +122,6 @@ export const highlights = [
   { title: "Global Reach", text: "Music enjoyed in over 200 countries" },
   { title: "Community First", text: "Fans are friends, and every listener matters" },
 ] as const;
+
+/** Credit for the studio that built the site, shown in the footer of every page. */
+export const builder = { name: "Isogun Labs", url: "https://isogunlabs.com/", email: "tomisin@isogunlabs.com" } as const;

@@ -4,22 +4,36 @@ import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
-import { siteOrigin } from "./scripts/site-origin.mjs";
+import { locales } from "./src/i18n/locales";
+import { isPreview, siteOrigin } from "./scripts/site-origin.mjs";
 
 // STATIC_EXPORT=1 builds plain HTML files for shared hosting (Hostinger, any web server) instead of
 // the server output Vercel uses (Nitro is left out). Every page is prerendered into its own folder, so /about is
 // served from about/index.html. The site has no server code, so nothing is lost.
-const staticExport = process.env.STATIC_EXPORT === "1";
+const staticExport = process.env["STATIC_EXPORT"] === "1";
+
+// Every page in every language is listed outright, so none depends on a link being found by the crawler:
+// /about for English, /sv/about for Swedish, and so on.
+const pagePaths = ["/", "/about", "/authenticity", "/music", "/announcements", "/gallery", "/awards", "/contact"];
+const pages = locales.flatMap((l) =>
+  pagePaths.map((p) => {
+    const prefix = l.code === "en" ? "" : `/${l.code}`;
+    return { path: p === "/" ? prefix || "/" : `${prefix}${p}` };
+  }),
+);
 
 export default defineConfig(({ command }) => ({
   plugins: [
     tailwindcss(),
-    tanstackStart(staticExport ? { prerender: { enabled: true, crawlLinks: true, autoSubfolderIndex: true } } : {}),
+    tanstackStart(
+      staticExport ? { pages, prerender: { enabled: true, crawlLinks: true, autoSubfolderIndex: true } } : {},
+    ),
     ...(command === "build" && !staticExport ? [nitro()] : []),
     viteReact(),
   ],
   define: {
     "import.meta.env.VITE_SITE_URL": JSON.stringify(siteOrigin("https://gloriamaybyron.com")),
+    "import.meta.env.VITE_PREVIEW": JSON.stringify(isPreview() ? "1" : ""),
   },
   resolve: {
     tsconfigPaths: true,

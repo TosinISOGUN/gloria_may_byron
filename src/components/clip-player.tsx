@@ -5,22 +5,31 @@ type Props = {
   src: string;
   /** The full-size thumbnail (480 px wide). */
   poster: string;
-  /** The same picture at 320 px wide, for screens that show it at 300 px or less. */
-  posterSmall: string;
+  /** The same picture at 320 px wide, for screens that show it at 300 px or less. Leave out when there is only one size. */
+  posterSmall?: string;
+  /** Pixel size of the thumbnail, so the page does not jump while it loads. Defaults to the tall announcement clip. */
+  posterWidth?: number;
+  posterHeight?: number;
+  /** Show a thin progress bar along the bottom once the clip has started. */
+  progress?: boolean;
   /** What the clip is, for people using a screen reader. */
   label: string;
   className?: string;
 };
 
+// The clip that is playing now. Starting another one pauses it, so two never play over each other.
+let current: HTMLVideoElement | null = null;
+
 /**
  * A short clip of our own (not a YouTube embed) with no browser controls. A play button sits on the
  * thumbnail; tapping the picture while it plays pauses it, and the button comes back.
  */
-export function ClipPlayer({ src, poster, posterSmall, label, className }: Props) {
+export function ClipPlayer({ src, poster, posterSmall, posterWidth = 480, posterHeight = 850, progress = false, label, className }: Props) {
   const video = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   // The thumbnail is a picture laid over the video until the first play, then it is gone for good.
   const [started, setStarted] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
 
   const toggle = () => {
     const el = video.current;
@@ -36,22 +45,25 @@ export function ClipPlayer({ src, poster, posterSmall, label, className }: Props
         playsInline
         preload="none"
         className="size-full object-cover"
-        onPlay={() => {
+        onPlay={(e) => {
+          if (current && current !== e.currentTarget) current.pause();
+          current = e.currentTarget;
           setStarted(true);
           setPlaying(true);
         }}
         onPause={() => setPlaying(false)}
         onEnded={() => setPlaying(false)}
+        onTimeUpdate={progress ? (e) => setElapsed(e.currentTarget.duration ? e.currentTarget.currentTime / e.currentTarget.duration : 0) : undefined}
       >
         <source src={src} type="video/mp4" />
       </video>
       {!started && (
         <img
           src={poster}
-          srcSet={`${posterSmall} 320w, ${poster} 480w`}
-          sizes="300px"
-          width={480}
-          height={850}
+          srcSet={posterSmall ? `${posterSmall} 320w, ${poster} 480w` : undefined}
+          sizes={posterSmall ? "300px" : undefined}
+          width={posterWidth}
+          height={posterHeight}
           alt=""
           loading="lazy"
           decoding="async"
@@ -79,6 +91,21 @@ export function ClipPlayer({ src, poster, posterSmall, label, className }: Props
           {playing ? <Pause size={32} weight="fill" /> : <Play size={32} weight="fill" />}
         </span>
       </button>
+      {progress && started && (
+        <div
+          role="progressbar"
+          aria-label={`Progress: ${label}`}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(elapsed * 100)}
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1.5 bg-white/25"
+        >
+          <div
+            className="h-full origin-left bg-accent transition-transform duration-200 ease-linear rtl:origin-right"
+            style={{ transform: `scaleX(${elapsed})` }}
+          />
+        </div>
+      )}
     </div>
   );
 }

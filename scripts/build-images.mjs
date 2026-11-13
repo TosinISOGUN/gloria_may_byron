@@ -8,6 +8,7 @@ import sharp from "sharp";
 const root = path.resolve(import.meta.dirname, "..");
 const SRC = path.join(root, "assets-source/real-site");
 const YT = path.join(root, "assets-source/real-site-yt");
+const GLORIA_FILES = path.join(root, "assets-source/GLORIA FILES");
 const OUT = path.join(root, "public/images");
 
 const photoWidths = [480, 768, 1080, 1600, 2048];
@@ -75,6 +76,14 @@ const marks = {
   badgeGmaMedal: "9-BG.png",
 };
 
+/** id -> cover artwork supplied by Gloria (square), shown on the authenticity page. */
+const covers = {
+  coverTiredBruised: "WhatsApp Image 2026-11-12 at 4.43.29 PM (1).jpeg",
+  coverChasingSun: "WhatsApp Image 2026-11-12 at 4.43.29 PM (3).jpeg",
+  coverCanYouSeeIt: "WhatsApp Image 2026-11-12 at 4.43.30 PM (1).jpeg",
+  coverDreamsTomorrow: "WhatsApp Image 2026-11-12 at 4.43.30 PM (2).jpeg",
+};
+
 const ytIds = fs
   .readdirSync(YT)
   .filter((f) => f.endsWith(".jpg"))
@@ -107,6 +116,7 @@ async function responsive(id, file, widths, { alpha = false } = {}) {
 }
 
 for (const [id, f] of Object.entries(photos)) await responsive(id, path.join(SRC, f), photoWidths);
+for (const [id, f] of Object.entries(covers)) await responsive(id, path.join(GLORIA_FILES, f), [480, 768, 1080]);
 
 for (let n = 1; n <= 23; n++) {
   const nn = String(n).padStart(2, "0");

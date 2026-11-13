@@ -1,35 +1,34 @@
 import { Check, Copy } from "@phosphor-icons/react";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/components/link";
 import { useEffect, useRef, useState } from "react";
 
 import { Img } from "@/components/img";
 import { platforms, site, socials } from "@/data/site";
 import { preloadImage } from "@/lib/preload";
+import { fmt, messagesForParam } from "@/i18n";
+import { useT } from "@/i18n/messages-context";
 import { seo } from "@/lib/seo";
 import { delay } from "@/lib/style";
 
-export const Route = createFileRoute("/contact")({
-  head: () =>
+export const Route = createFileRoute("/{-$locale}/contact")({
+  loader: async ({ params }) => {
+    preloadImage("portraitMic", "50vw");
+    return { meta: (await messagesForParam(params.locale)).contact.meta };
+  },
+  head: ({ params, loaderData }) =>
     seo({
-      title: "Contact | Gloria May Byron",
-      description:
-        "Contact Gloria May Byron for bookings and live performances, collaborations and creative projects, and media, interviews and press inquiries.",
+      locale: params.locale,
+      title: loaderData?.meta.title ?? "",
+      description: loaderData?.meta.description ?? "",
       path: "/contact",
       image: "contact",
     }),
-  loader: () => {
-    preloadImage("portraitMic", "50vw");
-  },
   component: Contact,
 });
 
-const reasons = [
-  "Bookings and live performances",
-  "Collaborations and creative projects",
-  "Media, interviews, and press inquiries",
-];
-
 function CopyEmail() {
+  const m = useT().contact.touch;
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
@@ -47,36 +46,38 @@ function CopyEmail() {
     <>
       <button type="button" onClick={copy} className="btn btn-ghost">
         {copied ? <Check size={20} aria-hidden /> : <Copy size={20} aria-hidden />}
-        {copied ? "Email copied" : "Copy email"}
+        {copied ? m.copied : m.copy}
       </button>
       <span className="sr-only" role="status">
-        {copied ? "Email address copied to the clipboard" : ""}
+        {copied ? m.copiedStatus : ""}
       </span>
     </>
   );
 }
 
 function Contact() {
+  const t = useT();
+  const k = t.contact;
   return (
     <>
-      <section className="pt-[calc(var(--nav-h)+1.5rem)] lg:pt-[calc(var(--nav-h)+2.5rem)]">
+      <section className="overflow-x-clip pt-[calc(var(--nav-h)+1.5rem)] lg:pt-[calc(var(--nav-h)+2.5rem)]">
         <div className="wrap grid items-center gap-12 pb-14 lg:grid-cols-[1fr_1fr] lg:gap-20 lg:pb-24">
           <div className="hero-copy hero-out">
             <h1 className="display-xl rise" style={{ fontSize: "clamp(2.7rem, 8vw, 7.4rem)" }}>
-              Contact
+              {k.hero.title}
             </h1>
             <p className="lead rise mt-6" style={delay(1)}>
-              For bookings, collaborations, and media inquiries.
+              {k.hero.text}
             </p>
           </div>
           {/* A framed print: an offset outline behind, a pale mat, then the photograph. */}
-          <div className="hero-media frame isolate relative mx-auto w-full max-w-[30rem] lg:ml-auto lg:mr-0">
+          <div className="hero-media frame isolate relative mx-auto w-full max-w-[30rem] lg:ms-auto lg:me-0">
             <div className="frame-offset" aria-hidden />
             <div className="frame-mat">
               <div className="relative aspect-[5/6] overflow-hidden">
                 <Img
                   id="portraitMic"
-                  alt="Gloria May Byron smiling at a studio microphone"
+                  alt={k.hero.alt}
                   sizes="(min-width: 1024px) 30rem, 92vw"
                   priority
                   className="ken absolute inset-0 size-full object-cover"
@@ -95,12 +96,11 @@ function Contact() {
       <section className="section">
         <div className="wrap">
           <div className="reveal max-w-[60rem]">
-            <h2 className="display-md">Get in touch</h2>
+            <h2 className="display-md">{k.touch.title}</h2>
             <p className="lead mt-4">
-              Whether you're reaching out for bookings, collaborations, or media inquiries, I'd love
-              to hear from you.
+              {k.touch.text}
             </p>
-            <p className="mt-10 text-sm font-bold text-muted">Email</p>
+            <p className="mt-10 text-sm font-bold text-muted">{k.touch.emailLabel}</p>
             <a
               href={`mailto:${site.email}`}
               className="mt-1 inline-block break-all py-2 font-display text-[clamp(1.5rem,4.4vw,3rem)] font-extrabold leading-tight tracking-[-0.03em] hover:text-accent"
@@ -117,11 +117,11 @@ function Contact() {
       <section className="section bg-bg-2">
         <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div className="reveal">
-            <h2 className="display-md max-w-[14ch]">What you can reach out about</h2>
-            <p className="lead mt-4">Collaborations, bookings, and creative conversations.</p>
+            <h2 className="display-md max-w-[14ch]">{k.reasons.title}</h2>
+            <p className="lead mt-4">{k.reasons.text}</p>
           </div>
           <ol className="reveal border-t border-line">
-            {reasons.map((r, i) => (
+            {k.reasons.items.map((r, i) => (
               <li key={r} className="grid grid-cols-[3rem_1fr] border-b border-line py-6">
                 <span className="font-display text-sm font-bold text-accent">
                   {String(i + 1).padStart(2, "0")}
@@ -135,14 +135,14 @@ function Contact() {
 
       <section className="section">
         <div className="wrap">
-          <h2 className="display-lg reveal max-w-[14ch]">Follow and connect</h2>
-          <p className="lead reveal mt-4">Stay close to the music and the moments.</p>
+          <h2 className="display-lg reveal max-w-[14ch]">{k.follow.title}</h2>
+          <p className="lead reveal mt-4">{k.follow.text}</p>
           <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_0.6fr] lg:gap-20">
             <div className="reveal">
-              <h3 className="font-display text-xl font-extrabold">Music platforms</h3>
-              <ul className="mt-5 grid grid-cols-2 border-l border-t border-line sm:grid-cols-4">
+              <h3 className="font-display text-xl font-extrabold">{k.follow.platforms}</h3>
+              <ul className="mt-5 grid grid-cols-2 border-s border-t border-line sm:grid-cols-4">
                 {platforms.map((p) => (
-                  <li key={p.name} className="border-b border-r border-line">
+                  <li key={p.name} className="border-b border-e border-line">
                     <a
                       href={p.url}
                       target="_blank"
@@ -162,7 +162,7 @@ function Contact() {
               </ul>
             </div>
             <div className="reveal">
-              <h3 className="font-display text-xl font-extrabold">Social media</h3>
+              <h3 className="font-display text-xl font-extrabold">{k.follow.social}</h3>
               <ul className="mt-5 border-t border-line">
                 {socials.map((s) => (
                   <li key={s.name} className="border-b border-line">
@@ -186,17 +186,17 @@ function Contact() {
         <div className="wrap reveal">
           <div className="card p-8 sm:p-14">
             <h2 className="display-md max-w-[20ch]">
-              I'm always open to meaningful collaborations and creative projects
+              {k.cta.title}
             </h2>
             <p className="lead mt-4">
-              Let's create something meaningful and share it with the world.
+              {k.cta.text}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/music" className="btn btn-primary">
-                Music
+                {t.chrome.nav.music}
               </Link>
               <Link to="/gallery" className="btn btn-ghost">
-                Gallery
+                {t.chrome.nav.gallery}
               </Link>
             </div>
           </div>

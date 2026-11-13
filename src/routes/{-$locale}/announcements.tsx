@@ -1,43 +1,48 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { ArrowRight } from "@phosphor-icons/react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/components/link";
 
 import { ClipPlayer } from "@/components/clip-player";
 import { Img } from "@/components/img";
 import { PageHero } from "@/components/page-hero";
 import { VideoPlayer } from "@/components/video-player";
-import { announcements } from "@/data/profile";
 import { video } from "@/data/music";
 import { socials } from "@/data/site";
 import { preloadImage } from "@/lib/preload";
+import { fmt, messagesForParam } from "@/i18n";
+import { useT } from "@/i18n/messages-context";
 import { seo } from "@/lib/seo";
 
-export const Route = createFileRoute("/announcements")({
-  head: () =>
+export const Route = createFileRoute("/{-$locale}/announcements")({
+  loader: async ({ params }) => {
+    preloadImage("heroSnow", "100vw");
+    return { meta: (await messagesForParam(params.locale)).announcements.meta };
+  },
+  head: ({ params, loaderData }) =>
     seo({
-      title: "Announcements | Gloria May Byron",
-      description:
-        "News from Gloria May Byron: a new video message to fans about her new releases and surprise dates, her Formula Indie New Entry debut and a message about 2026.",
+      locale: params.locale,
+      title: loaderData?.meta.title ?? "",
+      description: loaderData?.meta.description ?? "",
       path: "/announcements",
       image: "announcements",
     }),
-  loader: () => {
-    preloadImage("heroSnow", "100vw");
-  },
   component: Announcements,
 });
 
 function Announcements() {
-  const { formulaIndie, message, fanMessage } = announcements;
+  const t = useT();
+  const { formulaIndie, message, fanMessage } = t.announcements;
   const instagram = socials.find((s) => s.name === "Instagram")!;
   return (
     <>
       <PageHero
         image="heroSnow"
-        alt="Gloria May Byron in a grey fur coat dancing with friends in falling snow"
+        alt={t.announcements.hero.alt}
         focus="55% 55%"
         veil={42}
-        title={announcements.heading}
+        title={t.announcements.hero.title}
         titleWidth={10}
-        text={announcements.sub}
+        text={t.announcements.hero.text}
       />
 
       {/* The newest message: Gloria's own clip, filmed upright on a phone, so it sits in a portrait frame. */}
@@ -47,7 +52,7 @@ function Announcements() {
             src="/video/message-to-fans-2026-11.mp4"
             poster="/video/message-to-fans-2026-11-poster.webp"
             posterSmall="/video/message-to-fans-2026-11-poster-320.webp"
-            label={fanMessage.videoLabel}
+            label={t.home.news.videoLabel}
             className="reveal mx-auto aspect-[480/850] w-full max-w-[340px] lg:mx-0"
           />
           <div className="reveal">
@@ -63,13 +68,24 @@ function Announcements() {
               target="_blank"
               rel="noreferrer noopener"
             >
-              Follow on Instagram
+              {t.common.followInstagram}
             </a>
           </div>
         </div>
       </section>
 
+      {/* A pointer to the page about how the songs are made */}
       <section className="section">
+        <div className="wrap reveal">
+          <h2 className="display-lg max-w-[18ch]">{t.announcements.authenticityNews.title}</h2>
+          <p className="lead mt-6 max-w-[56ch]">{t.announcements.authenticityNews.text}</p>
+          <Link to="/authenticity" className="btn btn-primary mt-8">
+            {t.chrome.nav.authenticity} <ArrowRight size={20} aria-hidden />
+          </Link>
+        </div>
+      </section>
+
+      <section className="section border-t border-line">
         <div className="wrap grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div className="media reveal mx-auto w-full max-w-[460px] lg:mx-0">
             <Img
@@ -102,18 +118,18 @@ function Announcements() {
       <section className="section">
         <div className="wrap reveal">
           <p className="display-md font-display font-extrabold max-w-[20ch]">
-            {announcements.footer}
+            {t.announcements.footer}
           </p>
           <h2 className="mt-14 font-display text-2xl font-extrabold tracking-[-0.02em]">
-            Explore my work
+            {t.announcements.explore.title}
           </h2>
-          <p className="lead mt-2">Discover more music & visuals.</p>
+          <p className="lead mt-2">{t.announcements.explore.text}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link to="/gallery" className="btn btn-primary">
-              Gallery
+              {t.chrome.nav.gallery}
             </Link>
             <Link to="/music" className="btn btn-ghost">
-              Music
+              {t.chrome.nav.music}
             </Link>
           </div>
         </div>

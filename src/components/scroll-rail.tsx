@@ -1,4 +1,7 @@
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+
+import { fmt } from "@/i18n";
+import { useT } from "@/i18n/messages-context";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 type Props = {
@@ -19,15 +22,20 @@ const arrow =
  * everything already fits. Swiping, the keyboard and the scrollbar keep working as before.
  */
 export function ScrollRail({ label, children, className }: Props) {
+  const t = useT().common;
   const rail = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
+  // Right-to-left rows start at the right edge: "next" is leftwards, and scrollLeft runs 0 to negative.
+  const [rtl, setRtl] = useState(false);
 
   const update = useCallback(() => {
     const el = rail.current;
     if (!el) return;
-    setCanPrev(el.scrollLeft > 4);
-    setCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+    const pos = Math.abs(el.scrollLeft);
+    setRtl(getComputedStyle(el).direction === "rtl");
+    setCanPrev(pos > 4);
+    setCanNext(pos < el.scrollWidth - el.clientWidth - 4);
   }, []);
 
   useEffect(() => {
@@ -46,7 +54,7 @@ export function ScrollRail({ label, children, className }: Props) {
   const go = (dir: 1 | -1) => {
     const el = rail.current;
     if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: "smooth" });
+    el.scrollBy({ left: (rtl ? -dir : dir) * el.clientWidth * 0.85, behavior: "smooth" });
   };
 
   const state = (on: boolean) => (on ? "opacity-100" : "pointer-events-none opacity-0");
@@ -65,22 +73,22 @@ export function ScrollRail({ label, children, className }: Props) {
       <button
         type="button"
         onClick={() => go(-1)}
-        aria-label={`Previous: ${label}`}
+        aria-label={fmt(t.scrollPrevious, { label })}
         tabIndex={canPrev ? 0 : -1}
         aria-hidden={!canPrev}
-        className={`${arrow} left-2 sm:left-3 ${state(canPrev)}`}
+        className={`${arrow} ${rtl ? "right-2 sm:right-3" : "left-2 sm:left-3"} ${state(canPrev)}`}
       >
-        <CaretLeft size={22} weight="bold" aria-hidden />
+        {rtl ? <CaretRight size={22} weight="bold" aria-hidden /> : <CaretLeft size={22} weight="bold" aria-hidden />}
       </button>
       <button
         type="button"
         onClick={() => go(1)}
-        aria-label={`Next: ${label}`}
+        aria-label={fmt(t.scrollNext, { label })}
         tabIndex={canNext ? 0 : -1}
         aria-hidden={!canNext}
-        className={`${arrow} right-2 sm:right-3 ${state(canNext)}`}
+        className={`${arrow} ${rtl ? "left-2 sm:left-3" : "right-2 sm:right-3"} ${state(canNext)}`}
       >
-        <CaretRight size={22} weight="bold" aria-hidden />
+        {rtl ? <CaretLeft size={22} weight="bold" aria-hidden /> : <CaretRight size={22} weight="bold" aria-hidden />}
       </button>
     </div>
   );

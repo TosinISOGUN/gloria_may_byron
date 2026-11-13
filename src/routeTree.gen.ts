@@ -9,180 +9,243 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as AnnouncementsRouteImport } from './routes/announcements'
-import { Route as AwardsRouteImport } from './routes/awards'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as MusicRouteImport } from './routes/music'
+import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
+import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
+import { Route as Char123LocaleChar125AboutRouteImport } from './routes/{-$locale}/about'
+import { Route as Char123LocaleChar125AnnouncementsRouteImport } from './routes/{-$locale}/announcements'
+import { Route as Char123LocaleChar125AuthenticityRouteImport } from './routes/{-$locale}/authenticity'
+import { Route as Char123LocaleChar125AwardsRouteImport } from './routes/{-$locale}/awards'
+import { Route as Char123LocaleChar125ContactRouteImport } from './routes/{-$locale}/contact'
+import { Route as Char123LocaleChar125GalleryRouteImport } from './routes/{-$locale}/gallery'
+import { Route as Char123LocaleChar125MusicRouteImport } from './routes/{-$locale}/music'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AnnouncementsRoute = AnnouncementsRouteImport.update({
-  id: '/announcements',
-  path: '/announcements',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AwardsRoute = AwardsRouteImport.update({
-  id: '/awards',
-  path: '/awards',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GalleryRoute = GalleryRouteImport.update({
-  id: '/gallery',
-  path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MusicRoute = MusicRouteImport.update({
-  id: '/music',
-  path: '/music',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const Char123LocaleChar125RouteRoute =
+  Char123LocaleChar125RouteRouteImport.update({
+    id: '/{-$locale}',
+    path: '/{-$locale}',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char123LocaleChar125IndexRoute =
+  Char123LocaleChar125IndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125AboutRoute =
+  Char123LocaleChar125AboutRouteImport.update({
+    id: '/about',
+    path: '/about',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125AnnouncementsRoute =
+  Char123LocaleChar125AnnouncementsRouteImport.update({
+    id: '/announcements',
+    path: '/announcements',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125AuthenticityRoute =
+  Char123LocaleChar125AuthenticityRouteImport.update({
+    id: '/authenticity',
+    path: '/authenticity',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125AwardsRoute =
+  Char123LocaleChar125AwardsRouteImport.update({
+    id: '/awards',
+    path: '/awards',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125ContactRoute =
+  Char123LocaleChar125ContactRouteImport.update({
+    id: '/contact',
+    path: '/contact',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125GalleryRoute =
+  Char123LocaleChar125GalleryRouteImport.update({
+    id: '/gallery',
+    path: '/gallery',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125MusicRoute =
+  Char123LocaleChar125MusicRouteImport.update({
+    id: '/music',
+    path: '/music',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/announcements': typeof AnnouncementsRoute
-  '/awards': typeof AwardsRoute
-  '/contact': typeof ContactRoute
-  '/gallery': typeof GalleryRoute
-  '/music': typeof MusicRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/{-$locale}/about': typeof Char123LocaleChar125AboutRoute
+  '/{-$locale}/announcements': typeof Char123LocaleChar125AnnouncementsRoute
+  '/{-$locale}/authenticity': typeof Char123LocaleChar125AuthenticityRoute
+  '/{-$locale}/awards': typeof Char123LocaleChar125AwardsRoute
+  '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
+  '/{-$locale}/gallery': typeof Char123LocaleChar125GalleryRoute
+  '/{-$locale}/music': typeof Char123LocaleChar125MusicRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/announcements': typeof AnnouncementsRoute
-  '/awards': typeof AwardsRoute
-  '/contact': typeof ContactRoute
-  '/gallery': typeof GalleryRoute
-  '/music': typeof MusicRoute
+  '/{-$locale}/about': typeof Char123LocaleChar125AboutRoute
+  '/{-$locale}/announcements': typeof Char123LocaleChar125AnnouncementsRoute
+  '/{-$locale}/authenticity': typeof Char123LocaleChar125AuthenticityRoute
+  '/{-$locale}/awards': typeof Char123LocaleChar125AwardsRoute
+  '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
+  '/{-$locale}/gallery': typeof Char123LocaleChar125GalleryRoute
+  '/{-$locale}/music': typeof Char123LocaleChar125MusicRoute
+  '/{-$locale}': typeof Char123LocaleChar125IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/announcements': typeof AnnouncementsRoute
-  '/awards': typeof AwardsRoute
-  '/contact': typeof ContactRoute
-  '/gallery': typeof GalleryRoute
-  '/music': typeof MusicRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/{-$locale}/about': typeof Char123LocaleChar125AboutRoute
+  '/{-$locale}/announcements': typeof Char123LocaleChar125AnnouncementsRoute
+  '/{-$locale}/authenticity': typeof Char123LocaleChar125AuthenticityRoute
+  '/{-$locale}/awards': typeof Char123LocaleChar125AwardsRoute
+  '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
+  '/{-$locale}/gallery': typeof Char123LocaleChar125GalleryRoute
+  '/{-$locale}/music': typeof Char123LocaleChar125MusicRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/about'
-    | '/announcements'
-    | '/awards'
-    | '/contact'
-    | '/gallery'
-    | '/music'
+    | '/{-$locale}'
+    | '/{-$locale}/about'
+    | '/{-$locale}/announcements'
+    | '/{-$locale}/authenticity'
+    | '/{-$locale}/awards'
+    | '/{-$locale}/contact'
+    | '/{-$locale}/gallery'
+    | '/{-$locale}/music'
+    | '/{-$locale}/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/about'
-    | '/announcements'
-    | '/awards'
-    | '/contact'
-    | '/gallery'
-    | '/music'
+    | '/{-$locale}/about'
+    | '/{-$locale}/announcements'
+    | '/{-$locale}/authenticity'
+    | '/{-$locale}/awards'
+    | '/{-$locale}/contact'
+    | '/{-$locale}/gallery'
+    | '/{-$locale}/music'
+    | '/{-$locale}'
   id:
     | '__root__'
-    | '/'
-    | '/about'
-    | '/announcements'
-    | '/awards'
-    | '/contact'
-    | '/gallery'
-    | '/music'
+    | '/{-$locale}'
+    | '/{-$locale}/about'
+    | '/{-$locale}/announcements'
+    | '/{-$locale}/authenticity'
+    | '/{-$locale}/awards'
+    | '/{-$locale}/contact'
+    | '/{-$locale}/gallery'
+    | '/{-$locale}/music'
+    | '/{-$locale}/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  AnnouncementsRoute: typeof AnnouncementsRoute
-  AwardsRoute: typeof AwardsRoute
-  ContactRoute: typeof ContactRoute
-  GalleryRoute: typeof GalleryRoute
-  MusicRoute: typeof MusicRoute
+  Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/{-$locale}': {
+      id: '/{-$locale}'
+      path: '/{-$locale}'
+      fullPath: '/{-$locale}'
+      preLoaderRoute: typeof Char123LocaleChar125RouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/{-$locale}/': {
+      id: '/{-$locale}/'
       path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/'
+      preLoaderRoute: typeof Char123LocaleChar125IndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/about': {
-      id: '/about'
+    '/{-$locale}/about': {
+      id: '/{-$locale}/about'
       path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/about'
+      preLoaderRoute: typeof Char123LocaleChar125AboutRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/announcements': {
-      id: '/announcements'
+    '/{-$locale}/announcements': {
+      id: '/{-$locale}/announcements'
       path: '/announcements'
-      fullPath: '/announcements'
-      preLoaderRoute: typeof AnnouncementsRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/announcements'
+      preLoaderRoute: typeof Char123LocaleChar125AnnouncementsRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/awards': {
-      id: '/awards'
+    '/{-$locale}/authenticity': {
+      id: '/{-$locale}/authenticity'
+      path: '/authenticity'
+      fullPath: '/{-$locale}/authenticity'
+      preLoaderRoute: typeof Char123LocaleChar125AuthenticityRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/awards': {
+      id: '/{-$locale}/awards'
       path: '/awards'
-      fullPath: '/awards'
-      preLoaderRoute: typeof AwardsRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/awards'
+      preLoaderRoute: typeof Char123LocaleChar125AwardsRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/contact': {
-      id: '/contact'
+    '/{-$locale}/contact': {
+      id: '/{-$locale}/contact'
       path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/contact'
+      preLoaderRoute: typeof Char123LocaleChar125ContactRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/gallery': {
-      id: '/gallery'
+    '/{-$locale}/gallery': {
+      id: '/{-$locale}/gallery'
       path: '/gallery'
-      fullPath: '/gallery'
-      preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/gallery'
+      preLoaderRoute: typeof Char123LocaleChar125GalleryRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/music': {
-      id: '/music'
+    '/{-$locale}/music': {
+      id: '/{-$locale}/music'
       path: '/music'
-      fullPath: '/music'
-      preLoaderRoute: typeof MusicRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/music'
+      preLoaderRoute: typeof Char123LocaleChar125MusicRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
   }
 }
 
+interface Char123LocaleChar125RouteRouteChildren {
+  Char123LocaleChar125AboutRoute: typeof Char123LocaleChar125AboutRoute
+  Char123LocaleChar125AnnouncementsRoute: typeof Char123LocaleChar125AnnouncementsRoute
+  Char123LocaleChar125AuthenticityRoute: typeof Char123LocaleChar125AuthenticityRoute
+  Char123LocaleChar125AwardsRoute: typeof Char123LocaleChar125AwardsRoute
+  Char123LocaleChar125ContactRoute: typeof Char123LocaleChar125ContactRoute
+  Char123LocaleChar125GalleryRoute: typeof Char123LocaleChar125GalleryRoute
+  Char123LocaleChar125MusicRoute: typeof Char123LocaleChar125MusicRoute
+  Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
+}
+
+const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
+  {
+    Char123LocaleChar125AboutRoute: Char123LocaleChar125AboutRoute,
+    Char123LocaleChar125AnnouncementsRoute:
+      Char123LocaleChar125AnnouncementsRoute,
+    Char123LocaleChar125AuthenticityRoute:
+      Char123LocaleChar125AuthenticityRoute,
+    Char123LocaleChar125AwardsRoute: Char123LocaleChar125AwardsRoute,
+    Char123LocaleChar125ContactRoute: Char123LocaleChar125ContactRoute,
+    Char123LocaleChar125GalleryRoute: Char123LocaleChar125GalleryRoute,
+    Char123LocaleChar125MusicRoute: Char123LocaleChar125MusicRoute,
+    Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
+  }
+
+const Char123LocaleChar125RouteRouteWithChildren =
+  Char123LocaleChar125RouteRoute._addFileChildren(
+    Char123LocaleChar125RouteRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  AnnouncementsRoute: AnnouncementsRoute,
-  AwardsRoute: AwardsRoute,
-  ContactRoute: ContactRoute,
-  GalleryRoute: GalleryRoute,
-  MusicRoute: MusicRoute,
+  Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

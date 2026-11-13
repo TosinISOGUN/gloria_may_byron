@@ -1,6 +1,6 @@
 # Gloria May Byron
 
-Website for Gloria May Byron, an independent singer and songwriter (gloriamaybyron.com). Seven pages: Home, About, Music, Announcements, Gallery, Awards, Contact.
+Website for Gloria May Byron, an independent singer and songwriter (gloriamaybyron.com). Eight pages: Home, About, How the songs are made (Authenticity), Music, Announcements, Gallery, Awards, Contact. Each is published in twelve languages: English at the root and the others in a folder (`/sv/`, `/zh-tw/`, `/ja/`, `/ru/`, `/vi/`, `/es/`, `/it/`, `/no/`, `/zh-hk/`, `/bn/`, `/ar/`).
 
 ## Stack
 
@@ -33,6 +33,20 @@ The live site is plain static files on Hostinger shared hosting (no Node there).
 The run's Actions page shows what was uploaded. A failed test or a missing page stops the deploy before anything is uploaded. Files are only added or replaced, except inside `assets/`, `images/`, `fonts/` and `og/`, which are kept in step with the build. To roll back, revert the commit and push.
 
 **By hand.** `bun run build:static`, zip the contents of `dist/client/` (forward-slash paths; `tar -a -c -f site.zip -C dist/client .` works on Windows), upload and extract in File Manager.
+
+## Private preview (Vercel)
+
+To show the site to Gloria before it goes live, deploy it to Vercel. Any build made by Vercel is a preview: every page carries `noindex, nofollow`, `robots.txt` blocks all crawlers, no sitemap is published, links and share images use the preview's own address. The live build (the GitHub Action for Hostinger) sets none of this. `vercel.json` makes Vercel run `node scripts/build-static.mjs` and serve `dist/client`. To try it locally, run `PREVIEW=1 node scripts/build-static.mjs` (it overwrites `public/robots.txt` and deletes `public/sitemap.xml`, so run `git checkout public/` afterwards).
+
+One-time setup: in Vercel, Add New, Project, import this GitHub repository, leave the build settings as they are (they come from `vercel.json`), and deploy. Then, so the link is public (a preview on a non-production branch sits behind Vercel's login), set the project's Production Branch to `dev` (Settings, Environments, Production). The link is then `https://<project>.vercel.app` and updates whenever `dev` is pushed. Delete the project (or its domain) when she has signed off.
+
+## Languages
+
+The words of every page live in `src/i18n/messages/`: `en.ts` is the source of truth and each other language is a partial file that is merged over it, so a missing line falls back to English. `src/i18n/locales.ts` lists the languages (name, flag, script, direction). Arabic runs right to left, and the layout mirrors with logical Tailwind classes (`ps-`, `end-`, `border-s`). Use those, not `left`/`right`, in new code. Each language is its own static folder with its own canonical, hreflang and Open Graph tags, and `scripts/build-seo.mjs` lists all of them in the sitemap. The deploy workflow checks that every page exists in every language before uploading.
+
+## Social cards
+
+`bun run share-cards` (needs Chrome) writes shareable cards to `social-cards/` (not part of the website): per language, two designs in a feed size (1080x1350) and a story size (1080x1920), each with a QR code to the site in that language. `overview.png` shows them all, and `captions.txt` has the matching text and link per language. The words come from the message files, so the cards follow the site.
 
 ## Images
 
