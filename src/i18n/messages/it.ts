@@ -595,7 +595,7 @@ const it: PartialMessages = {
 
       visualRole: "Produzione visiva",
 
-      webText: "Isogun Labs progetta e realizza siti web e applicazioni web per startup, aziende e marchi. Isogun Labs ha progettato e realizzato questo sito web.",
+      webText: "Uno studio tecnologico che progetta e realizza siti web e applicazioni web per startup, aziende e marchi. Ha progettato e realizzato questo sito web.",
 
       contactLead: "Per un sito web tutto tuo:",
 

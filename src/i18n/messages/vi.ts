@@ -595,7 +595,7 @@ const vi: PartialMessages = {
 
       visualRole: "Nhà sản xuất hình ảnh",
 
-      webText: "Isogun Labs thiết kế và xây dựng website và ứng dụng web cho startup, doanh nghiệp và thương hiệu. Isogun Labs đã thiết kế và xây dựng trang web này.",
+      webText: "Một studio công nghệ thiết kế và xây dựng website và ứng dụng web cho startup, doanh nghiệp và thương hiệu. Studio này đã thiết kế và xây dựng trang web này.",
 
       contactLead: "Nếu bạn cần một website riêng:",
 

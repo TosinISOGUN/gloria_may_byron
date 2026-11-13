@@ -144,7 +144,7 @@ export const en = {
 
       visualRole: "Visual producer",
 
-      webText: "Isogun Labs designs and builds websites and web apps for startups, businesses and brands. Isogun Labs designed and built this website.",
+      webText: "A tech studio that designs and builds websites and web apps for startups, businesses and brands. It designed and built this website.",
 
       contactLead: "For a website of your own:",
 

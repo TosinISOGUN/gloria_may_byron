@@ -595,7 +595,7 @@ const zhHk: PartialMessages = {
 
       visualRole: "視覺製作人",
 
-      webText: "Isogun Labs 為新創公司、企業和品牌設計並建置網站與網頁應用程式。這個網站由 Isogun Labs 設計並建置。",
+      webText: "一家為新創公司、企業和品牌設計並建置網站與網頁應用程式的科技工作室。這個網站由他們設計並建置。",
 
       contactLead: "如果您也需要網站：",
 

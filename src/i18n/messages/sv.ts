@@ -595,7 +595,7 @@ const sv: PartialMessages = {
 
       visualRole: "Visuell producent",
 
-      webText: "Isogun Labs utformar och bygger webbplatser och webbappar för startups, företag och varumärken. Isogun Labs har utformat och byggt den här webbplatsen.",
+      webText: "En tech-studio som utformar och bygger webbplatser och webbappar för startups, företag och varumärken. Den har utformat och byggt den här webbplatsen.",
 
       contactLead: "För en egen webbplats:",
 
