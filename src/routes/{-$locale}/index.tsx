@@ -165,6 +165,21 @@ function Home() {
         </div>
       </section>
 
+      {/* A short way in to the page about how the songs are made */}
+      <section className="border-y border-line py-[clamp(48px,7vw,88px)]">
+        <div className="wrap grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
+          <div className="reveal">
+            <h2 className="display-md max-w-[20ch]">{t.authenticity.hero.title}</h2>
+            <p className="lead mt-4 max-w-[48ch]">{t.authenticity.hero.text}</p>
+          </div>
+          <div className="reveal lg:justify-self-end">
+            <Link to="/authenticity" className="btn btn-primary">
+              {t.chrome.nav.authenticity} <ArrowRight size={20} aria-hidden />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Featured music */}
       <section className="section bg-bg-2">
         <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">

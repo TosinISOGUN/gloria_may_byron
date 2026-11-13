@@ -1,3 +1,4 @@
+import { ArrowRight } from "@phosphor-icons/react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@/components/link";
 
@@ -73,7 +74,18 @@ function Announcements() {
         </div>
       </section>
 
+      {/* A pointer to the page about how the songs are made */}
       <section className="section">
+        <div className="wrap reveal">
+          <h2 className="display-lg max-w-[18ch]">{t.announcements.authenticityNews.title}</h2>
+          <p className="lead mt-6 max-w-[56ch]">{t.announcements.authenticityNews.text}</p>
+          <Link to="/authenticity" className="btn btn-primary mt-8">
+            {t.chrome.nav.authenticity} <ArrowRight size={20} aria-hidden />
+          </Link>
+        </div>
+      </section>
+
+      <section className="section border-t border-line">
         <div className="wrap grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div className="media reveal mx-auto w-full max-w-[460px] lg:mx-0">
             <Img

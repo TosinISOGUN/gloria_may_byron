@@ -224,6 +224,7 @@ const sv: PartialMessages = {
     portraitsLabel: "Porträtt",
   },
   music: {
+    madeNote: "Undrar du hur de här låtarna görs?",
     meta: {
       title: "Musik | Gloria May Byron",
       description:
@@ -253,6 +254,7 @@ const sv: PartialMessages = {
     more: { title: "Vill du ha mer?", text: "Upptäck mer musik och bilder." },
   },
   announcements: {
+    authenticityNews: { title: "Så görs Glorias låtar", text: "Gloria har lagt till en sida som visar hur hennes låtar görs, med inspelningar från studion, ett registreringscertifikat och skriftliga bekräftelser från ljudtekniker." },
     meta: {
       title: "Nyheter | Gloria May Byron",
       description:
@@ -510,23 +512,29 @@ const sv: PartialMessages = {
         certificate: "Certifikatet",
         platforms: "Skriftliga bekräftelser",
         coverArt: "Om omslagsbilderna",
-        tour: "Planer på liveturné?",
+        tour: "Om liveturnéer",
       },
     },
     studio: {
       heading: "Direkt från studion",
       intro:
         "Skärminspelningar från en DAW (digital audio workstation), det inspelningsprogram som Glorias ljudtekniker använder för att bygga hennes låtar. Varje video är en låts projektfil medan de arbetar med den.",
+      showAll: "Visa alla {count} sessioner",
+      showFewer: "Visa färre sessioner",
       caption: "Studioprojektfil",
       videoLabel: "Inspelning av teknikerna som arbetar med {title}",
     },
+    translations: {
+      p1: "Gloria arbetar med andra sångare, både lokala och från hela världen, för att spela in översatta versioner av några av sina låtar. Målet är enkelt: att låtarna ska nå fler människor, så att lyssnare kan höra dem på sitt hjärtas språk och känna det hopp de bär.",
+      p2: "Många lyssnare runt om i världen har skrivit till Gloria för att berätta hur mycket de uppskattar att höra hennes låtar på sitt eget språk, och hur mycket de har fått ut av dem. Varje sådan version är ännu en inspelning att arrangera, sjunga, mixa och färdigställa.",
+    },
     certificate: {
-      heading: "Ett daterat certifikat",
-      lead: "Gloria har registrerat sitt verk hos SongSecure, som sparar ett digitalt fingeravtryck av ljudfilen tillsammans med datumet då den laddades upp.",
+      heading: "Låtar som är ordentligt registrerade",
+      lead: "Gloria ser till att hennes låtar är ordentligt registrerade. Tjänster som SongSecure sparar ett digitalt fingeravtryck av ljudfilen tillsammans med datumet då den laddades upp, vilket ger låten ett daterat belägg för vem som har gjort den.",
       intro:
-        "Certifikatet för \"Every Love Story\" anger Gloria May Byron som skapare och den 6 maj 2025 som skapandedatum. Dess lydelse är:",
+        "Certifikatet nedan är ett av många. Det gäller \"Every Love Story\": det anger Gloria May Byron som upphovsperson och 6 maj 2025 som skapandedatum. Det står så här:",
       alt: "Registreringsbevis från SongSecure för Every Love Story, skapad av Gloria May Byron, skapandedatum 6 maj 2025",
-      caption: "Registreringsbeviset från SongSecure, visat i sin helhet.",
+      caption: "Ett exempel: SongSecures registreringsbevis, visat i sin helhet.",
     },
     platforms: {
       heading: "Skriftliga bekräftelser",
@@ -556,9 +564,11 @@ const sv: PartialMessages = {
       heading: "Om omslagsbilderna",
       p1: "Omslagsbilderna är en sak för sig, skild från musiken. En del av omslagen till Glorias utgivningar har finjusterats med AI-bildverktyg. Det påverkar bara bilden på omslaget och är, som meddelandena ovan förklarar, den sannolika anledningen till att en streamingtjänst ibland har visat en etikett på en utgivning.",
       p2: "Gloria säger hellre det öppet än låter någon undra. När omslaget är det enda som är inblandat beskriver en etikett bilden och säger ingenting om låten.",
+      p3: "Varje omslag väljs för att bära känslan i sin låt: en man tyngd av en svår tid, en dansare som sträcker sig mot solen, en flicka som blickar ut över havet, en far och ett barn som går sida vid sida. Omslaget ger låten ett ansikte. Musiken inuti är ett eget arbete, gjort i studion som visas ovan.",
+      coverAlt: "Omslag för {title}",
     },
     tour: {
-      heading: "Planer på liveturné?",
+      heading: "Många har frågat om liveturnéer",
       paragraphs: [
         "Under många år har Gloria arbetat för offer för historiska övergrepp, bland dem kvinnor och barn av många nationaliteter. Hon blev en prisbelönt författare, skrev otaliga låtar med full upphovsrätt och medverkade i utgivna diktsamlingar och demo-cd-skivor. På vägen fann hon självförtroendet att skriva och producera för sig själv, inte för någon annan.",
         "I december 2019 fick Gloria flera allvarliga skador på ryggraden och ryggmärgen på sin arbetsplats. De krävde omfattande, svåra operationer och lämnade henne med svåra nervskador, den sortens skador som förändrar ett liv fysiskt. Hon tillbringade året före operationerna mestadels bunden till sitt hem. Under den tiden skrev hon många hjärtliga låtar, fulla av djup känsla, som hon bara har börjat producera.",

@@ -224,6 +224,7 @@ const zhHk: PartialMessages = {
     portraitsLabel: "肖像",
   },
   music: {
+    madeNote: "想知呢啲歌係點樣製作出嚟？",
     meta: {
       title: "音樂 | Gloria May Byron",
       description:
@@ -253,6 +254,7 @@ const zhHk: PartialMessages = {
     more: { title: "想睇多啲？", text: "探索更多音樂同影像。" },
   },
   announcements: {
+    authenticityNews: { title: "Gloria 嘅歌係點樣製作出嚟", text: "Gloria 新增咗一個頁面，講解佢嘅歌曲係點樣製作，包括錄音室嘅錄影、登記證書，以及音響工程師嘅書面確認。" },
     meta: {
       title: "最新消息 | Gloria May Byron",
       description:
@@ -510,23 +512,29 @@ const zhHk: PartialMessages = {
         certificate: "證書",
         platforms: "書面確認",
         coverArt: "關於封面圖像",
-        tour: "有冇現場巡演嘅計劃？",
+        tour: "關於現場巡演",
       },
     },
     studio: {
       heading: "直接嚟自錄音室",
       intro:
         "呢啲係 DAW（數碼音訊工作站）嘅螢幕錄影，即係 Gloria 嘅工程師用嚟砌佢啲歌嘅錄音程式。每段影片都係一首歌喺製作過程入面嘅專案檔。",
+      showAll: "顯示全部 {count} 段錄影",
+      showFewer: "收埋部分錄影",
       caption: "錄音室專案檔",
       videoLabel: "工程師製作《{title}》嘅錄影",
     },
+    translations: {
+      p1: "Gloria 同本地以及世界各地嘅其他歌手合作，錄製佢部分歌曲嘅翻譯版本。目的好簡單：等歌曲接觸到更多人，等聽眾可以用自己心中嘅語言聽，感受到歌曲帶嚟嘅希望。",
+      p2: "世界各地好多聽眾寫信俾 Gloria，講佢哋幾咁珍惜可以用自己嘅語言聽佢嘅歌，以及從中得到嘅好處。每一個咁樣嘅版本，都係另一次要編曲、唱、混音同完成嘅錄音。",
+    },
     certificate: {
-      heading: "一份有日期嘅證書",
-      lead: "Gloria 已經將作品登記喺 SongSecure，佢會記錄音訊檔案嘅數碼指紋，同埋檔案上載嘅日期。",
+      heading: "妥善登記嘅歌曲",
+      lead: "Gloria 確保佢嘅歌曲都妥善登記。好似 SongSecure 呢類服務，會記錄音訊檔案嘅數位指紋同上載日期，等歌曲有一份載明創作者嘅日期紀錄。",
       intro:
-        "《Every Love Story》嘅證書列明 Gloria May Byron 係創作者，建立日期係 2025 年 5 月 6 日。證書上嘅文字寫住：",
+        "下面嗰張證書只係眾多證書之一。佢係《Every Love Story》嘅證書，註明創作者係 Gloria May Byron，創作日期係 2025 年 5 月 6 日。證書上嘅文字如下：",
       alt: "Gloria May Byron 創作嘅《Every Love Story》嘅 SongSecure 登記證書，建立日期 2025 年 5 月 6 日",
-      caption: "SongSecure 登記證書嘅完整內容。",
+      caption: "其中一例：SongSecure 嘅登記證書，完整顯示。",
     },
     platforms: {
       heading: "書面確認",
@@ -556,9 +564,11 @@ const zhHk: PartialMessages = {
       heading: "關於封面圖像",
       p1: "封面圖片同音樂係兩回事。Gloria 部分發行作品嘅封面，曾經用 AI 影像工具修飾過。呢樣只影響封面上嘅圖片，而且好似上面嘅訊息解釋，呢個好可能就係串流平台有時喺某個發行作品上顯示標示嘅原因。",
       p2: "Gloria 寧願坦白講出嚟，都唔想有人心存疑問。當封面圖片係唯一涉及嘅部分，個標示描述嘅係圖片，同首歌本身無關。",
+      p3: "每張封面都係為咗傳達歌曲嘅心情而揀：被艱難時期壓住嘅男人、向住太陽伸展嘅舞者、望住大海嘅女孩、並肩而行嘅父親同孩子。封面等歌曲有個樣，而入面嘅音樂係另一項工作，好似上面所示，係喺錄音室完成嘅。",
+      coverAlt: "《{title}》封面圖",
     },
     tour: {
-      heading: "有冇現場巡演嘅計劃？",
+      heading: "好多人都問過現場巡演嘅事",
       paragraphs: [
         "多年來，Gloria 為歷史性虐待嘅受害者發聲，當中包括多個國籍嘅婦女同兒童。佢成為屢獲獎項嘅作家，寫咗無數擁有完整版權嘅歌曲，亦參與咗已出版嘅詩集同試聽 CD。一路行嚟，佢搵到信心，為自己而寫、為自己而製作，而唔係為咗其他人。",
         "2019 年 12 月，Gloria 喺工作場所嘅脊椎同脊髓受到多處嚴重傷害。傷勢需要大規模、嚴重嘅手術，亦留低嚴重嘅神經損傷，呢種傷害會由身體層面改變一個人嘅生活。做手術之前嗰一年，佢大部分時間都被困喺屋企。喺呢段時間，佢寫咗好多充滿深情、發自內心嘅歌曲，而呢啲歌佢啱啱先開始製作。",

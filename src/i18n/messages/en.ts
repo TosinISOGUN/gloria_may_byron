@@ -68,23 +68,29 @@ export const en = {
         certificate: "The certificate",
         platforms: "Written confirmations",
         coverArt: "About cover art",
-        tour: "Plans for live tours?",
+        tour: "About live tours",
       },
     },
     studio: {
       heading: "Straight from the studio",
       intro:
         "Screen recordings from a DAW (digital audio workstation), the recording program that Gloria's engineers use to build her songs. Each video is one song's project file while they work on it.",
+      showAll: "Show all {count} sessions",
+      showFewer: "Show fewer sessions",
       caption: "Studio project file",
       videoLabel: "Recording of the engineers working on {title}",
     },
+    translations: {
+      p1: "Gloria works with other singers, both local and from around the world, to record translated versions of some of her songs. The aim is simple: the songs reach more people, and listeners can hear them in the language of their hearts and feel the hope they carry.",
+      p2: "Many listeners around the world have written to Gloria to say how much they appreciate hearing her songs in their own language, and how much they have gained from them. Each of these versions is another recording to arrange, sing, mix and finish.",
+    },
     certificate: {
-      heading: "A dated certificate",
-      lead: "Gloria has registered her work with SongSecure, which records a digital fingerprint of the audio file together with the date it was uploaded.",
+      heading: "Songs that are properly registered",
+      lead: "Gloria makes sure her songs are properly registered. Services such as SongSecure record a digital fingerprint of the audio file together with the date it was uploaded, which gives the song a dated record of who made it.",
       intro:
-        "The certificate for \"Every Love Story\" names Gloria May Byron as its creator and gives May 6th, 2025 as the creation date. Its wording says:",
+        "The certificate below is one of many. It is for \"Every Love Story\": it names Gloria May Byron as its creator and gives May 6th, 2025 as the creation date. Its wording says:",
       alt: "SongSecure Certificate of Registration for Every Love Story, created by Gloria May Byron, creation date May 6th, 2025",
-      caption: "The SongSecure Certificate of Registration, shown whole.",
+      caption: "One example: the SongSecure Certificate of Registration, shown whole.",
     },
     platforms: {
       heading: "Written confirmations",
@@ -113,9 +119,11 @@ export const en = {
       heading: "About the cover art",
       p1: "The cover images are a separate matter from the music. Some of the artwork for Gloria's releases has been refined with AI image tools. That affects the picture on the cover only, and, as the messages above explain, it is the likely reason a streaming service has sometimes shown a label on a release.",
       p2: "Gloria would rather say so openly than leave anyone wondering. Where the artwork is the only element involved, a label describes the picture and says nothing about the song.",
+      p3: "Each cover is chosen to carry the feeling of its song: a man weighed down by a hard season, a dancer reaching toward the sun, a girl looking out over the sea, a father and child walking side by side. The artwork gives a song its face. The music inside is its own work, made in the studio as shown above.",
+      coverAlt: "Cover artwork for {title}",
     },
     tour: {
-      heading: "Plans for live tours?",
+      heading: "Many people have asked about live tours",
       paragraphs: [
         "For many years Gloria advocated for victims of historical abuse, among them women and children of many nationalities. She became an award-winning author, wrote countless songs with full copyrights, and took part in published books of poetry and demo CDs. Along the way she found the confidence to write and produce for herself, not for anyone else.",
         "In December 2019, Gloria suffered numerous injuries to her spine and spinal cord at her workplace. They needed intensive, severe surgeries and left her with serious nerve damage, the kind of injury that changes a life physically. She spent the year before her operations mostly confined. In that time she wrote many heartfelt songs, full of deep feeling, that she has only begun to produce.",
@@ -324,6 +332,7 @@ export const en = {
     portraitsLabel: "Portraits",
   },
   music: {
+    madeNote: "Wondering how these songs are made?",
     meta: {
       title: "Music | Gloria May Byron",
       description:
@@ -349,6 +358,7 @@ export const en = {
     more: { title: "Want more?", text: "Discover more music & visuals." },
   },
   announcements: {
+    authenticityNews: { title: "How Gloria's songs are made", text: "Gloria has added a page that shows how her songs are made, with recordings from the studio, a registration certificate and written confirmations from sound engineers." },
     meta: {
       title: "Announcements | Gloria May Byron",
       description:

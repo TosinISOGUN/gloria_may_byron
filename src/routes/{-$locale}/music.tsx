@@ -196,6 +196,12 @@ function Music() {
               </article>
             ))}
           </div>
+          <p className="reveal mt-20 border-t border-line pt-6 text-muted">
+            {m.madeNote}{" "}
+            <Link to="/authenticity" className="link-inline font-semibold">
+              {t.chrome.nav.authenticity}
+            </Link>
+          </p>
         </div>
       </section>
 

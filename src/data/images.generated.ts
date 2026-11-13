@@ -317,6 +317,42 @@ export const images = {
       1978
     ]
   },
+  "coverTiredBruised": {
+    "w": 1600,
+    "h": 1599,
+    "sizes": [
+      480,
+      768,
+      1080
+    ]
+  },
+  "coverChasingSun": {
+    "w": 1080,
+    "h": 1081,
+    "sizes": [
+      480,
+      768,
+      1080
+    ]
+  },
+  "coverCanYouSeeIt": {
+    "w": 1080,
+    "h": 1080,
+    "sizes": [
+      480,
+      768,
+      1080
+    ]
+  },
+  "coverDreamsTomorrow": {
+    "w": 1080,
+    "h": 1079,
+    "sizes": [
+      480,
+      768,
+      1080
+    ]
+  },
   "release01": {
     "w": 3000,
     "h": 2000,

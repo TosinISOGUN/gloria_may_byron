@@ -224,6 +224,7 @@ const vi: PartialMessages = {
     portraitsLabel: "Chân dung",
   },
   music: {
+    madeNote: "Bạn thắc mắc những bài hát này được tạo ra như thế nào?",
     meta: {
       title: "Âm nhạc | Gloria May Byron",
       description:
@@ -253,6 +254,7 @@ const vi: PartialMessages = {
     more: { title: "Muốn xem thêm?", text: "Khám phá thêm âm nhạc và hình ảnh." },
   },
   announcements: {
+    authenticityNews: { title: "Các bài hát của Gloria được tạo ra như thế nào", text: "Gloria đã thêm một trang cho thấy các bài hát của cô được tạo ra ra sao, gồm bản thu từ phòng thu, chứng nhận đăng ký và xác nhận bằng văn bản từ các kỹ sư âm thanh." },
     meta: {
       title: "Tin tức | Gloria May Byron",
       description:
@@ -510,23 +512,29 @@ const vi: PartialMessages = {
         certificate: "Chứng nhận",
         platforms: "Xác nhận bằng văn bản",
         coverArt: "Về ảnh bìa",
-        tour: "Kế hoạch lưu diễn trực tiếp?",
+        tour: "Về lưu diễn trực tiếp",
       },
     },
     studio: {
       heading: "Trực tiếp từ phòng thu",
       intro:
         "Các bản ghi màn hình từ một DAW (trạm làm việc âm thanh kỹ thuật số), phần mềm thu âm mà các kỹ sư của Gloria dùng để xây dựng các bài hát của cô. Mỗi video là tệp dự án của một bài hát trong lúc họ làm việc.",
+      showAll: "Xem cả {count} buổi thu",
+      showFewer: "Thu gọn bớt các buổi thu",
       caption: "Tệp dự án phòng thu",
       videoLabel: "Bản ghi các kỹ sư đang làm việc với {title}",
     },
+    translations: {
+      p1: "Gloria hợp tác với các ca sĩ khác, cả ở địa phương lẫn từ khắp nơi trên thế giới, để thu âm phiên bản dịch của một số bài hát của cô. Mục tiêu rất đơn giản: để các bài hát đến được với nhiều người hơn, để người nghe có thể nghe chúng bằng ngôn ngữ của trái tim mình và cảm nhận niềm hy vọng mà chúng mang lại.",
+      p2: "Nhiều thính giả trên khắp thế giới đã viết thư cho Gloria để nói rằng họ trân trọng biết bao khi được nghe các bài hát của cô bằng chính ngôn ngữ của mình, và họ đã nhận được nhiều điều từ đó. Mỗi phiên bản như vậy là thêm một bản thu cần phối khí, hát, hòa âm và hoàn thiện.",
+    },
     certificate: {
-      heading: "Một chứng nhận có ghi ngày",
-      lead: "Gloria đã đăng ký tác phẩm của mình với SongSecure, nơi lưu một dấu vân tay số của tệp âm thanh cùng ngày tệp được tải lên.",
+      heading: "Các bài hát được đăng ký đầy đủ",
+      lead: "Gloria luôn đảm bảo các bài hát của mình được đăng ký đầy đủ. Những dịch vụ như SongSecure lưu một dấu vân tay số của tệp âm thanh cùng ngày tải lên, giúp bài hát có một bản ghi có ghi ngày về người tạo ra nó.",
       intro:
-        "Chứng nhận cho \"Every Love Story\" ghi Gloria May Byron là người tạo ra và ngày 6 tháng 5 năm 2025 là ngày tạo. Nội dung ghi:",
+        "Chứng nhận dưới đây chỉ là một trong nhiều chứng nhận. Đây là chứng nhận của \"Every Love Story\": ghi Gloria May Byron là người tạo ra và ngày tạo là 6 tháng 5 năm 2025. Nội dung ghi rằng:",
       alt: "Chứng nhận đăng ký SongSecure cho Every Love Story, do Gloria May Byron tạo ra, ngày tạo 6 tháng 5 năm 2025",
-      caption: "Chứng nhận đăng ký SongSecure, được hiển thị đầy đủ.",
+      caption: "Một ví dụ: Chứng nhận đăng ký của SongSecure, hiển thị đầy đủ.",
     },
     platforms: {
       heading: "Xác nhận bằng văn bản",
@@ -556,9 +564,11 @@ const vi: PartialMessages = {
       heading: "Về ảnh bìa",
       p1: "Ảnh bìa là một vấn đề riêng, tách biệt với âm nhạc. Một số ảnh bìa các bản phát hành của Gloria đã được chỉnh sửa bằng công cụ hình ảnh AI. Điều đó chỉ ảnh hưởng đến bức ảnh trên bìa và, như các tin nhắn ở trên giải thích, là lý do có khả năng nhất khiến một dịch vụ phát nhạc đôi khi hiển thị nhãn trên một bản phát hành.",
       p2: "Gloria muốn nói điều này công khai hơn là để ai đó phải thắc mắc. Khi ảnh bìa là yếu tố duy nhất liên quan, một nhãn chỉ mô tả bức ảnh và không nói gì về bài hát.",
+      p3: "Mỗi ảnh bìa được chọn để mang cảm xúc của bài hát: một người đàn ông trĩu nặng sau một giai đoạn khó khăn, một vũ công vươn về phía mặt trời, một cô gái nhìn ra biển, một người cha và đứa con sánh bước bên nhau. Ảnh bìa cho bài hát một gương mặt. Âm nhạc bên trong là một công việc riêng, được làm trong phòng thu như đã trình bày ở trên.",
+      coverAlt: "Ảnh bìa của {title}",
     },
     tour: {
-      heading: "Kế hoạch lưu diễn trực tiếp?",
+      heading: "Nhiều người đã hỏi về các chuyến lưu diễn trực tiếp",
       paragraphs: [
         "Trong nhiều năm, Gloria đã lên tiếng bảo vệ những nạn nhân của các vụ lạm dụng trong quá khứ, trong đó có phụ nữ và trẻ em thuộc nhiều quốc tịch. Cô trở thành một tác giả đoạt giải thưởng, viết vô số bài hát có bản quyền đầy đủ và tham gia các tuyển tập thơ đã xuất bản cùng những đĩa demo. Trên đường đi, cô tìm thấy sự tự tin để viết và sản xuất cho chính mình, chứ không phải cho ai khác.",
         "Tháng 12 năm 2019, Gloria bị nhiều chấn thương nghiêm trọng ở cột sống và tủy sống tại nơi làm việc. Chúng cần những ca phẫu thuật nặng nề và để lại tổn thương thần kinh nghiêm trọng, loại chấn thương làm thay đổi cuộc sống về thể chất. Cô trải qua năm trước các ca phẫu thuật hầu như chỉ ở trong nhà. Trong thời gian đó, cô viết nhiều bài hát chân thành, chứa đựng cảm xúc sâu sắc, mà cô mới chỉ bắt đầu sản xuất.",

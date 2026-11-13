@@ -224,6 +224,7 @@ const it: PartialMessages = {
     portraitsLabel: "Ritratti",
   },
   music: {
+    madeNote: "Ti chiedi come nascono queste canzoni?",
     meta: {
       title: "Musica | Gloria May Byron",
       description:
@@ -253,6 +254,7 @@ const it: PartialMessages = {
     more: { title: "Vuoi di più?", text: "Scopri altra musica e altre immagini." },
   },
   announcements: {
+    authenticityNews: { title: "Come nascono le canzoni di Gloria", text: "Gloria ha aggiunto una pagina che mostra come nascono le sue canzoni, con registrazioni dallo studio, un certificato di registrazione e conferme scritte di tecnici del suono." },
     meta: {
       title: "Novità | Gloria May Byron",
       description:
@@ -510,23 +512,29 @@ const it: PartialMessages = {
         certificate: "Il certificato",
         platforms: "Conferme scritte",
         coverArt: "Sulle copertine",
-        tour: "Progetti di tournée dal vivo?",
+        tour: "Sui tour dal vivo",
       },
     },
     studio: {
       heading: "Direttamente dallo studio",
       intro:
         "Registrazioni dello schermo di una DAW (digital audio workstation), il programma di registrazione che i tecnici di Gloria usano per costruire le sue canzoni. Ogni video è il file di progetto di una canzone mentre ci lavorano.",
+      showAll: "Mostra tutte le {count} sessioni",
+      showFewer: "Mostra meno sessioni",
       caption: "File di progetto dello studio",
       videoLabel: "Registrazione dei tecnici al lavoro su {title}",
     },
+    translations: {
+      p1: "Gloria collabora con altri cantanti, sia locali sia di tutto il mondo, per registrare versioni tradotte di alcune delle sue canzoni. L'obiettivo è semplice: far arrivare le canzoni a più persone, perché chi ascolta possa sentirle nella lingua del proprio cuore e percepire la speranza che portano.",
+      p2: "Molti ascoltatori in tutto il mondo hanno scritto a Gloria per dirle quanto apprezzano ascoltare le sue canzoni nella propria lingua e quanto ne hanno tratto beneficio. Ognuna di queste versioni è un'altra registrazione da arrangiare, cantare, mixare e rifinire.",
+    },
     certificate: {
-      heading: "Un certificato datato",
-      lead: "Gloria ha registrato la sua opera con SongSecure, che conserva un'impronta digitale del file audio insieme alla data in cui è stato caricato.",
+      heading: "Canzoni regolarmente registrate",
+      lead: "Gloria si assicura che le sue canzoni siano regolarmente registrate. Servizi come SongSecure registrano un'impronta digitale del file audio insieme alla data in cui è stato caricato, il che dà alla canzone una traccia datata di chi l'ha realizzata.",
       intro:
-        "Il certificato di \"Every Love Story\" indica Gloria May Byron come autrice e il 6 maggio 2025 come data di creazione. Il testo dice:",
+        "Il certificato qui sotto è uno fra tanti. È quello di \"Every Love Story\": indica Gloria May Byron come autrice e riporta il 6 maggio 2025 come data di creazione. Il suo testo dice:",
       alt: "Certificato di registrazione SongSecure per Every Love Story, creata da Gloria May Byron, data di creazione 6 maggio 2025",
-      caption: "Il certificato di registrazione SongSecure, mostrato per intero.",
+      caption: "Un esempio: il certificato di registrazione di SongSecure, mostrato per intero.",
     },
     platforms: {
       heading: "Conferme scritte",
@@ -556,9 +564,11 @@ const it: PartialMessages = {
       heading: "Sulle copertine",
       p1: "Le copertine sono una questione separata dalla musica. Parte della grafica delle uscite di Gloria è stata rifinita con strumenti di immagine basati sull'IA. Questo riguarda solo l'immagine in copertina e, come spiegano i messaggi qui sopra, è la probabile ragione per cui un servizio di streaming ha talvolta mostrato un'etichetta su un'uscita.",
       p2: "Gloria preferisce dirlo apertamente piuttosto che lasciare qualcuno a chiedersi. Quando la grafica è l'unico elemento coinvolto, un'etichetta descrive l'immagine e non dice nulla sulla canzone.",
+      p3: "Ogni copertina è scelta per portare il sentimento della sua canzone: un uomo piegato da una stagione dura, una danzatrice che si protende verso il sole, una ragazza che guarda il mare, un padre e un figlio che camminano fianco a fianco. La grafica dà un volto alla canzone. La musica all'interno è un lavoro a sé, realizzato in studio come mostrato sopra.",
+      coverAlt: "Copertina di {title}",
     },
     tour: {
-      heading: "Progetti di tournée dal vivo?",
+      heading: "Molte persone hanno chiesto dei tour dal vivo",
       paragraphs: [
         "Per molti anni Gloria si è battuta per le vittime di abusi storici, tra cui donne e bambini di molte nazionalità. È diventata un'autrice premiata, ha scritto innumerevoli canzoni con tutti i diritti d'autore e ha partecipato a libri di poesia pubblicati e a CD demo. Lungo il cammino ha trovato la fiducia per scrivere e produrre per sé stessa, non per altri.",
         "Nel dicembre 2019 Gloria ha riportato numerose lesioni alla colonna vertebrale e al midollo spinale sul posto di lavoro. Hanno richiesto interventi chirurgici lunghi e pesanti e le hanno lasciato un grave danno ai nervi, il tipo di lesione che cambia una vita sul piano fisico. Ha passato l'anno prima degli interventi per lo più costretta a casa. In quel periodo ha scritto molte canzoni sentite, piene di emozione profonda, che ha appena iniziato a produrre.",

@@ -1,8 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 
-import { ClipPlayer } from "@/components/clip-player";
+import { Img } from "@/components/img";
+import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { PageHero } from "@/components/page-hero";
-import { signoffSender, studioVideos } from "@/data/authenticity";
+import { StudioGrid } from "@/components/studio-grid";
+import { coverArtworks, signoffSender, studioVideos } from "@/data/authenticity";
 import { evidenceImages, type EvidenceId } from "@/data/evidence.generated";
 import { site } from "@/data/site";
 import { en as enMessages, fmt, messagesForParam } from "@/i18n";
@@ -96,9 +99,15 @@ function Authenticity() {
   const en = enMessages.authenticity.quotes;
   const locale = useLocale();
   const labels = t.platforms;
+  const [cover, setCover] = useState<number | null>(null);
+  const coverItems: LightboxItem[] = coverArtworks.map((c) => ({
+    id: c.id,
+    alt: fmt(t.coverArt.coverAlt, { title: c.title }),
+    caption: c.title,
+  }));
   const jumps: [string, string][] = [
-    ["#studio", t.answer.jumps.studio],
     ["#certificate", t.answer.jumps.certificate],
+    ["#studio", t.answer.jumps.studio],
     ["#platforms", t.answer.jumps.platforms],
     ["#cover-art", t.answer.jumps.coverArt],
     ["#tour", t.answer.jumps.tour],
@@ -125,6 +134,8 @@ function Authenticity() {
               {t.answer.lead}
             </p>
             <div className="prose-flow mt-8">
+              <p>{t.translations.p1}</p>
+              <p>{t.translations.p2}</p>
               <p>{t.answer.body}</p>
             </div>
             <ul className="mt-8 flex flex-wrap gap-3 text-sm font-semibold">
@@ -140,37 +151,10 @@ function Authenticity() {
         </div>
       </section>
 
-      {/* Studio recordings */}
-      <section id="studio" className="section bg-bg-2 scroll-mt-24">
-        <div className="wrap">
-          <h2 className="display-lg reveal max-w-[18ch]">{t.studio.heading}</h2>
-          <p className="lead reveal mt-4 max-w-[60ch]">{t.studio.intro}</p>
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {studioVideos.map((v) => (
-              <li key={v.id} className="reveal">
-                <ClipPlayer
-                  src={`/videos/${v.id}.mp4`}
-                  poster={`/videos/posters/${v.id}.jpg`}
-                  posterWidth={960}
-                  posterHeight={540}
-                  progress
-                  label={fmt(t.studio.videoLabel, { title: v.title })}
-                  className="aspect-video w-full rounded-2xl border border-line"
-                />
-                <p className="mt-3 font-display font-bold" lang="en" dir="ltr">
-                  {v.title}
-                </p>
-                <p className="text-sm text-muted">{t.studio.caption}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* Certificate */}
-      <section id="certificate" className="section scroll-mt-24">
+      <section id="certificate" className="section border-t border-line scroll-mt-24">
         <div className="wrap grid items-start gap-x-20 gap-y-8 lg:grid-cols-[1fr_1fr] lg:grid-rows-[auto_1fr] lg:gap-y-4">
-          <h2 className="display-lg reveal max-w-[14ch] lg:col-start-1 lg:row-start-1">{t.certificate.heading}</h2>
+          <h2 className="display-lg reveal max-w-[20ch] lg:col-start-1 lg:row-start-1">{t.certificate.heading}</h2>
           <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
             <Shot id="certificate" alt={t.certificate.alt} caption={t.certificate.caption} />
           </div>
@@ -188,6 +172,22 @@ function Authenticity() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Studio recordings */}
+      <section id="studio" className="section bg-bg-2 scroll-mt-24">
+        <div className="wrap">
+          <h2 className="display-lg reveal max-w-[18ch]">{t.studio.heading}</h2>
+          <p className="lead reveal mt-4 max-w-[60ch]">{t.studio.intro}</p>
+          <StudioGrid
+            clips={studioVideos}
+            visible={6}
+            videoLabel={(title) => fmt(t.studio.videoLabel, { title })}
+            caption={t.studio.caption}
+            showAll={fmt(t.studio.showAll, { count: studioVideos.length })}
+            showFewer={t.studio.showFewer}
+          />
         </div>
       </section>
 
@@ -237,20 +237,24 @@ function Authenticity() {
 
       {/* Mixea and distributors */}
       <section className="section bg-bg-2">
-        <div className="wrap grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
-          <div className="reveal min-w-0">
+        <div className="wrap grid items-start gap-x-20 gap-y-8 lg:grid-cols-[1fr_1fr] lg:grid-rows-[auto_1fr] lg:gap-y-10">
+          <div className="reveal min-w-0 lg:col-start-1 lg:row-start-1">
             <h2 className="display-lg max-w-[16ch]">{t.mixea.heading}</h2>
             <div className="prose-flow mt-8">
               <p>{t.mixea.body}</p>
             </div>
-            <h3 className="mt-10 font-display text-2xl font-extrabold tracking-[-0.02em]">
+          </div>
+          <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+            <Shot id="emailMixea" alt={t.mixea.alt} caption={t.mixea.caption} />
+          </div>
+          <div className="reveal min-w-0 lg:col-start-1 lg:row-start-2">
+            <h3 className="font-display text-2xl font-extrabold tracking-[-0.02em]">
               {t.platforms.written}
             </h3>
             <div className="mt-5">
               <Quote original={en.mixea} translated={t.quotes.mixea} labels={labels} locale={locale} />
             </div>
           </div>
-          <Shot id="emailMixea" alt={t.mixea.alt} caption={t.mixea.caption} />
         </div>
       </section>
 
@@ -260,17 +264,40 @@ function Authenticity() {
           <h2 className="display-md reveal max-w-[14ch] lg:sticky lg:top-28 lg:self-start">
             {t.coverArt.heading}
           </h2>
-          <div className="reveal prose-flow">
-            <p>{t.coverArt.p1}</p>
-            <p>{t.coverArt.p2}</p>
+          <div className="reveal min-w-0">
+            <div className="prose-flow">
+              <p>{t.coverArt.p1}</p>
+              <p>{t.coverArt.p2}</p>
+              <p>{t.coverArt.p3}</p>
+            </div>
+            <ul className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
+              {coverArtworks.map((c, i) => (
+                <li key={c.id}>
+                  <button
+                    type="button"
+                    onClick={() => setCover(i)}
+                    aria-label={fmt(t.coverArt.coverAlt, { title: c.title })}
+                    aria-haspopup="dialog"
+                    className="block w-full overflow-hidden rounded-[3px] ring-1 ring-black/10 shadow-[0_1px_2px_rgba(8,20,24,0.28),0_10px_18px_-6px_rgba(8,20,24,0.32),0_24px_44px_-18px_rgba(8,20,24,0.5)] transition-transform duration-300 hover:-translate-y-1"
+                  >
+                    <Img id={c.id} alt="" sizes="(min-width: 1024px) 14rem, 45vw" className="block h-auto w-full" />
+                  </button>
+                  <p className="mt-3 text-sm font-semibold" lang="en" dir="ltr">
+                    {c.title}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
+      <Lightbox items={coverItems} index={cover} onChange={setCover} />
+
       {/* Story */}
       <section id="tour" className="section border-t border-line scroll-mt-24">
         <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <h2 className="display-md reveal max-w-[14ch] lg:sticky lg:top-28 lg:self-start">
+          <h2 className="display-md reveal max-w-[18ch] lg:sticky lg:top-28 lg:self-start">
             {t.tour.heading}
           </h2>
           <div className="reveal prose-flow">
