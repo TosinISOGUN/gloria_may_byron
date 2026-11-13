@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { describe, expect, it } from "vitest";
@@ -49,12 +49,6 @@ describe("languages", () => {
       "Bangla",
       "Arabic",
     ]);
-  });
-
-  it("ships a flag for every language", () => {
-    for (const l of locales) {
-      expect(existsSync(join(process.cwd(), "public/flags", `${l.flag}.svg`)), l.code).toBe(true);
-    }
   });
 
   it("reads Arabic right to left and every other language left to right", () => {

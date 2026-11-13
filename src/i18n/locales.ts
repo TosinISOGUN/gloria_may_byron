@@ -9,8 +9,6 @@ export type Locale = {
   native: string;
   /** The language in English, shown small beside it. */
   english: string;
-  /** Circle flag file under /public/flags. */
-  flag: string;
   /** Value of <html lang>. */
   htmlLang: string;
   /** Value of hreflang alternates (what search engines understand). */
@@ -24,18 +22,18 @@ export type Locale = {
 };
 
 export const locales = [
-  { code: "en", native: "English", english: "English", flag: "us", htmlLang: "en-US", hreflang: "en", ogLocale: "en_US", script: "latin", dir: "ltr" },
-  { code: "sv", native: "Svenska", english: "Swedish", flag: "se", htmlLang: "sv", hreflang: "sv", ogLocale: "sv_SE", script: "latin", dir: "ltr" },
-  { code: "zh-tw", native: "繁體中文", english: "Taiwanese", flag: "tw", htmlLang: "zh-Hant-TW", hreflang: "zh-TW", ogLocale: "zh_TW", script: "hant", dir: "ltr" },
-  { code: "ja", native: "日本語", english: "Japanese", flag: "jp", htmlLang: "ja", hreflang: "ja", ogLocale: "ja_JP", script: "ja", dir: "ltr" },
-  { code: "ru", native: "Русский", english: "Russian", flag: "ru", htmlLang: "ru", hreflang: "ru", ogLocale: "ru_RU", script: "cyrillic", dir: "ltr" },
-  { code: "vi", native: "Tiếng Việt", english: "Vietnamese", flag: "vn", htmlLang: "vi", hreflang: "vi", ogLocale: "vi_VN", script: "latin", dir: "ltr" },
-  { code: "es", native: "Español", english: "Spanish", flag: "es", htmlLang: "es", hreflang: "es", ogLocale: "es_ES", script: "latin", dir: "ltr" },
-  { code: "it", native: "Italiano", english: "Italian", flag: "it", htmlLang: "it", hreflang: "it", ogLocale: "it_IT", script: "latin", dir: "ltr" },
-  { code: "no", native: "Norsk", english: "Norwegian", flag: "no", htmlLang: "nb", hreflang: "nb", ogLocale: "nb_NO", script: "latin", dir: "ltr" },
-  { code: "zh-hk", native: "廣東話", english: "Cantonese", flag: "hk", htmlLang: "yue-Hant-HK", hreflang: "zh-HK", ogLocale: "zh_HK", script: "hant", dir: "ltr" },
-  { code: "bn", native: "বাংলা", english: "Bangla", flag: "bd", htmlLang: "bn", hreflang: "bn", ogLocale: "bn_BD", script: "bn", dir: "ltr" },
-  { code: "ar", native: "العربية", english: "Arabic", flag: "sa", htmlLang: "ar", hreflang: "ar", ogLocale: "ar_AR", script: "arabic", dir: "rtl" },
+  { code: "en", native: "English", english: "English", htmlLang: "en-US", hreflang: "en", ogLocale: "en_US", script: "latin", dir: "ltr" },
+  { code: "sv", native: "Svenska", english: "Swedish", htmlLang: "sv", hreflang: "sv", ogLocale: "sv_SE", script: "latin", dir: "ltr" },
+  { code: "zh-tw", native: "繁體中文", english: "Taiwanese", htmlLang: "zh-Hant-TW", hreflang: "zh-TW", ogLocale: "zh_TW", script: "hant", dir: "ltr" },
+  { code: "ja", native: "日本語", english: "Japanese", htmlLang: "ja", hreflang: "ja", ogLocale: "ja_JP", script: "ja", dir: "ltr" },
+  { code: "ru", native: "Русский", english: "Russian", htmlLang: "ru", hreflang: "ru", ogLocale: "ru_RU", script: "cyrillic", dir: "ltr" },
+  { code: "vi", native: "Tiếng Việt", english: "Vietnamese", htmlLang: "vi", hreflang: "vi", ogLocale: "vi_VN", script: "latin", dir: "ltr" },
+  { code: "es", native: "Español", english: "Spanish", htmlLang: "es", hreflang: "es", ogLocale: "es_ES", script: "latin", dir: "ltr" },
+  { code: "it", native: "Italiano", english: "Italian", htmlLang: "it", hreflang: "it", ogLocale: "it_IT", script: "latin", dir: "ltr" },
+  { code: "no", native: "Norsk", english: "Norwegian", htmlLang: "nb", hreflang: "nb", ogLocale: "nb_NO", script: "latin", dir: "ltr" },
+  { code: "zh-hk", native: "廣東話", english: "Cantonese", htmlLang: "yue-Hant-HK", hreflang: "zh-HK", ogLocale: "zh_HK", script: "hant", dir: "ltr" },
+  { code: "bn", native: "বাংলা", english: "Bangla", htmlLang: "bn", hreflang: "bn", ogLocale: "bn_BD", script: "bn", dir: "ltr" },
+  { code: "ar", native: "العربية", english: "Arabic", htmlLang: "ar", hreflang: "ar", ogLocale: "ar_AR", script: "arabic", dir: "rtl" },
 ] as const satisfies readonly Locale[];
 
 export type LocaleCode = (typeof locales)[number]["code"];

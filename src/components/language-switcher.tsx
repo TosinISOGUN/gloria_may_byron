@@ -1,4 +1,4 @@
-import { CaretDown, Check, X } from "@phosphor-icons/react";
+import { CaretDown, Check, Translate, X } from "@phosphor-icons/react";
 import { Link as RouterLink } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -9,22 +9,8 @@ import { useBasePath } from "@/i18n/use-locale";
 
 type Props = { locale: LocaleCode; chrome: Messages["chrome"] };
 
-function Flag({ code, size }: { code: string; size: number }) {
-  return (
-    <img
-      src={`/flags/${code}.svg`}
-      width={size}
-      height={size}
-      alt=""
-      aria-hidden
-      decoding="async"
-      className="shrink-0 rounded-full"
-    />
-  );
-}
-
 /**
- * Header button that shows the current language as a flag and its name, and opens a panel just below the
+ * Header button that shows a translate icon and the current language's name, and opens a panel just below the
  * nav with every language. Each entry is a real link to the same page in that language, so it works
  * without scripts and search engines can follow it. The panel is always in the page; it is only hidden.
  */
@@ -68,7 +54,7 @@ export function LanguageSwitcher({ locale, chrome }: Props) {
         onClick={() => setOpen((v) => !v)}
         className="inline-flex h-11 items-center gap-2 rounded-full border border-line ps-2.5 pe-2.5 sm:h-12 sm:ps-3 sm:pe-3 text-ink transition-colors hover:border-ink sm:pe-3.5"
       >
-        <Flag code={current.flag} size={24} />
+        <Translate size={24} weight="regular" aria-hidden className="shrink-0" />
         <span className="hidden text-[0.95rem] font-medium sm:inline" lang={current.htmlLang}>
           {current.native}
         </span>
@@ -114,11 +100,10 @@ export function LanguageSwitcher({ locale, chrome }: Props) {
                     lang={l.htmlLang}
                     aria-current={active ? "true" : undefined}
                     onClick={() => setOpen(false)}
-                    className={`flex min-h-14 items-center gap-2.5 rounded-2xl px-2.5 py-2 transition-colors hover:bg-white/10 sm:gap-3 sm:px-3 ${
+                    className={`flex min-h-14 items-center gap-2.5 rounded-2xl px-3 py-2 transition-colors hover:bg-white/10 sm:gap-3 sm:px-4 ${
                       active ? "bg-white/10" : ""
                     }`}
                   >
-                    <Flag code={l.flag} size={26} />
                     <span className="grid min-w-0 flex-1 leading-tight">
                       <span className="truncate text-[0.95rem] font-semibold sm:text-base">{l.native}</span>
                       {l.native !== l.english && (
@@ -127,7 +112,7 @@ export function LanguageSwitcher({ locale, chrome }: Props) {
                         </span>
                       )}
                     </span>
-                    {active && <Check size={18} weight="bold" className="hidden text-accent sm:block" aria-hidden />}
+                    {active && <Check size={18} weight="bold" className="shrink-0 text-accent" aria-hidden />}
                   </RouterLink>
                 </li>
               );
