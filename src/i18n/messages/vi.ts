@@ -569,6 +569,38 @@ const vi: PartialMessages = {
       p1: "Loại phần mềm này không hoàn hảo. Các kỹ sư cho Gloria biết nó có thể mắc lỗi, thậm chí từng gắn dấu cho những bài hát cũ được viết từ rất lâu trước khi có AI, kể cả những bài hát nổi tiếng. Vì việc kiểm tra là tự động chứ không do con người thực hiện, một sai sót có thể gắn dấu lên bài hát do con người làm ra. Đây có thể là một lý do khác khiến một số nền tảng trước đây công nhận các bài hát của Gloria là nguyên bản nay bắt đầu gắn dấu.",
       p2: "Kết quả kiểm tra không cho biết bài hát được làm ra như thế nào. Các bản ghi, giấy chứng nhận đăng ký và các xác nhận bằng văn bản trên trang này thì có.",
     },
+    moreCertificates: {
+
+      lead: "Thêm hai chứng nhận từ cùng dịch vụ, cho các bài hát được đăng ký vào những ngày khác nhau. Cả hai đều ghi Gloria May Byron là tác giả và có mã chứng nhận cùng dấu vân tay số riêng.",
+
+      littleAlt: "Chứng nhận đăng ký SongSecure cho Little Birds, phiên bản gốc, tác giả Gloria May Byron, ngày tạo ngày 29 tháng 9 năm 2026",
+
+      littleCaption: "\"Little Birds\", phiên bản gốc, đăng ký ngày 29 tháng 9 năm 2026.",
+
+      arabicAlt: "Chứng nhận đăng ký SongSecure cho Arabic Dreams Of Tomorrow, bản đặc biệt tiếng Ả Rập, tác giả Gloria May Byron, ngày tạo ngày 4 tháng 10 năm 2026",
+
+      arabicCaption: "\"Arabic Dreams Of Tomorrow\", bản đặc biệt tiếng Ả Rập, đăng ký ngày 4 tháng 10 năm 2026.",
+
+    },
+
+    credits: {
+
+      heading: "Nhà sản xuất hình ảnh và thiết kế web",
+
+      lead: "Những người cùng làm việc với Gloria về phòng thu, hình ảnh và trang web này.",
+
+      webRole: "Thiết kế và xây dựng web",
+
+      studioRole: "Nhà sản xuất phòng thu",
+
+      visualRole: "Nhà sản xuất hình ảnh",
+
+      webText: "Một studio công nghệ thiết kế và xây dựng website và ứng dụng web cho startup, doanh nghiệp và thương hiệu. Studio này đã thiết kế và xây dựng trang web này.",
+
+      contactLead: "Nếu bạn cần một website riêng:",
+
+    },
+
     mixea: {
       heading: "Về mastering",
       body: "Gloria phát hành qua DistroKid, nơi cung cấp một dịch vụ mastering tên là Mixea. Nó không viết, hát hay sáng tác gì cả. Đó là bước hoàn thiện cuối cùng áp dụng cho một bản thu đã xong trước khi đến các cửa hàng nhạc, và DistroKid mô tả nó là xử lý \"thông minh\". Đây là một bước bình thường giữa phòng thu và loa của bạn. Bản thân bài hát là của cô.",

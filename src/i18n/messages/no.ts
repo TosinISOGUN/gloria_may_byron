@@ -569,6 +569,38 @@ const no: PartialMessages = {
       p1: "Slik programvare er ikke feilfri. Teknikerne sa til Gloria at den kan gjøre feil, og at den til og med har merket eldre sanger som ble skrevet lenge før KI fantes, blant annet kjente hitlåter. Fordi kontrollen er automatisk og ikke gjøres av et menneske, kan en feil sette en merkelapp på en sang som mennesker har laget. Det kan være en ny grunn til at noen plattformer som tidligere godkjente Glorias sanger som originale, har begynt å merke dem.",
       p2: "Et kontrollresultat sier ikke noe om hvordan en sang er laget. Det gjør opptakene, registreringsbeviset og de skriftlige bekreftelsene på denne siden.",
     },
+    moreCertificates: {
+
+      lead: "To sertifikater til fra samme tjeneste, for låter som ble registrert på ulike datoer. Begge oppgir Gloria May Byron som opphavsperson og har sin egen sertifikat-ID og sitt eget digitale fingeravtrykk.",
+
+      littleAlt: "SongSecure Certificate of Registration for Little Birds, originalversjon, laget av Gloria May Byron, opprettelsesdato 29. september 2026",
+
+      littleCaption: "«Little Birds», originalversjon, registrert 29. september 2026.",
+
+      arabicAlt: "SongSecure Certificate of Registration for Arabic Dreams Of Tomorrow, arabisk spesialutgave, laget av Gloria May Byron, opprettelsesdato 4. oktober 2026",
+
+      arabicCaption: "«Arabic Dreams Of Tomorrow», arabisk spesialutgave, registrert 4. oktober 2026.",
+
+    },
+
+    credits: {
+
+      heading: "Visuelle produsenter og webdesign",
+
+      lead: "Menneskene som jobber med Gloria på studioet, det visuelle og dette nettstedet.",
+
+      webRole: "Webdesign og utvikling",
+
+      studioRole: "Studioprodusent",
+
+      visualRole: "Visuell produsent",
+
+      webText: "Et teknologistudio som designer og bygger nettsteder og nettapper for oppstartsbedrifter, bedrifter og merkevarer. Det har designet og bygget dette nettstedet.",
+
+      contactLead: "For et eget nettsted:",
+
+    },
+
     mixea: {
       heading: "Om mastring",
       body: "Gloria gir ut musikken sin via DistroKid, som tilbyr en mastringstjeneste som heter Mixea. Den skriver, synger eller komponerer ingenting. Det er en siste finpuss på et ferdig opptak før det når butikkene, og DistroKid beskriver den som \"intelligent\" behandling. Det er et vanlig steg mellom et studio og høyttalerne dine. Selve sangen er hennes.",
