@@ -46,7 +46,7 @@ The words of every page live in `src/i18n/messages/`: `en.ts` is the source of t
 
 ## Social cards
 
-`bun run share-cards` (needs Chrome) writes shareable cards to `social-cards/` (not part of the website): per language, two designs in a feed size (1080x1350) and a story size (1080x1920), each with a QR code to the site in that language. `overview.png` shows them all, and `captions.txt` has the matching text and link per language. The words come from the message files, so the cards follow the site.
+`bun run share-cards` (needs Chrome) writes shareable cards to `social-cards/` (not part of the website): per language, two designs in a feed size (1080x1350) and a story size (1080x1920), each with a QR code to the site in that language. `overview.png` shows them all, and `captions.txt` has the matching text and link per language. The words come from the message files, so the cards follow the site. The contact page also offers them to visitors (language, card, shape, share, save, copy caption): after `share-cards`, run `node scripts/build-share-assets.mjs` to turn them into `public/share/` and `src/data/share-cards.generated.ts`, then commit those.
 
 ## Images
 

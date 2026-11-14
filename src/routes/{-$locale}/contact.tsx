@@ -4,6 +4,7 @@ import { Link } from "@/components/link";
 import { useEffect, useRef, useState } from "react";
 
 import { Img } from "@/components/img";
+import { ShareCards } from "@/components/share-cards";
 import { platforms, site, socials } from "@/data/site";
 import { preloadImage } from "@/lib/preload";
 import { fmt, messagesForParam } from "@/i18n";
@@ -181,6 +182,8 @@ function Contact() {
           </div>
         </div>
       </section>
+
+      <ShareCards />
 
       <section className="pb-[clamp(72px,11vw,150px)]">
         <div className="wrap reveal">
