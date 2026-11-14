@@ -197,7 +197,8 @@ export function ShareCards() {
               <DownloadSimple size={20} aria-hidden />
               {t.download}
             </a>
-            <button type="button" onClick={copy} className="btn btn-ghost">
+            {/* Hidden on phones: the Share button already sends the picture with the caption. */}
+            <button type="button" onClick={copy} className="btn btn-ghost hidden sm:inline-flex">
               {copied ? <Check size={20} aria-hidden /> : <Copy size={20} aria-hidden />}
               {copied ? t.copied : t.copy}
             </button>
