@@ -47,7 +47,7 @@ describe("content data", () => {
       "Awards",
       "Contact",
     ]);
-    expect(socials.map((s) => s.name)).toEqual(["Instagram", "X (Twitter)", "TikTok"]);
+    expect(socials.map((s) => s.name)).toEqual(["Instagram", "Threads", "X (Twitter)", "TikTok"]);
     expect(en.about.journey.steps).toHaveLength(5);
     expect(en.announcements.formulaIndie.title).toContain("19 February 2026");
   });

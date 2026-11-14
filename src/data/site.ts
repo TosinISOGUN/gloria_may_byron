@@ -97,6 +97,7 @@ export type Social = { name: string; url: string };
 
 export const socials: Social[] = [
   { name: "Instagram", url: "https://www.instagram.com/butterflys_n_tides" },
+  { name: "Threads", url: "https://www.threads.com/@butterflys_n_tides" },
   { name: "X (Twitter)", url: "https://x.com/byron99196" },
   { name: "TikTok", url: "https://www.tiktok.com/@glo40556" },
 ];
