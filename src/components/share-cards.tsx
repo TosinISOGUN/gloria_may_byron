@@ -1,4 +1,4 @@
-import { Check, Copy, DownloadSimple, ShareNetwork } from "@phosphor-icons/react";
+import { Check, Copy, DownloadSimple, FacebookLogo, ShareNetwork, ThreadsLogo, TiktokLogo, WhatsappLogo, XLogo } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 
 import { shareCards, type ShareCardLocale } from "@/data/share-cards.generated";
@@ -13,6 +13,8 @@ const order = Object.keys(shareCards) as ShareCardLocale[];
 const dims: Record<Size, { w: number; h: number }> = { feed: { w: 720, h: 900 }, story: { w: 540, h: 960 } };
 
 const seg = "inline-flex rounded-full border border-line p-1";
+const iconBtn =
+  "grid size-12 place-items-center rounded-full border border-line transition-colors hover:border-ink";
 const segBtn =
   "min-h-10 rounded-full px-4 text-sm font-bold transition-colors aria-pressed:bg-accent aria-pressed:text-on-accent";
 
@@ -29,11 +31,13 @@ export function ShareCards() {
   const [size, setSize] = useState<Size>("feed");
   const [copied, setCopied] = useState(false);
   const [canShare, setCanShare] = useState(false);
+  const [tiktok, setTiktok] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const tiktokTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => setLang(current), [current]);
   useEffect(() => setCanShare(typeof navigator !== "undefined" && typeof navigator.share === "function"), []);
-  useEffect(() => () => clearTimeout(timer.current), []);
+  useEffect(() => () => { clearTimeout(timer.current); clearTimeout(tiktokTimer.current); }, []);
 
   const c = shareCards[lang];
   const text = design === "motto" ? c.motto : c.intro;
@@ -43,6 +47,12 @@ export function ShareCards() {
   const filename = `gloria-may-byron-${lang}-${design}-${size}.jpg`;
   const { w, h } = dims[size];
   const enc = encodeURIComponent;
+  const networks = [
+    { name: "WhatsApp", color: "#25D366", Icon: WhatsappLogo, href: `https://wa.me/?text=${enc(`${text} ${link}`)}` },
+    { name: "Facebook", color: "#1877F2", Icon: FacebookLogo, href: `https://www.facebook.com/sharer/sharer.php?u=${enc(link)}` },
+    { name: "X", color: "var(--text)", Icon: XLogo, href: `https://twitter.com/intent/tweet?url=${enc(link)}&text=${enc(text)}` },
+    { name: "Threads", color: "var(--text)", Icon: ThreadsLogo, href: `https://www.threads.com/intent/post?text=${enc(`${text} ${link}`)}` },
+  ];
 
   const share = async () => {
     try {
@@ -64,8 +74,19 @@ export function ShareCards() {
       setCopied(true);
       clearTimeout(timer.current);
       timer.current = setTimeout(() => setCopied(false), 2400);
+      return true;
     } catch {
       /* clipboard can be blocked */
+      return false;
+    }
+  };
+
+  // TikTok has no link-sharing address on the web, so the button copies the caption and says what to do next.
+  const toTiktok = async () => {
+    if (await copy()) {
+      setTiktok(true);
+      clearTimeout(tiktokTimer.current);
+      tiktokTimer.current = setTimeout(() => setTiktok(false), 9000);
     }
   };
 
@@ -185,18 +206,20 @@ export function ShareCards() {
             </span>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-6">
-            <span className="text-sm font-bold text-muted">{t.link}</span>
-            <a className="btn-text" target="_blank" rel="noreferrer noopener" href={`https://wa.me/?text=${enc(`${text} ${link}`)}`}>
-              WhatsApp
-            </a>
-            <a className="btn-text" target="_blank" rel="noreferrer noopener" href={`https://www.facebook.com/sharer/sharer.php?u=${enc(link)}`}>
-              Facebook
-            </a>
-            <a className="btn-text" target="_blank" rel="noreferrer noopener" href={`https://twitter.com/intent/tweet?url=${enc(link)}&text=${enc(text)}`}>
-              X
-            </a>
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-line pt-6">
+            <span className="me-1 text-sm font-bold text-muted">{t.link}</span>
+            {networks.map(({ name, color, Icon, href }) => (
+              <a key={name} className={iconBtn} target="_blank" rel="noreferrer noopener" href={href} aria-label={name} title={name}>
+                <Icon size={24} weight="fill" color={color} aria-hidden />
+              </a>
+            ))}
+            <button type="button" className={iconBtn} onClick={toTiktok} aria-label="TikTok" title="TikTok">
+              <TiktokLogo size={24} weight="fill" color="#FE2C55" aria-hidden />
+            </button>
           </div>
+          <p className="mt-3 min-h-6 max-w-[52ch] text-sm font-bold text-accent" role="status">
+            {tiktok ? t.tiktokNote : ""}
+          </p>
           <p className="mt-4 max-w-[52ch] text-sm text-muted">{t.hint}</p>
         </div>
       </div>

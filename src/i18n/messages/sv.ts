@@ -512,6 +512,7 @@ const sv: PartialMessages = {
       copiedStatus: "Texten kopierades till urklipp",
       link: "Eller dela länken",
       hint: "På en dator: spara bilden och bifoga den till ditt inlägg.",
+      tiktokNote: "TikTok har ingen delningslänk. Texten är kopierad: spara bilden och lägg upp båda i TikTok-appen.",
     },
     cta: {
       title: "Jag är alltid öppen för meningsfulla samarbeten och kreativa projekt",

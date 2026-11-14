@@ -512,6 +512,7 @@ const vi: PartialMessages = {
       copiedStatus: "Đã sao chép chú thích vào bộ nhớ tạm",
       link: "Hoặc chia sẻ liên kết",
       hint: "Trên máy tính, hãy lưu hình rồi đính kèm vào bài đăng của bạn.",
+      tiktokNote: "TikTok không có liên kết chia sẻ. Chú thích đã được sao chép: hãy lưu hình rồi đăng cả hai trong ứng dụng TikTok.",
     },
     cta: {
       title: "Tôi luôn sẵn lòng với những hợp tác có ý nghĩa và các dự án sáng tạo",

@@ -655,6 +655,7 @@ export const en = {
       copiedStatus: "Caption copied to the clipboard",
       link: "Or share the link",
       hint: "On a computer, save the picture and attach it to your post.",
+      tiktokNote: "TikTok has no share link. The caption is copied: save the picture, then post both in the TikTok app.",
     },
     cta: {
       title: "I'm always open to meaningful collaborations and creative projects",

@@ -512,6 +512,7 @@ const es: PartialMessages = {
       copiedStatus: "Texto copiado al portapapeles",
       link: "O comparte el enlace",
       hint: "En un ordenador, guarda la imagen y adjúntala a tu publicación.",
+      tiktokNote: "TikTok no tiene enlace para compartir. El texto está copiado: guarda la imagen y publica ambos en la app de TikTok.",
     },
     cta: {
       title: "Siempre estoy abierta a colaboraciones significativas y proyectos creativos",

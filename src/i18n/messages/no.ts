@@ -512,6 +512,7 @@ const no: PartialMessages = {
       copiedStatus: "Teksten ble kopiert til utklippstavlen",
       link: "Eller del lenken",
       hint: "På en datamaskin lagrer du bildet og legger det ved innlegget ditt.",
+      tiktokNote: "TikTok har ingen delingslenke. Teksten er kopiert: lagre bildet og legg ut begge i TikTok-appen.",
     },
     cta: {
       title: "Jeg er alltid åpen for meningsfulle samarbeid og kreative prosjekter",
