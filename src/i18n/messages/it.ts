@@ -510,9 +510,10 @@ const it: PartialMessages = {
       copy: "Copia didascalia",
       copied: "Didascalia copiata",
       copiedStatus: "Didascalia copiata negli appunti",
-      link: "Oppure condividi il link",
+      link: "Condividi su",
       hint: "Da computer, salva l'immagine e allegala al tuo post.",
-      tiktokNote: "TikTok non ha un link di condivisione. La didascalia è copiata: salva l'immagine e pubblica entrambe nell'app di TikTok.",
+      appNote: "{app} non accetta post condivisi da un sito web. La didascalia è copiata: salva l'immagine e pubblica entrambe nell'app di {app}.",
+      pasteNote: "Immagine copiata. Incollala nella finestra del post che si apre (Ctrl+V, o Cmd+V su Mac) per aggiungere la cartolina.",
     },
     cta: {
       title: "Sono sempre aperta a collaborazioni significative e a progetti creativi",

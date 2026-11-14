@@ -510,9 +510,10 @@ const no: PartialMessages = {
       copy: "Kopier tekst",
       copied: "Teksten er kopiert",
       copiedStatus: "Teksten ble kopiert til utklippstavlen",
-      link: "Eller del lenken",
+      link: "Del på",
       hint: "På en datamaskin lagrer du bildet og legger det ved innlegget ditt.",
-      tiktokNote: "TikTok har ingen delingslenke. Teksten er kopiert: lagre bildet og legg ut begge i TikTok-appen.",
+      appNote: "{app} tar ikke imot innlegg som deles fra et nettsted. Teksten er kopiert: lagre bildet og legg ut begge i {app}-appen.",
+      pasteNote: "Bildet er kopiert. Lim det inn i innleggsvinduet som åpnes (Ctrl+V, eller Cmd+V på Mac) for å legge ved kortet.",
     },
     cta: {
       title: "Jeg er alltid åpen for meningsfulle samarbeid og kreative prosjekter",

@@ -510,9 +510,10 @@ const zhHk: PartialMessages = {
       copy: "複製文案",
       copied: "已複製文案",
       copiedStatus: "文案已複製到剪貼簿",
-      link: "或者分享連結",
+      link: "分享到",
       hint: "用電腦嘅話，請先儲存圖片，再附加到你嘅貼文。",
-      tiktokNote: "TikTok 冇分享連結功能。文案已經複製：請儲存圖片，再喺 TikTok app 一齊發佈。",
+      appNote: "{app} 唔接受由網站分享嘅貼文。文案已經複製：請儲存圖片，再喺 {app} app 一齊發佈。",
+      pasteNote: "圖片已經複製。喺打開嘅貼文視窗貼上（Ctrl+V，Mac 用 Cmd+V），就會附上卡片。",
     },
     cta: {
       title: "我隨時樂意接受有意義嘅合作同創意項目",

@@ -1,8 +1,20 @@
-import { Check, Copy, DownloadSimple, FacebookLogo, ShareNetwork, ThreadsLogo, TiktokLogo, WhatsappLogo, XLogo } from "@phosphor-icons/react";
+import {
+  Check,
+  Copy,
+  DownloadSimple,
+  FacebookLogo,
+  InstagramLogo,
+  ShareNetwork,
+  ThreadsLogo,
+  TiktokLogo,
+  WhatsappLogo,
+  XLogo,
+} from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 
 import { shareCards, type ShareCardLocale } from "@/data/share-cards.generated";
 import { SITE_URL, site } from "@/data/site";
+import { fmt } from "@/i18n";
 import { useLocale } from "@/i18n/use-locale";
 import { useT } from "@/i18n/messages-context";
 
@@ -14,14 +26,29 @@ const dims: Record<Size, { w: number; h: number }> = { feed: { w: 720, h: 900 },
 
 const seg = "inline-flex rounded-full border border-line p-1";
 const iconBtn =
-  "grid size-11 shrink-0 place-items-center rounded-full sm:size-12 border border-line transition-colors hover:border-ink";
+  "grid size-10 shrink-0 place-items-center rounded-full border border-line transition-colors hover:border-ink min-[380px]:size-11 sm:size-12";
 const segBtn =
   "min-h-10 rounded-full px-4 text-sm font-bold transition-colors aria-pressed:bg-accent aria-pressed:text-on-accent";
 
+type Note = { kind: "paste" } | { kind: "app"; app: string } | null;
+
+/** The card as a PNG (the clipboard only takes PNG for pictures). */
+async function toPng(jpeg: Blob): Promise<Blob> {
+  const bmp = await createImageBitmap(jpeg);
+  const canvas = document.createElement("canvas");
+  canvas.width = bmp.width;
+  canvas.height = bmp.height;
+  canvas.getContext("2d")!.drawImage(bmp, 0, 0);
+  return new Promise((resolve, reject) => canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("png"))), "image/png"));
+}
+
 /**
- * The shareable cards (one per language, two designs, two shapes) with a way to pass them on:
- * the phone's own share sheet with the picture attached where the browser allows it, a plain
- * download, a copyable caption, and link shares for the common networks.
+ * The shareable cards (one per language, two designs, two shapes) with ways to pass them on.
+ * The picture goes along wherever the browser allows it:
+ *  - phones and tablets: every share button opens the device's share sheet with the card attached;
+ *  - computers: WhatsApp, X and Threads open their post box while the card is copied, ready to paste;
+ *  - Instagram and TikTok take no post from a website, so they copy the caption and say to post the saved picture.
+ * Save picture always works.
  */
 export function ShareCards() {
   const t = useT().contact.share;
@@ -30,14 +57,28 @@ export function ShareCards() {
   const [design, setDesign] = useState<Design>("motto");
   const [size, setSize] = useState<Size>("feed");
   const [copied, setCopied] = useState(false);
-  const [canShare, setCanShare] = useState(false);
-  const [tiktok, setTiktok] = useState(false);
+  const [canFiles, setCanFiles] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+  const [note, setNote] = useState<Note>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  const tiktokTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const noteTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => setLang(current), [current]);
-  useEffect(() => setCanShare(typeof navigator !== "undefined" && typeof navigator.share === "function"), []);
-  useEffect(() => () => { clearTimeout(timer.current); clearTimeout(tiktokTimer.current); }, []);
+  useEffect(() => {
+    try {
+      const probe = new File([""], "card.jpg", { type: "image/jpeg" });
+      setCanFiles(typeof navigator.share === "function" && !!navigator.canShare?.({ files: [probe] }));
+    } catch {
+      setCanFiles(false);
+    }
+  }, []);
+  useEffect(
+    () => () => {
+      clearTimeout(timer.current);
+      clearTimeout(noteTimer.current);
+    },
+    [],
+  );
 
   const c = shareCards[lang];
   const text = design === "motto" ? c.motto : c.intro;
@@ -47,24 +88,34 @@ export function ShareCards() {
   const filename = `gloria-may-byron-${lang}-${design}-${size}.jpg`;
   const { w, h } = dims[size];
   const enc = encodeURIComponent;
-  const networks = [
-    { name: "WhatsApp", color: "#25D366", Icon: WhatsappLogo, href: `https://wa.me/?text=${enc(`${text} ${link}`)}` },
-    { name: "Facebook", color: "#1877F2", Icon: FacebookLogo, href: `https://www.facebook.com/sharer/sharer.php?u=${enc(link)}` },
-    { name: "X", color: "var(--text)", Icon: XLogo, href: `https://twitter.com/intent/tweet?url=${enc(link)}&text=${enc(text)}` },
-    { name: "Threads", color: "var(--text)", Icon: ThreadsLogo, href: `https://www.threads.com/intent/post?text=${enc(`${text} ${link}`)}` },
-  ];
+
+  // Where the device can share files, the picture is fetched ahead of time: the share sheet must be opened
+  // straight from the tap, and some browsers (iPhone Safari) refuse it after a wait.
+  useEffect(() => {
+    if (!canFiles) return;
+    let stale = false;
+    setFile(null);
+    fetch(`${base}.jpg`)
+      .then((r) => r.blob())
+      .then((b) => !stale && setFile(new File([b], filename, { type: "image/jpeg" })))
+      .catch(() => {});
+    return () => {
+      stale = true;
+    };
+  }, [canFiles, base, filename]);
+
+  const say = (n: Note) => {
+    setNote(n);
+    clearTimeout(noteTimer.current);
+    noteTimer.current = setTimeout(() => setNote(null), 9000);
+  };
 
   const share = async () => {
+    if (!file) return;
     try {
-      const blob = await (await fetch(`${base}.jpg`)).blob();
-      const file = new File([blob], filename, { type: "image/jpeg" });
-      if (navigator.canShare?.({ files: [file] })) {
-        await navigator.share({ files: [file], text: caption, title: site.name });
-      } else {
-        await navigator.share({ text, url: link, title: site.name });
-      }
+      await navigator.share({ files: [file], text: caption, title: site.name });
     } catch {
-      /* the visitor closed the share sheet, or the browser refused: Save picture and Copy caption still work */
+      /* the visitor closed the share sheet */
     }
   };
 
@@ -76,18 +127,41 @@ export function ShareCards() {
       timer.current = setTimeout(() => setCopied(false), 2400);
       return true;
     } catch {
-      /* clipboard can be blocked */
-      return false;
+      return false; /* clipboard can be blocked */
     }
   };
 
-  // TikTok has no link-sharing address on the web, so the button copies the caption and says what to do next.
-  const toTiktok = async () => {
-    if (await copy()) {
-      setTiktok(true);
-      clearTimeout(tiktokTimer.current);
-      tiktokTimer.current = setTimeout(() => setTiktok(false), 9000);
+  /** Puts the card itself on the clipboard. Called straight from a tap, so the browser allows it. */
+  const copyPicture = () => {
+    if (typeof ClipboardItem === "undefined" || !navigator.clipboard?.write) return Promise.resolve(false);
+    const png = fetch(`${base}.jpg`).then((r) => r.blob()).then(toPng);
+    return navigator.clipboard.write([new ClipboardItem({ "image/png": png })]).then(
+      () => true,
+      () => false,
+    );
+  };
+
+  // `post` is the network's own post-box address; Facebook and the two apps below have none that takes a picture.
+  const networks = [
+    { name: "WhatsApp", color: "#25D366", Icon: WhatsappLogo, post: `https://wa.me/?text=${enc(`${text} ${link}`)}`, pastes: true },
+    { name: "Facebook", color: "#1877F2", Icon: FacebookLogo, post: `https://www.facebook.com/sharer/sharer.php?u=${enc(link)}`, pastes: false },
+    { name: "X", color: "var(--text)", Icon: XLogo, post: `https://twitter.com/intent/tweet?url=${enc(link)}&text=${enc(text)}`, pastes: true },
+    { name: "Threads", color: "var(--text)", Icon: ThreadsLogo, post: `https://www.threads.com/intent/post?text=${enc(`${text} ${link}`)}`, pastes: true },
+    { name: "Instagram", color: "#E4405F", Icon: InstagramLogo, post: null, pastes: false },
+    { name: "TikTok", color: "#FE2C55", Icon: TiktokLogo, post: null, pastes: false },
+  ];
+
+  const pass = (n: (typeof networks)[number]) => {
+    if (canFiles) {
+      void share();
+      return;
     }
+    if (n.post) {
+      window.open(n.post, "_blank", "noopener,noreferrer");
+      if (n.pastes) void copyPicture().then((ok) => say(ok ? { kind: "paste" } : null));
+      return;
+    }
+    void copy().then((ok) => ok && say({ kind: "app", app: n.name }));
   };
 
   return (
@@ -129,12 +203,7 @@ export function ShareCards() {
               const on = code === lang;
               return (
                 <li key={code}>
-                  <button
-                    type="button"
-                    onClick={() => setLang(code)}
-                    aria-pressed={on}
-                    className="group block w-full text-start"
-                  >
+                  <button type="button" onClick={() => setLang(code)} aria-pressed={on} className="group block w-full text-start">
                     <span
                       className={`block overflow-hidden rounded-lg ring-2 transition-shadow ${on ? "ring-accent" : "ring-transparent group-hover:ring-line"}`}
                     >
@@ -187,13 +256,13 @@ export function ShareCards() {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            {canShare && (
-              <button type="button" onClick={share} className="btn btn-primary">
+            {canFiles && (
+              <button type="button" onClick={share} disabled={!file} className="btn btn-primary disabled:opacity-60">
                 <ShareNetwork size={20} aria-hidden />
                 {t.share}
               </button>
             )}
-            <a href={`${base}.jpg`} download={filename} className={`btn ${canShare ? "btn-ghost" : "btn-primary"}`}>
+            <a href={`${base}.jpg`} download={filename} className={`btn ${canFiles ? "btn-ghost" : "btn-primary"}`}>
               <DownloadSimple size={20} aria-hidden />
               {t.download}
             </a>
@@ -209,21 +278,26 @@ export function ShareCards() {
 
           <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-line pt-6">
             <span className="w-full text-sm font-bold text-muted sm:w-auto">{t.link}</span>
-            <div className="flex flex-nowrap gap-2.5 sm:gap-4">
-            {networks.map(({ name, color, Icon, href }) => (
-              <a key={name} className={iconBtn} target="_blank" rel="noreferrer noopener" href={href} aria-label={name} title={name}>
-                <Icon size={24} weight="fill" color={color} aria-hidden />
-              </a>
-            ))}
-            <button type="button" className={iconBtn} onClick={toTiktok} aria-label="TikTok" title="TikTok">
-              <TiktokLogo size={24} weight="fill" color="#FE2C55" aria-hidden />
-            </button>
+            <div className="flex flex-nowrap gap-2 min-[380px]:gap-2.5 sm:gap-4">
+              {networks.map((n) => (
+                <button
+                  key={n.name}
+                  type="button"
+                  className={iconBtn}
+                  onClick={() => pass(n)}
+                  disabled={canFiles && !file}
+                  aria-label={n.name}
+                  title={n.name}
+                >
+                  <n.Icon size={24} weight="fill" color={n.color} aria-hidden />
+                </button>
+              ))}
             </div>
           </div>
           <p className="mt-3 min-h-6 max-w-[52ch] text-sm font-bold text-accent" role="status">
-            {tiktok ? t.tiktokNote : ""}
+            {note?.kind === "paste" ? t.pasteNote : note?.kind === "app" ? fmt(t.appNote, { app: note.app }) : ""}
           </p>
-          <p className="mt-4 max-w-[52ch] text-sm text-muted">{t.hint}</p>
+          {!canFiles && <p className="mt-4 max-w-[52ch] text-sm text-muted">{t.hint}</p>}
         </div>
       </div>
     </section>

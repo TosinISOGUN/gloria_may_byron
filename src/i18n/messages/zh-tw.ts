@@ -510,9 +510,10 @@ const zhTw: PartialMessages = {
       copy: "複製文案",
       copied: "已複製文案",
       copiedStatus: "文案已複製到剪貼簿",
-      link: "或分享連結",
+      link: "分享到",
       hint: "在電腦上，請先儲存圖片，再附加到你的貼文。",
-      tiktokNote: "TikTok 沒有分享連結功能。文案已複製：請儲存圖片，再到 TikTok 應用程式一併發布。",
+      appNote: "{app} 無法接收從網站分享的貼文。文案已複製：請儲存圖片，再到 {app} 應用程式一併發布。",
+      pasteNote: "圖片已複製。請在開啟的貼文視窗中貼上（Ctrl+V，Mac 為 Cmd+V），即可附上卡片。",
     },
     cta: {
       title: "我隨時樂於接受有意義的合作與創意專案",
