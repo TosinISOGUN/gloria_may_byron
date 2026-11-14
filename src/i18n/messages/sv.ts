@@ -634,7 +634,7 @@ const sv: PartialMessages = {
       ],
       engineer: [
         "Angående Tidal självt, och Deezer och YouTube med det: det vi ser den här månaden är att alla tre har börjat flagga AI-genererade omslagsbilder över hela linjen, på allas utgåvor, oavsett vad som finns i ljudet. Ett omslag gjort med ett AI-bildverktyg räcker nu i sig för att sätta etiketten på en utgåva. En flagga på de plattformarna säger alltså ingenting om dina låtar, och det är värt att kontrollera omslagsbilden innan man antar att ljudet är orsaken. Att dina musikvideor visas utan etikett pekar åt samma håll.",
-        "De här plattformarna fortsätter att ändra reglerna, och var och en ändrar dem på sitt sätt. Du kan inte hålla koll på alla, och du borde inte behöva. Mitt råd är att koncentrera dig på en plattform, den som betalar och där dina lyssnare finns, vilket för en oberoende artist är Spotify via DistroKid. DistroKid har redan granskat och godkänt dina filer, och dina låtar finns utlagda utan problem överallt annars. Låt Tidal vara Tidal.",
+        "De här plattformarna fortsätter att ändra reglerna, och var och en ändrar dem på sitt sätt. Du kan inte hålla koll på alla, och du borde inte behöva. Mitt råd är att koncentrera dig på en plattform, den som betalar och där dina lyssnare finns […] DistroKid har redan granskat och godkänt dina filer, och dina låtar finns utlagda utan problem överallt annars. Låt Tidal vara Tidal.",
       ],
       signoff: "Ditt arbete är utmärkt. Fortsätt så.",
       mixea: [

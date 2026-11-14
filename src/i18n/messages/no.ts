@@ -634,7 +634,7 @@ const no: PartialMessages = {
       ],
       engineer: [
         "Om Tidal selv, og Deezer og YouTube sammen med det: det vi ser denne måneden er at alle tre har begynt å flagge KI-genererte omslagsbilder over hele linjen, på alles utgivelser, uansett hva som er i lyden. Et omslag laget med et KI-bildeverktøy er nå nok i seg selv til å sette merket på en utgivelse. Et merke på disse plattformene sier derfor ingenting om sangene dine, og det er verdt å sjekke omslagsbildet før man antar at lyden er årsaken. At musikkvideoene dine vises uten merke peker i samme retning.",
-        "Disse plattformene fortsetter å endre reglene, og hver av dem endrer dem på sin måte. Du kan ikke holde styr på alle, og du bør ikke måtte. Mitt råd er å konsentrere deg om én plattform, den som betaler og der lytterne dine er, som for en uavhengig artist er Spotify via DistroKid. DistroKid har allerede gått gjennom filene dine og godkjent dem, og sangene dine er lagt ut uten problemer overalt ellers. La Tidal være Tidal.",
+        "Disse plattformene fortsetter å endre reglene, og hver av dem endrer dem på sin måte. Du kan ikke holde styr på alle, og du bør ikke måtte. Mitt råd er å konsentrere deg om én plattform, den som betaler og der lytterne dine er […] DistroKid har allerede gått gjennom filene dine og godkjent dem, og sangene dine er lagt ut uten problemer overalt ellers. La Tidal være Tidal.",
       ],
       signoff: "Arbeidet ditt er utmerket. Fortsett sånn.",
       mixea: [

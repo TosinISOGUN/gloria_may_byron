@@ -634,7 +634,7 @@ const vi: PartialMessages = {
       ],
       engineer: [
         "Về chính Tidal, cùng với Deezer và YouTube: điều chúng tôi thấy trong tháng này là cả ba đã bắt đầu gắn cờ ảnh bìa do AI tạo ra trên diện rộng, trên các bản phát hành của mọi người, bất kể âm thanh bên trong là gì. Một ảnh bìa làm bằng công cụ hình ảnh AI giờ đã đủ để gắn nhãn lên một bản phát hành. Vì vậy một lá cờ trên các nền tảng đó không nói gì về các bài hát của bạn, và nên kiểm tra ảnh bìa trước khi cho rằng nguyên nhân là âm thanh. Việc các video âm nhạc của bạn xuất hiện không có nhãn cũng chỉ về cùng hướng đó.",
-        "Những nền tảng này liên tục thay đổi quy tắc, và mỗi nơi thay đổi theo một cách khác nhau. Bạn không thể canh chừng tất cả, và bạn cũng không nên phải làm vậy. Lời khuyên của tôi là hãy tập trung vào một nền tảng, nơi trả tiền và có người nghe của bạn, mà với một nghệ sĩ độc lập là Spotify thông qua DistroKid. DistroKid đã xem xét các tệp của bạn và chấp thuận chúng, và các bài hát của bạn được đăng ổn ở mọi nơi khác. Hãy để Tidal là Tidal.",
+        "Những nền tảng này liên tục thay đổi quy tắc, và mỗi nơi thay đổi theo một cách khác nhau. Bạn không thể canh chừng tất cả, và bạn cũng không nên phải làm vậy. Lời khuyên của tôi là hãy tập trung vào một nền tảng, nơi trả tiền và có người nghe của bạn […] DistroKid đã xem xét các tệp của bạn và chấp thuận chúng, và các bài hát của bạn được đăng ổn ở mọi nơi khác. Hãy để Tidal là Tidal.",
       ],
       signoff: "Công việc của bạn rất xuất sắc. Hãy tiếp tục.",
       mixea: [

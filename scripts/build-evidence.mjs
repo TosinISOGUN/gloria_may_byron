@@ -25,7 +25,17 @@ const jobs = [
   {
     // The opening of one email: what the platforms flag, and that the distributor passed the files.
     id: "emailPlatformsA",
-    parts: [{ file: "photo_3_2026-11-12_16-42-06.jpg", box: [16, 268, 706, 1004] }],
+    parts: [{
+      file: "photo_3_2026-11-12_16-42-06.jpg",
+      box: [16, 268, 706, 1004],
+      // Gloria asked for one phrase ("which for an independent artist is Spotify through DistroKid.") to be hidden,
+      // so the platform is not promoted. Boxes are in the cropped image: the end of one line, a whole line, and one word.
+      blur: [
+        [399, 758, 217, 41],
+        [28, 799, 574, 42],
+        [28, 842, 156, 41],
+      ],
+    }],
   },
   {
     // The sign-off of the same email. The part between the two is about selling music on another site, and is left out.
@@ -52,6 +62,18 @@ const jobs = [
   },
 ];
 
+/** Pixelates then blurs each box so the text under it cannot be read back, and returns the image with the boxes replaced. */
+async function blurBoxes(buf, boxes) {
+  const patches = [];
+  for (const [left, top, width, height] of boxes) {
+    const small = await sharp(buf).extract({ left, top, width, height })
+      .resize(Math.max(2, Math.round(width / 14)), Math.max(2, Math.round(height / 14)), { kernel: "nearest" }).toBuffer();
+    const input = await sharp(small).resize(width, height, { kernel: "cubic" }).blur(9).toBuffer();
+    patches.push({ input, left, top });
+  }
+  return sharp(buf).composite(patches).toBuffer();
+}
+
 const manifest = {};
 for (const job of jobs) {
   const pieces = [];
@@ -62,7 +84,9 @@ for (const job of jobs) {
       continue;
     }
     const [left, top, width, height] = part.box;
-    pieces.push(await sharp(input).extract({ left, top, width, height }).toBuffer());
+    let piece = await sharp(input).extract({ left, top, width, height }).toBuffer();
+    if (part.blur) piece = await blurBoxes(piece, part.blur);
+    pieces.push(piece);
   }
   const meta = await Promise.all(pieces.map((b) => sharp(b).metadata()));
   const width = Math.max(...meta.map((m) => m.width));

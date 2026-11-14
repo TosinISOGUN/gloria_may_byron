@@ -634,7 +634,7 @@ const it: PartialMessages = {
       ],
       engineer: [
         "Su Tidal stessa, e con essa Deezer e YouTube: quello che vediamo questo mese è che tutte e tre hanno iniziato a segnalare le copertine generate con l'IA in modo generalizzato, sulle uscite di tutti, a prescindere da cosa ci sia nell'audio. Una copertina fatta con uno strumento di immagini IA basta ormai da sola a mettere l'etichetta su un'uscita. Quindi un segnalino su quelle piattaforme non dice nulla sulle tue canzoni, ed è meglio controllare la copertina prima di supporre che la causa sia il suono. Il fatto che i tuoi video musicali compaiano senza etichetta va nella stessa direzione.",
-        "Queste piattaforme continuano a cambiare le regole, e ognuna le cambia in modo diverso. Non puoi fare da babysitter a tutte, e non dovresti doverlo fare. Il mio consiglio è di concentrarti su una sola piattaforma, quella che paga e dove ci sono i tuoi ascoltatori, che per un'artista indipendente è Spotify tramite DistroKid. DistroKid ha già esaminato i tuoi file e li ha approvati, e le tue canzoni sono pubblicate senza problemi ovunque altrove. Lascia che Tidal sia Tidal.",
+        "Queste piattaforme continuano a cambiare le regole, e ognuna le cambia in modo diverso. Non puoi fare da babysitter a tutte, e non dovresti doverlo fare. Il mio consiglio è di concentrarti su una sola piattaforma, quella che paga e dove ci sono i tuoi ascoltatori […] DistroKid ha già esaminato i tuoi file e li ha approvati, e le tue canzoni sono pubblicate senza problemi ovunque altrove. Lascia che Tidal sia Tidal.",
       ],
       signoff: "Il tuo lavoro è eccellente. Continua così.",
       mixea: [

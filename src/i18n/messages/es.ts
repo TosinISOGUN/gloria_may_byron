@@ -634,7 +634,7 @@ const es: PartialMessages = {
       ],
       engineer: [
         "Sobre Tidal en sí, y con él Deezer y YouTube: lo que vemos este mes es que los tres han empezado a marcar las ilustraciones generadas con IA en todos los casos, en los lanzamientos de todo el mundo, sin importar lo que haya en el audio. Una portada hecha con una herramienta de imagen con IA basta ahora por sí sola para poner la etiqueta a un lanzamiento. Así que una marca en esas plataformas no dice nada sobre tus canciones, y conviene revisar la ilustración antes de suponer que la causa es el sonido. Que tus vídeos musicales aparezcan sin etiqueta apunta en el mismo sentido.",
-        "Estas plataformas siguen cambiando las reglas, y cada una las cambia de forma distinta. No puedes vigilarlas a todas, y no deberías tener que hacerlo. Mi consejo es que te centres en una sola plataforma, la que paga y donde están tus oyentes, que para una artista independiente es Spotify a través de DistroKid. DistroKid ya revisó tus archivos y los aprobó, y tus canciones están publicadas sin problema en todos los demás sitios. Deja que Tidal sea Tidal.",
+        "Estas plataformas siguen cambiando las reglas, y cada una las cambia de forma distinta. No puedes vigilarlas a todas, y no deberías tener que hacerlo. Mi consejo es que te centres en una sola plataforma, la que paga y donde están tus oyentes […] DistroKid ya revisó tus archivos y los aprobó, y tus canciones están publicadas sin problema en todos los demás sitios. Deja que Tidal sea Tidal.",
       ],
       signoff: "Tu trabajo es excelente. Sigue adelante.",
       mixea: [

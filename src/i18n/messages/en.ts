@@ -183,7 +183,7 @@ export const en = {
       ],
       engineer: [
         "On Tidal itself, and Deezer and YouTube with it: what we are seeing this month is that all three have started flagging AI-generated artwork across the board, on everyone's releases, regardless of what is in the audio. A cover made with an AI image tool is now enough to put the label on a release on its own. So a flag on those platforms says nothing about your songs, and it is worth checking the artwork before assuming the sound is the cause. Your music videos appearing untagged points the same way.",
-        "These platforms keep changing the rules, and each one changes them differently. You cannot babysit all of them, and you should not have to. My advice is to focus on one platform, the one that pays and where your listeners are, which for an independent artist is Spotify through DistroKid. DistroKid has already reviewed your files and passed them, and your songs are listed fine everywhere else. Let Tidal be Tidal.",
+        "These platforms keep changing the rules, and each one changes them differently. You cannot babysit all of them, and you should not have to. My advice is to focus on one platform, the one that pays and where your listeners are […] DistroKid has already reviewed your files and passed them, and your songs are listed fine everywhere else. Let Tidal be Tidal.",
       ],
       signoff: "Your work is excellent. Keep going.",
       mixea: [
