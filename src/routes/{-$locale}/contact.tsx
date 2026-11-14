@@ -185,7 +185,7 @@ function Contact() {
 
       <ShareCards />
 
-      <section className="pb-[clamp(72px,11vw,150px)]">
+      <section className="py-[clamp(72px,11vw,150px)]">
         <div className="wrap reveal">
           <div className="card p-8 sm:p-14">
             <h2 className="display-md max-w-[20ch]">

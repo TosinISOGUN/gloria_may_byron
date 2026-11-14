@@ -14,7 +14,7 @@ const dims: Record<Size, { w: number; h: number }> = { feed: { w: 720, h: 900 },
 
 const seg = "inline-flex rounded-full border border-line p-1";
 const iconBtn =
-  "grid size-12 place-items-center rounded-full border border-line transition-colors hover:border-ink";
+  "grid size-11 shrink-0 place-items-center rounded-full sm:size-12 border border-line transition-colors hover:border-ink";
 const segBtn =
   "min-h-10 rounded-full px-4 text-sm font-bold transition-colors aria-pressed:bg-accent aria-pressed:text-on-accent";
 
@@ -207,7 +207,8 @@ export function ShareCards() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-line pt-6">
-            <span className="me-1 text-sm font-bold text-muted">{t.link}</span>
+            <span className="w-full text-sm font-bold text-muted sm:w-auto">{t.link}</span>
+            <div className="flex flex-nowrap gap-2.5 sm:gap-4">
             {networks.map(({ name, color, Icon, href }) => (
               <a key={name} className={iconBtn} target="_blank" rel="noreferrer noopener" href={href} aria-label={name} title={name}>
                 <Icon size={24} weight="fill" color={color} aria-hidden />
@@ -216,6 +217,7 @@ export function ShareCards() {
             <button type="button" className={iconBtn} onClick={toTiktok} aria-label="TikTok" title="TikTok">
               <TiktokLogo size={24} weight="fill" color="#FE2C55" aria-hidden />
             </button>
+            </div>
           </div>
           <p className="mt-3 min-h-6 max-w-[52ch] text-sm font-bold text-accent" role="status">
             {tiktok ? t.tiktokNote : ""}
